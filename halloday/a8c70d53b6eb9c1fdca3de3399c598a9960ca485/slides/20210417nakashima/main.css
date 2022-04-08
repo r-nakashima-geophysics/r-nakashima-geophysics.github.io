@@ -1,0 +1,235 @@
+body.reveal-viewport {
+    background: whitesmoke;
+}
+
+.slides h2, .slides p, .slides li, .slide table, .slide figcaption {
+    font-family: Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+    color: #222222;
+}
+.slide *::selection {
+    color: currentColor;
+    background: transparent;
+}
+.slides h2::selection, .slides p::selection, .slides li::selection, .slide table *::selection {
+    color: currentColor;
+    background: deepskyblue;
+}
+
+.slides h2 {
+    font-size: 2.0rem;
+    margin: 30px 10px 15px 10px;
+    color: black;
+    font-weight: bold;
+}
+.slides h2.large {
+    font-size: 3.0rem;
+}
+
+.slides p {
+    font-size: 1.3rem;
+    margin: 10px;
+}
+.slides li, .slide figcaption {
+    font-size: 1.3rem;
+}
+.slides li ~ li {
+    margin-top: 10px;
+}
+
+.slides table th, .slide table td {
+    font-size: 1.3rem;
+    border: 0px none;
+}
+
+section.summary h2, section.summary p, section.summary li, section.summary table {
+    color: white;
+}
+.slides section.summary h2.huge {
+    font-size: 7rem;
+    color: yellow;
+}
+.slides .semi-large {
+    font-size: 2rem;
+}
+
+.alert {
+    font-weight: bold;
+    background: linear-gradient(transparent 50%, chartreuse 40%);
+}
+section.summary .alert {
+    color: chartreuse;
+    font-weight: bold;
+    background: transparent;
+}
+
+.ref {
+    font-size: 1.1rem;
+}
+
+.slides a {
+    color: currentColor;
+    text-decoration: underline;
+}
+.slides a:hover {
+    color: orangered;
+}
+
+.math-box {
+    background: thistle;
+    margin: 5px auto;
+    padding: 10px;
+}
+.math-box_small {
+    background: thistle;
+    margin: 5px auto;
+    padding: 1px;
+}
+section.summary .math-box {
+    background: transparent;
+    border: 1px solid white;
+    margin: 5px auto;
+    padding: 10px;
+}
+.slides p .MathJax, .slides table .MathJax, .slides li > .MathJax {
+    font-size: 1rem;
+}
+
+.slides mjx-container {
+    pointer-events: none;
+}
+
+.slide hr {
+    margin: 40px -100px 20px -20px;
+    border: 3px dashed lightsteelblue;
+}
+
+/* ======================================== */
+/* slide-number */
+/* ======================================== */
+
+.reveal .slide-number {
+    font-family: Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+    font-size: 18px;
+    right: 1%;
+}
+.reveal .slide-number-delimiter {
+    margin: 0 -3px;
+}
+.reveal .slide-number a:hover {
+    color: currentColor;
+    cursor: default;
+}
+
+.top-slide .reveal .slide-number {
+    display: none !important;
+}
+
+/* ======================================== */
+/* controls & progress */
+/* ======================================== */
+
+.reveal .controls {
+    color: orangered !important;
+    right: 1%;
+    bottom: 79%;
+}
+
+.reveal .progress {
+    color: darkorange;
+}
+
+/* ======================================== */
+/* header */
+/* ======================================== */
+
+#info_header {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+#presentation_title {
+    width: 50%;
+    background-color: #404040;
+}
+#presentation_date {
+    width: 50%;
+    left: 50%;
+    background-color: #707070;
+}
+#presentation_title h1, #presentation_date p {
+    font-family: Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+    font-size: 1.3rem;
+    color: white;
+    padding: 12px 10px 8px 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
+/* ======================================== */
+/* nav */
+/* ======================================== */
+
+#nav_slide {
+    display: block;
+    width: 100%;
+    background: linear-gradient(to right, indigo 60%, lavender);
+}
+.top-slide #nav_slide {
+    display: none;
+}
+#nav_slide p {
+    font-family: Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+    font-size: 1.3rem;
+    padding: 5px 5px 5px 30px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    color: sandybrown;
+}
+#nav_slide .past {
+    color: sandybrown;
+}
+#nav_slide .here {
+    color: yellow;
+    font-weight: bold;
+}
+#nav_slide .future {
+    color: lavender;
+}
+
+#nav_slide .sub-slide {
+    display: none;
+}
+#nav_slide .show-sub {
+    display: inline;
+}
+
+/* ======================================== */
+/* footer */
+/* ======================================== */
+
+#info_footer {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+#presentation_speaker {
+    width: 100%;
+    background-color: #606060;
+}
+#presentation_speaker address {
+    cfont-family: Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+    font-size: 1.3rem;
+    color: white;
+    padding: 10px 10px 15px 20px;
+    font-style: normal;
+}
+#presentation_speaker a {
+    color: currentColor;
+    text-decoration: underline;
+    z-index: 1;
+}

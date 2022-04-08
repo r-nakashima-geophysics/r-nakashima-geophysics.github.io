@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>地球惑星内部の流体力学とダイナモ作用</title>
+
+	<link rel="stylesheet" href="../../../../slides/reveal.js-master/dist/reveal.css">
+	<link rel="stylesheet" href="../../../../slides/reveal.js-master/dist/theme/simple.css">
+
+	<link rel="stylesheet" href="./main.css">
+
+	<!-- Font Awesome Kit -->
+	<script src="https://kit.fontawesome.com/29824876ec.js" crossorigin="anonymous"></script>
+
+	<!-- MathJax version 3 -->
+	<!-- IE対応 -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<!-- configファイル読み込み -->
+	<script src="./mathjax_config.js"></script>
+	<!-- MathJax v3 (tex-svg) -->
+	<script type="text/javascript" id="MathJax-script" async
+	    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+</head>
+
+<body>
+
+<div class="reveal">
+
+	<header id="info_header">
+		<div id="presentation_title">
+			<h1>地球惑星内部の流体力学とダイナモ作用</h1>
+		</div>
+		<div id="presentation_date">
+			<p>2021年度 合同研究発表会 春大会 (<time>2021-04-17</time>)</p>
+		</div>
+		<div id="nav_slide">
+			<nav>
+			<p><span
+				id="nav_part1"> 導入</span><span id="nav_part1-sub" class="sub-slide">$($補足$)$</span> <span
+				id="nav_part2"><i class="fas fa-chevron-right"></i> 固体の流れ</span><span id="nav_part2-sub" class="sub-slide">$($補足$)$</span> <span
+				id="nav_part3"><i class="fas fa-chevron-right"></i> 流れを生み出す源</span><span id="nav_part3-sub" class="sub-slide">$($補足$)$</span> <span
+				id="nav_part4"><i class="fas fa-chevron-right"></i> 回転する流れ</span><span id="nav_part4-sub" class="sub-slide">$($補足$)$</span> <span
+				id="nav_part5"><i class="fas fa-chevron-right"></i> 地磁気を生み出す流れ</span><span id="nav_part5-sub" class="sub-slide">$($補足$)$</span> <span
+				id="nav_part6"><i class="fas fa-chevron-right"></i> まとめ</span><span id="nav_part6-sub" class="sub-slide">$($補足$)$</span></p>
+			<nav>
+		</dic>
+	</header>
+
+	<footer id="info_footer">
+		<div id="presentation_speaker">
+			<address><i class="fas fa-microphone"></i> <a href="https://r-nakashima-geophysics.github.io" target="_blank">中島 涼輔</a> (九大・理) [ <i class="far fa-envelope"></i> r.nakashima.a10&nbsp;<i class="fas fa-at"></i>&nbsp;m.kyushu-u.ac.jp ]</address>
+		</div>
+	</footer>
+
+<div class="slides">
+
+	<section data-state="top-slide" data-auto-animate>
+		<h2 class="large">地球惑星内部の流体力学とダイナモ作用</h2>
+		<p class="semi-large">中島 涼輔 (九州大学 大学院理学研究院)</p>
+
+		<p style="margin-top: 3rem;">本スライドは, 厳密性よりもわかりやすさを意識して作成しています<br>
+		他の用途に利用する場合は, ご注意ください</p>
+	</section>
+
+	<section data-state="part1" data-background-color="#000011" class="summary" data-auto-animate>
+		<h2 class="huge">まずは乾杯&ensp;<i class="fas fa-beer"></i></h2>
+	</section>
+
+	<section data-state="part1" data-auto-animate>
+		<h2 class="large">地球惑星内部の流体力学とダイナモ作用</h2>
+		<p class="semi-large">中島 涼輔 (九州大学 大学院理学研究院)</p>
+
+		<p style="margin-top: 3rem;">本スライドは, 厳密性よりもわかりやすさを意識して作成しています<br>
+		他の用途に利用する場合は, ご注意ください</p>
+	</section>
+
+	<section data-state="part1" data-auto-animate>
+		<h2 class="large">地球惑星内部の<span style="color: red;">流体</span>力学とダイナモ作用</h2>
+		<p class="semi-large">中島 涼輔 (九州大学 大学院理学研究院)</p>
+	</section>
+
+<!-- ========== part 1 ========== -->
+
+	<section data-state="part1" data-auto-animate>
+		<h2 class="large">流体とは？</h2>
+	</section>
+
+	<section data-state="part1" data-auto-animate>
+		<h2 class="large">流体とは？</h2>
+		<p class="semi-large">液体や気体のこと</p>
+
+		<div style="display: inline-flex">
+			<figure>
+				<img src="./figures/river.jpg" width="350px" alt="川" style="margin: 0;">
+				<figcaption><a href="https://commons.wikimedia.org/wiki/File:Wild_Water_1.jpg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+			<figure>
+				<img src="./figures/cloud.jpg" width="350px" alt="雲" style="margin: 0;">
+				<figcaption><a href="https://commons.wikimedia.org/wiki/File:White_cloud_and_blue_sky.jpg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section data-state="part1" data-auto-animate>
+		<h2 class="large">流体とは？</h2>
+		<p class="semi-large"><s style="color:red"><span style="color: #222222;">液体や気体のこと<span></s></p>
+
+		<div style="display: inline-flex">
+			<figure>
+				<img src="./figures/river.jpg" width="350px" alt="川" style="margin: 0;">
+				<figcaption><a href="https://commons.wikimedia.org/wiki/File:Wild_Water_1.jpg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+			<figure>
+				<img src="./figures/cloud.jpg" width="350px" alt="雲" style="margin: 0;">
+				<figcaption><a href="https://commons.wikimedia.org/wiki/File:White_cloud_and_blue_sky.jpg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section data-state="part1" data-auto-animate>
+		<h2 class="large">流体とは？</h2>
+		<p class="semi-large"><s style="color:red"><span style="color: #222222;">液体や気体のこと<span></s> &#8658; 固体でも「流れる」ものは流体とみなせる</p>
+
+		<div style="display: inline-flex">
+			<figure>
+				<img src="./figures/glacier.jpg" width="350px" alt="氷河" style="margin: 0;">
+				<figcaption>氷河も「流れる」<br>スヴァールバル諸島の氷河<br><a href="https://commons.wikimedia.org/wiki/File:Raudfjordbreen_glacier_front,_Svalbard.jpg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+			<figure>
+				<img src="./figures/fold.jpg" width="350px" alt="褶曲" style="margin: 0;">
+				<figcaption>完全に固まる前の岩石も「流れる」<br><a href="https://commons.wikimedia.org/wiki/File:Agiospavlos_DM_2004_IMG003_Felsenformation_nahe.JPG" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+		</div>
+	</section>
+
+<!-- ========== part 2 ========== -->
+
+	<section data-state="part2">
+		<h2 class="semi-large">なぜ固体でも「流れる」ことができるのか？</h2>
+		<p>固体に大きな力を長時間加えると, 固体を構成する原子どうしの繋がりがずれる<br>
+		それを短い時間 観察しただけでは, 流れているようには見えないが,<br>
+		<span class="alert">地球の歴史のような長い時間をかけて見ると, 水が流れているのと同じように見える</span></p>
+
+		<figure>
+			<img src="./figures/dislocation.png" width="450px" alt="転位" style="margin: 0;">
+			<figcaption><a href="https://commons.wikimedia.org/wiki/File:Burgers_Vector_and_dislocations_(screw_and_edge_type).svg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+		</figure>
+	</section>
+
+	<section data-state="part2">
+		<h2 class="semi-large">固体の流れのイメージ (バネ-ダッシュポット モデル)</h2>
+		<p>バネにダッシュポット (液体が入った容器内のピストンを押したりひいたりする装置) を<br>
+		つなげたようなものを考える</p>
+
+		<figure>
+			<img src="./figures/Maxwell.png" width="350px" alt="転位" style="margin: 0;">
+			<figcaption><a href="https://commons.wikimedia.org/wiki/File:Maxwell_diagram.svg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+		</figure>
+
+		<p>この装置の端を素早く引っ張ると, バネだけが伸び, 手を離すとバネの伸びは元に戻る<br>
+		この振る舞いは, 私たちが普段 生活の中でイメージする固体の変形である</p>
+
+		<p>一方, 引っ張ったままをキープすると, 今度はダッシュポットのピストンがじわじわと動きはじめる<br>
+		すなわち, <span class="alert">長い時間 力をかけていると, 水や空気と同じような振る舞いにシフトする</span></p>
+
+
+	</section>
+
+	<section data-state="part2">
+		<h2 class="semi-large">地球の内部構造</h2>
+		<table>
+		<tr>
+			<th>地殻</th><td>固体の岩石, マントル最上部と合わさってプレートを形成</td>
+		</tr>
+		<tr>
+			<th>マントル</th><td><span class="alert">固体</span>の岩石 (上部マントル + 下部マントル)</td>
+		</tr>
+		<tr>
+			<th>外核</th><td>液体の金属 (鉄 + ニッケル + etc.)</td>
+		</tr>
+		<tr>
+			<th>内核</th><td>固体の金属 (鉄 + ニッケル + etc.)</td>
+		</tr>
+		</table>
+
+		<div style="display: inline-flex">
+			<figure>
+				<img src="./figures/structure.png" width="350px" alt="地球の内部構造" style="margin: 0;">
+				<figcaption class="ref">愛媛大学 地球深部ダイナミクスセンター HP より引用</figcaption>
+			</figure>
+			<figure>
+				<img src="./figures/peridotite.jpg" width="350px" alt="かんらん岩
+				" style="margin: 0;">
+				<figcaption>上部マントルの主成分は, かんらん岩<br>
+				<a href="https://planet-scope.info/rocks/peridotite.html" target="_blank" class="ref">planetscope 岩石鉱物詳解図鑑</a> より引用</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section data-state="part2" data-auto-animate>
+		<h2 class="semi-large">プレートテクトニクス (地殻 + 最上部マントルの移動)</h2>
+		<p>海嶺では, マントルの物質が上昇して海洋プレートをつくる<br>
+		海溝では, 古くなった海洋プレートが沈み, マントルへ戻っていく</p>
+		<p>地上に現存する一番古い海洋プレートの年齢は約 2 億年 $\ll$ 地球の歴史 45 億年</p>
+		<p>プレートは硬くて,「流れる」というよりも, <span class="alert">マントルの上に浮かんで滑ってる</span>イメージ</p>
+
+		<div style="display: inline-flex">
+			<figure>
+				<img src="./figures/plate_tectonics.png" width="450px" alt="プレートテクトニクス" style="margin: 0;">
+				<figcaption><a href="https://commons.wikimedia.org/wiki/File:Tectonic_plate_boundaries.png" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+			<figure>
+				<img src="./figures/plate.jpg" width="450px" alt="プレートの年齢" style="margin: 0;">
+				<figcaption>海洋プレートの年齢 (単位は, 100万年)<br>
+				<a href="https://www.ngdc.noaa.gov/mgg/image/crustalimages.html" target="_blank" class="ref">NOAA の HP</a> より引用</figcaption>
+			</figure>
+		</div>
+
+	</section>
+
+	<section data-state="part2" data-auto-animate>
+		<h2 class="semi-large">プレートテクトニクス (地殻 + 最上部マントルの移動)</h2>
+		<p>海洋プレートのイメージ = マントルが冷えて固まった薄皮</p>
+
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/YTi8_KkqpKw?start=120" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="margin-top: 1rem;" allowfullscreen>
+		</iframe>
+		<p>エチオピア　エルタ・アレ火山の溶岩湖<br>
+		プレートテクトニクスの模型？</p>
+	</section>
+
+	<section data-state="part2" data-auto-animate>
+		<h2 class="semi-large">マントル対流</h2>
+		<p>沈み込んだプレートは, マントルに取り込まれて, マントル対流として循環する</p>
+		<p>プレートの寿命が 1 億年程度だったので, 物質がぐるっと一周するのに数億年以上かかる</p>
+		<p>マントルが固体だったことはとりあえず忘れて, 流体と同じような方程式をパソコンに解かせる</p>
+
+		<div style="display: inline-flex">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/t1UH9Qjy28I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="margin: 5px;" allowfullscreen></iframe>
+
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/Ns-_q_mhjxM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="margin: 5px;" allowfullscreen></iframe>
+		</div>
+		<p>外側の温度が低い薄皮 (青い部分) がプレート？</p>
+	</section>
+
+	<section data-state="part2" data-auto-animate>
+		<h2 class="semi-large">マントル対流</h2>
+		<p>段々と現実の地球の状態に近い条件での計算が進められている</p>
+
+		<div style="display: inline-flex">
+			<div>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/dECeuFKE1uY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="margin: 5px; margin-top: 2rem;" allowfullscreen></iframe>
+			<p>マントル対流によって再現された大陸移動</p>
+			</div>
+
+			<figure>
+				<img src="./figures/miyagoshi.png" width="400px" alt="応力履歴対流" style="margin: 0;">
+				<figcaption>プレートが割れることを考慮した計算<br>
+				<a href="https://earth-planets-space.springeropen.com/articles/10.1186/s40623-020-01195-1" target="_blank" class="ref">Miyagoshi <i>et al.</i>(2020)</a></figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section data-state="part2" data-auto-animate>
+		<h2 class="semi-large">他の固体の流れの例: 氷河性地殻均衡復元</h2>
+		<p>氷河期に大陸に氷が載ってへこむ → 氷がなくなるとその陸地が隆起してくる</p>
+
+		<div style="display: inline-flex">
+			<figure>
+				<img src="./figures/gia.png" width="650px" alt="GIAの仕組み" style="margin-top: 3rem;">
+				<figcaption><a href="https://www.data.jma.go.jp/gmd/kaiyou/db/tide/knowledge/sl_trend/GIA.html" target="_blank" class="ref">気象庁の HP</a> より引用</figcaption>
+			</figure>
+			<figure>
+				<img src="./figures/rebound.jpg" width="400px" alt="隆起が見られるカナダの海岸" style="margin: 0;">
+				<figcaption>隆起が見られるカナダの海岸<br>
+					<a href="https://commons.wikimedia.org/wiki/File:Rebounding_beach,_among_other_things_(9404384095).jpg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+		</div>
+
+		<p>実は, この現象の観測によって, マントルの流動的性質が見積もられている</p>
+	</section>
+
+	<section data-state="part2" data-auto-animate>
+		<h2 class="semi-large">他の固体の流れの例: 内核の流動</h2>
+		<p>内核の中を通過する地震波を詳しく調べると,<br>
+			内核の東半球と西半球とで地震波の伝わり方が違う, などの特徴が見つかった</p>
+
+		<figure>
+			<img src="./figures/innercore.png" width="300px" alt="内核の対流" style="margin: 0;">
+			<figcaption>
+			<a href="https://science.sciencemag.org/content/328/5981/1014/tab-pdf" target="_blank" class="ref">Monnereau <i>et al.</i>(2013)</a></figcaption>
+		</figure>
+
+		<p>内核の西側で外核の液体金属が固化して内核に付着　→　東へ向かって金属の結晶が移動<br>
+		→　内核の東側で溶けて外核に戻る, という挙動が予想されている</p>
+	</section>
+
+<!-- ========== part 3 ========== -->
+
+	<section data-state="part3" data-auto-animate>
+		<h2 class="large">対流とは？</h2>
+	</section>
+
+	<section data-state="part3" data-auto-animate>
+		<h2 class="large">対流とは？</h2>
+
+		<p class="semi-large">熱を放出する手段</p>
+		<p>物質ごと輸送するので, 熱伝導よりもたくさんの熱を運ぶことができる</p>
+
+		<div style="display: inline-flex; margin-top: 1rem;">
+			<figure>
+				<img src="./figures/cell.png" width="250px" alt="対流セル" style="margin: 0;">
+				<figcaption>
+					<a href="https://commons.wikimedia.org/wiki/File:ConvectionCells.svg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+			</figure>
+
+			<div>
+			<video width="500px" muted controls>
+				<source src="./figures/convection.mp4" type="video/mp4">
+				<p>このブラウザでは再生できません</p>
+			</video>
+			<p>理学部食堂の味噌汁の対流</p>
+			</div>
+		</div>
+	</section>
+
+	<section data-state="part3" data-auto-animate>
+		<h2 class="semi-large">地球内部は十分冷え切っていない</h2>
+
+		<div style="display: inline-flex;">
+			<div width="500px">
+				<div style="margin-top: 3rem;">
+					<p>地球内部の熱の主な起源</p>
+					<ul>
+						<li>地球誕生の時に得た熱 (重力エネルギー)</li>
+						<li>地殻・マントルなどに含まれる放射性元素</li>
+					</ul>
+				</div>
+				<p style="margin-top: 3rem;">内核 → 外核 → マントル → 地殻<br>と熱を受け渡し,<br>特に外核とマントルでは対流が起こっている</p>
+			</div>
+
+			<figure>
+				<img src="./figures/structure.png" width="350px" alt="地球の内部構造" style="margin: 0;">
+				<figcaption class="ref">愛媛大学<br>地球深部ダイナミクスセンター HP<br>より引用</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section data-state="part3" data-auto-animate>
+		<h2 class="semi-large">他の惑星では？</h2>
+
+		<ul>
+			<li>地球 $\cdots$ 太陽系で唯一, プレートテクトニクスが存在<br>
+			(水が液体の状態で存在しているから？)</li>
+			<li>水星 $\cdots$ サイズは小さいのに, なぜかあまり冷えてなく, 外核に対流が存在</li>
+			<li>月や火星 $\cdots$ 少なくとも外核に激しい対流はなさそう<br>
+			(後述するが, 外核に激しい対流があると, 惑星磁場が存在する)</li>
+		</ul>
+		<p style="margin-top: 3rem;">支配している物理は同じ, 構成する物質もそれほど大きく変わらないのに<br>
+		なぜこのような<span class="alert">多様性</span>があるのかは,<br>
+		地球惑星科学の大きな課題であり, 面白いところでもある</p>
+	</section>
+
+<!-- ========== part 4 ========== -->
+
+	<section data-state="part4">
+		<h2 class="semi-large">地球の自転の効果</h2>
+		<div style="display: inline-flex;">
+			<div style="margin-top: 3rem;">
+				<ul>
+					<li>マントルの流れは非常にゆっくり<br>
+					(<span class="alert">1 年で 10cm 未満</span>) すぎて,<br>
+					地球の自転を感じない</li>
+					<br>
+					<li>外核は, 液体金属 (鉄 + ニッケル + etc.) <br>
+					でできていて,<br>
+					マントルに比べると非常にサラサラ<br>
+					流れの速さは, <span class="alert">1 時間で数 m</span> くらいで,<br> 自転の影響をモロに受ける</li>
+				</ul>
+			</div>
+			<figure>
+				<img src="./figures/tateno.png" width="400px" alt="鉄の相図" style="margin: 0;">
+				<figcaption>地球内部の温度圧力での鉄の状態<br>
+				<a href="https://science.sciencemag.org/content/330/6002/359.abstract" target="_blank" class="ref">Tateno <i>et al.</i>(2010)</a></figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section data-state="part4" data-auto-animate>
+		<h2 class="semi-large">地球の自転の効果を知る実験</h2>
+
+		<div style="display: inline-flex;">
+			<div style="display: block;">
+				<div>
+				<video width="400px" muted controls>
+					<source src="./figures/taylor1.mp4" type="video/mp4">
+					<p>このブラウザでは再生できません</p>
+				</video>
+				</div>
+
+				<figure>
+					<img src="./figures/taylor2.png" width="200px" alt="鉄の相図" style="margin: 0;">
+				</figure>
+			</div>
+
+			<div style="margin-top: 50px;">
+			<video width="500px" muted controls>
+				<source src="./figures/taylor3.mp4" type="video/mp4">
+				<p>このブラウザでは再生できません</p>
+			</video>
+			<p>水を入れた水槽をレコードプレーヤーに載せ,<br>
+			着色した水を数滴たらす</p>
+			</div>
+		</div>
+	</section>
+
+	<section data-state="part4" data-auto-animate>
+		<h2 class="semi-large">地球の自転の効果を知る実験</h2>
+
+		<div style="display: inline-flex;">
+			<div style="margin-top: 50px;">
+			<video width="500px" muted controls>
+				<source src="./figures/taylor4.mp4" type="video/mp4">
+				<p>このブラウザでは再生できません</p>
+			</video>
+			</div>
+
+			<div style="margin-top: 50px;">
+			<video width="500px" muted controls>
+				<source src="./figures/taylor5.mp4" type="video/mp4">
+				<p>このブラウザでは再生できません</p>
+			</video>
+			</div>
+		</div>
+
+		<ul>
+			<li>テイラー・プラウドマンの定理<br>
+			「流れの構造は, 回転軸の方向にそろう」</li>
+			<li>これにより, 水平方向への拡散は制限され, カーテン状の構造ができる</li>
+		</ul>
+	</section>
+
+	<section data-state="part4">
+		<h2 class="semi-large">実験から地球・惑星内部の流れを予想する</h2>
+
+		<div style="display: inline-flex;">
+			<figure>
+				<img src="./figures/torsional.jpg" width="300px" alt="torsional oscillation" style="margin: 0;">
+				<figcaption>地球の外核で予想されている流れの一部の構造</figcaption>
+			</figure>
+
+			<div style="display: block";>
+				<figure>
+					<img src="./figures/busse.png" width="400px" alt="Busse" style="margin: 0;">
+					<figcaption>木星内部の流れの構造<br>
+					<a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/abs/thermal-instabilities-in-rapidly-rotating-systems/9F0E024E1415D02EECE038EA3B66A410" target="_blank" class="ref">Busse (1970)</a>, <a href="https://www.tandfonline.com/doi/abs/10.1080/03091928308221746" target="_blank" class="ref">Busse (1983)</a></figcaption>
+				</figure>
+				<figure>
+					<img src="./figures/Jupiter.jpg" width="100px" alt="木星" style="margin: 0;">
+					<figcaption>
+					<a href="https://commons.wikimedia.org/wiki/File:Jupiter_by_Cassini-Huygens.jpg" target="_blank">Wikimedia Commons</a> より引用</figcaption>
+				</figure>
+			</div>
+		</div>
+	</section>
+
+<!-- ========== part 5 ========== -->
+
+	<section data-state="part5">
+		<h2 class="semi-large">ダイナモ理論</h2>
+
+		<p>回転する流れをさらに発展させる<br>
+		<span class="alert">液体金属は, 電気をよく通すので, 流れると磁場を発生させる能力がある</span></p>
+
+		<div style="display: inline-flex;">
+			<figure>
+				<img src="./figures/glatz.png" width="300px" alt="Busse" style="margin: 0;">
+				<figcaption>ダイナモシミュレーション<br>
+				<a href="https://www.nature.com/articles/377203a0" target="_blank" class="ref">Glatzmaiers & Roberts (1995)</a></figcaption>
+			</figure>
+
+			<div>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/rAYW9n8i-C4?start=32" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="margin-top: 2rem;" allowfullscreen></iframe>
+				<p>液体ナトリウムを使った危険な実験</p>
+			</div>
+		</div>
+	</section>
+
+	<section data-state="part5">
+		<h2 class="semi-large">ダイナモ理論の初歩</h2>
+
+		<ul>
+			<li>アルフヴェンの定理 (磁力線の凍結)<br>
+			「(電気をよく通す流体の場合) 磁力線は流体に張り付いて変形する」</li>
+			<li>磁力線は, 束になるほど強くなる</li>
+		</ul>
+
+		<figure>
+			<img src="./figures/alfven.png" width="250px" alt="Busse" style="margin: 0;">
+			<figcaption>
+			<a href="https://arxiv.org/abs/astro-ph/0405052" target="_blank" class="ref">Brandenburg & Subramanian (2005)</a></figcaption>
+		</figure>
+
+		<p>磁力線を引き伸ばして重ねる, みたいな流れをつくることができれば,<br>
+		流れから磁場を生み出すことができる</p>
+		<p>太陽や地球, 木星, 土星, 水星, その他の天体 etc. は同様のメカニズムで<br>
+		磁場を生成していると考えられている</p>
+	</section>
+
+	<section data-state="part5">
+		<h2 class="semi-large">地磁気の逆転</h2>
+
+		<p>地磁気は N 極と S 極がときどき逆転することが知られている</p>
+		<p>ダイナモシミュレーションにより, <br>
+		地磁気の逆転らしき計算結果は得られているが,<br>
+		なぜそのような振る舞いをするかは, よく分かっていない</p>
+
+		<div style="display: inline-flex;">
+			<figure>
+				<img src="./figures/chiba.jpg" width="350px" alt="Busse" style="margin: 0;">
+				<figcaption>チバニアン命名の根拠となる千葉県市原市の地層<br>
+				<a href="https://www.nikkei.com/article/DGXMZO54509170X10C20A1I00000/" target="_blank">日本経済新聞</a>より引用</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./figures/geomag.jpg" width="350px" alt="Busse" style="margin: 0;">
+				<figcaption>地磁気縞模様<br>
+				<a href="http://www.jamstec.go.jp/j/about/press_release/quest/20180921/04.html" target="_blank">JAMSTEC のプレスリリース</a>より引用</figcaption>
+			</figure>
+		</div>
+	</section>
+
+<!-- ========== part 6 ========== -->
+
+	<section data-state="part6" data-background-color="#000011" class="summary" data-auto-animate>
+		<h2 class="huge">まとめ</h2>
+	</section>
+	<section data-state="part6" data-background-color="#000011" class="summary" data-auto-animate>
+		<h2 class="large">まとめ</h2>
+		<ul class="large">
+			<li>地球内部は流れだらけ</li>
+			<li>惑星は同じ物理に従うのに, 多様性がある<br>
+			多様性があるけど, 同じ物理に従うと考える</li>
+			<li>地球・惑星内部は, まだまだ分からないことだらけだが, だいぶ分かってきた</li>
+		</ul>
+	</section>
+
+</div>
+</div>
+
+	<script src="../../../../slides/reveal.js-master/dist/reveal.js"></script>
+
+	<script>
+		Reveal.initialize({
+			width: 1024,
+			height: 576,
+
+			slideNumber: slide => {
+	    		return [ Reveal.getIndices( slide ).h, '/', this.Reveal.getHorizontalSlides().length - 1 ];
+			}
+		});
+	</script>
+
+	<script type="text/javascript">
+		var elementNav = document.getElementById('nav_slide');
+		var el_slidenumber = document.getElementsByClassName('slide-number');
+		Reveal.addEventListener( 'top-slide', function() {
+			elementNav.className = 'top-slide';
+			el_slidenumber.className = 'top-slide';
+		}, false );
+
+        const num_part = 6;
+		const el_part = Array(num_part);
+		const el_part_sub = Array(num_part);
+		for (var i = 1; i <= num_part; i++) {
+			el_part[i] = document.getElementById('nav_part'+ i);
+			el_part_sub[i] = document.getElementById('nav_part'+ i +'-sub');
+		}
+
+		Reveal.addEventListener( 'part1', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 1) {
+					el_part[i].classList = 'past';
+				} else if (i === 1) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				el_part_sub[i].className = 'sub-slide';
+			}
+		}, false );
+		Reveal.addEventListener( 'part1-sub', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 1) {
+					el_part[i].classList = 'past';
+				} else if (i === 1) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				if (i === 1) {
+					el_part_sub[i].className = 'here show-sub';
+				} else {
+					el_part_sub[i].className = 'sub-slide';
+				}
+			}
+		}, false );
+
+		Reveal.addEventListener( 'part2', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 2) {
+					el_part[i].classList = 'past';
+				} else if (i === 2) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				el_part_sub[i].className = 'sub-slide';
+			}
+		}, false );
+		Reveal.addEventListener( 'part2-sub', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 2) {
+					el_part[i].classList = 'past';
+				} else if (i === 2) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				if (i === 2) {
+					el_part_sub[i].className = 'here show-sub';
+				} else {
+					el_part_sub[i].className = 'sub-slide';
+				}
+			}
+		}, false );
+
+		Reveal.addEventListener( 'part3', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 3) {
+					el_part[i].classList = 'past';
+				} else if (i === 3) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				el_part_sub[i].className = 'sub-slide';
+			}
+		}, false );
+		Reveal.addEventListener( 'part3-sub', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 3) {
+					el_part[i].classList = 'past';
+				} else if (i === 3) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				if (i === 3) {
+					el_part_sub[i].className = 'here show-sub';
+				} else {
+					el_part_sub[i].className = 'sub-slide';
+				}
+			}
+		}, false );
+
+		Reveal.addEventListener( 'part4', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 4) {
+					el_part[i].classList = 'past';
+				} else if (i === 4) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				el_part_sub[i].className = 'sub-slide';
+			}
+		}, false );
+		Reveal.addEventListener( 'part4-sub', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 4) {
+					el_part[i].classList = 'past';
+				} else if (i === 4) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				if (i === 4) {
+					el_part_sub[i].className = 'here show-sub';
+				} else {
+					el_part_sub[i].className = 'sub-slide';
+				}
+			}
+		}, false );
+
+		Reveal.addEventListener( 'part5', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 5) {
+					el_part[i].classList = 'past';
+				} else if (i === 5) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				el_part_sub[i].className = 'sub-slide';
+			}
+		}, false );
+		Reveal.addEventListener( 'part5-sub', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 5) {
+					el_part[i].classList = 'past';
+				} else if (i === 5) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				if (i === 5) {
+					el_part_sub[i].className = 'here show-sub';
+				} else {
+					el_part_sub[i].className = 'sub-slide';
+				}
+			}
+		}, false );
+
+		Reveal.addEventListener( 'part6', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 6) {
+					el_part[i].classList = 'past';
+				} else if (i === 6) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				el_part_sub[i].className = 'sub-slide';
+			}
+		}, false );
+		Reveal.addEventListener( 'part6-sub', function() {
+			for (var i = 1; i <= num_part; i++) {
+				if (i < 6) {
+					el_part[i].classList = 'past';
+				} else if (i === 6) {
+					el_part[i].className = 'here';
+				} else {
+					el_part[i].className = 'future';
+				}
+
+				if (i === 6) {
+					el_part_sub[i].className = 'here show-sub';
+				} else {
+					el_part_sub[i].className = 'sub-slide';
+				}
+			}
+		}, false );
+
+	</script>
+
+</body>
+
+</html>

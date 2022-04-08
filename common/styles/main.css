@@ -1,0 +1,363 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html.show_html {
+    display: block;
+}
+
+body {
+    background-color: gainsboro;
+    font-family: "Verdana", "Roboto", "YuGothic", "Yu Gothic", sans-serif;
+    font-weight: 400;
+    line-height: 1.4rem;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+h2, h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    line-height: 2.5rem;
+}
+
+#container {
+    background-color: whitesmoke;
+    color: black;
+    margin: 0;
+}
+
+/* ======================================== */
+/* header */
+/* ======================================== */
+
+header {
+    background-color: indigo;
+    border-bottom: 1px solid whitesmoke;
+    position: sticky;
+    top: 0;
+}
+
+header a {
+    color: orange;
+    text-decoration: none;
+}
+header a:not(.nav_here) .link-text {
+    border-bottom: 1px solid currentColor;
+}
+header a:hover{
+    color: yellow;
+}
+header a.nav_here {
+    color: lavender;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+header h1 {
+    background-color: dimgray;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 20px auto 8px auto;
+    padding: 2px 10px;
+}
+
+header p {
+    color: orange;
+    margin: 8px auto 10px auto;
+    padding: 0px 10px 0px 20px;
+}
+
+header i {
+    margin: 0px 3px 0px 0px;
+    text-align: center;
+    width: 23px;
+}
+
+/* ======================================== */
+/* main */
+/* ======================================== */
+
+main {
+    padding: 0px 100px 0px 20px;
+}
+
+p {
+    color: currentColor;
+    text-align: justify;
+}
+
+main a {
+    background: linear-gradient(to right, #99ff99 50%, transparent 50%) 100% 0% / 200% auto no-repeat;
+    border-bottom: 1px solid currentColor;
+    color: currentColor;
+    text-decoration: none;
+    transition: background-position .5s ease-in;
+}
+main a.hidden-link {
+    border-bottom: none;
+}
+main a:not(.hidden-link):hover {
+    background-position: 0% 0%;
+    color: orangered;
+}
+
+hr {
+    border: 3px dashed lightsteelblue;
+    margin: 40px -100px 20px -20px;
+}
+
+h2.section {
+    background-color: indigo;
+    color: yellow;
+    font-size: 1.8rem;
+    padding: 5px 0px 8px 20px;
+    width: 500px;
+}
+
+h3.sub-section {
+    background: linear-gradient(to right, ghostwhite, lavender);
+    border: 1px solid indigo;
+    border-left: 10px solid indigo;
+    padding: 5px 0px 8px 20px;
+    color: currentColor;
+    font-size: 1.6rem;
+    width: 500px;
+}
+
+h4.subsub-section {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 20px 20px 20px 20px;
+}
+.cyan-line {
+    background: linear-gradient(transparent 50%, cyan 50%);
+}
+
+p.textbox {
+    margin: 10px 20px;
+}
+p.indent {
+    text-indent: 1rem;
+}
+
+p.info {
+    background-color: gainsboro;
+    border: 1px solid black;
+    font-size: 0.85rem;
+    margin: 10px 20px;
+    padding: 10px 15px 10px 15px;
+    width: 450px;
+}
+address {
+    font-style: normal;
+}
+
+ul {
+    margin: 10px 0px 10px 20px;
+    padding: 0px 0px 0px 30px;
+}
+li > ul {
+    margin: 10px 0px 10px 0px;
+    padding: 0px 0px 0px 25px;
+}
+li {
+    color: currentColor;
+}
+
+.date {
+    background: linear-gradient(transparent 80%, pink 80%);
+    color: currentColor;
+    font-size: 0.9rem;
+    margin-left : 20px;
+}
+
+.english {
+    color: blue;
+    font-size: 0.85rem;
+    margin-left : 20px;
+}
+
+#thesis .english, #thesis .date {
+    margin-left : 10px;
+}
+
+.best-time {
+    color: blue;
+    font-size: 1rem;
+    margin-left : 20px;
+}
+
+ul.books {
+    list-style: none;
+    margin-bottom: 15px;
+}
+ul.books li.finish-reading::before {
+    content: "\f02d";
+    font-family: "Font Awesome 6 Free";
+}
+ul.books li.now-reading::before {
+    content: "\f5da";
+    font-family: "Font Awesome 6 Free";
+}
+
+.MathJax {
+    font-size: 1.2rem;
+}
+
+/* ======================================== */
+/* footer */
+/* ======================================== */
+
+footer {
+    background-color: dimgray;
+    margin: 40px auto 20px auto;
+    padding: 2px 10px;
+}
+
+footer p {
+    color: white;
+    margin: 0;
+}
+
+footer small {
+    font-size: 1.1rem;
+}
+
+/* ======================================== */
+/* PC小画面用 */
+/* ======================================== */
+
+@media screen and (max-width: 1000px){
+
+    body {
+        width: 100vw;
+    }
+
+    main {
+        padding-right: 50px;
+    }
+
+    hr {
+        margin-right: -50px;
+    }
+}
+
+/* ======================================== */
+/* スマホ用 */
+/* ======================================== */
+
+@media screen and (max-width: 550px){
+
+    body, header h1, footer small {
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+    }
+
+    h2, h3 {
+        line-height: 1.8rem;
+    }
+
+    header p {
+        padding: 0px 10px 3px 15px;
+    }
+
+    main {
+        padding: 0px 15px 0px 15px;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    hr {
+        border: 2px dashed lightsteelblue;
+        margin: 20px -15px 20px -15px;
+    }
+
+    h2.section {
+        font-size: 1.2rem;
+        font-weight: normal;
+        padding: 5px 10px 5px 10px;
+        width: calc(100vw - 30px);
+    }
+
+    h3.sub-section {
+        border-left: 10px solid indigo;
+        font-size: 1.1rem;
+        font-weight: normal;
+        padding: 5px 10px 5px 10px;
+        width: calc(100vw - 30px);
+    }
+
+    h4.subsub-section {
+        font-size: 1rem;
+        font-weight: normal;
+        margin: 10px 10px 10px 10px;
+    }
+
+    p.textbox {
+        margin: 10px 5px 10px 5px;
+    }
+
+    p.info {
+        font-size: 0.8rem;
+        margin: 10px 0px 10px 0px;
+        padding: 10px 15px 10px 15px;
+        width: calc(100vw - 50px);
+    }
+
+    ul {
+        margin: 10px 5px 10px 5px;
+        padding: 0px 0px 0px 20px;
+    }
+
+    li > ul {
+        margin: 5px 5px 5px 0px;
+    }
+
+    .date {
+        font-size: 0.8rem;
+        margin-left : 10px;
+    }
+
+    .english {
+        font-size: 0.75rem;
+        margin-left : 10px;
+    }
+
+    .best-time {
+        font-size: 0.9rem;
+        margin-left : 10px;
+    }
+
+    .MathJax {
+        font-size: 1rem;
+    }
+
+}
+
+@media screen and (max-width: 320px){
+
+    body, header h1, footer small {
+        font-size: 0.8rem;
+        line-height: 1.1rem;
+    }
+
+    h2.section, h3.sub-section {
+        font-size: 1.1rem;
+        line-height: 1.4rem;
+    }
+
+    h4.subsub-section {
+        font-size: 0.9rem;
+    }
+
+    p.info {
+        font-size: 0.7rem;
+    }
+
+}
