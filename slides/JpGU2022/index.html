@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>JpGU 2022 [MIS21-P01]</title>
+
+	<link rel="stylesheet" href="../reveal.js-master/dist/reveal.css">
+	<link rel="stylesheet" href="../reveal.js-master/dist/theme/simple.css">
+
+	<link rel="stylesheet" href="./main.css">
+
+	<!-- Font Awesome Kit -->
+	<script src="https://kit.fontawesome.com/29824876ec.js" crossorigin="anonymous"></script>
+
+	<!-- MathJax version 3 -->
+	<!-- IE11 対応 -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<!-- config ファイル読み込み -->
+	<script src="./mathjax_config.js" defer></script>
+	<!-- CDN (jsdelivr) -->
+	<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-E28G7ESK53');
+	</script>
+
+</head>
+
+<body>
+
+<div class="reveal">
+
+	<header id="info_header">
+		<div id="presentation_title">
+			<h1>[MIS21-P01] 遅い磁気 Rossby 波と Alfv&eacute;n 波の連続固有値を伴う回転球面上の 2 次元 理想 MHD 波動</h1>
+		</div>
+
+		<div id="presentation_date">
+			<p>JpGU 2022 [現地: <time datetime="2022-05-24 17:15">5/24<time>, オンライン: <time datetime="2022-06-01 11:00">6/1</time>]</p>
+		</div>
+
+		<div id="nav_slide">
+			<nav>
+			<p><span
+				id="nav_part1">1. Introduction</span><span id="nav_part1-sub" class="sub-slide"> (補足)</span> <span
+				id="nav_part2"><i class="fas fa-chevron-right"></i> 2. Mathematical Formulation</span><span id="nav_part2-sub" class="sub-slide"> (補足)</span> <span
+				id="nav_part3"><i class="fas fa-chevron-right"></i> 3. Numerical Results</span><span id="nav_part3-sub" class="sub-slide"> (補足)</span> <span
+				id="nav_part4"><i class="fas fa-chevron-right"></i> 4. Discussion </span><span id="nav_part4-sub" class="sub-slide"> (補足)</span> <span
+				id="nav_part5"><i class="fas fa-chevron-right"></i> 5. Conclusion</span><span id="nav_part5-sub" class="sub-slide"> (補足)</span></p>
+			<nav>
+		</div>
+	</header>
+
+	<footer id="info_footer">
+		<div id="presentation_speaker">
+			<address><i class="fas fa-microphone"></i> <a href="https://r-nakashima-geophysics.github.io" target="_blank">中島 涼輔</a> (九大・理) [ <i class="far fa-envelope"></i> r.nakashima.a10&nbsp;<i class="fas fa-at"></i>&nbsp;m.kyushu-u.ac.jp ]</address>
+		</div>
+		<div id="poweredby">
+			<p>Powered by <a href="https://revealjs.com" target="_blank">reveal.js</a> & <a href="https://www.mathjax.org" target="_blank"><img title="Powered by MathJax" src="https://www.mathjax.org/badge/mj_logo.png" border="0" alt="Powered by MathJax" style="height: 25px; margin: 0 auto -10px 0; padding-top: 5px;"></a></p>
+		</div>
+	</footer>
+
+<div class="slides">
+
+	<section data-state="top-slide" data-background-color="azure">
+        <p style="margin-bottom: 1%;">[MIS21-P01]</p>
+
+		<h2 style="margin-top: 0;">遅い磁気 Rossby 波と Alfv&eacute;n 波の連続固有値を伴う<br>
+        回転球面上の 2 次元 理想 MHD 波動</h2>
+
+		<p>Two-dimensional ideal MHD waves over a rotating sphere<br>
+        with continuous spectra of slow magnetic Rossby and Alfv&eacute;n waves</p>
+
+		<img src="./figures/SSymbolLogo-tenchi_E_jpg.jpg" width="8%" alt="九州大学ロゴ" style="margin: 0; border: solid black 1px;">
+
+		<p style="margin-bottom: 0.5%;"><b><i class="fas fa-microphone"></i> 中島 涼輔 (九州大学 大学院理学研究院)</b></p>
+		<p style="margin-top: 0.5%;">吉田 茂生 (九州大学 大学院理学研究院 地球惑星科学部門)</p>
+        <!--
+		<p class="small note">&#65290;esc キーを押すと overview モードになります (再度 esc キーで戻る)<br>
+		&#65290;スライド中の <i class="fas fa-info-circle" style="color: indigo;"></i> マークを hover すると詳細が表示されます</p>
+        -->
+	</section>
+
+<!-- ========== part 1 ========== -->
+
+	<section data-state="part1">
+		<h2>What're 2D MHD waves on a rotating sphere ?</h2>
+
+		<div class="half-box">
+			<div style="width: 65%;">
+				<ul>
+					<li>Consider a thin layer of a perfectly conducting fluid on a rotating sphere.</li>
+					<li>The layer rotates almost rigidly with the sphere.</li>
+					<li>A background toroidal magnetic field is maintained by other (long timescale) phenomena, such as the dynamo action. <br>
+                    Assume that it is expressed as <strong class="alert">$B_{0\phi}=B_0\sin\theta\cos\theta$</strong> (equatorially-antisymmetric, $B_0$ is a constant).</li>
+					<li>Focus on linear waves in this basic state.</li>
+					<li>This model can imitate <strong class="alert">a stably stratified layer in the outermost Earth's core</strong> (and the solar tachocline).</li>
+				</ul>
+			</div>
+
+			<div style="width: 30%; position: relative;">
+				<img src="./figures/sec1/2DMHDsphere.png" width="100%" alt="2D ideal MHD waves on a rotating sphere">
+                <img src="./figures/sec1/theta-phi.png" width="65%" alt="Phi is the longitude and theta is the colatitude" style="position: absolute; bottom: 0; left: -10%;">
+                <img src="./figures/sec1/non-Malkus.png" width="65%" alt="Assumed background magnetic field" style="position: absolute; bottom: 0; right: -10%;">
+			</div>
+		</div>
+	</section>
+
+    <section data-state="part1">
+        <h2>Do MHD waves in the stratified layer cause<br>
+        some geomagnetic fluctuations ?</h2>
+
+        <ul>
+            <li>Seismological surveys may have detected the stably stratified layer at the top of the Earth's core <span class="small">(e.g. <a href="https://www.nature.com/articles/nature09636" target="_blank">Helffrich and Kaneshima, 2010</a>)</span>.</li>
+            <li>The existence and the origin of its stratification, which is significant in understanding the Earth's thermochemical history and core dynamics, remains to be inconclusive.</li>
+            <li><strong class="alert">Unclear properties of the layer</strong> may be able to be inferred from the identification of sources of <strong class="alert">wavelike geomagnetic variations</strong>.</li>
+            <li>MHD waves within the layer may have been causing such variations <span class="small">(e.g. <a href="https://www.nature.com/articles/nature13122" target="_blank">Buffett, 2014</a>)</span>, whereas such a layer may be <strong>not</strong> necessary to explain rapid geomagnetic changes <span class="small">(e.g. <a href="https://www.pnas.org/doi/10.1073/pnas.2115258119" target="_blank">Gillet <i>et al.</i>, 2022</a>)</span>. [Further research is needed.]</li>
+        </ul>
+    </section>
+
+    <section data-state="part1">
+        <h2 style="margin-left:7%;">Preliminary knowledge <span class="small" style="font-weight: normal;">(e.g. <a href="https://www.aanda.org/articles/aa/abs/2007/30/aa7382-07/aa7382-07.html" target="_blank">Zaqarashvili <i>et al.</i>, 2007</a>)</span></h2>
+
+        <figcaption>zonal wavenumber $m=1$, background field <strong class="alert">$B_{0\phi}=B_0\sin\theta$</strong> (Malkus field)</figcaption>
+
+        <div class="half-box">
+            <div style="width: 65%; position: relative;">
+                <img src="./figures/sec1/Malkus.png" width="27%" alt="Assumed background magnetic field" style="position: absolute; top: -29%; left: -7%;">
+                <img class="focus-fig" src="./figures/sec1/dispersion_Malkus.png" width="90%" alt="Dispersion relation when m = 1 and the Malkus field is imposed">
+                <figcaption style="margin-top: -2%;"><b>frequency</b> [ordinate] <b>vs. magnetic field strength</b> [abscissa]</figcaption>
+            </div>
+
+            <div style="width: 35%;">
+                <figcaption><b>energy partitioning</b> [ordinate] <b>vs.<br>magnetic field strength</b> [abscissa]</figcaption>
+                <img class="focus-fig" src="./figures/sec1/energy_partitioning.png" width="78%" alt="Dispersion relation when m = 1 and the Malkus field is imposed">
+            </div>
+        </div>
+
+        <table class="small" style="margin-top: 1%;">
+            <tr><td>(fast magnetic) Rossby waves</td><td>inertia vs. planetary $\beta$ effect</td><td>kinetic energy dominant</td></tr>
+            <tr><td>Alfv&eacute;n waves</td><td>inertia vs. Lorentz force</td><td>equipartition</tr>
+            <tr><td><strong class="alert">slow magnetic Rossby waves</strong></td><td>planetary $\beta$ effect vs. Lorentz force</td><td>magnetic energy dominant</td></tr>
+        </table>
+    </section>
+
+    <section data-state="part1">
+        <h2>Purpose & Main conclusion</h2>
+
+        <div class="half-box">
+            <div style="width: 55%">
+                <ul class="qanda">
+                    <li class="question">Do MHD waves which can cause <strong class="alert">decadal and subdecadal geomagnetic variations</strong> can propagate in a thin layer on a rotating sphere with the somewhat <strong class="alert">Earth’s core-like imposed magnetic field</strong> $B_{0\phi}=B_0\sin\theta\cos\theta$ (relative to the pure Malkus one $B_{0\phi}=B_0\sin\theta$) ?</li>
+                    <li class="answer">A candidate source of such fluctuations, <strong>discrete eigenmodes</strong> of slow magnetic Rossby waves, <strong class="alert">disappear</strong> due to the action of <strong class="alert">magnetic shears</strong> in our model.</li>
+                </ul>
+            </div>
+
+            <div style="width: 45%">
+                <figcaption><b>frequency</b> [ordinate] <b>vs.<br>magnetic field strength</b> [abscissa]<br>zonal wavenumber $m=1$<br>background field $B_{0\phi}=B_0\sin\theta\cos\theta$</figcaption>
+                <img class="focus-fig" src="./figures/sec1/dispersion_m1_log.png" width="90%" alt="Dispersion relation when m = 1 and the non-Malkus field is imposed">
+            </div>
+        </div>
+    </section>
+
+    <section data-state="part2">
+        <ol style="margin-top: 3%;">
+            <li><span class="semi-large">Eigenvalue problem</span> [ <i class="fa-solid fa-arrow-right-long"></i> <span style="background-color: lightgreen;">Numerical Results</span> ]</li>
+            <ul style="margin-left: 0;">
+                <li>Use two linearized eqs. (vorticity eq. & uncurled induction eq.).</li>
+                <li>Focus on normal modes (dependent variables $\propto \ue^{\ui(m\phi-\omega t)}$).</li>
+                <li>Utilize the associated Legendre polynomial expansion in order to express the $\theta$ dependences of dependent variables.</li>
+                <li>Solve the eigenvalue problem for a large sparse matrix (truncated degree $2000$).</li>
+            </ul>
+            <li><span class="semi-large">WKBJ approximation</span> [ <i class="fa-solid fa-arrow-right-long"></i> <span style="background-color: darkorange;">Discussion (1)</span> ]</li>
+            <ul style="margin-left: 0;">
+                <li>Consider Earth's core-like environment (weak magnetic field, $\alpha=$ magnetic$/$rotation $\approx10^{-4}$ in the Earth's core).</li>
+                <li>Focus on a wave packet with large wavenumbers $m\sim\uO(\alpha^{-1/2})$.<br>
+                Small $\alpha$ reduces typical meridional wavelengths <span class="small">(see <span style="background-color: lightgreen;">Numerical Results</span>)</span>.</li>
+                <li>Integrate the ray-tracing equation (Track the path of a wave packet migrating with its group velocity).
+            </ul>
+        </ol>
+    </section>
+
+    <section data-state="part3">
+        <h2>Continuous modes <strong class="alert">appear</strong>, whereas Alfv&eacute;n and slow magnetic Rossby discrete modes <strong class="alert">disappear</strong>.</h2>
+
+        <div class="half-box">
+            <div style="width: 40%;">
+                <figcaption><b>frequency</b> [ordinate] <b>vs.<br>magnetic field strength</b> [abscissa]<br>zonal wavenumber $m=2$<br>background field $B_{0\phi}=B_0\sin\theta\cos\theta$</figcaption>
+                <img class="focus-fig" src="./figures/sec3/dispersion_m2_log.png" width="92%" alt="Dispersion relation when m = 2 and the non-Malkus field is imposed">
+            </div>
+
+            <div style="width: 60%;">
+
+                <div class="half-box">
+                    <div style="width: 34%;">
+                        <img src="./figures/sec3/sinuous.png" width="100%" alt="The eigenfunction of a sinuous fast magnetic Rossby waves">
+                    </div>
+
+                    <div style="width: 34%;">
+                        <img src="./figures/sec3/varicose.png" width="100%" alt="The eigenfunction of a varicose fast magnetic Rossby waves">
+                    </div>
+
+                    <div style="width: 32%;">
+                        <figcaption>(fast magnetic) Rossby waves ($m=2$, $B_{0\phi}=B_0\sin\theta\cos\theta$) sinuous and varicose</figcaption>
+                    </div>
+                </div>
+
+                <figcaption><b>eigenfunctions of continuous modes</b> [ordinate] <b>vs. frequency</b> [abscissa] ($m=2$, $B_{0\phi}=B_0\sin\theta\cos\theta$, $\alpha=10^{-1}$ and $10^{-2}$)</figcaption>
+                <div class="half-box">
+                    <div style="width: 50%;">
+                        <img class="focus-fig" src="./figures/sec3/alleigfunc_a01.png" width="100%" alt="Eigenfunctions of continuous modes when m = 2 and alpha = 0.1">
+                    </div>
+
+                    <div style="width: 50%;">
+                        <img class="focus-fig" src="./figures/sec3/alleigfunc_a001.png" width="100%" alt="An eigenfunction of the varicose modes">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section data-state="part4">
+        <h2><span style="color: blue;">Prograde</span> modes prefer the <span style="color: blue;">polar</span> side, whereas <span style="color: red;">retrograde</span> modes prefer the <span style="color: red;">equatorial</span> side.</h2>
+
+        <div class="half-box">
+            <div style="width: 45%;">
+                <figcaption>local group velocity $\bm{c}_\mathrm{g}=\alpha\left(\frac{\upartial\lambda_1}{\upartial k}\hat{\bm{e}}_\phi+\frac{\upartial\lambda_1}{\upartial l}\hat{\bm{e}}_{-\theta}\right)$</figcaption>
+                <img class="focus-fig" src="./figures/sec4/group.png" width="94%" alt="Dispersion relation when m = 2 and the non-Malkus field is imposed">
+                <table class="small">
+                    <tr><td>$k>0$</td><td>prograde continuous modes</td><td>$c_{\mathrm{g}\phi}>0$</td></tr>
+                    <tr><td rowspan="2">$k<0$</td><td>retrograde continuous modes</td><td>$c_{\mathrm{g}\phi}<0$</td></tr>
+                    <tr><td>(fast magnetic) Rossby waves</td><td>$c_{\mathrm{g}\phi}\gtrless0$</td></tr>
+                </table>
+            </div>
+
+            <div style="width: 55%;">
+                <ul>
+                    <li>Suppose that continuous modes should be treated as propagating waves rather than normal modes.</li>
+                    <li><span style="color: blue;">Prograde</span>/<span style="color: red;">retrograde</span> modes approach their critical latitudes from the <span style="color: blue;">polar</span>/<span style="color: red;">equatorial</span> side <span class="small">(cf. <span style="background-color: lightgreen;">Numerical Results</span>)</span></li>
+                </ul>
+
+                <div class="half-box">
+                    <div style="width: 50%; position: relative;">
+                        <figcaption style="position: absolute; top: 35%; left: 25%;">a <span style="color: blue;">prograde</span> mode</figcaption>
+                        <img class="focus-fig" src="./figures/sec4/ray_prograde.png" width="100%" alt="Ray trajectory of prograde continuous modes">
+                    </div>
+
+                    <div style="width: 50%; position: relative;">
+                        <figcaption style="position: absolute; top: 35%; left: 25%;">a <span style="color: red;">retrograde</span> mode</figcaption>
+                        <img class="focus-fig" src="./figures/sec4/ray_retrograde.png" width="100%" alt="Ray trajectory of retrograde continuous modes">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section data-state="part4">
+        <h2>Should <strong class="alert">not</strong> imprudently <strong class="alert">drop the inertial effect</strong> (the geophysically traditional magnetostrophic approx.) in the system having magnetic shears.</h2>
+
+        <div class="half-box">
+            <div style="width: 50%;">
+                <figcaption><b>frequency</b> [ordinate] <b>vs. magnetic field strength</b> [abscissa] ($m=2$, $B_{0\phi}=B_0\sin\theta\cos\theta$) with/without the magnetostrophic approx.</figcaption>
+                <img class="focus-fig" src="./figures/sec4/magnetostrophic.png" width="95%" alt="Dispersion relation with the magnetostrophic approx. when m = 2 and the non-Malkus field is imposed">
+            </div>
+
+            <div style="width: 50%;">
+                <div class="half-box">
+                    <div style="width: 50%; border-right: 3px dashed lightsteelblue;">
+                        <figcaption><strong>without</strong> magnetostrophic approx. (continuous mode)</figcaption>
+                        <img class="focus-fig" src="./figures/sec4/without_ms_NS.png" width="90%" alt="">
+                        <img class="focus-fig" style="margin-top: -8%;" src="./figures/sec4/without_ms_map.png" width="90%" alt="">
+                    </div>
+
+                    <div style="width: 50%;">
+                        <figcaption><strong>with</strong> magnetostrophic approx. (a discrete mode)</figcaption>
+                        <img class="focus-fig" src="./figures/sec4/ms_NS.png" width="90%" alt="">
+                        <img class="focus-fig" style="margin-top: -8%;" src="./figures/sec4/ms_map.png" width="90%" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top: -1.5%;">This approximation influences the existence of the critical latitudes, hence the eigenmodes are different from the original.</p>
+    </section>
+
+    <section data-state="part5">
+        <div class="half-box" style="margin-top: 2%;">
+            <div style="width: 50%; border-right: 3px dashed lightsteelblue; padding-right: 20px;">
+                <ul style="list-style: none; margin-left: 0;">
+                    <li style="margin: 1% auto 1% auto;"><span class="semi-large">Conclusion</span></li>
+                    <ol style="margin-left: 0;">
+                        <li style="font-size: 1.5rem;">Critical latitudes (due to the Alfv&eacute;n resonance) rule out Alfvén and slow magnetic Rossby discrete modes and allow singular continuous modes to appear. <span class="small">[Nakashima & Yoshida part.1 (in prep.)]</span></li>
+                        <li style="font-size: 1.5rem;">Wave packets belonging to prograde continuous modes approach their critical latitudes from the polar side, while retrograde ones approach the latitudes from the equatorial side. <span class="small">[Nakashima & Yoshida part.1 (in prep.)]</span></li>
+                        <li style="font-size: 1.5rem;">Should not carelessly ignore the inertial effect in the system possessing magnetic shears. <span class="small">[Nakashima & Yoshida part.2 (in prep.)]</span></li>
+                    </ol>
+                </ul>
+            </div>
+
+            <div style="width: 45%; padding-left: 20px;">
+                <ul style="list-style: none; margin-left: 0;">
+                    <li style="margin: 1% auto 1% auto;"><span class="semi-large">Future work</span></li>
+                    <ul>
+                        <li style="font-size: 1.4rem;">Our model may omit additional effects which can retain slow magnetic Rossby discrete modes.</li>
+                        <ul style="margin-top: 1%;">
+                            <li style="font-size: 1.2rem;">magnetic diffusion <span class="small">[later papers]</span></li>
+                            <li style="font-size: 1.2rem;">shallow water model <span class="small">[later papers]</span></li>
+                            <li style="font-size: 1.2rem;">poloidal background field</li>
+                            <li style="font-size: 1.2rem;">horizontal component of the Earth's angular velocity (<i class="fa-solid fa-arrow-right-long"></i> valve effect)</li>
+                        </ul>
+                        <li style="font-size: 1.4rem;">understanding of fundamental processes</li>
+                        <ul>
+                            <li style="font-size: 1.2rem;">phase mixing, Landau damping, quasi-mode</li>
+                            <li style="font-size: 1.2rem;">pseudomomentum [part.2 paper], wave&ndash;mean field interaction</li>
+                        </ul>
+                    </ul>
+                    <li style="margin: 1% auto 1% auto;"><span class="semi-large">Reference & Details</span></li>
+                        <p style="margin: 0 0 0 280px; font-size: 1.2rem;">see Confit site <i class="fa-solid fa-dove"></i></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+
+	<script src="../reveal.js-master/dist/reveal.js"></script>
+
+	<script>
+		Reveal.initialize({
+			width: 1024,
+			height: 576,
+
+			slideNumber: slide => {
+	    		return [ Reveal.getIndices( slide ).h, '/', this.Reveal.getHorizontalSlides().length - 1 ];
+			}
+		});
+	</script>
+
+	<script src="./main.js"></script>
+
+</body>
+
+</html>

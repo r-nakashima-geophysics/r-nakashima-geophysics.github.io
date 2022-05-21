@@ -29,13 +29,14 @@ window.MathJax = {
             div: "{\\boldsymbol{\\nabla}\\ip}",
             rot: "{\\boldsymbol{\\nabla}\\times}",
 
-            upO: "{\\mathrm{O}}",
-            upd: "{\\mathrm{d}}",
-            upD: "{\\mathrm{D}}",
-            upe: "{\\mathrm{e}}",
-            upi: "{\\mathrm{i}}",
-            upl: "{\\ell}",
-            uppartial: "{\\partial}"
+            uO: "{\\mathrm{O}}",
+            ud: "{\\mathrm{d}}",
+            uD: "{\\mathrm{D}}",
+            ue: "{\\mathrm{e}}",
+            ui: "{\\mathrm{i}}",
+            ul: "{\\ell}",
+            upi: "{\\uppi}",
+            upartial: "{\\partial}"
         }
 
     },
