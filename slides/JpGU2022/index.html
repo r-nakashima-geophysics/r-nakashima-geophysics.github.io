@@ -84,10 +84,9 @@
 
 		<p style="margin-bottom: 0.5%;"><b><i class="fas fa-microphone"></i> 中島 涼輔 (九州大学 大学院理学研究院)</b></p>
 		<p style="margin-top: 0.5%;">吉田 茂生 (九州大学 大学院理学研究院 地球惑星科学部門)</p>
-        <!--
+
 		<p class="small note">&#65290;esc キーを押すと overview モードになります (再度 esc キーで戻る)<br>
 		&#65290;スライド中の <i class="fas fa-info-circle" style="color: indigo;"></i> マークを hover すると詳細が表示されます</p>
-        -->
 	</section>
 
 <!-- ========== part 1 ========== -->
@@ -123,36 +122,79 @@
             <li>Seismological surveys may have detected the stably stratified layer at the top of the Earth's core <span class="small">(e.g. <a href="https://www.nature.com/articles/nature09636" target="_blank">Helffrich and Kaneshima, 2010</a>)</span>.</li>
             <li>The existence and the origin of its stratification, which is significant in understanding the Earth's thermochemical history and core dynamics, remains to be inconclusive.</li>
             <li><strong class="alert">Unclear properties of the layer</strong> may be able to be inferred from the identification of sources of <strong class="alert">wavelike geomagnetic variations</strong>.</li>
-            <li>MHD waves within the layer may have been causing such variations <span class="small">(e.g. <a href="https://www.nature.com/articles/nature13122" target="_blank">Buffett, 2014</a>)</span>, whereas such a layer may be <strong>not</strong> necessary to explain rapid geomagnetic changes <span class="small">(e.g. <a href="https://www.pnas.org/doi/10.1073/pnas.2115258119" target="_blank">Gillet <i>et al.</i>, 2022</a>)</span>. [Further research is needed.]</li>
+            <li>MHD waves within the layer may have been causing such variations <span class="small">(e.g. <a href="https://www.nature.com/articles/nature13122" target="_blank">Buffett, 2014</a>)</span>, whereas such a layer may be <strong>not</strong> necessary to explain rapid geomagnetic changes <span class="small">(e.g. <a href="https://www.pnas.org/doi/10.1073/pnas.2115258119" target="_blank">Gillet&plus;, 2022</a>)</span>. [Further research is needed.]</li>
         </ul>
     </section>
 
-    <section data-state="part1">
-        <h2 style="margin-left:7%;">Preliminary knowledge <span class="small" style="font-weight: normal;">(e.g. <a href="https://www.aanda.org/articles/aa/abs/2007/30/aa7382-07/aa7382-07.html" target="_blank">Zaqarashvili <i>et al.</i>, 2007</a>)</span></h2>
+    <section>
+        <section data-state="part1">
+            <h2 style="margin-left:7%;">Preliminary knowledge <span class="small" style="font-weight: normal;">(e.g. <a href="https://www.aanda.org/articles/aa/abs/2007/30/aa7382-07/aa7382-07.html" target="_blank">Zaqarashvili&plus;, 2007</a>)</span></h2>
 
-        <figcaption>zonal wavenumber $m=1$, background field <strong class="alert">$B_{0\phi}=B_0\sin\theta$</strong> (Malkus field)</figcaption>
+            <figcaption>zonal wavenumber $m=1$, background field <strong class="alert">$B_{0\phi}=B_0\sin\theta$</strong> (Malkus field)</figcaption>
 
-        <div class="half-box">
-            <div style="width: 65%; position: relative;">
-                <img src="./figures/sec1/Malkus.png" width="27%" alt="Assumed background magnetic field" style="position: absolute; top: -29%; left: -7%;">
-                <img class="focus-fig" src="./figures/sec1/dispersion_Malkus.png" width="90%" alt="Dispersion relation when m = 1 and the Malkus field is imposed">
-                <figcaption style="margin-top: -2%;"><b>frequency</b> [ordinate] <b>vs. magnetic field strength</b> [abscissa]</figcaption>
+            <div class="half-box">
+                <div style="width: 65%; position: relative;">
+                    <img src="./figures/sec1/Malkus.png" width="27%" alt="Assumed background magnetic field" style="position: absolute; top: -29%; left: -7%;">
+                    <img class="focus-fig" src="./figures/sec1/dispersion_Malkus.png" width="90%" alt="Dispersion relation when m = 1 and the Malkus field is imposed">
+                    <figcaption style="margin-top: -2%;"><b>frequency</b> [ordinate] <b>vs. magnetic field strength</b> [abscissa]</figcaption>
+                </div>
+
+                <div style="width: 35%;">
+                    <figcaption><b>energy partitioning</b> [ordinate] <b>vs.<br>magnetic field strength</b> [abscissa]</figcaption>
+                    <img class="focus-fig" src="./figures/sec1/energy_partitioning.png" width="78%" alt="Dispersion relation when m = 1 and the Malkus field is imposed">
+                </div>
             </div>
 
-            <div style="width: 35%;">
-                <figcaption><b>energy partitioning</b> [ordinate] <b>vs.<br>magnetic field strength</b> [abscissa]</figcaption>
-                <img class="focus-fig" src="./figures/sec1/energy_partitioning.png" width="78%" alt="Dispersion relation when m = 1 and the Malkus field is imposed">
-            </div>
-        </div>
+            <table class="small" style="margin-top: 1%;">
+                <tr><td>(fast magnetic) Rossby waves</td><td>inertia vs. planetary $\beta$ effect</td><td>kinetic energy dominant</td></tr>
+                <tr><td>Alfv&eacute;n waves</td><td>inertia vs. Lorentz force</td><td>equipartition</tr>
+                <tr><td><strong class="alert">slow magnetic Rossby waves</strong></td><td>planetary $\beta$ effect vs. Lorentz force</td><td>magnetic energy dominant</td></tr>
+            </table>
+        </section>
 
-        <table class="small" style="margin-top: 1%;">
-            <tr><td>(fast magnetic) Rossby waves</td><td>inertia vs. planetary $\beta$ effect</td><td>kinetic energy dominant</td></tr>
-            <tr><td>Alfv&eacute;n waves</td><td>inertia vs. Lorentz force</td><td>equipartition</tr>
-            <tr><td><strong class="alert">slow magnetic Rossby waves</strong></td><td>planetary $\beta$ effect vs. Lorentz force</td><td>magnetic energy dominant</td></tr>
-        </table>
+        <section data-state="part1-sub">
+            <h2>Malkus 磁場とは？</h2>
+
+    		<div class="half-box">
+    			<div style="width: 75%">
+    				<div class="detail" style="margin: 3% auto;">
+    					e.g. <a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/abs/hydromagnetic-planetary-waves/EDF401A750AB11542E53C967ABB3D217" target="_blank">Malkus (1967)</a><i class="fas fa-info-circle detail-icon"></i><span class="small note">&#65290;<a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/on-inertial-waves-in-a-rotating-fluid-sphere/749A286D9F0DBD9664083E759CD19954" target="_blank">Zhang&plus; (2001)</a></span>
+
+    					<div class="detail-box">
+    						<p>球内の MC (Magneto-Coriolis) 波.<br>
+    						背景磁場をうまく選ぶことで<br>
+    						球内の慣性波の問題 (e.g. Zhang&plus; (2001)) で<br>
+    						知られる Poincar&eacute; 固有値問題へと帰着させた.<br>
+    						ゆえに分散関係は, 磁場がないときの<br>
+    						球内の慣性波の固有振動数を用いて表現される.<br>
+    						磁場が強いと東西波数 1 で不安定.</p>
+    					</div>
+    				</div>
+
+    				<p style="margin-bottom: 0;" class="small">円筒座標 $(s,\phi, z)$, 球座標 $(r, \theta, \phi)$ とすると</p>
+    				<div class="math-box_small" style="font-size: 0.9rem; width: 55%;">
+    				    \[
+    					\bm{B}\,=\,B_0\frac{s}{R_0}\hat{\bm{e}}_\phi\,=\,B_0\frac{r\sin\theta}{R_0}\hat{\bm{e}}_\phi\,,\quad\bm{J}=\mu_\mathrm{m}^{-1}\rot\bm{B}\,=\,\frac{2B_0}{\mu_\mathrm{m}R_0}\hat{\bm{e}}_z
+    					\]
+    				</div>
+    				<p style="margin-top: 0;" class="small">ここで, $B_0$ は定数, $R_0$ は球の半径, $\mu_\mathrm{m}$ は透磁率<br>磁場 $\bm{B}$ は東西方向, 電流 $\bm{J}$ は回転軸に平行で一様</p>
+
+    				<p style="margin-top: 5%;">球面 2D では $r=R_0$ より, $\bm{B}\,=\,B_0\sin\theta\hat{\bm{e}}_\phi$<p>
+
+    				<p>以下では, 有界な関数 $\mathcal{B}(\cos\theta)$ を用いて<br>
+    				Malkus 磁場 ($\mathcal{B}=1$) との違いを <span class="important">$\bm{B}\,\equiv\,B_0\mathcal{B}\sin\theta\hat{\bm{e}}_\phi$</span> と表す
+    			</div>
+
+    			<div style="width: 25%">
+    				<img src="./figures/sec1/theta-phi-s.png" width="80%" alt="円筒座標・球座標">
+    				<img src="./figures/sec1/Malkus_field.png" width="100%" alt="Malkus 磁場">
+    			</div>
+    		</div>
+        </section>
     </section>
 
-    <section data-state="part1">
+    <section>
+        <section data-state="part1">
         <h2>Purpose & Main conclusion</h2>
 
         <div class="half-box">
@@ -168,6 +210,76 @@
                 <img class="focus-fig" src="./figures/sec1/dispersion_m1_log.png" width="90%" alt="Dispersion relation when m = 1 and the non-Malkus field is imposed">
             </div>
         </div>
+    </section>
+
+        <section data-state="part1-sub">
+            <h2>Malkus 磁場の場合の「局所」Alfv&eacute;n 波速度</h2>
+
+    		<div class="half-box">
+    			<div style="width: 63%; border-right: 4px dashed lightsteelblue; padding: 0 20px;">
+    				<p style="margin-bottom: 0;">Alfv&eacute;n 波速度 $\bm{V}_\mathrm{A}=\pm(|B_0|/\sqrt{\rho_0\mu_\mathrm{m}})\sin\theta\hat{\bm{e}}_\phi$</p>
+
+    				<img src="./figures/sec1/rigid-rotation-alfven2.png" width="30%" alt="西進 Alfven 波">
+    				<img src="./figures/sec1/rigid-rotation-alfven1.png" width="30%" alt="東進 Alfven 波">
+
+    				<p class="small" style="margin: 0 auto;">Coriolis 力が無視できるとき ($\zeta'$ は摂動)</p>
+
+    				<div class="math-box_small" style="font-size: 0.85rem; width: 75%; margin: 1% auto 1% auto;">
+    					\[
+    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0>0$ ならば西進}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0>0$ ならば東進}\zeta'\,\approx\,0
+    					\]
+    				</div>
+
+    				<p>Alfv&eacute;n 波速度の緯度依存性 ($\propto\sin\theta$) により, 全ての緯度で波の位相速度がそろう ($=$ 固有モード)</p>
+    			</div>
+
+    			<div style="width: 37%; padding: 0 20px;">
+    				<p class="note" style="margin-bottom: 0;">&#65290;剛体回転の場合</p>
+
+    				<img src="./figures/sec1/rigid-rotation.png" width="50%" alt="剛体回転">
+
+    				<p class="small" style="margin: 0 auto;">慣性系の速度 $\bm{u}^{(\text{inertial})}=\varOmega_0 R_0\sin\theta\hat{\bm{e}}_\phi$ のとき, ラグランジュ微分は</p>
+
+    				<div class="math-box_small" style="font-size: 0.85rem; width: 60%; margin: 1% auto 1% auto;">
+    					\[
+    					\frac{\uD}{\uD t}\,=\,\left(\frac{\upartial}{\upartial t}+\varOmega_0\frac{\upartial}{\upartial\phi}\right)
+    					\]
+    				</div>
+    			</div>
+    		</div>
+        </section>
+
+        <section data-state="part1-sub">
+            <h2 class="large">非 Malkus 磁場では</h2>
+
+    		<div class="half-box">
+    			<div style="width: 60%;">
+    				<p style="margin-bottom: 0;">Alfv&eacute;n 波速度 $\bm{V}_\mathrm{A}=\pm(|B_0|/\sqrt{\rho_0\mu_\mathrm{m}})$<span class="alert">$\mathcal{B}(\cos\theta)$</span>$\sin\theta\hat{\bm{e}}_\phi$</p>
+
+    				<p class="small" style="margin-bottom: 1%;">Coriolis 力が無視でき<br>
+    				さらに, $|\bm{\nabla}_h a'/a'|\gg |(\ud\mathcal{B}/\ud\theta)/\mathcal{B}|$ と近似できるとき ($a'$ も摂動)</p>
+
+    				<div class="math-box_small" style="font-size: 0.85rem; width: 75%; margin: 1% auto 1% auto;">
+    					\[
+    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0\mathcal{B}>0$ ならば西進}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0\mathcal{B}>0$ ならば東進}\zeta'\,\approx\,0
+    					\]
+    				</div>
+
+    				<p>初期に位相がそろっていたとしても<br>
+    				$\mathcal{B}$ の分だけ緯度ごとに位相速度が異なるので<br>
+    				<span class="important">時間とともに位相のずれは大きくなっていく</span></p>
+
+    				<p>&rarr; グローバルな固有モードにはならない</p>
+    			</div>
+
+    			<div style="width: 40%;">
+    				<figure>
+    					<img src="./figures/sec1/non-Malkus-alfven_phase.png" width="85%" alt="非 Malkus 磁場の場合の Alfven 波">
+    					<figcaption>例えば, $\bm{B}=B_0\sin\theta\cos\theta\hat{\bm{e}}_\phi$</figcaption>
+    				</figure>
+    			</div>
+    		</div>
+        </section>
     </section>
 
     <section data-state="part2">
