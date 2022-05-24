@@ -222,11 +222,11 @@
     				<img src="./figures/sec1/rigid-rotation-alfven2.png" width="30%" alt="西進 Alfven 波">
     				<img src="./figures/sec1/rigid-rotation-alfven1.png" width="30%" alt="東進 Alfven 波">
 
-    				<p class="small" style="margin: 0 auto;">Coriolis 力が無視できるとき ($\zeta'$ は摂動)</p>
+    				<p class="small" style="margin: 0 auto;">Coriolis 力が無視できるとき ($\zeta_1$ は摂動)</p>
 
-    				<div class="math-box_small" style="font-size: 0.85rem; width: 75%; margin: 1% auto 1% auto;">
+    				<div class="math-box_small" style="font-size: 0.85rem; width: 70%; margin: 1% auto 1% auto;">
     					\[
-    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0>0$ ならば西進}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0>0$ ならば東進}\zeta'\,\approx\,0
+    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0>0$ ならば西進}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0>0$ ならば東進}\zeta_1\,\approx\,0
     					\]
     				</div>
 
@@ -257,11 +257,11 @@
     				<p style="margin-bottom: 0;">Alfv&eacute;n 波速度 $\bm{V}_\mathrm{A}=\pm(|B_0|/\sqrt{\rho_0\mu_\mathrm{m}})$<span class="alert">$\mathcal{B}(\cos\theta)$</span>$\sin\theta\hat{\bm{e}}_\phi$</p>
 
     				<p class="small" style="margin-bottom: 1%;">Coriolis 力が無視でき<br>
-    				さらに, $|\bm{\nabla}_h a'/a'|\gg |(\ud\mathcal{B}/\ud\theta)/\mathcal{B}|$ と近似できるとき ($a'$ も摂動)</p>
+    				さらに, $|\bm{\nabla}_h a_1/a_1|\gg |(\ud\mathcal{B}/\ud\theta)/\mathcal{B}|$ と近似できるとき ($a_1$ も摂動)</p>
 
-    				<div class="math-box_small" style="font-size: 0.85rem; width: 75%; margin: 1% auto 1% auto;">
+    				<div class="math-box_small" style="font-size: 0.85rem; width: 70%; margin: 1% auto 1% auto;">
     					\[
-    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0\mathcal{B}>0$ ならば西進}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0\mathcal{B}>0$ ならば東進}\zeta'\,\approx\,0
+    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0\mathcal{B}>0$ ならば西進}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0\mathcal{B}>0$ ならば東進}\zeta_1\,\approx\,0
     					\]
     				</div>
 
@@ -282,23 +282,134 @@
         </section>
     </section>
 
-    <section data-state="part2">
-        <ol style="margin-top: 3%;">
-            <li><span class="semi-large">Eigenvalue problem</span> [ <i class="fa-solid fa-arrow-right-long"></i> <span style="background-color: lightgreen;">Numerical Results</span> ]</li>
-            <ul style="margin-left: 0;">
-                <li>Use two linearized eqs. (vorticity eq. & uncurled induction eq.).</li>
-                <li>Focus on normal modes (dependent variables $\propto \ue^{\ui(m\phi-\omega t)}$).</li>
-                <li>Utilize the associated Legendre polynomial expansion in order to express the $\theta$ dependences of dependent variables.</li>
-                <li>Solve the eigenvalue problem for a large sparse matrix (truncated degree $2000$).</li>
-            </ul>
-            <li><span class="semi-large">WKBJ approximation</span> [ <i class="fa-solid fa-arrow-right-long"></i> <span style="background-color: darkorange;">Discussion (1)</span> ]</li>
-            <ul style="margin-left: 0;">
-                <li>Consider Earth's core-like environment (weak magnetic field, $\alpha=$ magnetic$/$rotation $\approx10^{-4}$ in the Earth's core).</li>
-                <li>Focus on a wave packet with large wavenumbers $m\sim\uO(\alpha^{-1/2})$.<br>
-                Small $\alpha$ reduces typical meridional wavelengths <span class="small">(see <span style="background-color: lightgreen;">Numerical Results</span>)</span>.</li>
-                <li>Integrate the ray-tracing equation (Track the path of a wave packet migrating with its group velocity).
-            </ul>
-        </ol>
+    <section>
+        <section data-state="part2">
+            <ol style="margin-top: 3%;">
+                <li><span class="semi-large">Eigenvalue problem</span> [ <i class="fa-solid fa-arrow-right-long"></i> <span style="background-color: lightgreen;">Numerical Results</span> ]</li>
+                <ul style="margin-left: 0;">
+                    <li>Use two linearized eqs. (vorticity eq. & uncurled induction eq.).</li>
+                    <li>Focus on normal modes (dependent variables $\propto \ue^{\ui(m\phi-\omega t)}$).</li>
+                    <li>Utilize the associated Legendre polynomial expansion in order to express the $\theta$ dependences of dependent variables.</li>
+                    <li>Solve the eigenvalue problem for a large sparse matrix (truncated degree $2000$).</li>
+                </ul>
+                <li><span class="semi-large">WKBJ approximation</span> [ <i class="fa-solid fa-arrow-right-long"></i> <span style="background-color: darkorange;">Discussion (1)</span> ]</li>
+                <ul style="margin-left: 0;">
+                    <li>Consider Earth's core-like environment (weak magnetic field, $\alpha=$ magnetic$/$rotation $\approx10^{-4}$ in the Earth's core).</li>
+                    <li>Focus on a wave packet with large wavenumbers $m\sim\uO(\alpha^{-1/2})$.<br>
+                    Small $\alpha$ reduces typical meridional wavelengths <span class="small">(see <span style="background-color: lightgreen;">Numerical Results</span>)</span>.</li>
+                    <li>Integrate the ray-tracing equation (Track the path of a wave packet migrating with its group velocity).
+                </ul>
+            </ol>
+        </section>
+
+        <section data-state="part2-sub">
+            <h2>「回転球面上 2 次元理想 MHD」の支配方程式</h2>
+
+			<p>渦度方程式 (運動方程式の回転) と誘導方程式の uncurl</p>
+
+			<div class="math-box" style="font-size: 1rem; width: 30%; margin: 3% auto;">
+				\[
+				\begin{align}
+				<!-- -->
+				\frac{\uD \zeta}{\uD t}\,-\,\frac{2\varOmega_0\sin\theta}{R_0}u_\theta\,&=\,\frac{(\bm{B}\ip\bm{\nabla}_\mathrm{H})(\mu_\mathrm{m}J)}{\rho_0\mu_\mathrm{m}}\notag\\
+				<!-- -->
+				\frac{\uD A}{\uD t}\,&=\,\frac{\upartial \chi}{\upartial r}\notag\\
+				<!-- -->
+				\end{align}
+				\]
+			</div>
+
+			<div class="half-box">
+				<div style="width: 40%; border-right: 4px dashed lightsteelblue;">
+					<dl class="small">
+						<dt>$\bm{\nabla}_\mathrm{H}=(\bm{\hat{e}}_\theta/R_0)(\upartial/\upartial\theta)+(\bm{\hat{e}}_\phi/R_0\sin\theta)(\upartial/\upartial\phi)$</dt>
+						<dt>$(\uD/\uD t)\equiv(\upartial/\upartial t)+\bm{u}\ip\bm{\nabla}_\mathrm{H}$</dt>
+						<dt style="font-weight: normal;">$(\upartial \chi/\upartial r)=0$ とする</dt>
+					</dl>
+				</div>
+
+				<div style="width: 60%;">
+					<dl class="small">
+						<dt>渦度</dd>
+						<dd>$\zeta\equiv(R_0\sin\theta)^{-1}\left[(\upartial(u_\phi\sin\theta)/\upartial\theta)-(\upartial u_\theta/\upartial\phi)\right]=-\nabla_\mathrm{H}^2\psi$</dd>
+						<dt>電流</dt>
+						<dd>$J\equiv\mu_\mathrm{m}^{-1}(R_0\sin\theta)^{-1}\left[(\upartial(B_\phi\sin\theta)/\upartial\theta)-(\upartial B_\theta/\upartial\phi)\right]=-\mu_\mathrm{m}^{-1}\nabla_\mathrm{H}^2A$</dd>
+						<dt>流線関数 $\psi$</dt>
+						<dd>$u_\theta=(R_0\sin\theta)^{-1}(\upartial \psi/\upartial\phi)$,&emsp;$u_\phi=-R_0^{-1}(\upartial \psi/\upartial\theta)$</dd>
+						<dt>ベクトルポテンシャル $A$</dt>
+						<dd>$B_\theta=(R_0\sin\theta)^{-1}(\upartial A/\upartial\phi)$,&emsp;$B_\phi=-R_0^{-1}(\upartial A/\upartial\theta)$</dd>
+					</dl>
+				<div>
+			</div>
+        </section>
+
+        <section data-state="part2-sub">
+            <h2>線形化・Fourier 変換</h2>
+
+			<p>基本場を <span class="alert">$\bm{u}=\bm{0}$</span>, <span class="alert">$\bm{B}=B_{0\phi}(\theta)\hat{\bm{e}}_\phi=B_0\mathcal{B}\sin\theta\hat{\bm{e}}_\phi$</span> として線形化</p>
+
+			<div class="math-box_small" style="font-size: 0.9rem; width: 60%;">
+				\[\begin{align}
+				<!-- -->
+				\left(\frac{\upartial}{\upartial t}\nabla_\mathrm{H}^2\,+\,\frac{2\varOmega_0}{R_0^2}\frac{\upartial}{\upartial\phi}\right)\psi'\,&=\,\frac{1}{R_0\rho_0\mu_\mathrm{m}\sin\theta}\left\{B_{0\phi}\nabla_\mathrm{H}^2\,-\,\frac{1}{R_0}\frac{\ud}{\ud\theta}\left[\frac{1}{R_0\sin\theta}\frac{\ud}{\ud\theta}(B_{0\phi}\sin\theta)\right]\right\}\frac{\upartial a'}{\upartial\phi}\notag\\
+				<!-- -->
+				\frac{\upartial a'}{\upartial t}\,&=\,\frac{B_{0\phi}}{R_0\sin\theta}\frac{\upartial \psi'}{\upartial\phi}\notag
+				<!-- -->
+				\end{align}\]
+			</div>
+
+			<p>波型の解を仮定&emsp; $\psi'(\mu,\phi,t)\equiv\mathrm{Re}[\tilde{\psi}(\mu)\ue^{\ui\varphi}]$ &emsp;(位相 $\varphi\equiv m\phi-\omega t=m\phi - \lambda\tau$)</p>
+
+			<div class="math-box" style="font-size: 0.9rem; width: 45%;">
+				\[\begin{align}
+				<!-- -->
+				\left(-\lambda\nabla_\mathrm{h}^2+m\right)\tilde{\psi}\,&=\,m\alpha\left\{\mathcal{B}\nabla_\mathrm{h}^2\,-\,\frac{\ud^2}{\ud\mu^2}\left[\mathcal{B}(1-\mu^2)\right]\right\}\left(\frac{\operatorname{sgn}(B_0) \tilde{a}}{\sqrt{\rho_0\mu_\mathrm{m}}}\right)\notag\\
+				<!-- -->
+				-\lambda\left(\frac{\operatorname{sgn}(B_0) \tilde{a}}{\sqrt{\rho_0\mu_\mathrm{m}}}\right)\,&=\,m\alpha\mathcal{B}\tilde{\psi}\notag
+				<!-- -->
+				\end{align}\]
+			</div>
+
+			<p class="small">$\mu\equiv\cos\theta$,&emsp;$\tau\equiv2\varOmega_0 t$,&emsp;$\nabla_\mathrm{h}^2\equiv R_0^2\nabla_\mathrm{H}^2$</p>
+        </section>
+
+        <section data-state="part2-sub">
+            <h2>計算方法</h2>
+
+			<p>本発表では, 具体的な背景磁場として <span class="important">$\mathcal{B}=\mu$</span> (<span class="important">$B_{0\phi}=B_0\sin\theta\cos\theta$</span>) を採用</p>
+
+			<p style="margin-bottom: 1%;">南北方向は Legendre 陪多項式で展開 ($N_\mathrm{t}$ は切断次数, 本発表では $2000$ に設定)</p>
+			<div class="math-box_small" style="font-size: 0.9rem; width: 20%;">
+				\[
+				\tilde{\psi}\,=\,\sum_{n=m}^{N_\mathrm{t}}\tilde{\psi}^{[n]}\mathcal{N}_n^m\mathrm{P}_n^m
+				\]
+			</div>
+
+			<p style="margin: 1% auto;">Legendre 陪多項式の直交性と漸化式を用いて, 行列の固有値問題の形にする</p>
+
+			<div class="math-box_small" style="font-size: 0.85rem; width: 55%;">
+				\[
+				\lambda
+				\begin{pmatrix}
+				\tilde{\psi}^{[m]} \\ \tilde{\psi}^{[m+1]} \\ \vdots \\ \operatorname{sgn}(B_0)\tilde{a}^{[m]}/\sqrt{\rho_0\mu_\mathrm{m}} \\ \operatorname{sgn}(B_0)\tilde{a}^{[m+1]}/\sqrt{\rho_0\mu_\mathrm{m}} \\ \vdots
+				\end{pmatrix}
+				\,=\,
+				\begin{pmatrix}
+				-m\sf{\bm{R}} & -m\alpha\sf{\bm{K}}_1 \\ -m\alpha\sf{\bm{K}}_2 & \sf{\bm{O}}
+				\end{pmatrix}
+				\begin{pmatrix}
+				\tilde{\psi}^{[m]} \\ \tilde{\psi}^{[m+1]} \\ \vdots \\ \operatorname{sgn}(B_0)\tilde{a}^{[m]}/\sqrt{\rho_0\mu_\mathrm{m}} \\ \operatorname{sgn}(B_0)\tilde{a}^{[m+1]}/\sqrt{\rho_0\mu_\mathrm{m}} \\ \vdots
+				\end{pmatrix}
+				\]
+			</div>
+
+			<p class="small" style="margin-top: 1%;">これを Python+NumPy (<a href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.eig.html" target="_blank"><code>numpy.linalg.eig</code></a>) で解く</p>
+
+			<figure style="position: absolute; right: 0; bottom: 0; width: 15%;">
+				<img src="./figures/sec2/non-Malkus.png" width="100%"  alt="採用する背景磁場">
+				<figcaption>$B_0>0$ の場合</figcaption>
+			</figure>
+        </section>
     </section>
 
     <section data-state="part3">
