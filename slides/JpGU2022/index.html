@@ -210,7 +210,7 @@
                 <img class="focus-fig" src="./figures/sec1/dispersion_m1_log.png" width="90%" alt="Dispersion relation when m = 1 and the non-Malkus field is imposed">
             </div>
         </div>
-    </section>
+        </section>
 
         <section data-state="part1-sub">
             <h2>Malkus 磁場の場合の「局所」Alfv&eacute;n 波速度</h2>
@@ -226,7 +226,7 @@
 
     				<div class="math-box_small" style="font-size: 0.85rem; width: 70%; margin: 1% auto 1% auto;">
     					\[
-    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0>0$ ならば西進}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0>0$ ならば東進}\zeta_1\,\approx\,0
+    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_{B_0\,>\,0 \text{ならば西進}}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\frac{\upartial}{\upartial\phi}\right)}_{B_0\,>\,0\text{ならば東進}}\zeta_1\,\approx\,0
     					\]
     				</div>
 
@@ -242,7 +242,7 @@
 
     				<div class="math-box_small" style="font-size: 0.85rem; width: 60%; margin: 1% auto 1% auto;">
     					\[
-    					\frac{\uD}{\uD t}\,=\,\left(\frac{\upartial}{\upartial t}+\varOmega_0\frac{\upartial}{\upartial\phi}\right)
+    					\frac{\uD}{\uD t}\,=\,\frac{\upartial}{\upartial t}+\varOmega_0\frac{\upartial}{\upartial\phi}
     					\]
     				</div>
     			</div>
@@ -261,7 +261,7 @@
 
     				<div class="math-box_small" style="font-size: 0.85rem; width: 70%; margin: 1% auto 1% auto;">
     					\[
-    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0\mathcal{B}>0$ ならば西進}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_\text{$B_0\mathcal{B}>0$ ならば東進}\zeta_1\,\approx\,0
+    					\underbrace{\left(\frac{\upartial}{\upartial t}-\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_{B_0\mathcal{B}\,>\,0\text{ならば西進}}\underbrace{\left(\frac{\upartial}{\upartial t}+\frac{B_0/\sqrt{\rho_0\mu_\mathrm{m}}}{R_0}\mathcal{B}\frac{\upartial}{\upartial\phi}\right)}_{B_0\mathcal{B}\,>\,0\text{ならば東進}}\zeta_1\,\approx\,0
     					\]
     				</div>
 
@@ -451,39 +451,122 @@
         </div>
     </section>
 
-    <section data-state="part4">
-        <h2><span style="color: blue;">Prograde</span> modes prefer the <span style="color: blue;">polar</span> side, whereas <span style="color: red;">retrograde</span> modes prefer the <span style="color: red;">equatorial</span> side.</h2>
+    <section>
+        <section data-state="part4">
+            <h2><span style="color: blue;">Prograde</span> modes prefer the <span style="color: blue;">polar</span> side, whereas <span style="color: red;">retrograde</span> modes prefer the <span style="color: red;">equatorial</span> side.</h2>
 
-        <div class="half-box">
-            <div style="width: 45%;">
-                <figcaption>local group velocity $\bm{c}_\mathrm{g}=\alpha\left(\frac{\upartial\lambda_1}{\upartial k}\hat{\bm{e}}_\phi+\frac{\upartial\lambda_1}{\upartial l}\hat{\bm{e}}_{-\theta}\right)$</figcaption>
-                <img class="focus-fig" src="./figures/sec4/group.png" width="94%" alt="Dispersion relation when m = 2 and the non-Malkus field is imposed">
-                <table class="small">
-                    <tr><td>$k>0$</td><td>prograde continuous modes</td><td>$c_{\mathrm{g}\phi}>0$</td></tr>
-                    <tr><td rowspan="2">$k<0$</td><td>retrograde continuous modes</td><td>$c_{\mathrm{g}\phi}<0$</td></tr>
-                    <tr><td>(fast magnetic) Rossby waves</td><td>$c_{\mathrm{g}\phi}\gtrless0$</td></tr>
-                </table>
-            </div>
+            <div class="half-box">
+                <div style="width: 45%;">
+                    <figcaption>local group velocity $\bm{c}_\mathrm{g}=\alpha\left(\frac{\upartial\lambda_1}{\upartial k}\hat{\bm{e}}_\phi+\frac{\upartial\lambda_1}{\upartial l}\hat{\bm{e}}_{-\theta}\right)$</figcaption>
+                    <img class="focus-fig" src="./figures/sec4/group.png" width="94%" alt="Dispersion relation when m = 2 and the non-Malkus field is imposed">
+                    <table class="small">
+                        <tr><td>$k>0$</td><td>prograde continuous modes</td><td>$c_{\mathrm{g}\phi}>0$</td></tr>
+                        <tr><td rowspan="2">$k<0$</td><td>retrograde continuous modes</td><td>$c_{\mathrm{g}\phi}<0$</td></tr>
+                        <tr><td>(fast magnetic) Rossby waves</td><td>$c_{\mathrm{g}\phi}\gtrless0$</td></tr>
+                    </table>
+                </div>
 
-            <div style="width: 55%;">
-                <ul>
-                    <li>Suppose that continuous modes should be treated as propagating waves rather than normal modes.</li>
-                    <li><span style="color: blue;">Prograde</span>/<span style="color: red;">retrograde</span> modes approach their critical latitudes from the <span style="color: blue;">polar</span>/<span style="color: red;">equatorial</span> side <span class="small">(cf. <span style="background-color: lightgreen;">Numerical Results</span>)</span></li>
-                </ul>
+                <div style="width: 55%;">
+                    <ul>
+                        <li>Suppose that continuous modes should be treated as propagating waves rather than normal modes.</li>
+                        <li><span style="color: blue;">Prograde</span>/<span style="color: red;">retrograde</span> modes approach their critical latitudes from the <span style="color: blue;">polar</span>/<span style="color: red;">equatorial</span> side <span class="small">(cf. <span style="background-color: lightgreen;">Numerical Results</span>)</span></li>
+                    </ul>
 
-                <div class="half-box">
-                    <div style="width: 50%; position: relative;">
-                        <figcaption style="position: absolute; top: 35%; left: 25%;">a <span style="color: blue;">prograde</span> mode</figcaption>
-                        <img class="focus-fig" src="./figures/sec4/ray_prograde.png" width="100%" alt="Ray trajectory of prograde continuous modes">
-                    </div>
+                    <div class="half-box">
+                        <div style="width: 50%; position: relative;">
+                            <figcaption style="position: absolute; top: 35%; left: 25%;">a <span style="color: blue;">prograde</span> mode</figcaption>
+                            <img class="focus-fig" src="./figures/sec4/ray_prograde.png" width="100%" alt="Ray trajectory of prograde continuous modes">
+                        </div>
 
-                    <div style="width: 50%; position: relative;">
-                        <figcaption style="position: absolute; top: 35%; left: 25%;">a <span style="color: red;">retrograde</span> mode</figcaption>
-                        <img class="focus-fig" src="./figures/sec4/ray_retrograde.png" width="100%" alt="Ray trajectory of retrograde continuous modes">
+                        <div style="width: 50%; position: relative;">
+                            <figcaption style="position: absolute; top: 35%; left: 25%;">a <span style="color: red;">retrograde</span> mode</figcaption>
+                            <img class="focus-fig" src="./figures/sec4/ray_retrograde.png" width="100%" alt="Ray trajectory of retrograde continuous modes">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section data-state="part4-sub">
+            <h2>波線理論</h2>
+
+    		<p>波長が短い波がつくる波束がある地点で励起され, それが周囲に伝播する状況を考える</p>
+
+    		<p style="margin-bottom: 1%;"><span class="alert">$\alpha$ が小さい</span>場合 (地球外核の条件) に注目<br>
+    		波長 $\ll$ 背景磁場の空間スケールとし, 南北方向に WKBJ 解を仮定<br></p>
+
+    		<div class="math-box_small" style="font-size: 0.85rem; width: 40%;">
+    			\[
+    			\tilde{\psi}\,=\,\exp\left[-\ui\int^\theta L(\theta_*)\ud\theta_*\right]\,,\quad L\,=\,\alpha^{-1/2}l(\theta)+L_0(\theta)+\uO(\alpha^{1/2})
+    			\]
+    		</div>
+
+    		<p class="small" style="margin: 1% auto;">さらに, $m/\sin\theta=\alpha^{-1/2}k(\theta)$, $\lambda=\alpha^{1/2}\lambda_1$ とスケーリングする ($l$, $k$, $\lambda_1$ は $\uO(\alpha^0)$)</p>
+
+    		<div class="math-box_small" style="font-size: 0.85rem; width: 50%;">
+    			\[\begin{align}
+    			<!-- -->
+    			[\lambda_1^2-k^2\mathcal{B}^2\sin^2\theta](k^2+l^2)\,&+\,k\lambda_1\sin\theta\,=\,0\qquad(\text{局所分散関係})\notag\\
+    			<!-- -->
+    			-\ui L\,&=\,\frac{\ud}{\ud\theta}\ln\left[l^{-1/2}(\sin\theta)^{-1/2}[\lambda_1^2-k^2\mathcal{B}^2\sin^2\theta]^{-1/2}\right]\notag
+    			<!-- -->
+    			\end{align}\]
+    		</div>
+
+    		<div class="math-box_small" style="font-size: 0.8rem; width: 50%;">
+    			\[
+    			\psi_1\,\approx\,[\lambda_1^2-k^2\mathcal{B}^2\sin^2\theta]^{-1/2}l^{-1/2}(\sin\theta)^{-1/2}\ue^{\ui\varphi}\,,\quad\varphi\,=\,m\phi\,-\,\alpha^{-1/2}\int^\theta l(\theta_*)\ud\theta_*\,-\,\lambda\tau
+    			\]
+    		</div>
+
+    		<p class="small" style="margin: 1% auto;">臨界緯度に近づくと $l^{-1/2}\sim[\lambda_1^2-k^2\mathcal{B}^2\sin^2\theta]^{1/4}$ より $\psi_1\rightarrow\infty$</p>
+        </section>
+
+        <section data-state="part4-sub">
+            <h2>ray tracing 方程式</h2>
+
+    		<div class="math-box_small" style="font-size: 0.85rem; width: 65%;">
+    			\[
+    			\frac{\ud_\mathrm{g}\bm{x}}{\ud\tau}\,=\,\alpha^{1/2}\left(\frac{\upartial\lambda_1}{\upartial k}, \frac{\upartial\lambda_1}{\upartial l}\right)\,=\,\bm{c}_\mathrm{g}\,,\quad\frac{\ud_\mathrm{g}(k\sin\theta)}{\ud\tau}\,=\,-\alpha^{1/2}\frac{\upartial\lambda_1}{\upartial\phi}\,=\,0\,,\quad\frac{\ud_\mathrm{g}l}{\ud\tau}\,=\,-c_{\mathrm{g},\phi}k\cot\theta+\alpha^{1/2}\frac{\upartial\lambda_1}{\upartial\theta}
+    			\]
+    		</div>
+
+    		<p style="margin: 1% auto;">$\bm{x}$ は波束の位置 (無次元), $\ud_\mathrm{g}/\ud\tau=\upartial/\upartial\tau+\bm{c}_\mathrm{g}\ip\breve{\bm{\nabla}}_\mathrm{h}$ は群速度にのって見た時間微分<br>
+    		ある $(k\sin\theta,l,\lambda_1)$ をもつ波束は $\bm{c}_\mathrm{g}$で移動し<br>
+            局所分散関係に従って南北方向の構造 ($l$) が変化</p>
+
+    		<div class="half-box">
+    			<div style="width: 65%;">
+    				<div class="math-box_small" style="font-size: 0.85rem; width: 65%;">
+    					\[
+    					\begin{align}
+    					[l(\theta)]^2\,&amp;=\,-k^2-\frac{k\lambda_1\sin\theta}{\lambda_1^2-k^2\mathcal{B}^2\sin^2\theta}\notag\\
+    					c_{\mathrm{g},\phi}\,&amp;=\,\alpha\frac{\upartial\lambda_1}{\upartial k}\,=\,\alpha\frac{2k\mathcal{B}^2\sin^2\theta(2k^2+l^2)-(2k\lambda_1+\sin\theta)\lambda_1}{2\lambda_1(k^2+l^2)+k\sin\theta}\notag\\
+    					c_{\mathrm{g},-\theta}\,&amp;=\,\alpha\frac{\upartial\lambda_1}{\upartial l}\,=\,-\alpha\frac{2l[\lambda_1^2-k^2\mathcal{B}^2\sin^2\theta]}{2\lambda_1(k^2+l^2)+k\sin\theta}\notag\\
+    					\end{align}
+    					\]
+    				</div>
+    			</div>
+
+    			<div style="width: 35%;">
+    				<dl class="small">
+    					<dt style="font-weight: normal;">$\breve{\bm{\nabla}}_\mathrm{h}\equiv\left((\sin\theta)^{-1}(\upartial/\upartial\phi), -(\upartial/\upartial\theta)\right)$</dt>
+    				</dl>
+
+    				<ul style="margin: 5% auto;">
+    					<li class="small">臨界緯度では $l\rightarrow\pm\infty$, $c_{\mathrm{g},-\theta}\rightarrow0$</li>
+    					<li class="small">$l$ が実数であるためには<br>
+    					$-k\lambda_1\sin\theta/[\lambda_1^2-k^2\mathcal{B}^2\sin^2\theta] > k^2$</li>
+    					<li class="small">$l=0$ のとき $c_{\mathrm{g},-\theta}=0$ で反射が起こりうる</li>
+    				</ul>
+    			</div>
+    		</div>
+
+    		<dl class="small note" style="margin: 0 auto;">
+    			<dt style="font-weight: normal;">$\breve{\bm{\nabla}}_\mathrm{h}\varphi(\bm{x}, \tau)=\alpha^{-1/2}(k(\bm{x}, \tau), l(\bm{x}, \tau))$, $-(\upartial\varphi(\bm{x}, \tau)/\upartial\tau)=\lambda(\bm{x}, \tau, \bm{k}(\bm{x}, \tau))$ とすると<dt>
+    		 	<dt  style="font-weight: normal;">$\frac{\upartial k}{\upartial\tau}=-\frac{\alpha^{1/2}}{\sin\theta}\frac{\upartial\lambda(\bm{x}, \tau, \bm{k}(\bm{x}, \tau))}{\upartial\phi}=-\frac{\alpha^{1/2}}{\sin\theta}\left[\left(\frac{\upartial\lambda}{\upartial k}\right)_{l,\phi}\frac{\upartial k}{\upartial\phi}+\left(\frac{\upartial\lambda}{\upartial l}\right)_{k,\phi}\frac{\upartial l}{\upartial\phi}+\left(\frac{\upartial\lambda}{\upartial \phi}\right)_{k,l}\right]=-(\sin\theta)^{-1}(\bm{c}_\mathrm{g}\ip\breve{\bm{\nabla}}_\mathrm{h})(k\sin\theta)-\frac{\alpha^{1/2}}{\sin\theta}\left(\frac{\upartial\lambda}{\upartial \phi}\right)_{k,l}$ などが成立</dt>
+    		</dl>
+        </section>
     </section>
 
     <section data-state="part4">
