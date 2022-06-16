@@ -31,15 +31,10 @@ document.write(`
     <link type="text/css" rel="stylesheet" href="${path}/common/styles/main.css">
     ${add_css}
 
-    <!-- IE の互換モード対策 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <!-- レスポンシブ用の viewpoint 設定 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- MathJax version 3 -->
-    <!-- IE11 対応 -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <!-- config ファイル読み込み -->
     <script src="${path}/common/mathjax/mathjax_config.js" defer></script>
     <!-- CDN (jsdelivr) -->
