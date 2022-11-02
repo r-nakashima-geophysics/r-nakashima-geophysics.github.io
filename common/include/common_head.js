@@ -11,7 +11,7 @@ if (!url.includes("hitasura_linear_analysis")) {
         '<link type="text/css" rel="stylesheet" href="../common/styles/hla.css">';
 }
 
-let fragment = new DocumentFragment();
+// let fragment = new DocumentFragment();
 
 document.write(`
 

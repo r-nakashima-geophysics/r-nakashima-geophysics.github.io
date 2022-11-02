@@ -1,6 +1,6 @@
 url = location.href;
 
-let fragment = new DocumentFragment();
+// let fragment = new DocumentFragment();
 
 if (!url.includes("hitasura_linear_analysis")) {
     document.write(`
