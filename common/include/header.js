@@ -1,7 +1,8 @@
 url = location.href;
 
-if (!url.includes('hitasura_linear_analysis')) {
+let fragment = new DocumentFragment();
 
+if (!url.includes("hitasura_linear_analysis")) {
     document.write(`
 
         <header>
@@ -22,9 +23,7 @@ if (!url.includes('hitasura_linear_analysis')) {
         </header>
 
     `);
-
 } else {
-
     document.write(`
 
         <header>
@@ -47,5 +46,4 @@ if (!url.includes('hitasura_linear_analysis')) {
         </header>
 
     `);
-
 }

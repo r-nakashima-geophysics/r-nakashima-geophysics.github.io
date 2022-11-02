@@ -1,14 +1,17 @@
 url = location.href;
 
-if (!url.includes('hitasura_linear_analysis')) {
+if (!url.includes("hitasura_linear_analysis")) {
     description = "Ryosuke Nakashima (中島 涼輔)'s Home Page";
-    path = '.';
-    add_css = '';
+    path = ".";
+    add_css = "";
 } else {
     description = "ひたすら線形解析";
-    path = '..';
-    add_css = '<link type="text/css" rel="stylesheet" href="../common/styles/hla.css">';
+    path = "..";
+    add_css =
+        '<link type="text/css" rel="stylesheet" href="../common/styles/hla.css">';
 }
+
+let fragment = new DocumentFragment();
 
 document.write(`
 
