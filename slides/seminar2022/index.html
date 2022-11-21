@@ -1,0 +1,2757 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+
+        <title>スペクトル変形の方法による quasi-mode の掘り起こし</title>
+
+        <link rel="stylesheet" href="../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../reveal.js-master/dist/theme/simple.css"
+        />
+
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="../fontawesome-free-6.2.0-web/css/all.min.css"
+        />
+
+        <!-- MathJax version 3 -->
+        <!-- config ファイル読み込み -->
+        <script src="./mathjax_config.js" defer></script>
+        <!-- CDN (jsdelivr) -->
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>スペクトル変形の方法による quasi-mode の掘り起こし</h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        <a
+                            href="http://dyna.geo.kyushu-u.ac.jp/seminar/research_semi.html"
+                            target="_blank"
+                            >深部・ダイナ合同研究セミナー</a
+                        >
+                        (<time datetime="2022-11-24">2022-11-24</time>)
+                    </p>
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">1. はじめに</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2. Landau
+                            減衰</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part3" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 3.
+                            量子力学的共鳴状態</span
+                        ><span id="nav_part3-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part4" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 4. 渦の減衰 </span
+                        ><span id="nav_part4-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part5" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 5.
+                            シアー不安定でテスト (したい)</span
+                        ><span id="nav_part5-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part6" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 6.
+                            まとめ</span
+                        ><span id="nav_part6-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (九大・理) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;m.kyushu-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by
+                        <a href="https://revealjs.com" target="_blank"
+                            >reveal.js</a
+                        >
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                border="0"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -10px 0;
+                                    padding-top: 5px;
+                                "
+                        /></a>
+                        /
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide" data-background-color="azure">
+                    <h2>
+                        スペクトル変形 (spectral deformation) の方法による<br />
+                        quasi-mode の掘り起こし
+                    </h2>
+                    <p>
+                        (注)
+                        数値計算法であるスペクトル法やスペクトル変換法とは全く別物.
+                    </p>
+                    <img
+                        src="./sec0/SSymbolLogo-tenchi_E_jpg.jpg"
+                        width="10%"
+                        alt="九州大学ロゴ"
+                        style="margin: 0; border: solid black 1px"
+                    />
+                    <p>
+                        <b
+                            ><i class="fas fa-microphone"></i> 中島 涼輔
+                            (九州大学 大学院理学研究院)</b
+                        >
+                    </p>
+                    <dl>
+                        <dd class="small note">
+                            <i class="fa-solid fa-gear fa-pulse"></i>
+                            Overview モード [ O キー ] / フルスクリーンモード [
+                            F キー ]
+                        </dd>
+                        <dd class="small note">
+                            <i class="fa-solid fa-gear fa-pulse"></i>
+                            <div class="detail">
+                                スライド中の<i
+                                    class="fas fa-info-circle detail-icon"
+                                ></i
+                                >マークを hover すると詳細が表示されます
+
+                                <div class="detail-box bottom">
+                                    <p>こんな風に</p>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </section>
+
+                <!-- ========== part 1 ========== -->
+
+                <section data-state="part1">
+                    <h2>これまでの研究のあらすじ</h2>
+
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">
+                            地球コア最上部にあるかもしれない安定成層内を伝播する磁気流体波動をずっと考えている.
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            線形波動を考える際の背景磁場を非 Malkus
+                            磁場に変更すると,
+                            固有値の様子が大きく変わってしまう.
+                        </li>
+                        <li class="fragment">
+                            特に非散逸の場合, 地磁気観測と比較可能な<strong
+                                class="alert"
+                                >遅い磁気 Rossby 波が消失</strong
+                            >し,<br />その代わりに<strong class="alert"
+                                >連続固有値</strong
+                            >が現れる.
+                        </li>
+                        <li class="fragment">
+                            より複雑な設定の問題を理解するために<br />最も単純なはずの非散逸の場合を理解しておきたい.
+                        </li>
+                    </ul>
+
+                    <div class="fragment half-box" data-fragment-index="2">
+                        <div style="width: 55%">
+                            <figure style="margin-top: 5%">
+                                <img
+                                    src="./sec1/dispersion_Malkus.png"
+                                    alt="分散関係(m=1, Malkus 磁場の場合)"
+                                    width="80%"
+                                />
+                                <figcaption>
+                                    Malkus 磁場 ($B_{0\phi}\,=\,B_0\sin\theta$)
+                                    の場合
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                        <div style="width: 45%">
+                            <figure style="margin-top: -19%">
+                                <img
+                                    src="./sec1/dispersion_sincos.png"
+                                    alt="分散関係(m=1, 非 Malkus 磁場の場合)"
+                                    width="75%"
+                                />
+                                <figcaption>
+                                    $B_{0\phi}\,=\,B_0\sin\theta\cos\theta$
+                                    の場合
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1">
+                    <div class="half-box">
+                        <div style="width: 30%; position: relative">
+                            <img
+                                id="quasimode_animation_1"
+                                src="./sec1/dispersion_sincos_quasimode1.png"
+                                alt="分散関係(m=1, 非 Malkus 磁場の場合)"
+                                width="100%"
+                                style="position: absolute; top: 5%; left: 0"
+                            />
+                            <img
+                                id="quasimode_animation_2"
+                                src="./sec1/dispersion_sincos_quasimode2.png"
+                                alt="分散関係(m=1, 非 Malkus 磁場の場合)"
+                                width="100%"
+                                style="position: absolute; top: 5%; left: 0"
+                            />
+                        </div>
+
+                        <div style="width: 70%">
+                            <h2>遅い磁気 Rossby 波の名残 ?</h2>
+
+                            <ul style="margin-left: 5%">
+                                <li class="fragment">何かある?</li>
+                                <li class="fragment">
+                                    遅い磁気 Rossby 波と同じく,
+                                    磁気エネルギーが支配的<br />
+                                    (グラフ上で<span style="color: blue"
+                                        >青色</span
+                                    >).
+                                </li>
+                                <li class="fragment">
+                                    しかし,
+                                    このあたりの固有関数をしらみつぶしに見てみても,<br />
+                                    他の連続モードと同じく特異的な構造あり.
+                                    <figure style="margin-left: -7%">
+                                        <img
+                                            src="./sec1/eigenfunction_quasimode1.png"
+                                            alt="quasi mode（？）の固有関数"
+                                            width="45%"
+                                        />
+                                        <img
+                                            src="./sec1/eigenfunction_quasimode2.png"
+                                            alt="quasi mode（？）の固有関数"
+                                            width="45%"
+                                        />
+                                    </figure>
+                                </li>
+                                <li class="fragment">
+                                    <strong class="alert">quasi-mode</strong>
+                                    (?)
+                                </li>
+                                <li class="fragment">
+                                    最近,
+                                    この話題の難しすぎない論文をいくつか見つけて,<br />
+                                    ほんの少しわかってきた.<br />
+                                    <span class="note small">
+                                        近い概念かもしれない用語:
+                                        一般化スペクトル, 埋蔵固有値, 共鳴極,
+                                        Landau 極
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1">
+                    <h2>今回説明する quasi-mode の具体例</h2>
+
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">
+                            無衝突プラズマ
+                            <span
+                                class="note small fragment"
+                                data-fragment-index="2"
+                                >(目的：物理的イメージをつかむ)</span
+                            >
+                            <ul>
+                                <li class="fragment">
+                                    プラズマ振動 (<strong class="alert"
+                                        >離散</strong
+                                    >モード) + 粒子の運動 (<strong
+                                        class="alert"
+                                        >連続</strong
+                                    >モード) = Landau 減衰 (<strong
+                                        class="alert"
+                                        >quasi-mode</strong
+                                    >)
+                                </li>
+                                <li class="fragment">
+                                    波動と粒子の相互作用により,
+                                    波動・粒子間でエネルギーをやりとり.
+                                </li>
+                                <li class="fragment">
+                                    その結果, 散逸がなくても波動は減衰 or
+                                    不安定化.
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            量子力学における共鳴状態
+                            <span
+                                class="note small fragment"
+                                data-fragment-index="2"
+                                >(目的："複素化"に慣れる)</span
+                            >
+                            <ul>
+                                <li class="fragment">
+                                    散乱状態 ("<strong class="alert"
+                                        >連続</strong
+                                    >モード") に近いが,
+                                    波動関数が外向き波のみで<br />束縛状態
+                                    ("<strong class="alert">離散</strong
+                                    >モード") にも近い状態 (共鳴状態, "<strong
+                                        class="alert"
+                                        >quasi-mode</strong
+                                    >") が可能な場合がある.
+                                </li>
+                                <li class="fragment">
+                                    エネルギー固有値が複素数になって,
+                                    波動関数は時間的に減衰.
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            非粘性 2 次元渦
+                            <span
+                                class="note small fragment"
+                                data-fragment-index="2"
+                                >(目的：数値的に求める方法を知る)</span
+                            >
+                            <ul>
+                                <li class="fragment">
+                                    Kelvin モード (<strong class="alert"
+                                        >離散</strong
+                                    >モード) + 軸対称な背景流 (<strong
+                                        class="alert"
+                                        >連続</strong
+                                    >モード) =
+                                    <strong class="alert">quasi-mode</strong>
+                                </li>
+                                <li class="fragment">
+                                    波動と背景流の相互作用により,
+                                    波動・背景流間でエネルギーをやりとり
+                                </li>
+                                <li class="fragment">
+                                    その結果,
+                                    散逸がなくても楕円渦が軸対称な渦へ減衰
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment asterisk note">
+                            位相混合は連続モード単独で起こる減衰
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- ========== part 2 ========== -->
+
+                <section
+                    class="summary"
+                    data-state="part2"
+                    data-background-color="black"
+                >
+                    <h2 class="huge">Landau 減衰</h2>
+                </section>
+
+                <section data-state="part2">
+                    <h2>冷たいプラズマ近似 (粒子的描像)</h2>
+
+                    <p class="fragment" data-fragment-index="1">
+                        電子 ($\textcolor{red}{\mathrm{e}}$) とイオン
+                        ($\textcolor{blue}{\mathrm{i}}$) は最初に静止していて,
+                        無磁場中を一斉に運動し始めるとする.
+                    </p>
+                    <img
+                        class="fragment"
+                        data-fragment-index="1"
+                        src="./sec2/plasma_oscillation_1.png"
+                        alt="プラズマ振動"
+                        width="30%"
+                        style="position: absolute; top: 59%; right: 0"
+                    />
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="2"
+                        style="width: 75%"
+                    >
+                        <div class="r-stack">
+                            <div class="fragment" data-fragment-index="2">
+                                \[
+                                <!--  -->
+                                m_\mathrm{e}\frac{\uppartial\bm{v}_\mathrm{e}}{\partial
+                                t}\,=\,-e\bm{E} \,,\quad
+                                <!--  -->
+                                \textcolor{transparent}{\cancel{\textcolor{black}{m_\mathrm{i}\frac{\uppartial\bm{v}_\mathrm{i}}{\partial
+                                t}\,=\,e\bm{E}}}}\,,\quad
+                                <!--  -->
+                                \bm{J}\,=\,e(\textcolor{transparent}{\cancel{\textcolor{black}{n_\mathrm{i}\bm{v}_\mathrm{i}}}}-n_\mathrm{e}\bm{v}_\mathrm{e})\,,\quad
+                                <!--  -->
+                                \bm{0}\,=\,\bm{J}+\varepsilon_0\frac{\uppartial\bm{E}}{\uppartial
+                                t}
+                                <!--  -->
+                                \]
+                            </div>
+                            <div class="fragment" data-fragment-index="3">
+                                \[
+                                <!--  -->
+                                m_\mathrm{e}\frac{\uppartial\bm{v}_\mathrm{e}}{\partial
+                                t}\,=\,-e\bm{E} \,,\quad
+                                <!--  -->
+                                \textcolor{red}{\cancel{\textcolor{black}{m_\mathrm{i}\frac{\uppartial\bm{v}_\mathrm{i}}{\partial
+                                t}\,=\,e\bm{E}}}}\,,\quad
+                                <!--  -->
+                                \bm{J}\,=\,e(\textcolor{red}{\cancel{\textcolor{black}{n_\mathrm{i}\bm{v}_\mathrm{i}}}}-n_\mathrm{e}\bm{v}_\mathrm{e})\,,\quad
+                                <!--  -->
+                                \bm{0}\,=\,\bm{J}+\varepsilon_0\frac{\uppartial\bm{E}}{\uppartial
+                                t}
+                                <!--  -->
+                                \]
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-info-circle detail-icon"></i>
+
+                            <div class="detail-box top">
+                                <p>
+                                    $m$: 各粒子の質量, $\bm{v}$: 各粒子の速度,
+                                    $e$: 電気素量, $\bm{E}$: 電場, $\bm{J}$:
+                                    電流, $n$: 各粒子の数密度, $\varepsilon_0$:
+                                    真空の誘電率<br />
+                                    \[
+                                    <!--  -->
+                                    \frac{\uppartial n_\mathrm{e}}{\uppartial
+                                    t}+\div(n_\mathrm{e}\bm{v}_\mathrm{e})\,=\,0\,,\quad
+                                    <!--  -->
+                                    \frac{\uppartial n_\mathrm{i}}{\uppartial
+                                    t}+\div(n_\mathrm{i}\bm{v}_\mathrm{i})\,=\,0\,,\quad
+                                    <!--  -->
+                                    \div\bm{E}\,=\,\frac{e(n_\mathrm{i}-n_\mathrm{e})}{\varepsilon_0}
+                                    <!--  -->
+                                    \] が暗に成立.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fragment" data-fragment-index="3">
+                        イオンは電子に比べ質量が十分大きい
+                        ($m_\mathrm{i}\to\infty$) ので, イオンは静止している
+                        ($\bm{v}_\mathrm{i}=0$) と近似.
+                    </p>
+                    <p class="fragment" data-fragment-index="4">
+                        これを解くと, 振動解 (<strong class="alert"
+                            >離散</strong
+                        >モード) が得られる.
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="4"
+                        style="width: 35%"
+                    >
+                        \[\omega_\mathrm{pe}\,=\,\sqrt{\frac{n_\mathrm{e}e^2}{m_\mathrm{e}\varepsilon_0}}\qquad\text{(プラズマ振動数)}\]
+                    </div>
+                    <p
+                        class="fragment"
+                        data-fragment-index="5"
+                        style="margin-top: 5%"
+                    >
+                        電子が動く &rarr; 電子の変位と逆向きの電場ができる
+                        (分極) &rarr; Coulomb 力で元の位置の方向に戻される
+                    </p>
+                    <div class="fragment" data-fragment-index="5">
+                        <img
+                            id="plasma_animation_1"
+                            src="./sec2/plasma_oscillation_1.png"
+                            alt="プラズマ振動"
+                            width="30%"
+                            style="position: absolute; top: 59%; right: 0"
+                        />
+                        <img
+                            id="plasma_animation_2"
+                            src="./sec2/plasma_oscillation_2.png"
+                            alt="プラズマ振動"
+                            width="30%"
+                            style="position: absolute; top: 59%; right: 0"
+                        />
+                        <img
+                            id="plasma_animation_3"
+                            src="./sec2/plasma_oscillation_1.png"
+                            alt="プラズマ振動"
+                            width="30%"
+                            style="position: absolute; top: 59%; right: 0"
+                        />
+                        <img
+                            id="plasma_animation_4"
+                            src="./sec2/plasma_oscillation_3.png"
+                            alt="プラズマ振動"
+                            width="30%"
+                            style="position: absolute; top: 59%; right: 0"
+                        />
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>熱いプラズマ (Vlasov 方程式〜流体的描像)</h2>
+
+                    <p class="fragment" data-fragment-index="1">
+                        衝突がなければ, 粒子数は保存. $f$
+                        は各粒子の速度分布関数 (数密度 $n(\bm{r},t)=\iiint
+                        f(\bm{r},\bm{v},t) \upd^3\bm{v}$).
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="2"
+                        style="width: 80%"
+                    >
+                        \[
+                        <!--  -->
+                        \frac{\upd f_\mathrm{e}}{\upd t}\,=\,\frac{\uppartial
+                        f_\mathrm{e}}{\uppartial
+                        t}+\bm{v}\ip\bm{\nabla}f_\mathrm{e}-\frac{e\bm{E}}{m_\mathrm{e}}\ip\frac{\uppartial
+                        f_\mathrm{e}}{\uppartial\bm{v}}\,=\,0\,,\quad
+                        <!--  -->
+                        \frac{\upd f_\mathrm{i}}{\upd t}\,=\,0\,,\quad
+                        <!--  -->
+                        \div\bm{E}\,=\,\frac{e}{\varepsilon_0}\iiint(f_\mathrm{i}-f_\mathrm{e})\upd^3\bm{v}
+                        <!--  -->
+                        \]
+                    </div>
+                    <p class="fragment" data-fragment-index="3">
+                        Vlasov 方程式の $\bm{v}$ についてのモーメントをとると,
+                        流体の式になる.
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="3"
+                        style="width: 75%"
+                    >
+                        \[
+                        <!--  -->
+                        \frac{\uppartial \rho_\mathrm{e}}{\uppartial
+                        t}+\div(\rho_\mathrm{e}\bm{u}_\mathrm{e})\,=\,0\,,\quad
+                        <!--  -->
+                        \frac{\uppartial(\rho_\mathrm{e}\bm{u}_\mathrm{e})}{\uppartial
+                        t}+\div(\rho_\mathrm{e}\bm{u}_\mathrm{e}\otimes\bm{u}_\mathrm{e}+p_\mathrm{e}\underline{\underline{\mathsf{I}}})\,=\,-n_\mathrm{e}e\bm{E}\,,\quad\mathrm{etc.}
+                        \]
+
+                        <div class="detail">
+                            <i class="fas fa-info-circle detail-icon"></i>
+
+                            <div class="detail-box top">
+                                <p>
+                                    $\rho=mn$: 各粒子の質量密度,<br />
+                                    $\bm{u}=n^{-1}\iiint \bm{v}f\upd^3\bm{v}$:
+                                    各粒子の平均速度,<br />
+                                    $\underline{\underline{\mathsf{P}}}=\rho\left[n^{-1}\iiint(\bm{v}\otimes\bm{v})f\upd^3\bm{v}-\bm{u}\otimes\bm{u}\right]=p\underline{\underline{\mathsf{I}}}$:
+                                    各粒子の圧力テンソル
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fragment">
+                        イオンは平均的に静止している
+                        ($\rho_\mathrm{i}\to\infty$, $\bm{u}_\mathrm{i}=0$)
+                        と近似し, 準中性条件, 理想気体, 断熱を仮定して,<br />
+                        線形化すると, 冷たいプラズマの運動方程式 (with
+                        圧力勾配) に一致.
+                    </p>
+                    <div class="math-box_small fragment" style="width: 60%">
+                        \[\omega^2\,=\,\omega_\mathrm{pe}^2+\frac{\gamma_\mathrm{e}k_\mathrm{B}T_\mathrm{e}}{m_\mathrm{e}}k^2\qquad\text{(プラズマ振動と音波のハイブリッド)}\]
+
+                        <div class="detail">
+                            <i class="fas fa-info-circle detail-icon"></i>
+
+                            <div class="detail-box top">
+                                <p>
+                                    $\gamma$: 各粒子の比熱比, $k_\mathrm{B}$:
+                                    Boltzmann 定数, $T$: 各粒子の温度 ($T\to0$
+                                    で冷たいプラズマ近似),<br />
+                                    $\omega$: 角振動数, $k$: 波数<br />
+                                    $n_\mathrm{e}=n_{\mathrm{e}0}+n_{\mathrm{e}1}$
+                                    ($n_\mathrm{i}=n_{\mathrm{e}0}$),
+                                    $\bm{u}_\mathrm{e}=\bm{u}_{\mathrm{e}1}$,
+                                    $p_\mathrm{e}=p_{\mathrm{e}0}+p_{\mathrm{e}1}=(n_{\mathrm{e}0}+\gamma_\mathrm{e}n_{\mathrm{e}1})k_\mathrm{B}T_\mathrm{e}$,
+                                    $\bm{E}=\bm{E}_{1}$ と線型化.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>Vlasov 方程式から分散関係を求める</h2>
+
+                    <p class="fragment">
+                        これまでと同様な近似と線形化を行う.<br />
+                        $m_\mathrm{i}\to\infty$, $f_\mathrm{i}$
+                        は時間的・空間的に一様 ($\bm{v}$ のみに依存),
+                        $f_\mathrm{e}=f_{\mathrm{e}0}+f_{\mathrm{e}1}$
+                        (準中性条件 $f_\mathrm{i}=f_{\mathrm{e}0}$),
+                        $\bm{E}=\bm{E}_1=-\bm{\nabla}\phi_1$
+                    </p>
+                    <div class="math-box_small fragment" style="width: 60%">
+                        \[
+                        <!--  -->
+                        \frac{\uppartial f_{\mathrm{e}1}}{\uppartial
+                        t}+\bm{v}\ip\bm{\nabla}f_{\mathrm{e}1}+\frac{e\bm{\nabla}\phi_1}{m_\mathrm{e}}\ip\frac{\uppartial
+                        f_{\mathrm{e}0}}{\uppartial\bm{v}}\,=\,0\,,\quad
+                        <!--  -->
+                        \nabla^2\phi_1\,=\,\frac{e}{\varepsilon_0}\iiint
+                        f_{\mathrm{e}1}\upd^3\bm{v}
+                        <!--  -->
+                        \]
+                    </div>
+                    <p class="fragment">
+                        Fourier 変換
+                        ($f(\bm{r},\bm{v},t)=\tilde{f}(\bm{k},\bm{v},\omega)\upe^{\upi(\bm{k}\ip\bm{r}-\omega
+                        t)}$) して, $\bm{v}=v_k(\bm{k}/k)+\bm{v}_\perp$
+                        ($\bm{k}\ip\bm{v}_\perp=0$), $\tilde{g}=\iint
+                        \tilde{f}\upd^2\bm{v}_\perp$ とすると,
+                    </p>
+                    <div class="math-box_small fragment" style="width: 90%">
+                        \[
+                        <!--  -->
+                        \left(\frac{\omega}{k}-v_k\right)\tilde{g}_{\mathrm{e}1}+\frac{\omega_\mathrm{pe}^2}{n_{\mathrm{e}0}k^2}\frac{\upd
+                        g_{\mathrm{e}0}}{\upd v_k}\int
+                        \tilde{g}_{\mathrm{e}1}(k,v_{k*},\omega)\upd
+                        v_{k*}\,=\,0\,,\quad
+                        <!--  -->
+                        \left(1+\frac{\omega_\mathrm{pe}^2}{n_{\mathrm{e}0}k^2}\int\frac{(\upd
+                        g_{\mathrm{e}0}/\upd v_k)}{(\omega/k)-v_k}\upd
+                        v_k\right)\tilde{\phi}_1\,=\,0
+                        <!--  -->
+                        \]
+                    </div>
+                    <p class="fragment">
+                        分散関係 (離散モードの条件) は
+                        <strong class="alert"
+                            >$\displaystyle{\varepsilon(k,\omega)\equiv1+\frac{\omega_\mathrm{pe}^2}{n_{\mathrm{e}0}k^2}\int_{-\infty}^\infty\frac{(\upd
+                            g_{\mathrm{e}0}/\upd v_k)}{(\omega/k)-v_k}\upd
+                            v_k=0}$</strong
+                        >.
+                    </p>
+                    <p class="fragment">
+                        特異な積分がある. この式が, 前スライドの分散関係
+                        ($\omega^2=\omega_\mathrm{pe}^2+(\gamma_\mathrm{e}k_\mathrm{B}T_\mathrm{e}/m_\mathrm{e})k^2$)
+                        と等価 ?
+                    </p>
+                </section>
+
+                <section data-state="part2">
+                    <h2>
+                        <a
+                            href="http://homepage.physics.uiowa.edu/~ghowes/teach/phys225/readings/Landau46.pdf"
+                            target="_blank"
+                            >Landau (1946)</a
+                        >
+                        の方法
+                    </h2>
+
+                    <p class="fragment" data-fragment-index="1">
+                        速度分布関数は Maxwell 分布
+                        $g_{\mathrm{e}0}=n_{\mathrm{e}0}\sqrt{m_\mathrm{e}/2\uppi
+                        k_\mathrm{B}T_\mathrm{e}}\exp(-m_\mathrm{e}v_k^2/2k_\mathrm{B}T_\mathrm{e})$
+                        を仮定 (理想気体)
+                    </p>
+                    <div class="r-stack">
+                        <div
+                            class="math-box_small fragment"
+                            data-fragment-index="1"
+                            style="width: 70%"
+                        >
+                            \[
+                            <!--  -->
+                            \varepsilon(k,\omega)=1-\frac{\omega_\mathrm{pe}^2}{k^2}\left(\frac{m_\mathrm{e}}{2k_\mathrm{B}T_\mathrm{e}}\right)^{3/2}\frac{2}{\sqrt{\uppi}}\int_{-\infty}^\infty\frac{v_k\exp(-m_\mathrm{e}v_k^2/2k_\mathrm{B}T_\mathrm{e})}{(\omega/k)-v_k}\upd
+                            v_k=0
+                            <!--  -->
+                            \]
+                        </div>
+                        <div
+                            class="math-box_small fragment"
+                            data-fragment-index="2"
+                            style="width: 70%"
+                        >
+                            \[
+                            <!--  -->
+                            \varepsilon(k,\textcolor{red}{\omega})=1-\frac{\omega_\mathrm{pe}^2}{k^2}\left(\frac{m_\mathrm{e}}{2k_\mathrm{B}T_\mathrm{e}}\right)^{3/2}\frac{2}{\sqrt{\uppi}}\int_{-\infty}^\infty\frac{v_k\exp(-m_\mathrm{e}v_k^2/2k_\mathrm{B}T_\mathrm{e})}{(\textcolor{red}{\omega}/k)-v_k}\upd
+                            v_k=0
+                            <!--  -->
+                            \]
+                        </div>
+                    </div>
+                    <p class="fragment" data-fragment-index="2">
+                        この式において, $\omega$ はパラメータだが, 後で行われる
+                        Fourier 逆変換のことを忘れてはいけない.
+                    </p>
+                    <p class="fragment" data-fragment-index="3">
+                        <ruby
+                            >因果律<rp>(</rp><rt>causality</rt><rp>)</rp></ruby
+                        >
+                        を考慮すると, 例えば下の $\tilde{g}_{\mathrm{e}1}$
+                        の固有関数 (Van Kampen モード) に対して,<br />
+                        $\mathrm{Im}(\omega)>0$ (Laplace 逆変換の
+                        $\mathrm{Re}(s)>0$ に相当)
+                        で逆変換の積分をする必要あり.
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="3"
+                        style="width: 95%"
+                    >
+                        \[
+                        <!--  -->
+                        \frac{\tilde{g}_{\mathrm{e}1}}{\int
+                        \tilde{g}_{\mathrm{e}1}(k,v_{k*},\omega)\upd
+                        v_{k*}}\,=\,-\frac{\omega_\mathrm{pe}^2}{k^2}\left(\frac{m_\mathrm{e}}{2k_\mathrm{B}T_\mathrm{e}}\right)^{3/2}\frac{2}{\sqrt{\uppi}}\mathcal{P}\left(\frac{v_k\exp(-m_\mathrm{e}v_k^2/2k_\mathrm{B}T_\mathrm{e})}{(\omega/k)-v_k}\right)\,+\,\varepsilon(k,\textcolor{red}{\omega})\delta\left(\frac{\omega}{k}-v_k\right)
+                        <!--  -->
+                        \]
+
+                        <div class="detail">
+                            <i class="fas fa-info-circle detail-icon"></i>
+
+                            <div class="detail-box top">
+                                <p>
+                                    $\mathcal{P}$: Cauchy の主値, $\delta$:
+                                    デルタ関数
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fragment">
+                        ゆえに, $\varepsilon(k,\omega)$ の積分の特異点
+                        $v_k=\omega/k$ は, 複素 $v_k$ 平面の上半平面にある.
+                        <br />
+                        一方, $v_k$ の積分経路は実軸上.
+                    </p>
+                </section>
+
+                <section data-state="part2">
+                    <h2>
+                        <a
+                            href="http://homepage.physics.uiowa.edu/~ghowes/teach/phys225/readings/Landau46.pdf"
+                            target="_blank"
+                            >Landau (1946)</a
+                        >
+                        の方法 (つづき)
+                    </h2>
+
+                    <p class="fragment" data-fragment-index="1">
+                        後で行われる Fourier 逆変換で留数定理を使う際に,
+                        $\mathrm{Im}(\omega)<0$ へ動かしてしまうので, <br />
+                        $\varepsilon(k,\omega)$ の積分の特異点 $v_k=\omega/k$
+                        は, 実軸上の積分経路を引っ掛けて下半平面へ移動.
+                    </p>
+                    <div class="r-stack">
+                        <div>
+                            <img
+                                src="./sec2/landau_1.png"
+                                alt="Landau の経路"
+                                width="40%"
+                                style="position: absolute; top: 24%; left: 30%"
+                            />
+                        </div>
+                        <div class="fragment" data-fragment-index="1">
+                            <img
+                                id="landau_animation_1"
+                                src="./sec2/landau_1.png"
+                                alt="Landau の経路"
+                                width="40%"
+                                style="position: absolute; top: 24%; left: 30%"
+                            />
+                            <img
+                                id="landau_animation_2"
+                                src="./sec2/landau_2.png"
+                                alt="Landau の経路"
+                                width="40%"
+                                style="position: absolute; top: 24%; left: 30%"
+                            />
+                            <img
+                                id="landau_animation_3"
+                                src="./sec2/landau_3.png"
+                                alt="Landau の経路"
+                                width="40%"
+                                style="position: absolute; top: 24%; left: 30%"
+                            />
+                        </div>
+                        <div class="fragment" data-fragment-index="2">
+                            <img
+                                id="landau_animation2_1"
+                                src="./sec2/landau_1.png"
+                                alt="Landau の経路"
+                                width="40%"
+                                style="position: absolute; top: 24%; left: 30%"
+                            />
+                            <img
+                                id="landau_animation2_2"
+                                src="./sec2/landau_2.png"
+                                alt="Landau の経路"
+                                width="40%"
+                                style="position: absolute; top: 24%; left: 30%"
+                            />
+                            <img
+                                id="landau_animation2_3"
+                                src="./sec2/landau_3.png"
+                                alt="Landau の経路"
+                                width="40%"
+                                style="position: absolute; top: 24%; left: 30%"
+                            />
+                            <img
+                                id="landau_animation2_4"
+                                src="./sec2/landau_4.png"
+                                alt="Landau の経路"
+                                width="40%"
+                                style="position: absolute; top: 24%; left: 30%"
+                            />
+                        </div>
+                    </div>
+                    <p
+                        class="fragment"
+                        data-fragment-index="2"
+                        style="margin-top: 20%"
+                    >
+                        特に, $\omega=\omega_*$ ($\mathrm{Im}(\omega_*)<0$)
+                        に極があった場合,<br />
+                        特異点 $v_k=\omega_*/k$ を下から迂回するような経路で
+                        $\varepsilon(k,\omega_*)$ を計算しなければならない.
+                    </p>
+                    <p class="fragment" data-fragment-index="3">
+                        もし,
+                        $0<-\mathrm{Im}(\omega_*/k)\ll|\mathrm{Re}(\omega_*/k)|$
+                        ならば, (特異点まわりを反時計回りに半周するので)
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="3"
+                        style="width: 85%; font-size: 85%"
+                    >
+                        \[
+                        <!--  -->
+                        \varepsilon(k,\omega_*)=1+\frac{\omega_\mathrm{pe}^2}{k^2}\left(\frac{m_\mathrm{e}}{2k_\mathrm{B}T_\mathrm{e}}\right)^{3/2}\frac{2}{\sqrt{\uppi}}\left[\mathcal{P}\int_{-\infty}^\infty\frac{v_k\exp(-m_\mathrm{e}v_k^2/2k_\mathrm{B}T_\mathrm{e})}{v_k-(\omega_*/k)}\upd
+                        v_k+\uppi\upi\frac{\omega_*}{k}\exp\left(-\frac{m_\mathrm{e}(\omega_*/k)^2}{2k_\mathrm{B}T_\mathrm{e}}\right)\right]=0
+                        <!--  -->
+                        \]
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>
+                        <a
+                            href="http://homepage.physics.uiowa.edu/~ghowes/teach/phys225/readings/Landau46.pdf"
+                            target="_blank"
+                            >Landau (1946)</a
+                        >
+                        の方法 (つづき 2)
+                    </h2>
+
+                    <p>
+                        さらに, $k\to0$ (波長: 大) の場合,<br />
+                        $[v_k-(\omega_*/k)]^{-1}=-(k/\omega_*)\{1+(k/\omega_*)v_k+(k/\omega_*)^2v_k^2+(k/\omega_*)^3v_k^3+\upO(k^4)\}$
+                        とできて,
+                    </p>
+                    <div
+                        class="math-box_small"
+                        style="width: 85%; font-size: 85%"
+                    >
+                        \[
+                        <!--  -->
+                        \varepsilon(k,\omega_*)=1+\frac{\omega_\mathrm{pe}^2}{k^2}\left[-\frac{k^2}{\omega_*^2}-\frac{3}{2}\left(\frac{2k_\mathrm{B}T_\mathrm{e}}{m_\mathrm{e}}\right)\frac{k^4}{\omega_*^4}+\upO(k^6)+2\sqrt{\uppi}\upi\left(\frac{m_\mathrm{e}}{2k_\mathrm{B}T_\mathrm{e}}\right)^{3/2}\frac{\omega_*}{k}\exp\left(-\frac{m_\mathrm{e}(\omega_*/k)^2}{2k_\mathrm{B}T_\mathrm{e}}\right)\right]=0
+                        <!--  -->
+                        \]
+                    </div>
+                    <p class="fragment" data-fragment-index="1">
+                        $|\mathrm{Re}(\omega_*)|\gg|\mathrm{Im}(\omega_*)|$ と
+                        $k\to0$ に気をつけてこれを解くと, ($1$ 次元振動なので
+                        $\gamma_\mathrm{e}=(1+2)/1=3$)
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="1"
+                        style="width: 80%"
+                    >
+                        \[
+                        <!--  -->
+                        [\mathrm{Re}(\omega_*)]^2\,=\,\omega_\mathrm{pe}^2+\frac{\gamma_\mathrm{e}k_\mathrm{B}T_\mathrm{e}}{m_\mathrm{e}}k^2\,,\quad
+                        <!--  -->
+                        \mathrm{Im}(\omega_*)\,=\,-\sqrt{\uppi}\left(\frac{m_\mathrm{e}}{2k_\mathrm{B}T_\mathrm{e}}\right)^{3/2}\frac{\omega_\mathrm{pe}^4}{k^3}\exp\left(-\frac{m_\mathrm{e}(\omega_\mathrm{pe}/k)^2}{2k_\mathrm{B}T_\mathrm{e}}\right)
+                        <!--  -->
+                        \]
+                    </div>
+                    <ul style="margin-top: 20px">
+                        <li class="fragment">
+                            <strong class="alert"
+                                >実部はプラズマ振動 (with 音波) と同じ</strong
+                            >.
+                        </li>
+                        <li class="fragment">
+                            散逸がないのに虚部が出てくる.
+                            <strong class="alert">減衰率は背景場</strong>
+                            (今の場合, Maxwell 分布)
+                            <strong class="alert">の形に依存</strong>. <br />
+                            <span class="small note"
+                                ><i class="fa-solid fa-asterisk"></i> 虚部は
+                                $\varepsilon(k,\omega_*)$ の $\upO(k^4/k^2)$
+                                の項 (圧力の効果 ?) を落としても出てくる.</span
+                            >
+                        </li>
+                        <li class="fragment">
+                            導出の途中で
+                            <strong class="important"
+                                >背景場 $g_{\mathrm{e}0}(v_k)$ の $v_k$
+                                に複素数 ($\omega_*/k$) が代入</strong
+                            >
+                            (解析接続) されている.
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>Landau 減衰のよくある物理的説明</h2>
+
+                    <div class="half-box">
+                        <div style="width: 40%">
+                            <figure style="margin-top: 15%">
+                                <img
+                                    src="./sec2/landau_decay.png"
+                                    alt="プラズマ振動"
+                                    width="100%"
+                                />
+                                <figcaption>
+                                    <a
+                                        href="https://www.nippyo.co.jp/shop/book/3331.html"
+                                        target="_blank"
+                                        >シリーズ 現代の天文学 <br />
+                                        第12巻 天体物理学の基礎(2)</a
+                                    >
+                                    <br />
+                                    より
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div style="width: 60%">
+                            <ul>
+                                <li class="fragment">
+                                    波動 (今の場合, プラズマ振動) と <br />
+                                    $v_k\sim(\omega/k)$ の粒子が相互作用して,
+                                    <br />
+                                    エネルギーをやりとりする.
+                                </li>
+                                <li class="fragment">
+                                    波動より少し遅い粒子は波動によって加速され,<br />波動より少し速い粒子は減速される.
+                                </li>
+                                <li class="fragment">
+                                    Maxwell 分布の場合, <br />
+                                    速度が遅い粒子の方が速い粒子よりも多いので,
+                                    <br />
+                                    全体として波動がエネルギーを失う.
+                                </li>
+                                <li class="fragment asterisk">
+                                    と書いてある文献をよく見るが, <br />
+                                    線形化した Vlasov 方程式を使って
+                                    <br />
+                                    この説明をどう正当化するのかは<br />
+                                    中島はわかっていない.
+                                    <br />
+                                    <span class="note small">
+                                        sin 型の電場に加 (減)
+                                        速される粒子を使った説明をたまに見かけるが,
+                                        <br />
+                                        線形化した Vlasov
+                                        方程式との対応関係がいまいちわからない.</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>ところで, 連続モード</h2>
+
+                    <p class="fragment" data-fragment-index="1">
+                        $\tilde{g}_{\mathrm{e}1}$ の固有関数 (Van Kampen
+                        モード;
+                        <a
+                            href="https://doi.org/10.1016/S0031-8914(55)93068-8"
+                            target="_blank"
+                            >Van Kampen (1955)</a
+                        >,
+                        <a
+                            href="https://doi.org/10.1016/0003-4916(59)90029-6"
+                            target="_blank"
+                            >Case (1959)</a
+                        >) を再掲.
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="1"
+                        style="width: 90%"
+                    >
+                        \[
+                        <!--  -->
+                        \frac{\tilde{g}_{\mathrm{e}1}}{\int
+                        \tilde{g}_{\mathrm{e}1}(k,v_{k*},\omega)\upd
+                        v_{k*}}\,=\,-\frac{\omega_\mathrm{pe}^2}{k^2}\left(\frac{m_\mathrm{e}}{2k_\mathrm{B}T_\mathrm{e}}\right)^{3/2}\frac{2}{\sqrt{\uppi}}\mathcal{P}\left(\frac{v_k\exp(-m_\mathrm{e}v_k^2/2k_\mathrm{B}T_\mathrm{e})}{(\omega/k)-v_k}\right)\,+\,\varepsilon(k,\omega)\delta\left(\frac{\omega}{k}-v_k\right)
+                        <!--  -->
+                        \]
+
+                        <div class="detail">
+                            <i class="fas fa-info-circle detail-icon"></i>
+
+                            <div class="detail-box top">
+                                <p>
+                                    $\tilde{\phi}_1$ のみの式は
+                                    $\varepsilon(k,\omega)\tilde{\phi}_1=\varepsilon(k,\omega)\tilde{\phi}_1$
+                                    となっていることに注意.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="half-box fragment"
+                        class="fragment"
+                        data-fragment-index="2"
+                    >
+                        <div style="width: 50%">
+                            <p>
+                                このように表せるということは, <br />
+                                <strong class="alert"
+                                    >$\varepsilon(k,\omega)\neq0$ でも
+                                    固有関数が形式的に書け</strong
+                                >,<br />
+                                連続モードが存在できることを意味する.
+                            </p>
+                        </div>
+                        <div style="width: 50%; margin-top: 16px">
+                            <table>
+                                <tr>
+                                    <td>離散モード</td>
+                                    <td rowspan="2">
+                                        $\varepsilon(k,\omega)=0$
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>quasi-mode</td>
+                                </tr>
+                                <tr>
+                                    <td>連続モード</td>
+                                    <td>$\varepsilon(k,\omega)\neq0$</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <p class="fragment" data-fragment-index="3">
+                        超関数なので, ($\varepsilon(k,\omega)\neq0$ の場合)
+                        固有関数を 1 つだけ取り出して議論することはできない.
+                        <br />
+                        Fourier 逆変換すると,
+                        物理的な意味がありげな滑らかな関数になる.
+                        <br />
+                        <span class="small note"
+                            >$\varepsilon(k,\omega)=0$ の場合, $\mathcal{P}$
+                            は不要になる.</span
+                        >
+                    </p>
+                </section>
+
+                <section data-state="part2">
+                    <h2>位相混合</h2>
+
+                    <p>
+                        連続モードを理解するために, $e=0$ の場合
+                        (実は中性粒子だった場合) を考える.
+                    </p>
+                    <p class="fragment" data-fragment-index="1">
+                        このとき, $\varepsilon(k,\omega)=1$,
+                        $\dfrac{\tilde{g}_{\mathrm{e}1}}{G_0}\equiv\dfrac{\tilde{g}_{\mathrm{e}1}}{\int
+                        \tilde{g}_{\mathrm{e}1}(k,v_{k*},\omega)\upd
+                        v_{k*}}=\delta[(\omega/k)-v_k]$
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="2"
+                        style="width: 75%"
+                    >
+                        \[\begin{align}
+                        <!--  -->
+                        g_{\mathrm{e}1}\,&=\,\int\upd^3\bm{k}
+                        \int\upd\omega\,G_0(k,\omega)
+                        \delta\left(\frac{\omega}{k}-v_k\right)\upe^{\upi(\bm{k}\ip\bm{r}-\omega
+                        t)}\,=\,\int\upd k\,G_0(k,kv_k)
+                        \upe^{\upi\bm{k}\ip(\textcolor{red}{\bm{r}-\bm{v}
+                        t})}\notag\\
+                        <!--  -->
+                        n_{\mathrm{e}1}\,&=\,\int g_{\mathrm{e}1}\upd
+                        v_k\,=\,\int\upd k\,\upe^{\upi\bm{k}\ip\bm{r}}\int \upd
+                        v_k\,G_0(k,kv_k) \upe^{-\upi
+                        kv_kt}\to0\quad(t\to\infty)\notag
+                        <!--  -->
+                        \end{align}\notag\]
+                    </div>
+                    <div class="half-box">
+                        <div style="width: 45%">
+                            <p class="fragment" data-fragment-index="2">
+                                Riemann-Lebesgue の補題により,<br />
+                                $n_{\mathrm{e}1}$ (数密度の摂動) は $0$
+                                に近づく.
+                            </p>
+                            <p class="fragment" data-fragment-index="3">
+                                これは連続モード単独の非散逸減衰.
+                            </p>
+
+                            <div class="fragment" data-fragment-index="4">
+                                <button id="phasemixing_start">Start</button>
+                                <button id="phasemixing_stop">Stop</button>
+                                <button id="phasemixing_reset">Reset</button>
+                                <p class="small note">
+                                    <b>[上]</b>
+                                    $g_{\mathrm{e}1}$ (横軸:
+                                    $\bm{r}\ip(\bm{k}/k)$, 縦軸: $v_k$),
+                                    <b>[下]</b> $n_{\mathrm{e}1}$ (横軸:
+                                    $\bm{r}\ip(\bm{k}/k)$)
+                                </p>
+                            </div>
+                        </div>
+                        <div style="width: 55%">
+                            <canvas
+                                class="fragment"
+                                data-fragment-index="4"
+                                id="phasemixing_canvas"
+                                style="
+                                    width: 500px;
+                                    height: 200px;
+                                    margin-top: 16px;
+                                    border: solid 1px black;
+                                "
+                            ></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section
+                    class="summary"
+                    data-state="part2"
+                    data-background-color="black"
+                >
+                    <h2 class="large">ここまでのまとめ</h2>
+
+                    <ul>
+                        <li class="fragment">
+                            離散モードがありそうな問題設定で,
+                            連続モードが共存してしまう場合,<br />
+                            <strong class="alert"
+                                >離散モードは quasi-mode</strong
+                            >
+                            (振動数の実部は離散モード的だが, 非散逸減衰する)
+                            <strong class="alert"
+                                >に <br />
+                                変化する</strong
+                            >
+                            (?)
+                            <ul class="fragment">
+                                <li>
+                                    なぜこんなことが起こるのかは,
+                                    数学的にも物理的にも中島はよくわかっていない.
+                                </li>
+                                <li>
+                                    連続固有値の位置が切断になるので,
+                                    離散固有値が連続固有値に埋もれると,<br />
+                                    主枝とは別の分岐に潜り込むらしい (?)
+                                </li>
+                                <li>
+                                    連続モードは位相混合で非散逸減衰できることが,<br />
+                                    離散モードの quasi-mode
+                                    化の物理に重要なのでは ?
+                                    と根拠もなく想像している.
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            quasi-mode の減衰率は,
+                            <strong class="alert">背景場の形状に依存</strong
+                            >する.
+                        </li>
+                        <li class="fragment">
+                            導出の途中で<strong class="important"
+                                >背景場を解析接続</strong
+                            >したことが, 本発表の内容のカギ.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- ========== part 3 ========== -->
+
+                <section
+                    class="summary"
+                    data-state="part3"
+                    data-background-color="black"
+                >
+                    <h2 class="huge">量子力学的<br />共鳴状態</h2>
+                </section>
+
+                <section data-state="part3">
+                    <h2>なぜ急に量子力学の話をするのか ?</h2>
+
+                    <ul>
+                        <li class="fragment">
+                            ここでは, 時間に依存しない Schr&ouml;dinger 方程式
+                            (一粒子系, 磁場なし) を考える.
+                            <div class="math-box_small" style="width: 80%">
+                                \[
+                                <!--  -->
+                                \left(-\frac{\hbar^2}{2m}\nabla^2+V(\bm{r})\right)\psi(\bm{r})\,=\,E\psi(\bm{r})\,,\qquad\text{時間依存部分}\propto\upe^{-\upi(E/\hbar)t}
+                                <!--  -->
+                                \]
+
+                                <div class="detail">
+                                    <i
+                                        class="fas fa-info-circle detail-icon"
+                                    ></i>
+
+                                    <div class="detail-box top">
+                                        <p>
+                                            $\hbar$: 換算 Planck 定数 (Dirac
+                                            定数), $m$: 粒子の質量, $V$:
+                                            ポテンシャル, <br />
+                                            $\psi$: 波動関数 (の空間依存部分),
+                                            $E$: エネルギー固有値
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fragment">
+                            これまでの話と (これからの話と)
+                            似ているところもある.
+                            <ul>
+                                <li>
+                                    粒子のエネルギーが,
+                                    ポテンシャルの無限遠での値よりも低い束縛状態
+                                    ("<strong class="alert">離散</strong
+                                    >モード")
+                                </li>
+                                <li>
+                                    <span style="margin: auto 16rem"
+                                        >&#x3003;</span
+                                    >高い散乱状態 ("<strong class="alert"
+                                        >連続</strong
+                                    >モード")
+                                </li>
+                                <li>
+                                    散乱状態に近いが,
+                                    束縛状態にも似ている共鳴状態 ("<strong
+                                        class="alert"
+                                        >quasi-mode</strong
+                                    >")
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            タイトルにある「スペクトル変形の方法」に近い方法は,
+                            <br />
+                            原子核物理 (?) の分野で研究され、使われているらしい
+                            (中島はよくわかっていない).
+                            <ul>
+                                <li class="note asterisk">
+                                    複素座標スケーリング法、複素スケーリング法、複素座標回転法
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            ただし,
+                            数学的・物理的に完全な対応関係があるわけではないので注意.
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <div class="half-box">
+                        <div style="width: 65%">
+                            <h2>球対称なステップ状のポテンシャルを考える</h2>
+
+                            <div class="math-box_small" style="width: 50%">
+                                \[
+                                <!--  -->
+                                \frac{\upd^2(r\psi)}{\upd
+                                r^2}\,=\,-\frac{2m[E-V(r)]}{\hbar^2}(r\psi)
+                                <!--  -->
+                                \]
+                            </div>
+                        </div>
+                        <div class="r-stack" style="width: 35%">
+                            <img
+                                src="./sec3/quantum_0.png"
+                                alt="考える設定"
+                                width="65%"
+                            />
+                            <img
+                                class="fragment"
+                                data-fragment-index="1"
+                                src="./sec3/quantum_1.png"
+                                alt="考える設定"
+                                width="65%"
+                            />
+                            <img
+                                class="fragment"
+                                data-fragment-index="2"
+                                src="./sec3/quantum_2.png"
+                                alt="考える設定"
+                                width="65%"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="half-box" style="margin-top: 1%">
+                        <div style="width: 45%">
+                            <ul
+                                class="fragment"
+                                data-fragment-index="1"
+                                style="margin-left: 0"
+                            >
+                                <li>
+                                    束縛状態 [$-V_0\leq E< 0$]
+                                    <ul>
+                                        <li>
+                                            境界条件 : $r\to0$ で $\psi$
+                                            が有限,<br />
+                                            $r\to\infty$ で
+                                            $|\psi|^2\ll\mathrm{O}(r^{-3})$.
+                                        </li>
+                                        <li>
+                                            <div
+                                                class="math-box_small"
+                                                style="
+                                                    width: 100%;
+                                                    font-size: 68%;
+                                                "
+                                            >
+                                                \[\begin{align}
+                                                <!--  -->
+                                                &r\psi\,=\,\notag\\
+                                                <!--  -->
+                                                &\begin{cases}
+                                                <!--  -->
+                                                A\sin\left(\frac{\sqrt{2m(E+V_0)}}{\hbar}r\right)
+                                                & (0\leq r\leq a) \\
+                                                <!--  -->
+                                                B\sinh\left(\frac{\sqrt{2m(V_1-E)}}{\hbar}r\right)+C\cosh\left(\frac{\sqrt{2m(V_1-E)}}{\hbar}r\right)
+                                                & (a< r\leq b) \\
+                                                <!--  -->
+                                                D\exp\left(-\frac{\sqrt{2m(-E)}}{\hbar}r\right)
+                                                & (b< r)
+                                                <!--  -->
+                                                \end{cases} \notag
+                                                <!--  -->
+                                                \end{align}\]
+                                            </div>
+                                        </li>
+                                        <li>
+                                            接続条件 : <br />$r=a$, $b$ で
+                                            $\psi$ と $(\upd \psi/\upd r)$
+                                            が連続.
+                                        </li>
+                                        <li>
+                                            4 本の接続条件から任意定数 $A$,
+                                            $B$, $C$, $D$ が求まり,
+                                            <strong class="alert">離散</strong
+                                            >固有値 $E$ が決まる.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 55%">
+                            <ul class="fragment" data-fragment-index="2">
+                                <li>
+                                    散乱状態 [$0\leq E< V_1$, $0< V_1< E$]
+                                    <ul>
+                                        <li>
+                                            境界条件 : $r\to0$ で $\psi$
+                                            が有限,<br />
+                                            <strong class="alert"
+                                                >$r\to\infty$
+                                                の条件を満たせない
+                                                (規格化できない)</strong
+                                            >.
+                                        </li>
+                                        <li>
+                                            <div
+                                                class="math-box_small"
+                                                style="
+                                                    width: 100%;
+                                                    font-size: 68%;
+                                                "
+                                            >
+                                                \[\begin{align}
+                                                <!--  -->
+                                                &r\psi\,=\,\notag\\
+                                                <!--  -->
+                                                &\begin{cases}
+                                                <!--  -->
+                                                A\sin\left(\frac{\sqrt{2m(E+V_0)}}{\hbar}r\right)
+                                                & (0\leq r\leq a) \\
+                                                <!--  -->
+                                                B\sinh\left(\frac{\sqrt{2m(V_1-E)}}{\hbar}r\right)+C\cosh\left(\frac{\sqrt{2m(V_1-E)}}{\hbar}r\right)
+                                                & (a< r\leq b, 0\leq E< V_1) \\
+                                                <!--  -->
+                                                B\sin\left(\frac{\sqrt{2m(E-V_1)}}{\hbar}r\right)+C\cos\left(\frac{\sqrt{2m(E-V_1)}}{\hbar}r\right)
+                                                & (a< r\leq b, 0< V_1< E) \\
+                                                <!--  -->
+                                                \textcolor{red}{D_1\sin\left(\frac{\sqrt{2mE}}{\hbar}r\right)+D_2\cos\left(\frac{\sqrt{2mE}}{\hbar}r\right)}
+                                                & (b< r)
+                                                <!--  -->
+                                                \end{cases} \notag
+                                                <!--  -->
+                                                \end{align}\]
+                                            </div>
+                                        </li>
+                                        <li>接続条件は, 束縛状態と同じ.</li>
+                                        <li>
+                                            接続条件 4 つに対し, 任意定数は 5
+                                            つなので, 固有値 $E$ は任意
+                                            (<strong class="alert">連続</strong
+                                            >固有値).
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2>
+                        外向き波の解 (Siegert 境界条件;
+                        <a
+                            href="https://doi.org/10.1103/PhysRev.56.750"
+                            target="_blank"
+                            >Siegert (1939)</a
+                        >)
+                    </h2>
+
+                    <div class="half-box">
+                        <div style="width: 80%">
+                            <ul>
+                                <li>
+                                    散乱状態 ($E\geq 0$) に対し, $r\to\infty$
+                                    で外向き波だけという条件を追加でつけてみる.
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    $b< r$ で
+                                    $r\psi\times\text{(時間依存部分)}\propto
+                                    \upe^{\upi(\textcolor{red}{\pm\sqrt{2mE}r-Et})/\hbar}$
+                                    なので
+                                    <div
+                                        class="math-box_small"
+                                        style="width: 90%"
+                                    >
+                                        \[
+                                        <!--  -->
+                                        r\psi\,=\,\begin{cases}
+                                        <!--  -->
+                                        A\sin\left(\frac{\sqrt{2m(E+V_0)}}{\hbar}r\right)
+                                        & (0\leq r\leq a) \\
+                                        <!--  -->
+                                        B\sinh\left(\frac{\sqrt{2m(V_1-E)}}{\hbar}r\right)+C\cosh\left(\frac{\sqrt{2m(V_1-E)}}{\hbar}r\right)
+                                        & (a< r\leq b) \\
+                                        <!--  -->
+                                        D\exp\left(\textcolor{red}{+}i\frac{\sqrt{2mE}}{\hbar}r\right)
+                                        & (b< r)
+                                        <!--  -->
+                                        \end{cases}
+                                        <!--  -->
+                                        \]
+                                    </div>
+                                    <p
+                                        class="fragment"
+                                        data-fragment-index="2"
+                                    >
+                                        根号の中身が負になったら,
+                                        純虚数にするということにすれば,
+                                        <br />
+                                        上の式一つで, 束縛状態と
+                                        (外向き波だけの)
+                                        散乱状態を一緒に計算できる.
+                                    </p>
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    接続条件を $\mathsf{A}\bm{x}=0$
+                                    ($\bm{x}^{\mathsf{T}}=(A, B, C, D)$)
+                                    と書いたときに,<br />
+                                    $\det(\mathsf{A})=0$ となる $E$ を求める.
+                                </li>
+                                <li class="fragment" data-fragment-index="4">
+                                    さらに,
+                                    <strong class="alert"
+                                        >$E$ は複素数になっても良い</strong
+                                    >ことにして計算する.<br />
+                                    このとき, $\sqrt{E}$ などは 2
+                                    価の関数になることに注意.
+                                    <ul>
+                                        <li>
+                                            $\mathrm{Im}(E)=0$ が,
+                                            束縛状態や散乱状態に対応.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 20%">
+                            <img
+                                class="fragment"
+                                data-fragment-index="2"
+                                src="./sec3/quantum_1.png"
+                                alt="考える設定"
+                                width="100%"
+                            />
+                            <img
+                                src="./sec3/quantum_2.png"
+                                alt="考える設定"
+                                width="100%"
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3" data-auto-animate>
+                    <div class="half-box">
+                        <div style="width: 40%">
+                            <img
+                                src="./sec3/quantum_0.png"
+                                alt="考える設定"
+                                width="50%"
+                                style="margin-top: 7%"
+                            />
+                            <p>固有値として求まるいくつかの $E$</p>
+                            <table>
+                                <tr class="fragment" data-fragment-index="1">
+                                    <td rowspan="2">束縛状態</td>
+                                    <td>$E=-32.0$</td>
+                                </tr>
+                                <tr class="fragment" data-fragment-index="1">
+                                    <td>$\phantom{E=}-8.6$</td>
+                                </tr>
+                                <tr class="fragment" data-fragment-index="1">
+                                    <td rowspan="2">束縛状態 ?</td>
+                                    <td>$\phantom{E=}28.1$</td>
+                                </tr>
+                                <tr
+                                    class="fragment"
+                                    data-fragment-index="2"
+                                ></tr>
+                                <tr class="fragment" data-fragment-index="2">
+                                    <td rowspan="2">
+                                        <strong class="alert">共鳴状態</strong>
+                                    </td>
+                                    <td>$\phantom{E=}49.3-2.6\upi$</td>
+                                </tr>
+                                <tr class="fragment" data-fragment-index="2">
+                                    <td>$\phantom{E=}70.1-5.1\upi$</td>
+                                </tr>
+                                <tr class="fragment" data-fragment-index="3">
+                                    <td rowspan="2">散乱状態</td>
+                                    <td>
+                                        (外向き波の条件を<br />外せば) $0< E$
+                                    </td>
+                                </tr>
+                            </table>
+                            <p
+                                class="small note fragment"
+                                data-fragment-index="3"
+                            >
+                                <i class="fa-solid fa-asterisk"></i>
+                                $E=\pm40$ ($-V_0$, $V_1$) は偽の解だと思われる.
+                            </p>
+                        </div>
+
+                        <div style="width: 60%">
+                            <h2>$|\det(\mathsf{A})|$ のグラフ</h2>
+
+                            <p class="fragment" data-fragment-index="2">
+                                <strong class="important"
+                                    >実軸上以外にも解がある</strong
+                                >.
+                            </p>
+                            <figure>
+                                <div class="r-stack">
+                                    <img
+                                        src="./sec3/quantum_E.png"
+                                        alt="det(A)のグラフ"
+                                        width="110%"
+                                    />
+                                    <img
+                                        class="fragment"
+                                        data-fragment-index="1"
+                                        src="./sec3/quantum_E_1.png"
+                                        alt="det(A)のグラフ"
+                                        width="110%"
+                                    />
+                                    <img
+                                        class="fragment"
+                                        data-fragment-index="2"
+                                        src="./sec3/quantum_E_2.png"
+                                        alt="det(A)のグラフ"
+                                        width="110%"
+                                    />
+                                    <img
+                                        class="fragment"
+                                        data-fragment-index="3"
+                                        src="./sec3/quantum_E_3.png"
+                                        alt="det(A)のグラフ"
+                                        width="110%"
+                                    />
+                                </div>
+                                <figcaption>
+                                    横軸: $\mathrm{Re}(E)$, 縦軸:
+                                    $\mathrm{Im}(E)$. 上下は分枝の違い.
+                                    青い部分が $\det(\mathsf{A})\approx0$.
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3" data-auto-animate>
+                    <div class="half-box">
+                        <div style="width: 40%">
+                            <img
+                                src="./sec3/quantum_0.png"
+                                alt="考える設定"
+                                width="50%"
+                                style="margin-top: 7%"
+                            />
+                            <p>固有値として求まるいくつかの $E$</p>
+                            <table>
+                                <tr>
+                                    <td rowspan="2">束縛状態</td>
+                                    <td>$E=-32.0$</td>
+                                </tr>
+                                <tr>
+                                    <td>$\phantom{E=}-8.6$</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">束縛状態 ?</td>
+                                    <td>$\phantom{E=}28.1$</td>
+                                </tr>
+                                <tr></tr>
+                                <tr>
+                                    <td rowspan="2">
+                                        <strong class="alert">共鳴状態</strong>
+                                    </td>
+                                    <td>$\phantom{E=}49.3-2.6\upi$</td>
+                                </tr>
+                                <tr>
+                                    <td>$\phantom{E=}70.1-5.1\upi$</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">散乱状態</td>
+                                    <td>
+                                        (外向き波の条件を<br />外せば) $0< E$
+                                    </td>
+                                </tr>
+                            </table>
+                            <p class="small note">
+                                <i class="fa-solid fa-asterisk"></i>
+                                $E=\pm40$ ($-V_0$, $V_1$) は偽の解だと思われる.
+                            </p>
+                        </div>
+
+                        <div style="width: 60%">
+                            <h2>接続条件を満たす $|\psi|^2$ のグラフ</h2>
+
+                            <div class="half-box">
+                                <div style="width: 50%">
+                                    <ul style="margin: 16px auto">
+                                        <li>束縛状態</li>
+                                    </ul>
+                                    <img
+                                        src="./sec3/quantum_func_B1.png"
+                                        alt="psi のグラフ"
+                                        width="100%"
+                                    />
+                                    <img
+                                        src="./sec3/quantum_func_B2.png"
+                                        alt="psi のグラフ"
+                                        width="100%"
+                                    />
+                                    <img
+                                        src="./sec3/quantum_func_B3.png"
+                                        alt="psi のグラフ"
+                                        width="100%"
+                                    />
+                                </div>
+                                <div style="width: 50%">
+                                    <ul style="margin: 16px auto">
+                                        <li>共鳴状態</li>
+                                    </ul>
+                                    <img
+                                        src="./sec3/quantum_func_R1.png"
+                                        alt="psi のグラフ"
+                                        width="100%"
+                                    />
+                                    <img
+                                        src="./sec3/quantum_func_R2.png"
+                                        alt="psi のグラフ"
+                                        width="100%"
+                                    />
+
+                                    <p>
+                                        <strong class="important"
+                                            >$E$ を複素数に拡張</strong
+                                        >して,<br />固有関数を解析接続すると<br />
+                                        <strong class="important"
+                                            >束縛状態に近い別の状態<br />
+                                            が見つかる</strong
+                                        >.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2>共鳴状態の物理的意味</h2>
+
+                    <ul>
+                        <li
+                            class="fragment"
+                            data-fragment-index="1
+                        "
+                        >
+                            $\text{時間依存部分}\propto\upe^{-\upi(\mathrm{Re}(E)/\hbar)t}\upe^{(\mathrm{Im}(E)/\hbar)t}$
+                            で, 共鳴状態は $\mathrm{Im}(E)< 0$ なので, <br />
+                            時間的に減衰する (外向き波の解なので, 出ていく).
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            <a
+                                href="https://doi.org/10.1007/BF01343196"
+                                target="_blank"
+                                >Gamow (1928)</a
+                            >
+                            は似たモデルで $\alpha$ 崩壊 (?)
+                            を説明しようとしたらしい.
+                        </li>
+                        <li class="fragment" data-fragment-index="3">
+                            ポテンシャル井戸が深いと多数の束縛状態が存在できるが,
+                            <br />
+                            その井戸をだんだん浅くしていくと, $E$
+                            が大きい束縛状態から順に<br />
+                            散乱状態の連続固有値と合流してしまい,
+                            それが共鳴状態になる (?). <br />
+                        </li>
+                    </ul>
+                    <div class="fragment" data-fragment-index="3">
+                        <img
+                            src="./sec3/quantum_3.png"
+                            alt="束縛状態から共鳴状態への変化"
+                            width="30%"
+                        />
+                        <img
+                            src="./sec3/quantum_4.png"
+                            alt="束縛状態から共鳴状態への変化"
+                            width="30%"
+                        />
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2>
+                        複素座標スケーリング法 (<a
+                            href="https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-22/issue-4/A-class-of-analytic-perturbations-for-one-body-Schrödinger-Hamiltonians/cmp/1103857512.full"
+                            target="_blank"
+                            >Aguilar & Combes, 1971</a
+                        >)
+                    </h2>
+
+                    <div class="half-box">
+                        <div style="width: 60%">
+                            <ul>
+                                <li class="fragment" data-fragment-index="1">
+                                    原子核物理 (?) では,
+                                    共鳴状態を計算したくなるらしい.
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    先ほどの例のように,
+                                    固有関数を解析的に求めて, <br />
+                                    直接解析接続できるのは,
+                                    簡単な設定の場合に限られる.
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    複雑な状況でも, 共鳴状態を計算したい.
+                                    <br />
+                                    解析解を使わず数値的に計算できると嬉しい.
+                                    <ul>
+                                        <li
+                                            class="fragment"
+                                            data-fragment-index="4"
+                                        >
+                                            $r\to\infty$ で $V(r)\to0$ のとき,
+                                            漸近的に
+                                            $r\psi\sim\upe^{\upi(\sqrt{2mE}/\hbar)r}$.
+                                            <br />
+                                            $\mathrm{Im}(\sqrt{E})>0$ ならば,
+                                            $r\to\infty$ で $\psi\to0$. <br />
+                                            この (数値計算に便利な境界)
+                                            条件は,<br />
+                                            <strong class="alert"
+                                                >束縛状態だけ</strong
+                                            >満たしている.
+                                        </li>
+                                        <li
+                                            class="fragment"
+                                            data-fragment-index="5"
+                                        >
+                                            $r=s\upe^{\upi\theta}$
+                                            と座標変換すると, <br />
+                                            $\mathrm{Im}(\sqrt{E}\upe^{\upi\theta})>0$
+                                            ならば,
+                                            <strong class="alert"
+                                                >$s\to\infty$ で
+                                                $\psi\to0$</strong
+                                            >
+                                            .
+                                            <br />
+                                            $\theta$ をうまく選べば,
+                                            <strong class="alert"
+                                                >束縛状態と共鳴状態の <br />
+                                                どちらも</strong
+                                            >この条件を満たす.
+                                        </li>
+                                        <li class="fragment">
+                                            <strong class="important"
+                                                >$s$ 空間での
+                                                &ldquo;束縛状態&rdquo;
+                                                を計算すると,<br />
+                                                実 ($r$)
+                                                空間での束縛・共鳴状態が求まる</strong
+                                            >.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <div class="r-stack">
+                                <img
+                                    class="fragment"
+                                    data-fragment-index="4"
+                                    src="./sec3/quantum_E_4.png"
+                                    alt="det(A)のグラフ"
+                                    width="100%"
+                                />
+                                <img
+                                    class="fragment"
+                                    data-fragment-index="5"
+                                    src="./sec3/quantum_E_5.png"
+                                    alt="det(A)のグラフ"
+                                    width="100%"
+                                />
+                            </div>
+                            <ul class="fragment" style="margin-top: 16px">
+                                <li class="asterisk note">
+                                    座標変換を $\mathcal{U}(\theta)$, <br />
+                                    ハミルトニアンを $\mathcal{H}$ とすると,
+                                    <br />
+                                    Schr&ouml;dinger 方程式は <br />
+                                    $[\mathcal{U}(\theta)\mathcal{H}\mathcal{U}^{-1}(\theta)][\mathcal{U}(\theta)\psi]=E[\mathcal{U}(\theta)\psi]$
+                                </li>
+                                <li class="asterisk note">
+                                    $V(r\upe^{\upi\theta_*})$ が
+                                    $0\leq\theta_*\leq\theta$ で<br />
+                                    正則である必要あり.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== part 4 ========== -->
+
+                <section
+                    class="summary"
+                    data-state="part4"
+                    data-background-color="black"
+                >
+                    <h2 class="huge">渦の減衰</h2>
+                </section>
+
+                <section data-state="part4">
+                    <h2>非粘性非圧縮 2 次元渦</h2>
+
+                    <p>円筒座標 $(r,\phi)$ での渦度方程式</p>
+                    <div class="math-box_small" style="width: 65%">
+                        \[\begin{align}
+                        <!--  -->
+                        \frac{\uppartial \zeta}{\uppartial
+                        t}\,+\,\left(u_r\frac{\uppartial}{\uppartial
+                        r}+\frac{u_\phi}{r}\frac{\uppartial}{\uppartial
+                        \phi}\right)\zeta\,&=\,0\notag\\
+                        <!--  -->
+                        u_r\,=\,\frac{1}{r}\frac{\uppartial\psi}{\uppartial
+                        \phi}\,,\quad
+                        u_\phi\,=\,-\frac{\uppartial\psi}{\uppartial
+                        r}\,,\quad\zeta\,&=\,\frac{1}{r}\left(\frac{\uppartial(r
+                        u_\phi)}{\uppartial r}-\frac{\uppartial
+                        u_r}{\uppartial\phi}\right)\,=\,-\nabla^2\psi\notag
+                        <!--  -->
+                        \end{align}\]
+
+                        <div class="detail">
+                            <i class="fas fa-info-circle detail-icon"></i>
+
+                            <div class="detail-box top">
+                                <p>
+                                    $\bm{u}$: 速度, $p$: 圧力, $\psi$:
+                                    流線関数, $\zeta$: 渦度 \[\begin{align}
+                                    <!--  -->
+                                    \frac{\uppartial u_r}{\uppartial
+                                    t}+\left(u_r\frac{\uppartial}{\uppartial
+                                    r}+\frac{u_\phi}{r}\frac{\uppartial}{\uppartial
+                                    \phi}\right)u_r-\frac{u_\phi^2}{r}&=-\frac{1}{\rho_0}\frac{\uppartial
+                                    p}{\uppartial r}\notag\\
+                                    <!--  -->
+                                    \frac{\uppartial u_\phi}{\uppartial
+                                    t}+\left(u_r\frac{\uppartial}{\uppartial
+                                    r}+\frac{u_\phi}{r}\frac{\uppartial}{\uppartial
+                                    \phi}\right)u_\phi+\frac{u_ru_\phi}{r}&=-\frac{1}{\rho_0r}\frac{\uppartial
+                                    p}{\uppartial \phi}\notag
+                                    <!--  -->
+                                    \end{align}\]
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fragment" data-fragment-index="1">
+                        線形化 $\zeta=Z(r)+\zeta'$,
+                        $u_\phi=r\varOmega(r)+u_\phi'$, $\psi=\varPsi(r)+\psi'$
+                        <br />
+                        波型の解
+                        $\psi'(r,\phi,t)=\tilde{\psi}(r)\upe^{\upi(m\phi-\omega
+                        t)}$
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="1"
+                        style="width: 70%"
+                    >
+                        \[
+                        <!--  -->
+                        \left(\frac{\omega}{m}-\varOmega\right)\left[\frac{1}{r}\frac{\upd}{\upd
+                        r}\left(r\frac{\upd\tilde{\psi}}{\upd
+                        r}\right)-\frac{m^2}{r^2}\tilde{\psi}\right]\,+\,\frac{1}{r}\frac{\upd
+                        Z}{\upd r}\tilde{\psi}\,=\,0\,,\quad
+                        Z\,=\,\frac{1}{r}\frac{\upd(r^2\varOmega)}{\upd r}
+                        <!--  -->
+                        \]
+                    </div>
+                </section>
+
+                <section data-state="part4">
+                    <h2 style="margin-bottom: 0">Kelvin モード</h2>
+                    <p style="margin-top: 0">
+                        (<a
+                            href="https://doi.org/10.1017/S0370164600044151"
+                            target="_blank"
+                            >Thomson (1880)</a
+                        >,
+                        <a
+                            href="https://www.cambridge.org/jp/academic/subjects/mathematics/fluid-dynamics-and-solid-mechanics/hydrodynamics-6th-edition?format=PB&isbn=9780521458689"
+                            target="_blank"
+                            >Lamb「Hydrodynamics (6th ed.)」art.158 p.230)</a
+                        >
+                    </p>
+                    <p class="fragment" data-fragment-index="1">
+                        背景場は Rankine 渦 ($0\leq r\leq a$ で一定の渦度,
+                        それより外では渦なし).
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="1"
+                        style="width: 90%"
+                    >
+                        \[
+                        <!--  -->
+                        Z\,=\,\begin{cases}
+                        <!--  -->
+                        2\varOmega_0 & (0\leq r\leq a) \\ 0 & (a< r\leq R)
+                        <!--  -->
+                        \end{cases}\,,\quad
+                        <!--  -->
+                        \varOmega\,=\,\begin{cases}
+                        <!--  -->
+                        \varOmega_0 & (0\leq r\leq a) \\
+                        \varOmega_0\left(\dfrac{a}{r}\right)^2 & (a< r\leq R)
+                        <!--  -->
+                        \end{cases}\,,\quad
+                        <!--  -->
+                        \varPsi\,=\,\begin{cases}
+                        <!--  -->
+                        \dfrac{\varOmega_0}{2}(a^2-r^2) & (0\leq r\leq a) \\
+                        \varOmega_0a^2\ln\left(\dfrac{a}{r}\right) & (a< r\leq
+                        R)
+                        <!--  -->
+                        \end{cases} \]
+                    </div>
+                    <p class="fragment" data-fragment-index="2">
+                        このとき, Van Kampen モードは
+                        $\dfrac{1}{r}\dfrac{\upd}{\upd
+                        r}\left(r\dfrac{\upd\tilde{\psi}}{\upd
+                        r}\right)-\dfrac{m^2}{r^2}\tilde{\psi}=\varepsilon(m,\omega)\delta\left(\textcolor{red}{\dfrac{\omega}{m}-\varOmega(r)}\right)$
+                        <br />
+                        $\omega= m\varOmega(r)$ は<strong class="alert"
+                            >連続</strong
+                        >モード ($\varepsilon(m,\omega)\neq0$).<br />
+                        それ以外の $\varepsilon(m,\omega)=0$ となる<strong
+                            class="alert"
+                            >離散</strong
+                        >モードがあるかどうか調べる.
+                        <br />
+                        一般解 $\tilde{\psi}=Ar^m+Br^{-m}$ ($A$, $B$ は定数).
+                    </p>
+                    <dl class="fragment" data-fragment-index="3">
+                        境界条件: $r=0$ で $u_r'$ と $u_\phi'$ が有限<br />
+                        <span style="margin: auto 3.1rem"></span>$r=R$ で
+                        $u_r'=0$
+                        <br />
+                        接続条件: $r=a$ で $u_r'$ が連続,
+                        $[\omega-m\varOmega(r)]\tilde{u}_\phi-Z(m\tilde{\psi}/r)$
+                        ($\propto$ 圧力) が連続
+                    </dl>
+                </section>
+
+                <section data-state="part4">
+                    <h2>Kelvin モード (つづき)</h2>
+
+                    <p>これを解くと,</p>
+                    <div class="math-box_small" style="width: 80%">
+                        \[
+                        <!--  -->
+                        \omega\,=\,\varOmega_0\left[m-1+\left(\frac{a}{R}\right)^{2m}\right]\,,\quad
+                        <!--  -->
+                        \tilde{\psi}\,=\,\begin{cases}
+                        <!--  -->
+                        -C\left[1-\left(\dfrac{a}{R}\right)^{2m}\right]\left(\dfrac{r}{a}\right)^m
+                        & (0\leq r\leq a) \\
+                        -C\left[\left(\dfrac{a}{r}\right)^m-\left(\dfrac{r}{R}\right)^m\left(\dfrac{a}{R}\right)^m\right]
+                        & (a< r\leq R)
+                        <!--  -->
+                        \end{cases}\]
+                    </div>
+                    <p class="fragment" data-fragment-index="1">
+                        $r=a$
+                        での背景流とともに回転する座標系から見た位相速度は,
+                        <br />
+                        $\omega/m-\varOmega_0=-(\varOmega_0/m)[1-(a/R)^{2m}]<
+                        0$ で, 基本的には境界に局在した Rossby 波 (のはず).
+                    </p>
+                    <p class="fragment" data-fragment-index="2">
+                        Rankine 渦の場合は, 境界以外で $(\upd Z/\upd r)=0$
+                        なので, <br />
+                        (一般の場合の) Van Kampen
+                        モードの特異性を気にする必要はなかった.
+                    </p>
+                    <div
+                        class="math-box_small fragment"
+                        data-fragment-index="2"
+                        style="width: 75%"
+                    >
+                        \[
+                        <!--  -->
+                        \dfrac{1}{r}\dfrac{\upd}{\upd
+                        r}\left(r\dfrac{\upd\tilde{\psi}}{\upd
+                        r}\right)-\dfrac{m^2}{r^2}\tilde{\psi}\,+\,\mathcal{P}\left(\frac{1}{r}\frac{(\upd
+                        Z/\upd
+                        r)}{\textcolor{red}{(\omega/m)-\varOmega(r)}}\tilde{\psi}\right)\,=\,\varepsilon(m,\omega)\delta\left(\dfrac{\omega}{m}-\varOmega(r)\right)
+                        <!--  -->
+                        \]
+                    </div>
+                </section>
+
+                <section data-state="part4">
+                    <h2>
+                        Rankine 渦ではない場合は ? (<a
+                            href="https://doi.org/10.1063/1.1692936"
+                            target="_blank"
+                            >Briggs <i>et al.</i>, 1970</a
+                        >)
+                    </h2>
+
+                    <p>
+                        $(\omega/m)-\varOmega(r)=0$ となる $r$ を
+                        $r_\mathrm{c}$ とする.
+                    </p>
+                    <div class="math-box_small" style="width: 75%">
+                        \[
+                        <!--  -->
+                        \varepsilon(m,\omega)r_\mathrm{c}\tilde{\psi}^*(r_\mathrm{c})\,=\,-\int_0^R\left(\left|\frac{\upd
+                        \tilde{\psi}}{\upd
+                        r}\right|^2+\frac{m^2}{r^2}|\tilde{\psi}|^2\right)r\upd
+                        r\,+\,\int_0^R\frac{(\upd Z/\upd
+                        r)}{(\omega/m)-\varOmega(r)}|\tilde{\psi}|^2\upd r
+                        <!--  -->
+                        \]
+                    </div>
+                    <p class="fragment">
+                        Landau 減衰のときと同じような積分をすれば,
+                        分散関係が求められるはず. <br />
+                        しかも, $r=r_\mathrm{c}$ で $(\upd Z/\upd r)\neq0$ なら
+                        <strong class="alert">quasi-mode</strong> (減衰する
+                        Kelvin モード) が出てきそう.
+                    </p>
+                    <p class="fragment">
+                        ただし,
+                        <strong class="alert"
+                            >分散関係の中に固有関数 $\tilde{\psi}$
+                            が出てくるのは嫌</strong
+                        >.
+                    </p>
+                    <p class="fragment">
+                        複素座標スケーリング法みたいなことをすれば, <br />
+                        quasi-mode の固有値が数値的に求められるのでは ?<br />
+                        → スペクトル変形の方法<br />
+                        (the method of spectral deformation;
+                        <a
+                            href="https://doi.org/10.1016/0003-4916(89)90166-8"
+                            target="_blank"
+                        >
+                            Crawford & Hislop (1989)</a
+                        >)
+                    </p>
+                </section>
+
+                <section data-state="part4">
+                    <h2 style="margin-bottom: 0">
+                        2 次元渦の quasi-mode を調べる
+                    </h2>
+                    <p style="margin-top: 0">
+                        (<a
+                            href="https://doi.org/10.1063/1.872497"
+                            target="_blank"
+                            >Spencer & Rasband, 1997</a
+                        >;
+                        <a
+                            href="https://doi.org/10.1063/1.1289505"
+                            target="_blank"
+                            >Schecter <i>et al.</i>, 2000</a
+                        >;
+                        <a
+                            href="https://doi.org/10.1017/S0022112007008944"
+                            target="_blank"
+                            >Turner & Gilbert, 2007</a
+                        >)
+                    </p>
+                    <div class="half-box">
+                        <div style="width: 65%">
+                            <ul>
+                                <li>
+                                    Rankine 渦の場合は,<br />
+                                    連続固有値の中に Kelvin
+                                    モードが埋もれているが,
+                                    <br />
+                                    それらを簡単に計算できる.
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    Rankine 渦以外の場合は,<br />
+                                    Kelvin モードが quasi-mode
+                                    になると予想される.
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    ただし、quasi-mode
+                                    の極は主枝とは別の分岐に存在するので
+                                    <br />
+                                    普通の固有値問題では拾うことができない.
+                                    <br />
+                                    <span class="note small">
+                                        pure
+                                        な複素関数論では切断の位置はある程度自由に決められるが,
+                                        <br />
+                                        スペクトルの文脈では、連続スペクトルの位置に切断をおかないといけない
+                                        ?
+                                    </span>
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    複素座標 $s$ を使って, $r=r(s)$
+                                    と座標変換すると, <br />
+                                    連続固有値の位置が
+                                    $\omega=m\varOmega(r(s))$ になるので,
+                                    <br />
+                                    切断の位置をずらして, quasi-mode
+                                    の極を剥き出しにできる.
+                                    <br />
+                                    <span class="note small">
+                                        $(\upd/\upd s)=[\upd r(s)/\upd
+                                        s](\upd/\upd r)$ なので,
+                                        解く微分方程式の形は大きく変わる.
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 35%" style="position: relative">
+                            <div>
+                                <img
+                                    src="./sec4/vortex_1.png"
+                                    alt="2次元渦のスペクトル"
+                                    width="33%"
+                                    style="
+                                        position: absolute;
+                                        top: 20%;
+                                        right: 0;
+                                    "
+                                />
+                                <img
+                                    class="fragment"
+                                    data-fragment-index="1"
+                                    src="./sec4/vortex_2.png"
+                                    alt="2次元渦のスペクトル"
+                                    width="33%"
+                                    style="
+                                        position: absolute;
+                                        top: 20%;
+                                        right: 0;
+                                    "
+                                />
+                            </div>
+                            <div class="fragment" data-fragment-index="2">
+                                <img
+                                    id="vortex_animation_1"
+                                    src="./sec4/vortex_3.png"
+                                    alt="2次元渦のスペクトル"
+                                    width="33%"
+                                    style="
+                                        position: absolute;
+                                        top: 20%;
+                                        right: 0;
+                                    "
+                                />
+                                <img
+                                    id="vortex_animation_2"
+                                    src="./sec4/vortex_4.png"
+                                    alt="2次元渦のスペクトル"
+                                    width="33%"
+                                    style="
+                                        position: absolute;
+                                        top: 20%;
+                                        right: 0;
+                                    "
+                                />
+                                <img
+                                    id="vortex_animation_3"
+                                    src="./sec4/vortex_5.png"
+                                    alt="2次元渦のスペクトル"
+                                    width="33%"
+                                    style="
+                                        position: absolute;
+                                        top: 20%;
+                                        right: 0;
+                                    "
+                                />
+                            </div>
+                            <div class="fragment" data-fragment-index="3">
+                                <img
+                                    id="vortex_animation_4"
+                                    src="./sec4/vortex_6.png"
+                                    alt="2次元渦のスペクトル"
+                                    width="33%"
+                                    style="
+                                        position: absolute;
+                                        top: 20%;
+                                        right: 0;
+                                    "
+                                />
+                                <img
+                                    id="vortex_animation_5"
+                                    src="./sec4/vortex_7.png"
+                                    alt="2次元渦のスペクトル"
+                                    width="33%"
+                                    style="
+                                        position: absolute;
+                                        top: 20%;
+                                        right: 0;
+                                    "
+                                />
+                                <img
+                                    id="vortex_animation_6"
+                                    src="./sec4/vortex_8.png"
+                                    alt="2次元渦のスペクトル"
+                                    width="33%"
+                                    style="
+                                        position: absolute;
+                                        top: 20%;
+                                        right: 0;
+                                    "
+                                />
+                            </div>
+                            <ul>
+                                <li
+                                    class="fragment"
+                                    data-fragment-index="4"
+                                    style="margin-top: 85%"
+                                >
+                                    <strong class="important"
+                                        >$s$ 空間での &ldquo;固有値&rdquo;
+                                        を計算すると, 実 ($r$) 空間での
+                                        quasi-mode が求まる</strong
+                                    >.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part4">
+                    <div class="half-box">
+                        <div style="width: 45%">
+                            <figure>
+                                <img
+                                    src="./sec4/example_1.png"
+                                    alt="スペクトル変形の方法を使った例"
+                                    width="100%"
+                                />
+                                <figcaption>
+                                    <a
+                                        href="https://doi.org/10.1063/1.872497"
+                                        target="_blank"
+                                        >Spencer & Rasband (1997)</a
+                                    >より <br />
+                                    <span class="note"
+                                        ><b>[左]</b> 固有値問題を解く複素 $r$
+                                        平面上の経路
+                                        <br />
+                                        <b>[右]</b>
+                                        歪められた連続固有値の位置と quasi-mode
+                                        の極</span
+                                    >
+                                </figcaption>
+                            </figure>
+                            <hr style="margin: 0" />
+                            <figure class="fragment" data-fragment-index="2">
+                                <img
+                                    src="./sec4/example_4.png"
+                                    alt="スペクトル変形の方法を使った例"
+                                    width="65%"
+                                />
+                                <figcaption class="note">
+                                    インパルスの線型応答. ellipticity
+                                    $Q^{(m=2)}=\int r^3\zeta'^{(m=2)}\upd r$
+                                    <br />
+                                    代数的減衰は連続モード単独の減衰
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div style="width: 55%">
+                            <h2>スペクトル変形の方法を使った例</h2>
+                            <figure class="fragment" data-fragment-index="1">
+                                <img
+                                    src="./sec4/example_2.png"
+                                    alt="スペクトル変形の方法を使った例"
+                                    width="45%"
+                                />
+                                <img
+                                    src="./sec4/example_3.png"
+                                    alt="スペクトル変形の方法を使った例"
+                                    width="45%"
+                                />
+                                <figcaption>
+                                    <a
+                                        href="https://doi.org/10.1063/1.1289505"
+                                        target="_blank"
+                                        >Schecter <i>et al.</i> (2000)</a
+                                    >より <br />
+                                    <span class="note">
+                                        <b>[左]</b> Kelvin モードが quasi-mode
+                                        化しない例での固有関数
+                                        <br />
+                                        <b>[右 (a)]</b>
+                                        Kelvin モードが quasi-mode
+                                        化する例での固有関数
+                                        <br />
+                                        <b>[右 (b)]</b>
+                                        左図の離散モードを右図の連続モードで表現するときの展開係数</span
+                                    >
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section
+                    class="summary"
+                    data-state="part4"
+                    data-background-color="black"
+                >
+                    <h2 class="large">ここまでのまとめ</h2>
+
+                    <ul>
+                        <li class="fragment">
+                            座標を<strong class="alert"
+                                >複素数に拡張して</strong
+                            >固有値問題を解くと, quasi-mode
+                            がうまく拾えることもある.
+                            <ul>
+                                <li>
+                                    Landau 減衰のときに,
+                                    背景場を解析接続したことと同じようなことが起こっているはず.
+                                    <ul class="fragment">
+                                        <li>
+                                            Landau 減衰: 実軸全体
+                                            ($-\infty\leq\omega\leq\infty$)
+                                            が切断 (連続モード) <br />
+                                            &emsp;→
+                                            実は下半平面全体が主枝とは別の分枝.
+                                        </li>
+                                        <li>
+                                            量子力学的共鳴状態: $0\leq
+                                            E\leq\infty$ が切断 (散乱状態)
+                                            <br />
+                                            &emsp;→ $r=s\upe^{\upi\theta}$
+                                            と座標変換すると,
+                                            主枝とは別の分枝が見える.
+                                        </li>
+                                        <li>
+                                            渦の減衰: $m\min[\varOmega(r)]\leq
+                                            \omega\leq m\max[\varOmega(r)]$
+                                            が切断 (連続モード)
+                                            <br />
+                                            &emsp;→ $r=r(s)$ と座標変換すると,
+                                            主枝とは別の分枝が見える.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            quasi-mode 近くの連続モードは, <br />
+                            特異的な構造を除いて,
+                            <strong class="important"
+                                >離散モードの固有関数と似ている</strong
+                            >.
+                            <ul class="fragment">
+                                <li>
+                                    quasi-mode は真の &ldquo;モード&rdquo;
+                                    ではなく, <br />
+                                    連続モードの中の離散モードっぽい部分を抽出した影
+                                    (?) かもしれない.
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            初期値問題の最初のうちは quasi-mode の (指数関数的)
+                            減衰が支配的で, <br />
+                            長時間経つと位相混合の (代数的) 減衰が支配的.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- ========== part 5 ========== -->
+
+                <section
+                    class="summary"
+                    data-state="part5"
+                    data-background-color="black"
+                >
+                    <h2 class="huge">シアー不安定で<br />テスト (したい)</h2>
+                </section>
+
+                <section data-state="part5" data-auto-animate>
+                    <h2>近い将来テストしてみたいこと</h2>
+
+                    <p>
+                        2 次元平行シアー流の線形安定論 (<a
+                            href="https://doi.org/10.1017/jfm.2012.529"
+                            target="_blank"
+                            >Iga, 2013</a
+                        >)
+                    </p>
+                    <div class="half-box">
+                        <div
+                            class="fragment"
+                            data-fragment-index="1"
+                            style="width: 35%"
+                        >
+                            <p>
+                                <strong
+                                    class="fragment highlight-alert"
+                                    data-fragment-index="2"
+                                    >3 層モデル</strong
+                                >
+                                v.s. なめらか分布モデル
+                            </p>
+                            <figure>
+                                <img
+                                    src="./sec5/iga_1.png"
+                                    alt="2 次元平行シアー流の線形安定論"
+                                    width="100%"
+                                />
+                                <figcaption class="note">
+                                    縦軸: 座標, 横軸: 背景流
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div
+                            class="fragment"
+                            data-fragment-index="2"
+                            style="width: 65%"
+                        >
+                            <ul>
+                                <li>3 層モデルの場合の固有値</li>
+                            </ul>
+                            <figure class="half-box">
+                                <img
+                                    src="./sec5/iga_2.png"
+                                    alt="2 次元平行シアー流の線形安定論"
+                                    width="50%"
+                                />
+                                <figcaption
+                                    style="width: 50%; margin-top: 10%"
+                                >
+                                    2 ヶ所の折れ曲がり部分に<br />
+                                    局在化した 2 つの <br />
+                                    Rossby 波が共鳴して,<br />
+                                    互いの振幅を増幅するような<br />
+                                    配置 (波数) になると不安定化
+                                    <br /><br />
+                                    <span class="note"
+                                        >横軸: $x$ 方向の波数, <br />
+                                        縦軸: 位相速度 (実部と虚部)</span
+                                    ><br /><br />
+                                </figcaption>
+                            </figure>
+                            <p style="margin-top: 1%">
+                                Rankine 渦の場合のように, 連続モードはあるが,
+                                <strong class="alert"
+                                    ><br />
+                                    離散モードを簡単に計算できる状況</strong
+                                >
+                                ($(\upd^2 U/\upd y^2)=0$).
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part5" data-auto-animate>
+                    <h2>近い将来テストしてみたいこと</h2>
+
+                    <p>
+                        2 次元平行シアー流の線形安定論 (<a
+                            href="https://doi.org/10.1017/jfm.2012.529"
+                            target="_blank"
+                            >Iga, 2013</a
+                        >)
+                    </p>
+                    <div class="half-box">
+                        <div style="width: 35%">
+                            <p>
+                                3 層モデル v.s.
+                                <strong class="alert"
+                                    >なめらか分布モデル</strong
+                                >
+                            </p>
+                            <figure>
+                                <img
+                                    src="./sec5/iga_1.png"
+                                    alt="2 次元平行シアー流の線形安定論"
+                                    width="100%"
+                                />
+                                <figcaption class="note">
+                                    縦軸: 座標, 横軸: 背景流
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div style="width: 65%">
+                            <ul>
+                                <li>なめらか分布モデルの場合の固有値</li>
+                            </ul>
+                            <div class="half-box">
+                                <div style="width: 30%">
+                                    <figure
+                                        style="
+                                            margin-top: 30%;
+                                            margin-right: -40%;
+                                        "
+                                    >
+                                        <img
+                                            src="./sec5/iga_3.png"
+                                            alt="2 次元平行シアー流の線形安定論"
+                                            width="80%"
+                                        />
+                                        <figcaption>
+                                            離散化して <br />
+                                            数値的に計算する
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <figure style="width: 70%">
+                                    <img
+                                        src="./sec5/iga_4.png"
+                                        alt="2 次元平行シアー流の線形安定論"
+                                        width="60%"
+                                    />
+                                    <figcaption class="note">
+                                        横軸: $x$ 方向の波数, 縦軸: 位相速度
+                                        (実部と虚部)
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <p style="margin-top: 1%">
+                                そのまま数値的に計算すると,
+                                連続固有値だらけになって <br />
+                                共鳴する Rossby
+                                波のペアがあるのかどうかわからない. <br />
+                                <strong class="important"
+                                    >[中島の予想 & テストしたい] quasi-mode
+                                    になってるのでは？</strong
+                                >
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== part 6 ========== -->
+
+                <section
+                    class="summary"
+                    data-state="part6"
+                    data-background-color="black"
+                >
+                    <div class="half-box">
+                        <div style="width: 25%">
+                            <img
+                                src="./sec1/dispersion_sincos_quasimode1.png"
+                                alt="分散関係(m=1, 非 Malkus 磁場の場合)"
+                                width="100%"
+                                style="margin-top: 20%"
+                            />
+                        </div>
+                        <div style="width: 75%">
+                            <h2 class="large">まとめ & 今後の課題</h2>
+
+                            <ul>
+                                <li>離散モード + 連続モード = quasi-mode</li>
+                                <li>
+                                    quasi-mode の減衰率は背景場の形状に依存.
+                                </li>
+                                <li>
+                                    <strong class="important"
+                                        >遅い磁気 Rossby 波も quasi-mode
+                                        化しているかもしれない</strong
+                                    >.
+                                    <ul>
+                                        <li>
+                                            地磁気観測との比較には
+                                            <br />quasi-mode
+                                            の周期と減衰率が使える ?
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    連続モードが出てくる問題では,<br />
+                                    quasi-mode
+                                    のことを気にしないといけないかもしれない.
+                                </li>
+                                <li>
+                                    quasi-mode の正体や連続モードとの関係性は,
+                                    <br />
+                                    (少なくとも中島は) よくわかっていない.
+                                    <ul>
+                                        <li>
+                                            quasi-mode は真の
+                                            &ldquo;モード&rdquo; ではなく,
+                                            <br />
+                                            連続モードの中の離散モードっぽい部分を抽出した影
+                                            ?
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    散逸が入ったとき, quasi-mode は <br />
+                                    どう変化するのかを調べる必要がある.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script src="../reveal.js-master/dist/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                width: 1024,
+                height: 576,
+
+                slideNumber: (slide) => {
+                    return [
+                        Reveal.getIndices(slide).h,
+                        "/",
+                        this.Reveal.getHorizontalSlides().length - 1,
+                    ];
+                },
+            });
+        </script>
+        <script src="./main.js"></script>
+        <script src="./sub.js"></script>
+    </body>
+</html>
