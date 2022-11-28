@@ -17,8 +17,9 @@ body {
     width: 1000px;
 }
 
-h2, h3 {
-    font-family: 'Noto Serif JP', serif;
+h2,
+h3 {
+    font-family: "Noto Serif JP", serif;
     font-weight: 400;
     line-height: 2.5rem;
 }
@@ -47,7 +48,7 @@ header a {
 header a:not(.nav_here) .link-text {
     border-bottom: 1px solid currentColor;
 }
-header a:hover{
+header a:hover {
     color: yellow;
 }
 header a.nav_here {
@@ -91,11 +92,12 @@ p {
 }
 
 main a {
-    background: linear-gradient(to right, #99ff99 50%, transparent 50%) 100% 0% / 200% auto no-repeat;
+    background: linear-gradient(to right, #99ff99 50%, transparent 50%) 100% 0% /
+        200% auto no-repeat;
     border-bottom: 1px solid currentColor;
     color: currentColor;
     text-decoration: none;
-    transition: background-position .5s ease-in;
+    transition: background-position 0.5s ease-in;
 }
 main a.hidden-link {
     border-bottom: none;
@@ -172,23 +174,24 @@ li {
     background: linear-gradient(transparent 80%, pink 80%);
     color: currentColor;
     font-size: 0.9rem;
-    margin-left : 20px;
+    margin-left: 20px;
 }
 
 .english {
     color: blue;
     font-size: 0.85rem;
-    margin-left : 20px;
+    margin-left: 20px;
 }
 
-#thesis .english, #thesis .date {
-    margin-left : 10px;
+#thesis .english,
+#thesis .date {
+    margin-left: 10px;
 }
 
 .best-time {
     color: blue;
     font-size: 1rem;
-    margin-left : 20px;
+    margin-left: 20px;
 }
 
 ul.books {
@@ -231,8 +234,7 @@ footer small {
 /* PC小画面用 */
 /* ======================================== */
 
-@media screen and (max-width: 1000px){
-
+@media screen and (max-width: 1000px) {
     body {
         width: 100vw;
     }
@@ -250,14 +252,16 @@ footer small {
 /* スマホ用 */
 /* ======================================== */
 
-@media screen and (max-width: 550px){
-
-    body, header h1, footer small {
+@media screen and (max-width: 550px) {
+    body,
+    header h1,
+    footer small {
         font-size: 0.9rem;
         line-height: 1.2rem;
     }
 
-    h2, h3 {
+    h2,
+    h3 {
         line-height: 1.8rem;
     }
 
@@ -321,33 +325,34 @@ footer small {
 
     .date {
         font-size: 0.8rem;
-        margin-left : 10px;
+        margin-left: 10px;
     }
 
     .english {
         font-size: 0.75rem;
-        margin-left : 10px;
+        margin-left: 10px;
     }
 
     .best-time {
         font-size: 0.9rem;
-        margin-left : 10px;
+        margin-left: 10px;
     }
 
     .MathJax {
         font-size: 1rem;
     }
-
 }
 
-@media screen and (max-width: 320px){
-
-    body, header h1, footer small {
+@media screen and (max-width: 320px) {
+    body,
+    header h1,
+    footer small {
         font-size: 0.8rem;
         line-height: 1.1rem;
     }
 
-    h2.section, h3.sub-section {
+    h2.section,
+    h3.sub-section {
         font-size: 1.1rem;
         line-height: 1.4rem;
     }
@@ -359,5 +364,4 @@ footer small {
     p.info {
         font-size: 0.7rem;
     }
-
 }
