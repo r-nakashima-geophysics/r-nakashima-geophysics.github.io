@@ -7,7 +7,7 @@ if (!url.includes("hitasura_linear_analysis")) {
 
         <footer>
 
-            <p><small>&copy; <time datetime="2020">2020</time>-<time datetime="2022">2022</time></small></p>
+            <p><small>&copy; <time datetime="2020">2020</time>-<time datetime="2023">2023</time></small></p>
 
         </footer>
 
@@ -17,7 +17,7 @@ if (!url.includes("hitasura_linear_analysis")) {
 
         <footer>
 
-            <p><small>&copy; <time datetime="2022">2022</time>-</small> <a href="../index.html" class="hidden-link">.</a></p>
+            <p><small>&copy; <time datetime="2023">2023</time>-</small> <a href="../index.html" class="hidden-link">.</a></p>
 
         </footer>
 
