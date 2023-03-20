@@ -1,3 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: /pdf/
+Disallow: /slides/
+
+Allow:
+
 Sitemap:
