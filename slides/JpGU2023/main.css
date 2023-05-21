@@ -265,8 +265,8 @@ body.top-slide .reveal .slide-number {
 
 .reveal.slide aside.controls {
     bottom: 79%;
-    /* color: orangered; */
-    color: transparent;
+    color: orangered;
+    /* color: transparent; */
     right: 1%;
 }
 
