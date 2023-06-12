@@ -1,0 +1,2826 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+
+        <title>
+            スペクトル変形法を用いた非粘性水平シアー流の線形安定性解析
+        </title>
+
+        <link rel="stylesheet" href="../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../reveal.js-master/dist/theme/simple.css"
+        />
+
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="../fontawesome-free-6.3.0-web/css/all.min.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/29824876ec.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- MathJax version 3 -->
+        <!-- config ファイル読み込み -->
+        <script src="./mathjax_config.js" defer></script>
+        <!-- CDN (jsdelivr) -->
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>
+                        スペクトル変形法を用いた非粘性水平シアー流の線形安定性解析
+                    </h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        <a
+                            href="http://dyna.geo.kyushu-u.ac.jp/seminar/research_semi.html"
+                            target="_blank"
+                            >深部・ダイナ合同セミナー</a
+                        >
+                        (<time datetime="2023-06-13">2023-06-13</time>)
+                    </p>
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">1. はじめに</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2.
+                            結果(1)</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part3" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 3. 方法</span
+                        ><span id="nav_part3-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part4" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 4.
+                            結果(2)</span
+                        ><span id="nav_part4-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part5" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 5.
+                            まとめ</span
+                        ><span id="nav_part5-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (九大・理) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;m.kyushu-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by
+                        <a href="https://revealjs.com" target="_blank"
+                            >reveal.js</a
+                        >
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                border="0"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -10px 0;
+                                    padding-top: 5px;
+                                "
+                        /></a>
+                        /
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide" data-background-color="azure">
+                    <h2>
+                        スペクトル変形法を用いた<br />
+                        非粘性水平シアー流の線形安定性解析
+                    </h2>
+                    <div
+                        style="
+                            border: solid 3px black;
+                            border-radius: 20px;
+                            background: lightgray;
+
+                            padding: 1% 2% 2% 4%;
+                            margin: auto 4%;
+                            text-align: left;
+                        "
+                    >
+                        <p style="margin: 0 0 0 -2%"><b>要旨:</b></p>
+
+                        <p style="margin: 0">
+                            スペクトル変形法 (<a
+                                href="https://archive.iii.kyushu-u.ac.jp/public/zZYQAJfIZl8LVd_DhkCYHE1ECwdmSpbpcBcWvObPuIJ7"
+                                target="_blank"
+                                >2022 年度 後期の合同セミナーで紹介</a
+                            >) を用いて,
+                            非粘性水平シアー流の線形安定性解析を行い,
+                            その結果を
+                            <a
+                                href="https://www.jpgu.org/meeting_j2023/"
+                                target="_blank"
+                                >JpGU 2023</a
+                            >
+                            で発表した. 本発表では, その発表資料 (ポスター)
+                            の行間を埋めたバージョンを示すとともに, JpGU 2023
+                            でいただいた反論・コメントをもとに研究をさらに進展させたものを紹介する.
+                        </p>
+                    </div>
+                    <p class="small">
+                        本研究は, 国連の掲げる「持続可能な開発目標
+                        (SDGs)」のどの項目にも貢献しません
+                    </p>
+                    <div class="half-box" style="margin-top: 3%">
+                        <div style="width: 15%">
+                            <img
+                                src="./sec0/SSymbolLogo-tenchi_E_jpg.webp"
+                                width="80%"
+                                alt="九州大学ロゴ"
+                                style="
+                                    border: solid black 1px;
+                                    margin-left: 120%;
+                                "
+                            />
+                        </div>
+                        <div style="width: 85%">
+                            <p>
+                                <b
+                                    ><i class="fas fa-microphone"></i> 中島
+                                    涼輔 (九州大学 大学院理学研究院)</b
+                                >
+                            </p>
+                            <dl>
+                                <dd class="small note">
+                                    <i class="fa-solid fa-gear fa-pulse"></i>
+                                    [O] Overview Mode / [F] Fullscreen Mode
+                                </dd>
+                                <dd class="small note">
+                                    <i class="fa-solid fa-gear fa-pulse"></i>
+
+                                    [G+number] Jump to Slide
+                                </dd>
+                                <dd class="small note">
+                                    <i class="fa-solid fa-gear fa-pulse"></i>
+                                    <div class="detail">
+                                        スライド中の<i
+                                            class="fas fa-info-circle detail-icon"
+                                        ></i
+                                        >マークを hover
+                                        すると詳細が表示されます
+
+                                        <div
+                                            class="detail-box bottom"
+                                            style="margin-left: 15%"
+                                        >
+                                            <p>こんな風に</p>
+                                        </div>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== part 1 ========== -->
+
+                <section data-state="part1">
+                    <h2>非粘性水平シアー流の線形安定性解析とは？</h2>
+                    <ul style="margin-left: -1%">
+                        <li class="fragment">
+                            水平 2 次元 $(x,y)$ の非粘性・非圧縮流体:
+                            $(\uppartial\bm{u}/\uppartial
+                            t)+(\bm{u}\ip\grad)\bm{u}=-\grad(p/\rho_0)$,
+                            $\div\bm{u}=0$
+                            <div style="position: relative">
+                                <figure
+                                    style="
+                                        position: absolute;
+                                        right: -3%;
+                                        top: 0;
+                                        margin-top: 8%;
+                                        width: 26%;
+                                    "
+                                >
+                                    <img
+                                        src="./sec1/shear.svg"
+                                        alt="非粘性水平シアー流とは"
+                                    />
+                                </figure>
+                            </div>
+                        </li>
+                        <li class="fragment">
+                            速度場を
+                            $\bm{u}=U(y)\hat{\bm{e}}_x+\bm{u}_1(x,y,t)$ とし,
+                            背景流 $|U|\gg$ 摂動 $|\bm{u}_1|$ を仮定
+                        </li>
+                        <li class="fragment">
+                            Fourier 変換
+                            $\bm{u}_1=\mathrm{Re}\left[\tilde{\bm{u}}(y;k,c)\upe^{\upi
+                            k(x-ct)}\right]$ し, 位相速度 $c$
+                            の実・虚部から時間発展を理解
+                        </li>
+                        <li class="fragment">
+                            基礎方程式:
+                            <strong class="alert">Rayleigh 方程式</strong>
+                            <span class="small"
+                                >[e.g.
+                                <a
+                                    href="https://doi.org/10.1017/CBO9780511616938"
+                                    target="_blank"
+                                    >Drazin & Reid (1981)</a
+                                >]</span
+                            ><br />
+                            <div
+                                class="math-box_small"
+                                style="width: 45%; font-size: 95%"
+                            >
+                                \[\left(c-U(y)\right)\underbrace{\left(k^2\tilde{\psi}-\frac{\upd^2\tilde{\psi}}{\upd
+                                y^2}\right)}_{\text{渦度 : }
+                                \tilde{\zeta}}\,=\,\frac{\upd^2 U(y)}{\upd
+                                y^2}\tilde{\psi}\]
+                            </div>
+                            $\psi$ は流線関数: $u_{1x}=(\uppartial
+                            \psi_1/\uppartial y)$, $u_{1y}=-(\uppartial
+                            \psi_1/\uppartial x)$
+                            <ul>
+                                <li class="fragment">
+                                    $x$ 方向の波数 $k$ と $U(y)$
+                                    を与えたときの, 境界条件を満たす $c$ と
+                                    $\tilde{\psi}$ の組を探す固有値問題
+                                </li>
+                                <li class="fragment">
+                                    $c=U(y)$ を満たす $y=y_\mathrm{c}$
+                                    に微分方程式の<strong class="alert"
+                                        >確定特異点</strong
+                                    >
+                                    (最高階微分の係数が $0$) あり
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            <b
+                                >地磁気変動の原因として重要かもしれない地球外核内の磁気流体波動に現れる<br />
+                                <u>類似の特異点</u
+                                >に対処できるような方法を見つけるために本研究を行った</b
+                            >
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>
+                        教科書レベルの例 (区分線形な背景流分布)
+                        <span class="small"
+                            >e.g.
+                            <a
+                                href="https://doi.org/10.1017/9781107588417"
+                                target="_blank"
+                                >Vallis (2006)</a
+                            ></span
+                        >
+                    </h2>
+
+                    <div class="half-box">
+                        <div style="width: 43%; position: relative">
+                            <figure
+                                style="
+                                    position: absolute;
+                                    left: -59%;
+                                    top: -14%;
+                                "
+                            >
+                                <img
+                                    src="./sec1/u_piecewise.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="12%"
+                                    alt="区分線形な背景流分布"
+                                />
+                            </figure>
+                            <div
+                                class="math-box_small"
+                                style="
+                                    width: 65%;
+                                    font-size: 85%;
+                                    margin-left: 20%;
+                                "
+                            >
+                                \[\frac{U(y)}{U_0}\,=\, \begin{cases} 1 &
+                                \phantom{-}a &lt; y \leq y_2\\[1pt] y/a & -a
+                                &lt; y \leq a\\[1pt] -1 & \phantom{\,\,}y_1
+                                \leq y \leq -a \end{cases}\]
+                            </div>
+                            <ul style="margin: 7% auto auto -5%">
+                                <li class="fragment">
+                                    このとき, Rayleigh 方程式は<br />
+                                    ($c\neq U(y)$ ならば)
+                                    <div style="font-size: 90%">
+                                        \[k^2\tilde{\psi}-\frac{\upd^2\tilde{\psi}}{\upd
+                                        y^2}\,=\,\textcolor{red}{\cancel{\textcolor{black}{\frac{(\upd^2U(y)/\upd
+                                        y^2)}{c-U(y)}\tilde{\psi}}}}\textcolor{red}{\,=\,0}\]
+                                    </div>
+                                </li>
+                                <li class="fragment">
+                                    境界・接続条件は,<br />
+                                    圧力 $p$ と $y$ 方向の変位 $\eta$ が連続
+                                    <div style="font-size: 90%">
+                                        \[\begin{align}
+                                        \tilde{p}/\rho_0\,&=\,\left(c-U(y)\right)(\upd\tilde{\psi}/\upd
+                                        y)+\left(\upd U(y)/\upd
+                                        y\right)\tilde{\psi}\notag\\
+                                        \tilde{\eta}\,&=\,\tilde{\psi}/\left(c-U(y)\right)\notag
+                                        \end{align}\]
+                                    </div>
+                                    <p class="small note">
+                                        <i
+                                            class="fa-solid fa-triangle-exclamation"
+                                        ></i>
+                                        $U(y)$ が不連続ならば $\tilde{u}_y$
+                                        も不連続
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            style="
+                                width: 57%;
+                                border-left: 5px dashed lightsteelblue;
+                            "
+                        >
+                            <ul>
+                                <li class="fragment">
+                                    非自明な解 ($\tilde{\psi}\neq0$)
+                                    をもつための条件
+                                    <div
+                                        style="
+                                            font-size: 63%;
+                                            margin-left: -5%;
+                                        "
+                                    >
+                                        \[\det\begin{pmatrix} \upe^{ky_2} &
+                                        \upe^{-ky_2} & 0 & 0 & 0 & 0 \\
+                                        \upe^{ka} & \upe^{-ka} & -\upe^{ka} &
+                                        -\upe^{-ka} & 0 & 0 \\ \upe^{ka} &
+                                        -\upe^{-ka} &
+                                        -\upe^{ka}-\dfrac{U_0\upe^{ka}}{ka(c-U_0)}
+                                        &
+                                        \upe^{-ka}-\dfrac{U_0\upe^{-ka}}{ka(c-U_0)}
+                                        & 0 & 0 \\ 0 & 0 &
+                                        -\upe^{-ka}-\dfrac{U_0\upe^{-ka}}{ka(c+U_0)}
+                                        &
+                                        \upe^{ka}-\dfrac{U_0\upe^{ka}}{ka(c+U_0)}
+                                        & \upe^{-ka} & -\upe^{ka} \\ 0 & 0 &
+                                        -\upe^{-ka} & -\upe^{ka} & \upe^{-ka} &
+                                        \upe^{ka} \\ 0 & 0 & 0 & 0 &
+                                        \upe^{ky_1} & \upe^{-ky_1}
+                                        \end{pmatrix}\,=\,0\]
+                                    </div>
+                                </li>
+                                <li class="fragment">
+                                    これを計算すると
+                                    <div
+                                        class="math-box_small"
+                                        style="
+                                            font-size: 72%;
+                                            width: 105%;
+                                            margin-left: -6%;
+                                        "
+                                    >
+                                        \[\begin{align}
+                                        \textcolor{red}{c^2}\,&+\,c\left(\frac{U_0}{2ka}\right)\frac{\upe^{-2k(-a-y_1)}-\upe^{-2k(y_2-a)}}{1-\upe^{-2k(y_2-y_1)}}\notag\\
+                                        \,&\textcolor{red}{-\,\left(\frac{U_0}{2ka}\right)^2\left[(1-4ka-\upe^{-4ka})\textcolor{black}{\frac{(1-\upe^{-2k(-a-y_1)})(1-\upe^{-2k(y_2-a)})}{1-\upe^{-2k(y_2-y_1)}}}+4k^2a^2\right.}\notag\\
+                                        &\qquad\qquad\textcolor{red}{\left.\textcolor{black}{-2ka(1-\upe^{-4ka})\frac{\upe^{-2k(-a-y_1)}+\upe^{-2k(y_2-a)}-2\upe^{-2k(y_2-y_1-2a)}}{1-\upe^{-2k(y_2-y_1)}}}\right]\,=\,0}\notag
+                                        \end{align}\]
+                                        <div class="detail">
+                                            <i
+                                                class="fas fa-info-circle detail-icon"
+                                            ></i>
+
+                                            <div
+                                                class="detail-box top"
+                                                style="
+                                                    left: auto;
+                                                    left: -1800%;
+                                                "
+                                            >
+                                                <p>
+                                                    \[ \begin{align}
+                                                    \det\begin{pmatrix} 1 &
+                                                    \upe^{-2ky_2} \\ 1 &
+                                                    \upe^{-2ka} \end{pmatrix}
+                                                    \det(\mathsf{D}-\mathsf{C}\mathsf{A}^{-1}\mathsf{B})
+                                                    \,=\,\underbrace{\det\begin{pmatrix}
+                                                    1 & \upe^{-2ky_2} \\ 1 &
+                                                    \upe^{-2ka}
+                                                    \end{pmatrix}\det\begin{pmatrix}
+                                                    \upe^{-2ka} & 1 \\
+                                                    \upe^{2ky_1} & 1
+                                                    \end{pmatrix}}_{\neq0}\begin{pmatrix}
+                                                    -1-\dfrac{U_0}{2ka(c-U_0)}-\dfrac{\upe^{-2ky_2}}{\upe^{-2ka}-\upe^{-2ky_2}}
+                                                    &
+                                                    -\dfrac{U_0\upe^{-2ka}}{2ka(c-U_0)}-\dfrac{\upe^{-2k(a+y_2)}}{\upe^{-2ka}-\upe^{-2ky_2}}
+                                                    \\
+                                                    -\dfrac{U_0\upe^{-2ka}}{2ka(c+U_0)}+\dfrac{\upe^{-2k(a-y_1)}}{\upe^{-2ka}-\upe^{2ky_1}}
+                                                    &
+                                                    1-\dfrac{U_0}{2ka(c+U_0)}+\dfrac{\upe^{2ky_1}}{\upe^{-2ka}-\upe^{2ky_1}}\end{pmatrix}\,=\,0\notag
+                                                    \end{align}\] ただし,
+                                                    ブロック行列の行列式の公式を使った.
+                                                    ここで, \[\begin{align}
+                                                    \mathsf{D}\,&=\,\begin{pmatrix}
+                                                    -1-\dfrac{U_0}{2ka(c-U_0)}
+                                                    &
+                                                    -\dfrac{U_0\upe^{-2ka}}{2ka(c-U_0)}
+                                                    & 0 & 0 \\
+                                                    -\dfrac{U_0\upe^{-2ka}}{2ka(c+U_0)}
+                                                    & 1-\dfrac{U_0}{2ka(c+U_0)}
+                                                    & 0 & -1 \\ -\upe^{-2ka} &
+                                                    -1 & \upe^{-2ka} & 1 \\ 0 &
+                                                    0 & \upe^{2ky_1} & 1
+                                                    \end{pmatrix}\notag \\
+                                                    \mathsf{C}\mathsf{A}^{-1}\mathsf{B}\,&=\,\begin{pmatrix}1
+                                                    & 0 \\ 0 & 0 \\ 0 & 0 \\ 0
+                                                    & 0
+                                                    \end{pmatrix}\frac{1}{\upe^{-2ka}-\upe^{-2ky_2}}\begin{pmatrix}\upe^{-2ka}
+                                                    & -\upe^{-2ky_2} \\ -1 &
+                                                    1\end{pmatrix}\begin{pmatrix}0
+                                                    & 0 & 0 & 0 \\ -1 &
+                                                    -\upe^{-2ka} & 0 & 0
+                                                    \end{pmatrix}\,=\,\frac{1}{\upe^{-2ka}-\upe^{-2ky_2}}\begin{pmatrix}\upe^{-2ky_2}
+                                                    & \upe^{-2k(a+y_2)} & 0 & 0
+                                                    \\ 0 & 0 & 0 & 0 \\ 0 & 0 &
+                                                    0 & 0 \\ 0 & 0 & 0 & 0
+                                                    \end{pmatrix}\notag
+                                                    \end{align}\]
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    $k$ を与えたときの $c$ を計算すれば<br />
+                                    $U(y)$ の安定性を議論できる
+                                    (結果は次スライド)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1" data-auto-animate>
+                    <div class="half-box">
+                        <div style="width: 60%; position: relative">
+                            <h2>(ほぼ) 区分線形な背景流分布</h2>
+                            <ul>
+                                <li>
+                                    より一般の $U(y)$ の場合は<br />
+                                    数値的な方法が必要 (方法は後で説明)
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    手始めに, 区分線形な背景流分布の<br />
+                                    折れ曲がり部分を曲線で滑らかに繋げる
+                                    <figure
+                                        style="
+                                            position: absolute;
+                                            left: -20%;
+                                            top: 25%;
+                                        "
+                                    >
+                                        <img
+                                            src="./sec1/u_almost-piecewise.webp"
+                                            style="
+                                                border: solid 1px black;
+                                                padding: 1%;
+                                                background: white;
+                                            "
+                                            width="13%"
+                                            alt="(ほぼ) 区分線形な背景流分布"
+                                        />
+                                    </figure>
+                                    <div
+                                        class="math-box_small"
+                                        style="
+                                            width: 100%;
+                                            font-size: 75%;
+                                            margin-left: -5%;
+                                        "
+                                    >
+                                        \[\frac{U(y)}{U_0}\,=\, \begin{cases} 1
+                                        & \phantom{-}a+d &lt; y \leq y_2\\[1pt]
+                                        1-\dfrac{(a+d-y)^2}{4ad} &
+                                        \phantom{-}a-d &lt; y \leq a+d \\[3pt]
+                                        y/a & -a+d &lt; y \leq a-d\\[1pt]
+                                        -1+\dfrac{(-a-d-y)^2}{4hd} & -a-d &lt;
+                                        y \leq -a+d\\[3pt] -1 &
+                                        \phantom{-a-}y_1 \leq y \leq -a-d
+                                        \end{cases}\]
+                                        <div class="detail">
+                                            <i
+                                                class="fas fa-info-circle detail-icon"
+                                            ></i>
+
+                                            <div
+                                                class="detail-box top"
+                                                style="left: -400%"
+                                            >
+                                                <p>
+                                                    繋ぎ目部分を
+                                                    $U(y)=Ay^3+By^2+Cy+D$
+                                                    とすると, \[\begin{pmatrix}
+                                                    (a+d)^3 & (a+d)^2 & (a+d) &
+                                                    1 \\ 3(a+d)^2 & 2(a+d) & 1
+                                                    & 0 \\ 3(a-d)^2 & 2(a-d) &
+                                                    1 & 0 \\ (a-d)^3 & (a-d)^2
+                                                    & (a-d) & 1 \end{pmatrix}
+                                                    \begin{pmatrix}A \\ B \\ C
+                                                    \\ D\end{pmatrix}\,=\,
+                                                    \begin{pmatrix}U(a+d) \\
+                                                    (\upd U/\upd y)|_{y=a+d} \\
+                                                    (\upd U/\upd y)|_{y=a-d} \\
+                                                    U(a-d)\end{pmatrix}\]
+                                                    を満たすように, $A$, $B$,
+                                                    $C$, $D$ を決めれば良い.
+                                                    左辺の行列の逆行列は \[
+                                                    \frac{1}{4d^3}\begin{pmatrix}
+                                                    -1 & d & d & 1 \\ 3a &
+                                                    -d(3a-d) & -d(3a+d) & -3a
+                                                    \\ -3(a-d)(a+d) &
+                                                    d(a-d)(3a+d) & d(a+d)(3a-d)
+                                                    & 3(a+d)(a-d) \\
+                                                    (a-d)^2(a+2d) &
+                                                    -d(a-d)^2(a+d) &
+                                                    -d(a+d)^2(a-d) &
+                                                    -(a+d)^2(a-2d)\end{pmatrix}
+                                                    \]
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p style="margin: 2% auto 0 auto">
+                                        <span class="small"
+                                            ><a
+                                                href="https://doi.org/10.1017/S0022112096001930"
+                                                target="_blank"
+                                                >Baines+ (1996)</a
+                                            >,
+                                            <a
+                                                href="https://doi.org/10.1063/1.5116633"
+                                                target="_blank"
+                                                >Carpenter & Guha (2019)</a
+                                            ></span
+                                        >
+                                    </p>
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    $y_1=-3a$, $y_2=3a$, $d=0.01a$ で計算
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    区分線形な背景流分布 ($d\to0$)
+                                    の解析解を<br />
+                                    だいたい再現できた&emsp;
+                                    <span class="small note"
+                                        ><i
+                                            class="fa-solid fa-triangle-exclamation"
+                                        ></i
+                                        >少しズレあり</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure
+                                class="fragment"
+                                data-fragment-index="2"
+                                style="
+                                    width: 105%;
+                                    margin: -10% auto auto -10%;
+                                "
+                            >
+                                <img
+                                    class="focus-fig"
+                                    src="./sec1/dispersion_almost-piecewise.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での分散関係"
+                                />
+                                <figcaption>
+                                    $c$ vs. $k$ (分散関係)<br />
+                                    青丸: $d\to0$ の解析解
+                                    (他は次スライドで説明)
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1" data-auto-animate>
+                    <div class="half-box">
+                        <div style="width: 60%; position: relative">
+                            <h2>(ほぼ) 区分線形な背景流分布</h2>
+
+                            <ul style="margin: auto auto 0 1%">
+                                <li>
+                                    確定特異点 $y=y_\mathrm{c}$ により生じる<br />
+                                    連続スペクトル ($-U_0\leq\mathrm{Re}(c)\leq
+                                    U_0$, $\mathrm{Im}(c)=0$)
+                                    <div style="font-size: 80%">
+                                        \[(c-U(y))\underbrace{\left(k^2\tilde{\psi}-\frac{\upd^2\tilde{\psi}}{\upd
+                                        y^2}\right)}_{\propto\,\delta(y-y_\mathrm{c})}\,=\,\textcolor{red}{\underbrace{\cancel{\textcolor{black}{\frac{\upd^2U(y)}{\upd
+                                        y^2}\tilde{\psi}}}}_{\hspace{-2.3cm}\text{(繋ぎ目を除いて)}\,0}}\]
+                                    </div>
+                                    <span class="small note"
+                                        >解析解では, $c\neq U(y)$
+                                        を仮定していたので出てこない</span
+                                    >
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    小さい $k$
+                                    での不安定・減衰モード($\mathrm{Im}(c)\neq0$)
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    大きい $k$ での中立波 ($\mathrm{Im}(c)=0$)
+                                    のペア
+                                    <ul>
+                                        <li class="fragment">
+                                            2 つの中立波を表す曲線 $c(k)$ が<br />
+                                            ぶつかる ($\mathrm{Re}(c)$
+                                            が一致する) $k$ で<br />
+                                            不安定モードが発生
+                                        </li>
+                                        <li class="fragment">
+                                            「<strong class="alert"
+                                                >2 つの中立波の共鳴により<br />
+                                                不安定が生じる</strong
+                                            >」と解釈する
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure
+                                style="
+                                    width: 105%;
+                                    margin: -10% auto auto -10%;
+                                    position: relative;
+                                "
+                            >
+                                <img
+                                    class="focus-fig"
+                                    src="./sec1/dispersion_almost-piecewise.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での分散関係"
+                                />
+                                <figcaption>
+                                    $c$ vs. $k$ (分散関係)<br />
+                                    青丸: $d\to0$ の解析解
+                                </figcaption>
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        left: 21%;
+                                        top: 10%;
+                                    "
+                                >
+                                    連続スペクトル
+                                </figcaption>
+                                <figcaption
+                                    class="fragment"
+                                    style="
+                                        position: absolute;
+                                        left: 29%;
+                                        bottom: 34%;
+                                        color: red;
+                                    "
+                                    data-fragment-index="1"
+                                >
+                                    不安定モード
+                                </figcaption>
+                                <figcaption
+                                    class="fragment"
+                                    style="
+                                        position: absolute;
+                                        left: 29%;
+                                        bottom: 19%;
+                                        color: red;
+                                    "
+                                    data-fragment-index="1"
+                                >
+                                    減衰モード
+                                </figcaption>
+                                <figcaption
+                                    class="black fragment"
+                                    style="
+                                        position: absolute;
+                                        right: 10%;
+                                        top: 41%;
+                                    "
+                                    data-fragment-index="2"
+                                >
+                                    中立波
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1">
+                    <h2>
+                        (ほぼ) 区分線形な背景流分布 ($\psi_1$ と $\zeta_1$
+                        の構造)
+                    </h2>
+                    <div class="half-box">
+                        <div style="width: 33%">
+                            <p style="margin: 0">不安定モード</p>
+                            <figure>
+                                <img
+                                    src="./sec1/eigfunc_unstable_almost-piecewise.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での固有関数 (不安定モード)"
+                                />
+                                <figcaption
+                                    class="white"
+                                    style="margin: auto 5%"
+                                >
+                                    <b>[左]</b> 青線: $U$, 点線: $-(\upd^2
+                                    U/\upd y^2)$<br />
+                                    <b>[右]</b> 色: 流線関数 $\psi_1$, 線: 渦度
+                                    $\zeta_1$
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                        <div
+                            class="fragment"
+                            style="
+                                width: 64%;
+                                border-left: 5px dashed lightsteelblue;
+                            "
+                            data-fragment-index="1"
+                        >
+                            <p style="margin: 0">中立波 (境界 Rossby 波)</p>
+                            <div class="half-box">
+                                <div style="width: 50%">
+                                    <figure>
+                                        <img
+                                            src="./sec1/eigfunc_neutral-p_almost-piecewise.webp"
+                                            alt="(ほぼ) 区分線形な背景流分布での固有関数 (中立波)"
+                                        />
+                                    </figure>
+                                </div>
+                                <div style="width: 50%">
+                                    <figure>
+                                        <img
+                                            src="./sec1/eigfunc_neutral-m_almost-piecewise.webp"
+                                            alt="(ほぼ) 区分線形な背景流分布での固有関数 (中立波)"
+                                        />
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul style="margin-top: 2%">
+                        <li>見やすさのために $d=0.2a$ の場合を示す</li>
+                        <li class="fragment" data-fragment-index="1">
+                            不安定モードの固有関数 ($\psi_1$, $\zeta_1$) は,<br />
+                            中立波のペアの固有関数を (位相差をつけて)
+                            重ねたものと似ている<br />
+                            [<strong class="alert">共鳴と解釈できる根拠</strong
+                            >]
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>
+                        中立波ペアの共鳴の数学的な説明<br />
+                        (wave interaction theory)
+                        <span class="small"
+                            >e.g.
+                            <a
+                                href="https://doi.org/10.1063/5.0011351"
+                                target="_blank"
+                                >Heifetz+ (2020)</a
+                            ></span
+                        >
+                    </h2>
+                    <div class="half-box">
+                        <div style="width: 50%">
+                            <ul style="margin-left: 0">
+                                <li class="fragment">
+                                    Fourier 変換をやり直し
+                                    <div style="font-size: 80%">
+                                        \[\begin{align}
+                                        \zeta_1\,&=\,\textcolor{red}{\xcancel{\textcolor{black}{\mathrm{Re}\left[\tilde{\zeta}(y;k,c)\upe^{\upi
+                                        k(x-ct)}\right]}}}\,=\,\mathrm{Re}\left[Z(y,\textcolor{red}{t};k)\upe^{\upi
+                                        \left[kx+\varphi(\textcolor{red}{y},t;k)\right]}\right]\notag\\
+                                        \psi_1\,&=\,\mathrm{Re}\left[\varPsi(y,\textcolor{red}{t};k)\upe^{\upi
+                                        \left[kx+\varphi(\textcolor{red}{y},t;k)\right]}\right]\notag
+                                        \end{align}\]
+                                    </div>
+                                </li>
+                                <li class="fragment">
+                                    $\zeta_1=-\nabla^2\psi_1$ より
+                                    <div style="font-size: 80%">
+                                        \[\varPsi(\textcolor{red}{y},t)\upe^{\upi\varphi(\textcolor{red}{y},t)}\,=\,\int_{y_1}^{y_2}Z(\textcolor{blue}{y_*},t)\upe^{\upi\varphi(\textcolor{blue}{y_*},t)}G(y,y_*;k)\upd
+                                        y_*\]
+                                    </div>
+                                    $G(y,y_*;k)$ はラプラシアンの Green 関数
+                                    <div class="detail">
+                                        <i
+                                            class="fas fa-info-circle detail-icon"
+                                        ></i>
+
+                                        <div
+                                            class="detail-box top"
+                                            style="margin-left: -600%"
+                                        >
+                                            <p>
+                                                $(\partial^2G(y,y_*)/\partial
+                                                y^2)-k^2G(y,y_*)=-\delta(y-y_*)$
+                                                とすると \[\begin{align}
+                                                G(y,y_*;k)\,&=\,\frac{\sinh\left[k(y_2-y)\right]\sinh\left[k(y_*-y_1)\right]}{k\sinh\left[k(y_2-y_1)\right]}H(y-y_*)\notag\\
+                                                \,&+\,\frac{\sinh\left[k(y_2-y_*)\right]\sinh\left[k(y-y_1)\right]}{k\sinh\left[k(y_2-y_1)\right]}H(y_*-y)\notag\end{align}\]
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li class="fragment">
+                                            位置 $\textcolor{blue}{y_*}$ の
+                                            $\zeta_1$ によって<br />
+                                            離れた場所 ($\textcolor{red}{y}$)
+                                            の $\psi_1$ が<br />
+                                            どれだけ生じるか
+                                        </li>
+                                        <li class="fragment">
+                                            $\textcolor{red}{y} $
+                                            にある中立波は,
+                                            $\textcolor{blue}{y_*}$
+                                            にある中立波から<br />
+                                            どのくらい影響を受けるか
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            class="fragment"
+                            style="
+                                width: 50%;
+                                border-left: 5px dashed lightsteelblue;
+                            "
+                        >
+                            <ul>
+                                <li>
+                                    Rayleigh 方程式の元となる式に代入すると
+                                    <div style="font-size: 80%">
+                                        \[\frac{\uppartial
+                                        Z(\textcolor{red}{y},t)}{\uppartial
+                                        t}\,=\,k\frac{\upd^2 U(y)}{\upd
+                                        y^2}\int_{y_1}^{y_2}Z(\textcolor{blue}{y_*},t)\sin(\Updelta
+                                        \varphi) G(y,y_*)\upd y_* \]
+                                    </div>
+                                    ここで, $\Updelta
+                                    \varphi(y,y_*,t)\equiv\varphi(\textcolor{blue}{y_*},t)-\varphi(\textcolor{red}{y},t)$
+                                </li>
+                                <li class="fragment">
+                                    $d\ll 1$ の (ほぼ) 区分線形な背景流分布では
+                                    <div style="font-size: 75%">
+                                        \[\begin{align} \frac{\uppartial
+                                        Z(\textcolor{red}{a},t)}{\uppartial
+                                        t}\,&\approx\,k\left.\frac{\upd^2
+                                        U(y)}{\upd
+                                        y^2}\right|_{y=a}Z(\textcolor{blue}{-a},t)\sin[\Updelta
+                                        \varphi(a,-a)] G(a,-a)\notag\\
+                                        \frac{\uppartial
+                                        Z(\textcolor{blue}{-a},t)}{\uppartial
+                                        t}\,&\approx\,k\left.\frac{\upd^2
+                                        U(y)}{\upd
+                                        y^2}\right|_{y=-a}Z(\textcolor{red}{a},t)\sin[\Updelta
+                                        \varphi(-a,a)] G(-a,a)\notag
+                                        \end{align}\]
+                                    </div>
+                                    <figure>
+                                        <img
+                                            src="./sec1/eigfunc_unstable_almost-piecewise.webp"
+                                            alt="(ほぼ) 区分線形な背景流分布での固有関数 (不安定モード)"
+                                            width="55%"
+                                            style="
+                                                margin-left: -10%;
+                                                position: relative;
+                                            "
+                                        />
+                                        <figcaption
+                                            style="
+                                                position: absolute;
+                                                bottom: 15%;
+                                                right: 0;
+                                            "
+                                        >
+                                            $\textcolor{red}{a}$ と
+                                            $\textcolor{blue}{-a}$
+                                            にある中立波が<br />
+                                            同位相 or 逆位相でなければ<br />
+                                            強め合ったり, <br />
+                                            弱めあったりできる
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1">
+                    <div class="half-box">
+                        <div style="width: 75%">
+                            <h2>中立波ペアの共鳴の物理的な説明</h2>
+                            <ul>
+                                <li class="fragment" data-fragment-index="1">
+                                    wave interaction theory より
+                                    <div style="font-size: 80%">
+                                        \[-\frac{1}{k}\frac{\uppartial
+                                        \varphi(y,t)}{\uppartial
+                                        t}\,=\,U(y)\,+\,\frac{\upd^2 U(y)}{\upd
+                                        y^2}\int_{y_1}^{y_2}\frac{Z(y_*,t)}{Z(y,t)}\cos(\Updelta
+                                        \varphi) G(y,y_*)\upd y_*\]
+                                    </div>
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    $d\ll1$ の (ほぼ) 区分線形な背景流分布で,
+                                    中立波のとき<br />
+                                    <div style="font-size: 75%">
+                                        \[\underbrace{-\frac{1}{k}\frac{\uppartial
+                                        \varphi(a,t)}{\uppartial
+                                        t}}_{\hspace{-2cm}正味の位相速度}\,\approx\,U(a)\,+\,\underbrace{\left.\frac{\upd^2
+                                        U}{\upd
+                                        y^2}\right|_{y=a}G(a,a)}_{\hspace{-1.8cm}\text{Rossby}\,\text{波の位相速度}}\,,\qquad-\frac{1}{k}\frac{\uppartial
+                                        \varphi(-a,t)}{\uppartial
+                                        t}\,\approx\,U(-a)\,+\,\left.\frac{\upd^2
+                                        U}{\upd y^2}\right|_{y=-a}G(-a,-a) \]
+                                    </div>
+                                    ここで, $G(a,a)>0$, $G(-a,-a)>0$
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    背景渦度は $u_{1y}$ で移流される:
+                                    $[(\uppartial/\uppartial
+                                    t)+U(\uppartial/\uppartial
+                                    x)]\zeta_1=(\upd^2 U/\upd y^2)u_{1y}$
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            class="fragment"
+                            style="width: 25%"
+                            data-fragment-index="2"
+                        >
+                            <figure style="margin-top: -7%">
+                                <img
+                                    src="./sec1/eigfunc_neutral-p_almost-piecewise.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での固有関数
+                                (中立波)"
+                                />
+                                <img
+                                    src="./sec1/eigfunc_neutral-m_almost-piecewise.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での固有関数
+                                (中立波)"
+                                />
+                            </figure>
+                            <figcaption class="white" style="margin: auto -6%">
+                                <b>[左]</b> 青線: $U$, 点線: $-(\upd^2 U/\upd
+                                y^2)$<br />
+                                <b>[右]</b> 色: 流線関数 $\psi_1$, 線: 渦度
+                                $\zeta_1$
+                            </figcaption>
+                        </div>
+                    </div>
+                    <div class="half-box fragment" data-fragment-index="3">
+                        <div style="width: 14%; position: relative">
+                            <figcaption
+                                style="position: absolute; bottom: 30%"
+                            >
+                                2018 年度 後期<br />合同セミナー<br />
+                                スライドより<br />
+                            </figcaption>
+                            <figcaption
+                                class="black"
+                                style="
+                                    position: absolute;
+                                    bottom: 5%;
+                                    left: 30%;
+                                    margin-right: -50%;
+                                "
+                            >
+                                背景渦度: $-(\upd U/\upd y)$
+                            </figcaption>
+                        </div>
+                        <div style="width: 43%">
+                            <figure>
+                                <img
+                                    src="./sec1/mechanism_rossby-wave_p.webp"
+                                    alt="境界 Rossby 波の物理的説明"
+                                />
+                            </figure>
+                        </div>
+                        <div style="width: 43%">
+                            <figure>
+                                <img
+                                    src="./sec1/mechanism_rossby-wave_m.webp"
+                                    alt="境界 Rossby 波の物理的説明"
+                                />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1">
+                    <div class="half-box">
+                        <div style="width: 55%; margin-top: 10%">
+                            <h2>中立波ペアの共鳴の物理的な説明</h2>
+                            <ul>
+                                <li>
+                                    さらに, 2 つの中立波の正味の位相速度が<br />
+                                    一致する $k$ の場合について考える<br />
+                                    (特に $y_1=-y_2$ の場合は
+                                    $\mathrm{Re}(c)=0$)
+                                </li>
+                                <li class="fragment">
+                                    一方の中立波の渦がつくる $u_{1y}$ は,
+                                    <br />
+                                    その中立波付近の $\zeta_1$
+                                    を変化させるだけでなく <br />
+                                    他方の中立波の近くの $\zeta_1$ も変化させる
+                                </li>
+                                <li class="fragment">
+                                    一方の中立波の渦がつくる $u_{1y}$ が,
+                                    <br />
+                                    <strong class="alert"
+                                        >他方の中立波の渦を強める配置</strong
+                                    >になっていれば
+                                    <br />
+                                    振幅がどんどん大きくなっていって不安定
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 45%">
+                            <figure style="margin: -4% auto 4% auto">
+                                <img
+                                    src="./sec1/eigfunc_unstable_almost-piecewise.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での固有関数 (不安定モード)"
+                                    width="60%"
+                                />
+                                <figcaption
+                                    class="white"
+                                    style="margin: auto 17%"
+                                >
+                                    <b>[左]</b> 青線: $U$, 点線: $-(\upd^2
+                                    U/\upd y^2)$<br />
+                                    <b>[右]</b> 色: 流線関数 $\psi_1$, 線: 渦度
+                                    $\zeta_1$
+                                </figcaption>
+                            </figure>
+                            <figure style="position: relative">
+                                <img
+                                    src="./sec1/mechanism_shear-instability.webp"
+                                    alt="境界 Rossby 波の物理的説明"
+                                />
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        top: -1%;
+                                        left: -5%;
+                                    "
+                                >
+                                    背景渦度: $-(\upd U/\upd y)$
+                                </figcaption>
+                                <figcaption>
+                                    2018 年度 後期 合同セミナー スライドより
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1">
+                    <h2>
+                        (ほぼ) 区分線形な背景流分布 ($\psi_1$ と $\zeta_1$
+                        の構造)
+                    </h2>
+                    <div class="half-box">
+                        <div style="width: 35%; margin-top: 5%">
+                            <p style="margin: 0">連続スペクトル</p>
+                            <figure>
+                                <img
+                                    src="./sec1/eigfunc_continuous_almost-piecewise.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での固有関数 (連続スペクトル)"
+                                />
+                                <figcaption
+                                    class="white"
+                                    style="margin: auto 8%"
+                                >
+                                    <b>[左]</b> 青線: $U$, 点線: $-(\upd^2
+                                    U/\upd y^2)$<br />
+                                    <b>[右]</b> 色: 流線関数 $\psi_1$, 線: 渦度
+                                    $\zeta_1$
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div style="width: 65%">
+                            <ul>
+                                <li>
+                                    連続スペクトルの固有関数では<br />
+                                    $\tilde{\zeta}$ が確定特異点
+                                    $y=y_\mathrm{c}$ にデルタ関数的に局在
+                                    <ul>
+                                        <li>
+                                            $\zeta_1=-\nabla^2\psi_1$ より,
+                                            $y=y_\mathrm{c}$ で $(\upd
+                                            \tilde{\psi}/\upd y)$ が不連続
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment">
+                                    中立波に似た構造も, 持ち合わせている
+                                </li>
+                                <li class="fragment">
+                                    wave interaction theory を使ってみると,<br />
+                                    $d\ll1$ の (ほぼ) 区分線形な背景流分布では
+                                    <div style="font-size: 75%">
+                                        \[\begin{align}-\frac{1}{k}\frac{\uppartial
+                                        \varphi(y_\mathrm{c},t)}{\uppartial
+                                        t}\,&=\,U(y_\mathrm{c})\,\notag\\
+                                        -\frac{1}{k}\frac{\uppartial
+                                        \varphi(a,t)}{\uppartial
+                                        t}\,&=\,U(a)\,+\,\left.\frac{\upd^2
+                                        U}{\upd
+                                        y^2}\right|_{y=a}\textcolor{red}{\frac{Z(y_\mathrm{c},t)}{Z(a,t)}}G(a,y_\mathrm{c})\,+\,\underbrace{\left.\frac{\upd^2
+                                        U}{\upd
+                                        y^2}\right|_{y=a}G(a,a)}_{{\hspace{-1.9cm}\text{Rossby}\,\text{波の位相速度}}}\notag\end{align}\]
+                                    </div>
+                                    固有モードでは,
+                                    位相速度は位置によらないはずので,<br />
+                                    上 2 式が一致するように
+                                    $Z(y_\mathrm{c},t)/Z(a,t)$ が決まっている
+                                </li>
+                                <li class="fragment">
+                                    中立波は, 連続スペクトルのうち
+                                    <br />
+                                    $Z(y_\mathrm{c},t)=0$ (ゆえに, $(\upd
+                                    \tilde{\psi}/\upd y)$ が連続)
+                                    となる特別なモード
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1">
+                    <div class="half-box">
+                        <div style="width: 60%; position: relative">
+                            <h2
+                                class="fragment"
+                                style="margin-left: 10%"
+                                data-fragment-index="1"
+                            >
+                                $\tanh$ 型の背景流分布
+                                <span class="small"
+                                    >e.g.
+                                    <a
+                                        href="https://doi.org/10.1017/jfm.2012.529"
+                                        target="_blank"
+                                        >Iga (2013)</a
+                                    ></span
+                                >
+                            </h2>
+                            <div
+                                class="math-box_small fragment"
+                                style="width: 50%; font-size: 75%"
+                                data-fragment-index="1"
+                            >
+                                \[U_0(y)\,=\,\tanh(y)\qquad(y_1\leq y\leq
+                                y_2)\]
+                                <figure
+                                    style="
+                                        position: absolute;
+                                        left: -140%;
+                                        top: -130%;
+                                    "
+                                >
+                                    <img
+                                        src="./sec1/u_tanh.webp"
+                                        style="
+                                            border: solid 1px black;
+                                            padding: 1%;
+                                            background: white;
+                                        "
+                                        width="12%"
+                                        alt="tanh 型の背景流分布"
+                                    />
+                                </figure>
+                                <figure
+                                    class="fragment"
+                                    style="
+                                        position: absolute;
+                                        left: -132%;
+                                        top: 330%;
+                                    "
+                                    data-fragment-index="4"
+                                >
+                                    <img
+                                        src="./sec1/u_almost-piecewise.webp"
+                                        style="
+                                            border: solid 1px black;
+                                            padding: 1%;
+                                            background: white;
+                                        "
+                                        width="13%"
+                                        alt="tanh 型の背景流分布"
+                                    />
+                                </figure>
+                            </div>
+                            <ul style="margin: 1% auto auto 7%">
+                                <li>
+                                    以上の説明により, 我々は<br />
+                                    非粘性水平シアー流の線形安定論を<br />
+                                    「<span style="position: relative"
+                                        ><span
+                                            class="fragment fade-in"
+                                            data-fragment-index="3"
+                                            style="
+                                                position: absolute;
+                                                text-decoration: line-through
+                                                    red;
+                                                left: 0;
+                                                background-color: whitesmoke;
+                                            "
+                                            >完全に理解した</span
+                                        >完全に理解した</span
+                                    >」ので,<br />
+                                    別の背景流分布を考えてみる
+                                    <span class="small"
+                                        >[<strong class="important"
+                                            >ここから本題</strong
+                                        >]</span
+                                    >
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    $y_1=-8a$, $y_2=8a$ で計算
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    小さい $k$ で不安定モードがある点は<br />
+                                    (ほぼ) 区分線形な背景流分布 <br />
+                                    の場合と似ているが,<br />
+                                    <strong class="alert"
+                                        >共鳴する中立波のペアが見当たらない</strong
+                                    ><br />
+                                </li>
+                                <li class="fragment" data-fragment-index="4">
+                                    $U(y)$ の関数形は似ているのに...
+                                </li>
+                                <li
+                                    class="question fragment"
+                                    data-fragment-index="5"
+                                >
+                                    上手い説明のようにみえた<br />
+                                    <strong class="important"
+                                        >中立波の共鳴による解釈は<br />
+                                        いつも使えるわけではない？</strong
+                                    >
+                                </li>
+                            </ul>
+                            <div
+                                class="fragment fade-up"
+                                style="
+                                    border: ridge black 10px;
+                                    margin: -21% auto auto 5%;
+                                    padding: 2%;
+                                    width: 75%;
+                                    position: relative;
+                                    background-color: white;
+                                    background-image: radial-gradient(
+                                            mistyrose 20%,
+                                            transparent 20%
+                                        ),
+                                        radial-gradient(
+                                            mistyrose 20%,
+                                            transparent 20%
+                                        );
+                                    background-size: 40px 40px;
+                                    background-position: 0 0, 20px 20px;
+                                "
+                            >
+                                <p
+                                    style="
+                                        position: absolute;
+                                        top: -20%;
+                                        left: 4%;
+                                        margin: 0 0 2% 0;
+                                        padding: 1% 4%;
+                                        background-color: black;
+                                        color: yellow;
+                                        border-radius: 20px;
+                                    "
+                                >
+                                    <b>本研究の目的</b>
+                                </p>
+                                <ul style="margin: 2% auto auto 0">
+                                    <li
+                                        class="question"
+                                        style="font-weight: bold"
+                                    >
+                                        あらゆる背景流分布に対して,<br />
+                                        「中立波ペアの共鳴により不安定モードが<br />
+                                        生じる」という解釈は可能か？
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="width: 40%">
+                            <figure
+                                class="fragment"
+                                style="
+                                    width: 105%;
+                                    margin: -10% auto auto -10%;
+                                    position: relative;
+                                "
+                                data-fragment-index="2"
+                            >
+                                <img
+                                    class="focus-fig"
+                                    src="./sec1/dispersion_tanh.webp"
+                                    alt="tanh 型の背景流分布での分散関係"
+                                />
+                                <figcaption>
+                                    $c$ vs. $k$ (分散関係) <br />
+                                    水色の領域は後で説明
+                                </figcaption>
+                                <figcaption
+                                    class="black fragment"
+                                    style="
+                                        position: absolute;
+                                        left: 21%;
+                                        top: 10%;
+                                    "
+                                    data-fragment-index="3"
+                                >
+                                    連続スペクトル
+                                </figcaption>
+                                <figcaption
+                                    class="fragment"
+                                    style="
+                                        position: absolute;
+                                        left: 29%;
+                                        bottom: 35%;
+                                        color: red;
+                                    "
+                                    data-fragment-index="3"
+                                >
+                                    不安定モード
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== part 2 ========== -->
+
+                <section data-state="part2">
+                    <div class="half-box">
+                        <div style="width: 60%; position: relative">
+                            <h2 class="fragment" data-fragment-index="3">
+                                繋ぎ目部分を太らせる
+                            </h2>
+                            <figure
+                                style="position: absolute; left: -46%; top: 2%"
+                            >
+                                <img
+                                    src="./sec1/u_tanh.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="12%"
+                                    alt="tanh 型の背景流分布"
+                                />
+                            </figure>
+                            <figure
+                                style="
+                                    position: absolute;
+                                    left: -42%;
+                                    top: 44%;
+                                "
+                            >
+                                <img
+                                    src="./sec1/u_almost-piecewise.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="13%"
+                                    alt="(ほぼ) 区分線形な背景流分布"
+                                />
+                            </figure>
+                            <ul style="margin: 1% auto auto 9%">
+                                <li>
+                                    (ほぼ) 区分線形と $\tanh$ 型の違い
+                                    <div
+                                        style="
+                                            font-size: 75%;
+                                            margin-left: -10%;
+                                        "
+                                    >
+                                        \[(c-U(y))\left(k^2\tilde{\psi}-\frac{\upd^2\tilde{\psi}}{\upd
+                                        y^2}\right)\,=\,\textcolor{red}{\underbrace{\textcolor{black}{\frac{\upd^2U(y)}{\upd
+                                        y^2}\tilde{\psi}}}_{\hspace{-1.5cm}0\,\text{にできない}}}\]
+                                    </div>
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    特に, $(\upd^2 U/\upd
+                                    y^2)|_{y=y_\mathrm{c}}=0$ か<br />
+                                    <span style="padding-left: 3.8rem"></span
+                                    >$(\upd^2 U/\upd
+                                    y^2)|_{y=y_\mathrm{c}}\neq0$ かの違いが<br />
+                                    (すぐに見つかる) 中立波の存在に重要
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    このことを信じてもらうために<br />
+                                    まず, (ほぼ) 区分線形な背景流分布の<br />
+                                    <strong class="alert">
+                                        繋ぎ目部分の厚さ $d$ を太らせる実験 </strong
+                                    ><br />
+                                    を行った
+                                    <ul>
+                                        <li>$d=0.01a$ は既に示している</li>
+                                        <li>
+                                            以下で $d=0.2a$, $0.6a$, $a$ を示す
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure
+                                class="fragment"
+                                style="
+                                    width: 105%;
+                                    margin: -10% auto auto -10%;
+                                "
+                                data-fragment-index="4"
+                            >
+                                <img
+                                    class="focus-fig"
+                                    src="./sec2/dispersion_almost-piecewise0.2.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での分散関係"
+                                />
+                                <figcaption>
+                                    $c$ vs. $k$ (分散関係), $d=0.2a$ の場合<br />
+                                    水色の領域: $(\upd^2 U/\upd
+                                    y^2)|_{y=y_\mathrm{c}}\neq0$ となる
+                                    $\mathrm{Re}(c)$ の範囲
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>繋ぎ目部分を太らせる</h2>
+                    <div class="half-box">
+                        <div style="width: 31%">
+                            <figure
+                                style="position: absolute; left: -29%; top: 2%"
+                            >
+                                <img
+                                    src="./sec2/u_almost-piecewise0.6.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="11%"
+                                    alt="(ほぼ) 区分線形な背景流分布"
+                                />
+                            </figure>
+                            <figure
+                                style="
+                                    position: absolute;
+                                    left: -19.5%;
+                                    top: 2%;
+                                "
+                            >
+                                <img
+                                    src="./sec2/u_almost-piecewise1.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="11.2%"
+                                    alt="(ほぼ) 区分線形な背景流分布"
+                                />
+                            </figure>
+                            <ul style="margin: 53% auto auto 0">
+                                <li>
+                                    中立波を表す曲線は,<br />
+                                    $(\upd^2 U/\upd
+                                    y^2)|_{y=y_\mathrm{c}}\neq0$ となる<br />
+                                    $\mathrm{Re}(c)$ の範囲を<br />
+                                    避けるように存在
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    $d\to a$ で, その曲線は<br />
+                                    グラフの上下から<br />
+                                    $\mathrm{Re}(c)=0$ へ押し込まれて<br />
+                                    消えてしまう
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 35%">
+                            <figure style="position: relative">
+                                <img
+                                    class="focus-fig"
+                                    src="./sec2/dispersion_almost-piecewise0.6.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での分散関係"
+                                />
+                                <figcaption>$d=0.6a$ の場合</figcaption>
+                                <figcaption
+                                    class="white"
+                                    style="
+                                        position: absolute;
+                                        top: -2.5%;
+                                        left: -35%;
+                                        border: solid black 1px;
+                                    "
+                                >
+                                    $c$ vs. $k$ (分散関係)<br />
+                                    <span
+                                        >水色の領域: $(\upd^2 U/\upd
+                                        y^2)|_{y=y_\mathrm{c}}\neq0$ <br />
+                                        となる $\mathrm{Re}(c)$ の範囲</span
+                                    >
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div style="width: 35%">
+                            <figure class="fragment" data-fragment-index="1">
+                                <img
+                                    class="focus-fig"
+                                    src="./sec2/dispersion_almost-piecewise1.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での分散関係"
+                                />
+                                <figcaption>$d=a$ の場合</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="fragment" data-fragment-index="2">
+                        <a
+                            href="https://doi.org/10.1017/jfm.2012.529"
+                            target="_blank"
+                            >Iga (2013)</a
+                        >
+                        のアイデア
+                    </h2>
+                    <ul>
+                        <li>
+                            消えてしまう中立波に対して, 以下の 3 つの説を考えた
+                            <ol>
+                                <li>
+                                    中立波の共鳴による解釈は,
+                                    限られた場合にしか使えない
+                                    <span
+                                        class="fragment"
+                                        style="color: red"
+                                        data-fragment-index="1"
+                                        >(&xutri;)</span
+                                    >
+                                </li>
+                                <li
+                                    class="fragment highlight-red"
+                                    data-fragment-index="2"
+                                >
+                                    探し方が悪いだけで,
+                                    実は連続スペクトルの中に中立波が埋もれている
+                                </li>
+                                <li>
+                                    連続スペクトルの束が共鳴する中立波と似た役割をする
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                    <div class="half-box" style="margin-top: 2%">
+                        <div style="width: 35%">
+                            <figure class="fragment" data-fragment-index="1">
+                                <figcaption>
+                                    $\tanh$ 型の背景流分布の場合の不安定モード
+                                </figcaption>
+                                <img
+                                    src="./sec2/eigfunc_unstable_tanh.webp"
+                                    alt="tanh 型の背景流分布での固有関数 (不安定モード)"
+                                />
+                                <figcaption
+                                    class="white"
+                                    style="margin: auto 8%"
+                                >
+                                    <b>[左]</b> 青線: $U$, 点線: $-(\upd^2
+                                    U/\upd y^2)$<br />
+                                    <b>[右]</b> 色: 流線関数 $\psi_1$, 線: 渦度
+                                    $\zeta_1$
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div style="width: 65%">
+                            <div
+                                class="fragment"
+                                style="
+                                    border: solid black 1px;
+                                    background-color: white;
+                                    padding: 2%;
+                                    margin: 2% 5%;
+                                "
+                            >
+                                <ul style="margin-left: -2%">
+                                    <li>
+                                        $U(y)$ の一部 (窓と呼ぶ) を $(\upd^2
+                                        U(y)/\upd y^2)=0$ と<br />
+                                        なるように変更し, 得られた曲線 $c(k)$
+                                        から<br />
+                                        元の背景流分布における中立波の $c(k)$
+                                        を予想する
+                                    </li>
+                                    <li>
+                                        Iga (2013) に記載された手順を使うと,
+                                        <br />
+                                        元の背景流分布における連続モードのうち<br />
+                                        $(\upd \tilde{\psi}/\upd y)$
+                                        が連続なモードを抽出できたことになる
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul>
+                                <li class="fragment">
+                                    上手い方法ではあるが, 素直な説明ではない
+                                </li>
+                                <li class="fragment">
+                                    微分は連続でも, 対数特異性 (後述)
+                                    は残っている
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <div class="half-box" style="position: relative">
+                        <div style="width: 60%; margin-top: 7%">
+                            <h2>窓をあける</h2>
+                            <figure
+                                style="position: absolute; left: -27%; top: 1%"
+                            >
+                                <img
+                                    src="./sec2/u_window0.2.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="12%"
+                                    alt="(ほぼ) 区分線形な背景流分布"
+                                />
+                            </figure>
+                            <figure
+                                class="fragment"
+                                style="
+                                    position: absolute;
+                                    left: -26.7%;
+                                    top: 41%;
+                                "
+                                data-fragment-index="2"
+                            >
+                                <img
+                                    src="./sec2/u_window0.333.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="12.1%"
+                                    alt="(ほぼ) 区分線形な背景流分布"
+                                />
+                            </figure>
+                            <ul style="margin: auto auto auto 5%">
+                                <li>
+                                    窓をあけるとどのような結果になるのかを,<br />
+                                    5 層に増やした (ほぼ) 区分線形な<br />
+                                    背景流分布を用いて示す
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    $y_1=2a$, $y_2=2a$, $b=a/3$, $U_1=U_0/2$
+                                    <div class="detail">
+                                        <i
+                                            class="fas fa-info-circle detail-icon"
+                                        ></i>
+
+                                        <div
+                                            class="detail-box top"
+                                            style="left: -1500%"
+                                        >
+                                            <p style="font-size: 52%">
+                                                \[\frac{U(y)}{U_0}\,=\,
+                                                \begin{cases} 1 &
+                                                \phantom{-}a+d &lt; y \leq y_2
+                                                \\[1pt]
+                                                1-\dfrac{[1-(U_1/U_0)](a+d-y)^2}{4(a-b)d}
+                                                & \phantom{-}a-d &lt; y \leq
+                                                a+d \\[3pt]
+                                                \dfrac{1-(U_1/U_0)}{a-b}(y-a)+1
+                                                & \phantom{-}b+d &lt; y \leq
+                                                a-d \\[3pt]
+                                                \dfrac{[1-(U_1/U_0)](b-d-y)^2}{4(a-b)d}-\dfrac{(U_1/U_0)(b+d-y)^2}{4bd}+(U_1/U_0)
+                                                & \phantom{-}b-d &lt; y \leq
+                                                b+d \\[3pt]
+                                                \dfrac{(U_1/U_0)}{b}y & -b+d
+                                                &lt; y \leq b-d\\[3pt]
+                                                \dfrac{(U_1/U_0)(-b-d-y)^2}{4bd}-\dfrac{[1-(U_1/U_0)](-b+d-y)^2}{4(a-b)d}-(U_1/U_0)
+                                                & -b-d &lt; y \leq -b+d \\[3pt]
+                                                \dfrac{1-(U_1/U_0)}{a-b}(y+a)-1
+                                                & -a+d &lt; y \leq -b-d \\[3pt]
+                                                -1+\dfrac{[1-(U_1/U_0)](-a-d-y)^2}{4(a-b)d}
+                                                & -a-d &lt; y \leq -a+d \\[1pt]
+                                                -1 & \phantom{-a-}y_1 \leq y
+                                                \leq -a-d \end{cases}\]
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    <span
+                                        >$d=a/3$ のとき, $ka\to(2/3)ka$
+                                        とすると
+                                        <br />
+                                        3 層の場合の $d=a$ と等価</span
+                                    >
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    $d=0.2a$ で計算
+                                </li>
+                                <li class="fragment">
+                                    窓の部分に中立波の曲線が現れる
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure
+                                class="fragment"
+                                style="
+                                    width: 105%;
+                                    margin: -10% auto auto -10%;
+                                "
+                                data-fragment-index="3"
+                            >
+                                <img
+                                    class="focus-fig"
+                                    src="./sec2/dispersion_window.webp"
+                                    alt="(ほぼ) 区分線形な背景流分布での分散関係"
+                                />
+                                <figcaption>
+                                    $c$ vs. $k$ (分散関係), 5 層, $d=0.2a$
+                                    の場合<br />
+                                    水色の領域: $(\upd^2 U/\upd
+                                    y^2)|_{y=y_\mathrm{c}}\neq0$ となる
+                                    $\mathrm{Re}(c)$ の範囲
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== part 3 ========== -->
+
+                <section data-state="part3">
+                    <p style="margin-bottom: 1%">
+                        [<strong class="important">ここからが本当の本題</strong
+                        >]
+                    </p>
+                    <h2 style="margin-top: 1%">今回の発表の本当の目的</h2>
+                    <ul style="margin-bottom: 5%">
+                        <li>
+                            3 つの説
+                            <ol>
+                                <li>
+                                    中立波の共鳴による解釈は,
+                                    限られた場合にしか使えない
+                                    <span style="color: red">(&xutri;)</span>
+                                </li>
+                                <li>
+                                    探し方が悪いだけで,
+                                    実は連続スペクトルの中に中立波が埋もれている
+                                    (<a
+                                        href="https://doi.org/10.1017/jfm.2012.529"
+                                        target="_blank"
+                                        >Iga, 2013</a
+                                    >)
+                                </li>
+                                <li
+                                    class="fragment highlight-red"
+                                    data-fragment-index="1"
+                                >
+                                    連続スペクトルの束が共鳴する中立波と似た役割をする
+                                    <span
+                                        class="fragment"
+                                        style="color: black"
+                                        data-fragment-index="1"
+                                        >(← この説はどうか？)</span
+                                    >
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                    <div
+                        class="fragment fade-up"
+                        style="
+                            border: ridge black 10px;
+                            padding: 2%;
+                            margin: 0 10%;
+                            width: 75%;
+                            position: relative;
+                            background-color: white;
+                            background-image: radial-gradient(
+                                    mistyrose 20%,
+                                    transparent 20%
+                                ),
+                                radial-gradient(mistyrose 20%, transparent 20%);
+                            background-size: 40px 40px;
+                            background-position: 0 0, 20px 20px;
+                        "
+                    >
+                        <p
+                            style="
+                                position: absolute;
+                                top: -14%;
+                                left: 4%;
+                                margin: 0 0 2% 0;
+                                padding: 1% 4%;
+                                background-color: black;
+                                color: yellow;
+                                border-radius: 30px;
+                            "
+                        >
+                            <b>本研究の本当の目的</b>
+                        </p>
+                        <p style="font-weight: bold">
+                            スペクトル変形法 (後で説明) を用いて,<br />
+                            普通の意味での固有値とは異なる「固有値」を掘り起こし,
+                            <br />
+                            「連続スペクトルの束が共鳴する中立波と似た役割をする」という
+                            <br />
+                            説明が可能かどうかを調べる
+                        </p>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2 style="position: relative">
+                        ここまでの固有値問題を解くのに使った方法
+                        <figure
+                            class="fragment"
+                            style="
+                                position: absolute;
+                                right: 2%;
+                                bottom: -450%;
+                            "
+                            data-fragment-index="3"
+                        >
+                            <img
+                                src="./sec3/y_s_real.svg"
+                                width="100%"
+                                alt="座標変換"
+                            />
+                        </figure>
+                    </h2>
+                    <ul style="margin-top: 5%">
+                        <li class="fragment" data-fragment-index="1">
+                            Chebyshev 選点法
+                            <strong class="alert"
+                                >(スペクトル変形<u>なし</u>)</strong
+                            >
+                            <ul>
+                                <li class="fragment" data-fragment-index="2">
+                                    境界条件: $y=y_1$, $y_2$ で
+                                    $\tilde{\psi}=0$
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    座標変換 $y(s)=y_1+(y_2-y_1)(s+1)/2$
+                                    で境界を $s=\pm1$ に移す
+                                </li>
+                                <li class="fragment" data-fragment-index="4">
+                                    Chebyshev 多項式 $T_n(s)$ で展開
+                                    (打ち切り次数 $N_\mathrm{t}$):
+                                    $\tilde{\psi}(s)=\sum_{n=0}^{N_\mathrm{t}}\tilde{\psi}_nT_n(s)$
+                                </li>
+                                <li class="fragment" data-fragment-index="5">
+                                    分点 $s_m\equiv\cos(m\uppi/N_\mathrm{t})$
+                                    ($m=1,2,\ldots,N_\mathrm{t}-1$) 上で<br />
+                                    Rayleigh 方程式を満たす $N_\mathrm{t}-1$
+                                    本の式に, 境界条件を加えた<br />
+                                    $(N_\mathrm{t}+1)\times(N_\mathrm{t}+1)$
+                                    行列の一般化固有値問題
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment" data-fragment-index="6">
+                            目的達成のために,
+                            この方法にスペクトル変形法を組み込む
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>固有値 $=$ Green 関数の極</h2>
+                    <ul style="position: relative">
+                        <li>
+                            関数 $f(y)$ に対して
+                            <div style="font-size: 75%">
+                                \[\underbrace{\left[\left(c-U(y)\right)\left(k^2-\frac{\upd^2}{\upd
+                                y^2}\right)\,-\,\frac{\upd^2 U(y)}{\upd
+                                y^2}\right]\tilde{\psi}(y)}_{\hspace{-1cm}=\,0\,\text{:}\,\text{Rayleigh}\,\text{方程式}}\,=\,f(y)\quad\Longleftrightarrow\quad\tilde{\psi}(y)\,=\,\int_{y_2}^{y_1}f(y_*)K(y,y_*;k,c)\upd
+                                y_*\]
+                            </div>
+                            $K(y,y_*;k,c)$ は Rayleigh 方程式の Green 関数
+                            <div
+                                class="math-box_small"
+                                style="width: 100%; font-size: 80%"
+                            >
+                                \[K(y,y_*;k,c)\,=\,-\frac{\psi_2(y)\psi_1(y_*)H(y-y_*)+\psi_1(y)\psi_2(y_*)H(y_*-y)}{\left(\textcolor{red}{c-U(y_*)}\right)\textcolor{red}{W(\psi_1,\psi_2)}}\,,\qquad
+                                W(\psi_1,\psi_2)=\psi_1\frac{\upd\psi_2}{\upd
+                                y}-\psi_2\frac{\upd\psi_1}{\upd y}\]
+                            </div>
+                            $\psi_1$ と $\psi_2$ は一方の境界条件だけを満たす
+                            Rayleigh 方程式の解 ($\psi_1(y_1)=\psi_2(y_2)=0$)
+                        </li>
+                        <li class="fragment">
+                            $K(y,y_*;k,c)$ が無限大になるような $c$ (極)
+                            がスペクトル (固有値) に対応
+                            <ul>
+                                <li class="fragment">
+                                    $W(\psi_1,\psi_2)=0$ は,
+                                    中立波と不安定・減衰モードの固有値
+                                </li>
+                                <li class="fragment">
+                                    $c=U(y)$ ($y_1\leq y\leq y_2$)
+                                    は連続スペクトル
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>
+                        特異点付近の解の違いが<br />
+                        Green 関数の極のふるまいの違いをつくる
+                    </h2>
+                    <ul style="margin-left: -10%; position: relative">
+                        <li class="fragment">
+                            Rayleigh 方程式の確定特異点 $y=y_\mathrm{c}$
+                            で許容される特異性<br />
+                            [$(y-y_\mathrm{c})(\upd^2\tilde{\psi}/\upd y^2)$
+                            が有限]
+                            <ul>
+                                <li class="fragment">
+                                    微分の不連続: $(\upd\tilde{\psi}/\upd
+                                    y)\propto \mathrm{H}(y-y_\mathrm{c})$,
+                                    $\tilde{\zeta}\propto\delta(y-y_\mathrm{c})$
+                                </li>
+                                <li class="fragment">
+                                    対数特異性:<span
+                                        style="margin: auto 0.7rem"
+                                    ></span>
+                                    $(\upd\tilde{\psi}/\upd y)\propto
+                                    \ln|y-y_\mathrm{c}|$
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            確定特異点まわりの Frobenius 解
+                            <span class="small"
+                                >[e.g.
+                                <a
+                                    href="https://doi.org/10.1017/CBO9780511616938"
+                                    target="_blank"
+                                    >Drazin & Reid (1981)</a
+                                >]</span
+                            >
+                            <div style="font-size: 85%; margin-left: -5%">
+                                \[\begin{align}
+                                \tilde{\psi}_\mathrm{I}\,&=\,(y-y_\mathrm{c})\,+\,\frac{U_\mathrm{c}''}{2U_\mathrm{c}'}(y-y_\mathrm{c})^2\,+\,\frac{U_\mathrm{c}'''+k^2U_\mathrm{c}'}{6U_\mathrm{c}'}(y-y_\mathrm{c})^3\,+\,\cdots\notag\\
+                                \tilde{\psi}_\mathrm{II}\,&=\,\frac{\textcolor{red}{U_\mathrm{c}''}}{U_\mathrm{c}'}\tilde{\psi}_\mathrm{I}\textcolor{blue}{\ln|y-y_\mathrm{c}|}\,+\,1\,+\,\frac{U_\mathrm{c}'''U_\mathrm{c}'-2(U_\mathrm{c}'')^2+k^2(U_\mathrm{c}')^2}{2(U_\mathrm{c}')^2}(y-y_\mathrm{c})^2\,+\,\cdots\notag
+                                \end{align}\]
+                            </div>
+                            ここで, $U_\mathrm{c}'\equiv(\upd U/\upd
+                            y)|_{y=y_\mathrm{c}}$ などとした
+                        </li>
+                        <li class="fragment">
+                            $\textcolor{red}{(\upd^2 U/\upd
+                            y^2)|_{y=y_\mathrm{c}}}=0$ か
+                            $\textcolor{red}{(\upd^2 U/\upd
+                            y^2)|_{y=y_\mathrm{c}}}\neq0$ かの違いが<br />
+                            (すぐに見つかる)
+                            中立波の存在に重要だったのと関係がありそう
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>
+                        スペクトル変形法 (次ページで説明)
+                        が有効であると考えた理由
+                    </h2>
+                    <ul style="margin-left: -5%; position: relative">
+                        <li>
+                            Green 関数に含まれる $\psi_1$, $\psi_2$ は<br />
+                            確定特異点 $y=y_\mathrm{c}$ 近くでは Frobenius
+                            解の線形結合で表される
+                            <div
+                                class="math-box_small"
+                                style="
+                                    width: 70%;
+                                    font-size: 80%;
+                                    margin-left: 5%;
+                                "
+                            >
+                                \[K(y,y_*;k,c)\,=\,-\frac{\textcolor{red}{\psi_2(y)\psi_1(y_*)}H(y-y_*)+\textcolor{red}{\psi_1(y)\psi_2(y_*)}H(y_*-y)}{\left(c-U(y_*)\right)W(\textcolor{red}{\psi_1},\textcolor{red}{\psi_2})}\]
+                            </div>
+                        </li>
+                        <li class="fragment">
+                            ($\tanh$ 型のように) 対数特異性が可能な場合
+                            ($U_\mathrm{c}''\neq0$) は,<br />
+                            $K(y,y_*;k,c)$ を一価の関数にするために分岐切断
+                            ($U(y_1)\leq c\leq U(y_2)$) が必要
+                            <figure
+                                style="
+                                    position: absolute;
+                                    right: -10%;
+                                    top: -8%;
+                                "
+                            >
+                                <img
+                                    src="./sec3/green.svg"
+                                    width="90%"
+                                    alt="Green 関数の極"
+                                />
+                            </figure>
+                            <ul>
+                                <li class="fragment">
+                                    $k$ が大きくなるにつれて,
+                                    不安定・減衰モードの極
+                                    ($W(\psi_1,\psi_2)=0$) が<br />
+                                    $\mathrm{Im}(c)\to\pm0$ となるとき,
+                                    <strong class="alert"
+                                        >分岐切断を横切る可能性</strong
+                                    >
+                                </li>
+                                <li class="fragment">
+                                    その極が,
+                                    <strong class="important"
+                                        >隣の複素平面 (Riemann 面)
+                                        へ移動して見えなくなる</strong
+                                    >ことにより, <br />
+                                    不安定モードの曲線 $c(k)$
+                                    に繋がるはずの<strong class="important"
+                                        >中立波が見当たらなくなった</strong
+                                    >のではと考えた
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            区分線形な背景流分布などの場合 ($U_\mathrm{c}''=0$)
+                            は, 対数特異性なし
+                            <ul>
+                                <li class="fragment">
+                                    不安定・減衰モードの極は,
+                                    $\mathrm{Im}(c)=0$ で
+                                    中立波ペアの極に変わるだけ
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>数値的な方法で隣の Riemann 面を覗く</h2>
+                    <ul>
+                        <li>
+                            不安定モードの極が, 本当に隣の Riemann
+                            面へ移動しているかを確認したい
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            スペクトル変形法
+                            <span class="small"
+                                >[複素座標スケーリング法 in 量子多体系]
+                                (詳しくは,
+                                <a
+                                    href="https://archive.iii.kyushu-u.ac.jp/public/zZYQAJfIZl8LVd_DhkCYHE1ECwdmSpbpcBcWvObPuIJ7"
+                                    target="_blank"
+                                    >2022 年度 後期の合同セミナー</a
+                                >)</span
+                            >
+                            <br />
+                            <span class="small"
+                                >(e.g.
+                                <a
+                                    href="https://doi.org/10.1016/0003-4916(89)90166-8"
+                                    target="_blank"
+                                    >Crawford & Hislop, 1989</a
+                                >;
+                                <a
+                                    href="https://doi.org/10.1063/1.872497"
+                                    target="_blank"
+                                    >Spencer & Rasband, 1997</a
+                                >;
+                                <a
+                                    href="https://doi.org/10.1103/PhysRevE.89.063007"
+                                    target="_blank"
+                                    >Ogawa+, 2014</a
+                                >
+                                )</span
+                            >
+                        </li>
+                        <li class="fragment" data-fragment-index="2">
+                            <strong class="important"
+                                >スペクトル変形あり</strong
+                            >の Chebyshev 選点法
+                            <ul style="position: relative">
+                                <li>
+                                    座標変換
+                                    $y(s)=y_1+(y_2-y_1)(s+1)/2\textcolor{red}{
+                                    +\upi f(s)}$
+                                    <figure
+                                        style="
+                                            position: absolute;
+                                            right: -10%;
+                                            bottom: 20%;
+                                        "
+                                    >
+                                        <img
+                                            src="./sec3/y_s_imag.svg"
+                                            width="80%"
+                                            alt="座標変換"
+                                        />
+                                    </figure>
+                                    <figure
+                                        class="fragment"
+                                        data-fragment-index="3"
+                                        style="
+                                            position: absolute;
+                                            right: -5%;
+                                            top: 60%;
+                                        "
+                                    >
+                                        <img
+                                            src="./sec3/green2.svg"
+                                            width="90%"
+                                            alt="Green 関数の極"
+                                        />
+                                    </figure>
+                                </li>
+                                <li>
+                                    ただし, $f(\pm1)=0$. 本発表では
+                                    $f(s)=f_0(s+1)(s-1)$ とする
+                                </li>
+                                <li>
+                                    座標 $y$ を<strong class="alert"
+                                        >仮想的に複素数だとみなし</strong
+                                    >, 実 $s$ 上 ($-1\leq s\leq 1$)
+                                    の固有値問題に読み替える
+                                </li>
+                                <li>他は前述のものと同じ</li>
+                            </ul>
+                        </li>
+                        <li class="fragment" data-fragment-index="3">
+                            分岐切断 $c=U(y(s))$ $(-1\leq s\leq1)$ は $f_0$
+                            の大きさによって変形
+                            <ul>
+                                <li>
+                                    非ゼロの $f_0$
+                                    を用いて固有値問題を解くことは,<br />
+                                    Green 関数を隣の Riemann
+                                    面の一部へ解析接続して<br />
+                                    極 (Landau 極) を探すことに相当
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            <b>[注]</b> この方法は,
+                            <strong class="alert"
+                                >$U(y)$
+                                が正則関数でなければ適用できない</strong
+                            >
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- ========== part 4 ========== -->
+
+                <section data-state="part4" data-auto-animate="">
+                    <h2>$\tanh$ 型の背景流分布 w/ スペクトル変形法</h2>
+                    <div class="half-box">
+                        <div style="width: 26%; position: relative">
+                            <ul style="margin-left: 0">
+                                <li>$f_0=\pm0.5$ で計算</li>
+                                <li class="fragment">
+                                    不安定モードに繋がる<br />
+                                    曲線が見つかった (!)
+                                    <figure
+                                        style="width: 100%; margin: 0 auto"
+                                    >
+                                        <img
+                                            src="./sec1/dispersion_tanh.webp"
+                                            alt="tanh 型の背景流分布での分散関係"
+                                        />
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 37%">
+                            <figure style="position: relative">
+                                <img
+                                    class="focus-fig"
+                                    src="./sec4/dispersion_tanh_p.webp"
+                                    alt="tanh型の背景流分布での分散関係(with spectral deformation)"
+                                />
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        right: 6%;
+                                        bottom: 12%;
+                                    "
+                                >
+                                    Landau 極 (減衰)
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        left: 32%;
+                                        bottom: 29%;
+                                    "
+                                >
+                                    不安定モード
+                                </figcaption>
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        bottom: 1%;
+                                        left: -35%;
+                                        z-index: 1;
+                                    "
+                                >
+                                    見やすさのために,<br />
+                                    $|c|$ に応じて色と<br />
+                                    マーカーサイズを変化
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div style="width: 37%; position: relative">
+                            <figure>
+                                <img
+                                    class="focus-fig"
+                                    src="./sec4/dispersion_tanh_m.webp"
+                                    alt="tanh型の背景流分布での分散関係(with spectral deformation)"
+                                />
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        right: 12%;
+                                        bottom: 29.5%;
+                                    "
+                                >
+                                    Landau 極
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        left: 32%;
+                                        bottom: 12.5%;
+                                    "
+                                >
+                                    減衰モード
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part4" data-auto-animate="">
+                    <h2>$\tanh$ 型の背景流分布 w/ スペクトル変形法</h2>
+                    <div class="half-box">
+                        <div style="width: 63%; position: relative">
+                            <ul>
+                                <li>
+                                    <div class="half-box">
+                                        <div style="width: 60%">
+                                            因果律を考慮すると, <br />
+                                            逆 Fourier 変換の積分経路は <br />
+                                            上半平面にあるため, Landau 極の
+                                            <br />
+                                            一方だけが物理的に意味のある解
+                                        </div>
+                                        <div style="width: 40%">
+                                            <figure>
+                                                <img
+                                                    src="./sec4/green3.svg"
+                                                    width="100%"
+                                                    style="margin: 0"
+                                                    alt="Green 関数の極"
+                                                />
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <ul style="margin-top: -19%">
+                                        <li class="fragment">
+                                            元の連続スペクトルの寄与
+                                            <br />
+                                            $=$ Landau 極の寄与 <br />
+                                            $+$ 変形された連続スペクトルの寄与
+                                        </li>
+                                        <li class="fragment">
+                                            (元の)
+                                            <strong class="important"
+                                                >連続スペクトルの中の <br />
+                                                離散固有値っぽい部分を抽出できた</strong
+                                            >
+                                            (!)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment">
+                                    $\mathrm{Re}(c)=0$ なので,
+                                    中立波っぽくはない<br />
+                                    ($\mathrm{Im}(c)\neq0$ は Landau
+                                    極に特有の性質)
+                                    <ul>
+                                        <li class="fragment">
+                                            <a
+                                                href="https://doi.org/10.1017/jfm.2012.529"
+                                                target="_blank"
+                                                >Iga (2013)</a
+                                            >
+                                            の結果と矛盾？
+                                        </li>
+                                        <li class="fragment">
+                                            「連続スペクトルの束が
+                                            <br />
+                                            共鳴する中立波と似た役割をする」は
+                                            <br />
+                                            示せていない
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 37%">
+                            <figure style="position: relative">
+                                <img
+                                    class="focus-fig"
+                                    src="./sec4/dispersion_tanh_p.webp"
+                                    alt="tanh型の背景流分布での分散関係(with spectral deformation)"
+                                />
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        right: 6%;
+                                        bottom: 12%;
+                                    "
+                                >
+                                    Landau 極 (減衰)
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        left: 32%;
+                                        bottom: 29%;
+                                    "
+                                >
+                                    不安定モード
+                                </figcaption>
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        bottom: 1%;
+                                        left: -35%;
+                                        z-index: 1;
+                                    "
+                                >
+                                    見やすさのために,<br />
+                                    $|c|$ に応じて色と<br />
+                                    マーカーサイズを変化
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part4">
+                    <h2 class="fragment" data-fragment-index="2">
+                        $\tanh$ 型 (<strong class="alert">半分</strong>)
+                        の背景流分布 w/ スペクトル変形法
+                    </h2>
+                    <div class="half-box">
+                        <div style="width: 63%; position: relative">
+                            <figure
+                                style="
+                                    position: absolute;
+                                    left: -45%;
+                                    top: -15%;
+                                "
+                            >
+                                <img
+                                    src="./sec1/u_tanh.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="12%"
+                                    alt="tanh 型の背景流分布"
+                                />
+                            </figure>
+                            <figure
+                                class="fragment"
+                                style="
+                                    position: absolute;
+                                    left: -41%;
+                                    top: 32%;
+                                "
+                                data-fragment-index="2"
+                            >
+                                <img
+                                    src="./sec4/u_half-tanh.webp"
+                                    style="
+                                        border: solid 1px black;
+                                        padding: 1%;
+                                        background: white;
+                                    "
+                                    width="13.2%"
+                                    alt="tanh 型 (半分) の背景流分布"
+                                />
+                            </figure>
+                            <ul style="margin-left: 15%">
+                                <li>
+                                    Landau 極が $\mathrm{Re}(c)=0$
+                                    となってしまったのは<br />
+                                    連続スペクトル<strong class="alert"
+                                        >全体</strong
+                                    >の波っぽい部分を <br />
+                                    1
+                                    つの極として抽出してしまったためだと考えた
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    連続スペクトルの $c&gt;0$ の部分と $c&lt;0$
+                                    の部分は<br />
+                                    別の中立波の役割を担ってそう
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    領域を $y_1=0$, $y_2=8$
+                                    に変更して計算を行った
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    $\mathrm{Re}(c)&gt;0$ の Landau
+                                    極が見つかった (!)
+                                </li>
+                                <li class="fragment" data-fragment-index="4">
+                                    領域を $y_1=-3$, $y_2=0$ にすると
+                                    <br />
+                                    $\mathrm{Re}(c)&lt;0$ の Landau
+                                    極が見つかるので,<br />
+                                    「これら 2 つの Landau 極が共鳴する結果,
+                                    <br />
+                                    不安定モードが生じる」と説明できるかも<br />
+                                    <span class="small note"
+                                        ><i
+                                            class="fa-solid fa-triangle-exclamation"
+                                        ></i>
+                                        $y=0$ の境界条件が,
+                                        元の問題と不適合</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 37%">
+                            <figure
+                                class="fragment"
+                                style="position: relative"
+                                data-fragment-index="2"
+                            >
+                                <img
+                                    class="focus-fig"
+                                    src="./sec4/dispersion_half-tanh.webp"
+                                    alt="tanh型の背景流分布での分散関係(with spectral deformation)"
+                                />
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        left: 26%;
+                                        top: 21%;
+                                    "
+                                >
+                                    Landau 極 (減衰)
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        right: 20%;
+                                        bottom: 14%;
+                                    "
+                                >
+                                    Landau 極 (減衰)
+                                </figcaption>
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        bottom: 1%;
+                                        left: -35%;
+                                        z-index: 1;
+                                    "
+                                >
+                                    見やすさのために,<br />
+                                    $|c|$ に応じて色と<br />
+                                    マーカーサイズを変化
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part4">
+                    <h2>
+                        $\tanh$ 型の背景流分布 w/ スペクトル変形法 ($\psi_1$ と
+                        $\zeta_1$ の構造)
+                    </h2>
+                    <ul style="position: relative; margin-left: -25%">
+                        <li>
+                            スペクトル変形法を用いた固有値問題で求まるのは,
+                            <strong class="alert"
+                                >仮想的な $s$ 座標での <br />
+                                $\tilde{\psi}(s)=\sum_{n=0}^{N_\mathrm{t}}\tilde{\psi}_nT_n(s)$</strong
+                            >
+                            であり, 実空間の流線関数ではない
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            <strong class="important">[提案]</strong>
+                            Chebyshev 多項式を, $y_1\leq \mathrm{Re}(y)\leq
+                            y_2$ かつ<br />
+                            $\mathrm{Im}(y)=0$ となるような 複素 $s$
+                            へ解析接続して, <br />それを用いて実空間での
+                            $\tilde{\psi}$ とする
+                            <figure
+                                style="
+                                    position: absolute;
+                                    right: -2%;
+                                    top: -6%;
+                                "
+                            >
+                                <img
+                                    src="./sec4/y_s_imag2.svg"
+                                    width="100%"
+                                    alt="固有関数の解析接続"
+                                />
+                            </figure>
+                            <ul style="margin-bottom: 1%">
+                                <li class="fragment" data-fragment-index="2">
+                                    不安定モードを再現できた (!)
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    Landau 極の「固有関数」？
+                                    <span class="small note"
+                                        ><i
+                                            class="fa-solid fa-triangle-exclamation"
+                                        ></i>
+                                        いまいち？</span
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="half-box" style="margin: auto -2%">
+                        <div
+                            class="fragment"
+                            style="width: 33%; position: relative"
+                            data-fragment-index="2"
+                        >
+                            <figure>
+                                <figcaption
+                                    class="white"
+                                    style="margin: auto 5%"
+                                >
+                                    不安定モード (スペクトル変形<u>なし</u>)
+                                </figcaption>
+                                <img
+                                    class="focus-fig"
+                                    src="./sec2/eigfunc_unstable_tanh.webp"
+                                    alt="tanh 型の背景流分布での固有関数 (不安定モード)"
+                                    width="90%"
+                                />
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        bottom: 2%;
+                                        left: 0;
+                                        width: 80%;
+                                    "
+                                >
+                                    <b>[左]</b> 青線: $U$, 点線: $-(\upd^2
+                                    U/\upd y^2)$<br />
+                                    <b>[右]</b> 色: 流線関数 $\psi_1$, 線: 渦度
+                                    $\zeta_1$
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div
+                            class="fragment"
+                            style="width: 33%"
+                            data-fragment-index="2"
+                        >
+                            <figure>
+                                <figcaption
+                                    class="white"
+                                    style="margin: auto 5%"
+                                >
+                                    不安定モード (スペクトル変形<u>あり</u>)
+                                </figcaption>
+                                <img
+                                    class="focus-fig"
+                                    src="./sec4/eigfunc_unstable_tanh.webp"
+                                    alt="tanh 型の背景流分布での固有関数 (不安定モード)"
+                                    width="90%"
+                                />
+                            </figure>
+                        </div>
+                        <div
+                            class="fragment"
+                            style="width: 33%; margin: -17% -3% auto auto"
+                            data-fragment-index="3"
+                        >
+                            <figure>
+                                <figcaption
+                                    class="white"
+                                    style="margin: auto 10%"
+                                >
+                                    Landau 極 ($\tanh$ 型(半分))
+                                </figcaption>
+                                <img
+                                    class="focus-fig"
+                                    src="./sec4/eigfunc_landau-p_half-tanh.webp"
+                                    alt="tanh 型の背景流分布での固有関数(with spectral deformation)"
+                                    width="75%"
+                                />
+
+                                <img
+                                    class="focus-fig"
+                                    src="./sec4/eigfunc_landau-m_half-tanh.webp"
+                                    alt="tanh 型の背景流分布での固有関数(with spectral deformation)"
+                                    width="75%"
+                                />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== part 5 ========== -->
+
+                <section data-state="part5">
+                    <h2>結論</h2>
+                    <ul>
+                        <li>
+                            スペクトル変形法を用いて, $\tanh$
+                            型の背景流分布の場合の線形安定性解析を行った
+                            <ul>
+                                <li>
+                                    連続スペクトル (分岐切断の位置)
+                                    を変形させることで, <br />
+                                    途中から途切れる不安定モードを表す曲線
+                                    $c(k)$ の行く末を追跡することができた
+                                </li>
+                                <li>
+                                    半分の領域だけの問題から, 中立波のような
+                                    Landau 極を発見し,<br />
+                                    「連続スペクトルの束が共鳴する中立波と似た役割をする」という説明が
+                                    <br />
+                                    可能かもしれないことを指摘した
+                                </li>
+                                <li>
+                                    複素関数の性質を利用することで, Landau
+                                    極の「固有関数」を構成する方法を提案した
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            半分の領域だけの問題における境界条件と<br />
+                            Landau 極の「固有関数」の構成方法
+                            (そもそも構成することに意味があるのかも含めて) は,
+                            <br />
+                            さらなる議論と改善が必要だと考えている
+                            <ul>
+                                <li>
+                                    シアー流における Landau
+                                    減衰の物理的説明も与えられていない
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            数値的な手続きで容易に Landau
+                            極を求めることができるので, <br />
+                            地球外核内の磁気流体波動の研究 (Alfv&eacute;n
+                            連続スペクトルに埋もれた遅い磁気 Rossby 波) や<br />
+                            その他の問題にも十分適用可能であると考える
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="../reveal.js-master/dist/reveal.js"></script>
+        <script>
+            Reveal.initialize({
+                width: 1024,
+                height: 576,
+
+                slideNumber: (slide) => {
+                    return [
+                        Reveal.getIndices(slide).h,
+                        "/",
+                        this.Reveal.getHorizontalSlides().length - 1,
+                    ];
+                },
+            });
+        </script>
+        <script src="./main.js"></script>
+        <script src="./sub.js"></script>
+    </body>
+</html>
