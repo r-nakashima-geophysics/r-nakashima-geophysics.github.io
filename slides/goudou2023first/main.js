@@ -1,7 +1,7 @@
 Reveal.on("ready", () => {
     const url = "#";
     const target = "_blank";
-    const textLength = 47;
+    const textLength = 45;
 
     let ldots = "";
     const elementTitle = document.getElementById("presentation_title");
