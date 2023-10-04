@@ -29,6 +29,9 @@ document.write(`
     <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/29824876ec.js" crossorigin="anonymous"></script>
 
+    <!-- Academicons -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
     <!-- CSS -->
     <link type="text/css" rel="stylesheet" href="${path}/common/styles/normalize.css">
     <link type="text/css" rel="stylesheet" href="${path}/common/styles/main.css">
