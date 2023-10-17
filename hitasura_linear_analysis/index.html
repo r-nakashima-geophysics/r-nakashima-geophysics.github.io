@@ -1,69 +1,101 @@
 <!DOCTYPE html>
 
 <html lang="ja">
+    <head>
+        <title>ひたすら線形解析</title>
 
-<head>
+        <!-- head 内の共通部分 -->
+        <script src="../common/include/common_head.js"></script>
+    </head>
 
-    <title>ひたすら線形解析</title>
+    <body>
+        <div id="container" class="hla">
+            <!-- 共通 header -->
+            <script src="../common/include/header.js"></script>
 
-    <!-- head 内の共通部分 -->
-    <script src="../common/include/common_head.js"></script>
+            <main>
+                <section>
+                    <h2 class="section">ひたすら線形解析</h2>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./index.html#introduction-hla"
+                                    >このWebサイトについて</a
+                                >
+                            </li>
+                            <li>
+                                <a href="./index.html#privacy-policy"
+                                    >プライバシーポリシー</a
+                                >
+                            </li>
+                            <li>
+                                <a href="./index.html#contact-form"
+                                    >お問い合わせフォーム</a
+                                >
+                            </li>
+                            <li><a href="./rireki.html">更新履歴</a></li>
+                        </ul>
+                    </nav>
 
-</head>
+                    <section>
+                        <h3 class="sub-section" id="introduction-hla">
+                            このWebサイトについて
+                        </h3>
+                        <p class="textbox indent">
+                            これは, 地球物理系ポスドクの勉強ノートです。主に,
+                            <strong>線形波動</strong
+                            >と<strong>線形安定論</strong>について書いています。間違いが含まれている可能性がありますので,
+                            参考にする場合はご注意ください。もし見つかった場合は,
+                            <a href="./index.html#contact-form"
+                                >ご連絡いただけると</a
+                            >幸いです。
+                        </p>
+                        <p class="textbox indent">
+                            このWebサイトでは,
+                            学部レベルの力学・熱力学・電磁気学・流体力学・弾性体力学・解析力学・物理数学などのうち,
+                            特に<strong>初等的な内容は知っていることを前提</strong>にしています。そのような範囲を解説している教科書やWebページは他に多数あると思うので,
+                            そちらを参考にしていただければと思います。
+                        </p>
 
-<body>
+                        <p class="textbox indent">
+                            むしろ, このWebサイトでは,
+                            高度な教科書の行間を埋めることに重きを置いています。絶版になっていて入手が困難な書籍にしか書かれていない内容や,
+                            日本語の教科書には書かれていない高度な内容など,
+                            <strong
+                                >学部生や専門外の方々には敷居が高いもの</strong
+                            >をわかりやすく取り扱うことが目標です。時には,
+                            学術論文や自分で0から考えた内容も含まれています。そのため,
+                            自分の理解が間違っている場合もありえます。なので,
+                            このWebサイトに書かれている内容は鵜呑みにせず,
+                            この考え方は適切か, この計算は正しいか,
+                            と疑いの目を持ちながら読んでいただくことをおすすめします。
+                        </p>
+                        <p class="textbox indent">
+                            このWebサイトは, 以下の 4 部構成
+                        </p>
+                        <ul>
+                            <li><a href="./kiso.html">線形解析の基礎</a></li>
+                            <li><a href="./governing.html">基礎方程式</a></li>
+                            <li><a href="./detail.html">線形解析各論</a></li>
+                            <li><a href="./other.html">その他</a></li>
+                        </ul>
+                        <p class="textbox">
+                            に分かれています。各ページのヘッダーにも,
+                            各パートごとの目次へのリンクがありますので,
+                            そちらからご移動ください。
+                        </p>
+                        <p class="textbox indent">
+                            それでは, 線形解析をお楽しみください。
+                        </p>
+                    </section>
 
-<div id="container" class="hla">
+                    <hr />
 
-    <!-- 共通 header -->
-    <script src="../common/include/header.js"></script>
-
-<main>
-
-    <section>
-    <h2 class="section">ひたすら線形解析</h2>
-    <nav>
-        <ul>
-            <li><a href="./index.html#introduction-hla">このWebサイトについて</a></li>
-            <li><a href="./index.html#privacy-policy">プライバシーポリシー</a></li>
-            <li><a href="./index.html#contact-form">お問い合わせフォーム</a></li>
-            <li><a href="./rireki.html">更新履歴</a></li>
-        </ul>
-    </nav>
-
-    <section>
-    <h3 class="sub-section" id="introduction-hla">このWebサイトについて</h3>
-        <p class="textbox indent">
-        これは, 地球物理系ポスドクの勉強ノートです。主に, <strong>線形波動</strong>と<strong>線形安定論</strong>について書いています。間違いが含まれている可能性がありますので, 参考にする場合はご注意ください。もし見つかった場合は, <a href="./index.html#contact-form">ご連絡いただけると</a>幸いです。
-        </p>
-        <p class="textbox indent">
-        このWebサイトでは, 学部レベルの力学・熱力学・電磁気学・流体力学・弾性体力学・解析力学・物理数学などのうち, 特に<strong>初等的な内容は知っていることを前提</strong>にしています。そのような範囲を解説している教科書やWebページは他に多数あると思うので, そちらを参考にしていただければと思います。
-        <p class="textbox indent">
-        むしろ, このWebサイトでは, 高度な教科書の行間を埋めることに重きを置いています。絶版になっていて入手が困難な書籍にしか書かれていない内容や, 日本語の教科書には書かれていない高度な内容など, <strong>学部生や専門外の方々には敷居が高いもの</strong>をわかりやすく取り扱うことが目標です。時には, 学術論文や自分で0から考えた内容も含まれています。そのため, 自分の理解が間違っている場合もありえます。なので, このWebサイトに書かれている内容は鵜呑みにせず, この考え方は適切か, この計算は正しいか, と疑いの目を持ちながら読んでいただくことをおすすめします。
-        </p>
-        <p class="textbox indent">
-        このWebサイトは, 以下の 4 部構成
-        </p>
-        <ul>
-            <li><a href="./kiso.html">線形解析の基礎</a></li>
-            <li><a href="./governing.html">基礎方程式</a></li>
-            <li><a href="./detail.html">線形解析各論</a></li>
-            <li><a href="./other.html">その他</a></li>
-        </ul>
-        <p class="textbox">
-        に分かれています。各ページのヘッダーにも, 各パートごとの目次へのリンクがありますので, そちらからご移動ください。
-        </p>
-        <p class="textbox indent">
-        それでは, 線形解析をお楽しみください。
-        </p>
-
-    </section> <!-- h3 の section 終わり -->
-
-<hr>
-
-    <section>
-    <h3 class="sub-section" id="privacy-policy">プライバシーポリシー</h3>
-        <!--
+                    <section>
+                        <h3 class="sub-section" id="privacy-policy">
+                            プライバシーポリシー
+                        </h3>
+                        <!--
         <h4 class="subsub-section"><span class="cyan-line">個人情報の利用目的</span></h4>
         <section>
             <p class="textbox">
@@ -97,21 +129,18 @@
 
         </p>
         -->
-    </section> <!-- h3 の section 終わり -->
+                    </section>
 
-    <section>
-    <h3 class="sub-section" id="contact-form">お問い合わせフォーム</h3>
-    </section> <!-- h3 の section 終わり -->
+                    <section>
+                        <h3 class="sub-section" id="contact-form">
+                            お問い合わせフォーム
+                        </h3>
+                    </section>
+                </section>
+            </main>
 
-    </section> <!-- h2 の section 終わり -->
-
-</main>
-
-    <!-- 共通 footer -->
-    <script src="../common/include/footer.js"></script>
-
-</div> <!-- #container .hla 終わり -->
-
-</body>
-
+            <!-- 共通 footer -->
+            <script src="../common/include/footer.js"></script>
+        </div>
+    </body>
 </html>
