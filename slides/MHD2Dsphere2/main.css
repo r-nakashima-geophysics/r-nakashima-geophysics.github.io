@@ -372,3 +372,16 @@ footer#info_footer * {
 {
     border-bottom: none;
 }
+
+/* ======================================== */
+/* mobile device */
+/* ======================================== */
+
+@media screen and (max-width: 550px) {
+    #presentation_title h1,
+    #presentation_date p,
+    nav#nav_slide p,
+    #presentation_speaker address {
+        font-size: 1rem;
+    }
+}
