@@ -196,7 +196,7 @@ li {
 
 ul.books {
     list-style: none;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 ul.books li.finish-reading::before {
     content: "\f02d";
