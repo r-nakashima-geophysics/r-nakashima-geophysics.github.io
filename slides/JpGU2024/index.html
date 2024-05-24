@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+
+        <title>非粘性平行シアー流の quasi-mode</title>
+
+        <link rel="stylesheet" href="../reveal.js-master/dist/reset.css" />
+        <link rel="stylesheet" href="../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../reveal.js-master/dist/theme/simple.css"
+        />
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="../fontawesome-free-6.4.2-web/css/all.min.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/29824876ec.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- MathJax version 3 -->
+        <script src="./mathjax_config.js" defer></script>
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- TikZJax -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://tikzjax.com/v1/fonts.css"
+        />
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+
+        <!-- Theme used for syntax highlighted code -->
+        <link
+            rel="stylesheet"
+            href="../reveal.js-master/plugin/highlight/monokai.css"
+        />
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>[MIS21-P06] 非粘性平行シアー流の quasi-mode</h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        <a
+                            href="https://www.jpgu.org/meeting_j2024/"
+                            target="_blank"
+                            >JpGU 2024</a
+                        >
+                        [<time datetime="2024-05-29">2024-05-29</time>]
+                    </p>
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">1. はじめに</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2. 方法</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part3" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 3. 結果</span
+                        ><span id="nav_part3-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part4" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 4.
+                            まとめ</span
+                        ><span id="nav_part4-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (九大・理) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;m.kyushu-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by&nbsp;
+                        <a href="https://revealjs.com" target="_blank"
+                            ><img
+                                src="https://static.slid.es/reveal/logo-v1/reveal-white-text.svg"
+                                alt="Powered by reveal.js"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -7px 0;
+                                    padding: 0;
+                                "
+                                class="demo-logo"
+                        /></a>
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -10px 0;
+                                    padding: 0;
+                                "
+                        /></a>
+                        /
+                        <a href="https://tikzjax.com" target="_blank"
+                            >TikZJax</a
+                        >
+                        /
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                        <!-- /
+                        <a href="https://www.chartjs.org"
+                            >Chart.js
+                            <img
+                                src="https://www.chartjs.org/img/chartjs-logo.svg"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -5px 0;
+                                    padding: 0;
+                                "
+                        /></a> -->
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide" data-background-color="azure">
+                    <p class="small">[MIS21-P06]</p>
+                    <h2 class="r-fit-text">非粘性平行シアー流の quasi-mode</h2>
+
+                    <dl class="black">
+                        要旨
+                        <dd>
+                            <i class="fa-solid fa-check"></i>
+                            シアー不安定は中立波の共鳴で起こると説明される
+                        </dd>
+                        <dd>
+                            <i class="fa-solid fa-check"></i>
+                            共鳴を起こす中立波が見つからない例がある
+                        </dd>
+                        <dd>
+                            <i class="fa-solid fa-check"></i>
+                            quasi-mode は共鳴する中立波の代わりになるか検証
+                        </dd>
+                    </dl>
+
+                    <p>
+                        <b
+                            ><i class="fas fa-microphone"></i> 中島 涼輔
+                            (九州大学 大学院理学研究院)</b
+                        >
+                    </p>
+
+                    <p class="small">
+                        本研究は JSPS 科研費 (<a
+                            href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K07177/"
+                            target="_blank"
+                            title="地球外核最上部のダイナミクス：波動による地球内部東西磁場強度推定の試み"
+                            >JP24K07177</a
+                        >,
+                        <a
+                            href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K00694/"
+                            target="_blank"
+                            title="惑星内部ダイナモから表層大気雲対流までを包括した木星変動現象の解明"
+                            >JP24K00694</a
+                        >) と<br />
+                        核融合科学研究所 一般共同研究 (NIFS24KIIC001)<br />
+                        の助成を受けたものです。
+                    </p>
+
+                    <div class="small note">
+                        <i class="fa-solid fa-gear fa-pulse"></i>
+                        [O] Overview / [G+number] Jump to slide
+                        <!-- / [hover
+                        <span class="detail"
+                            >] Show details
+                            <div class="detail-box top">
+                                <p>このように</p>
+                            </div>
+                        </span> -->
+                        <!-- 引用文献へのリンクは Confit
+                        の発表者追加情報を参照ください -->
+                    </div>
+
+                    <img
+                        src="./fig/layer.svg"
+                        alt="外核最上部安定成層"
+                        style="
+                            position: absolute;
+                            left: -4%;
+                            bottom: 6%;
+                            width: 20%;
+                        "
+                    />
+                    <img
+                        src="./fig/SSymbolLogo-tenchi_E_jpg.webp"
+                        alt="九州大学ロゴ"
+                        style="
+                            border: solid black 1px;
+                            position: absolute;
+                            right: 0%;
+                            bottom: 6%;
+                            width: 13%;
+                        "
+                    />
+                    <img
+                        src="./fig/KAKENHIlogo_S.webp"
+                        alt="科研費ロゴ"
+                        style="
+                            position: absolute;
+                            left: 64%;
+                            bottom: 7%;
+                            width: 8%;
+                        "
+                    />
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">
+                        非粘性・非圧縮 2 次元シアー流の線形安定性解析
+                    </h2>
+                    <div style="margin: -2% -8% -6% auto">
+                        <figure>
+                            <script type="text/tikz">
+                                \begin{tikzpicture}[scale=1.4, transform shape]
+                                    \fill [cyan, opacity=0.3] (-0.5,1.5)--(3,1.5)--(3,-0.75)--(-0.5,-0.75);
+
+                                    \draw [dashed] (-0.5,1.5)--(3,1.5) node [right] {$y=y_2$};
+                                    \draw [dashed] (-0.5,-0.75)--(3,-0.75) node [right] {$y=y_1$};
+
+                                    \draw [->, >=stealth, very thick] (-0.75,0)--(3.25,0) node [right] {$x$};
+                                    \draw [->, >=stealth, very thick] (0.5,-1.25)--(0.5,2) node [left] {$y$};
+
+                                    \draw [blue, very thick] (0,-0.75) to [out=45, in=315] (1.5,1.5) node [below right] {\,\,\,\,$U(y)$};
+                                    \fill [blue, opacity=0.3] (0,-0.75) to [out=45, in=315] (1.5,1.5)--(0.5,1.5)--(0.5,-0.75);
+
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,-0.75)--(0,-0.75);
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,-0.5)--(0.3,-0.5);
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,0)--(0.85,0);
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,0.25)--(1.15,0.25);
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,0.5)--(1.4,0.5);
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,0.75)--(1.6,0.75);
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,1)--(1.7,1);
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,1.25)--(1.65,1.25);
+                                    \draw [blue, ->, >=stealth, very thick] (0.5,1.5)--(1.5,1.5);
+                                \end{tikzpicture}
+                            </script>
+                        </figure>
+                    </div>
+                    <ul style="position: relative">
+                        <li>
+                            Rayleigh 方程式
+                            <div class="math-box" style="width: 80%">
+                                \[(c-U)\tilde{\zeta}\,=\,\frac{\upd^2U}{\upd
+                                y^2}\tilde{\psi}\,,\quad\tilde{\zeta}\,=\,-\left(\frac{\upd^2}{\upd
+                                y^2}-k^2\right)\tilde{\psi}\]
+                            </div>
+                            <div
+                                class="small white"
+                                style="
+                                    position: absolute;
+                                    top: -8%;
+                                    right: -3%;
+                                "
+                            >
+                                \[u_x=\frac{\uppartial \psi}{\uppartial
+                                y}\,,\quad u_y=-\frac{\uppartial
+                                \psi}{\uppartial x}\]
+                            </div>
+                            <ul>
+                                <li>背景流 $U(y)\hat{\bm{e}}_x$</li>
+                                <li>
+                                    速度摂動 $\bm{u}=(u_x,u_y)$, 流線関数摂動
+                                    $\psi$, 渦度渦度 $\zeta$
+                                </li>
+                                <li>
+                                    境界条件 $u_y\to0$ @$y=\pm\infty$
+                                    <span class="small"
+                                        >(本発表では $y=y_1$, $y_2$
+                                        で放射境界)</span
+                                    >
+                                </li>
+                                <li>
+                                    線形化, 波型の解
+                                    $\psi(x,y,t)=\mathrm{Re}[\tilde{\psi}(y;k,c)\upe^{\upi
+                                    k(x-ct)}]$ etc.
+                                </li>
+                                <li>
+                                    $U$ と $x$ 方向波数 $k$ を与えたときの<br />
+                                    境界条件を満たす
+                                    <strong class="alert"
+                                        >$\tilde{\psi}$ と位相速度 $c$
+                                        の組を探す</strong
+                                    >固有値問題
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section data-state="part1">
+                        <div class="flex-box">
+                            <div style="width: 40%">
+                                <h2 class="r-fit-text">ほぼ 3 層モデル　</h2>
+                                <figure>
+                                    <figcaption>
+                                        [e.g.
+                                        <a
+                                            href="https://doi.org/10.1063/1.5116633"
+                                            target="_blank"
+                                            title="Instability of a smooth shear layer through wave interactions "
+                                            >Carpenter & Guha (2019)</a
+                                        >]
+                                    </figcaption>
+                                    <script type="text/tikz">
+                                        \begin{tikzpicture}[scale=1.5, transform shape]
+                                            \fill [cyan, opacity=0.3] (-1.5,1.5)--(1.5,1.5)--(1.5,-1.5)--(-1.5,-1.5);
+
+                                            \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                            \draw [->, >=stealth, very thick] (0,-1.75)--(0,2) node [left] {$y$};
+
+                                            \draw (0,0.75) node [left] {$y=a$};
+                                            \draw (0,-0.75) node [right] {$y=-a$};
+                                            \draw [<->, >=stealth, thick] (1.35, 0.6)--(1.35,0.9);
+                                            \draw (1.35,0.75) node [right] {$2d$};
+
+                                            \draw [red, dotted, very thick] (0,-1.5)--(0,-0.9)--(-1.25,-0.9)--(-1.25,-0.6)--(0,-0.6)--(0,0.6) node [below right] {$\quad-U\prime\prime$} --(1.25,0.6)--(1.25,0.9)--(0,0.9)--(0,1.5);
+
+                                            \draw [blue, very thick] (-0.75,-1.75) to [out=90, in=270] (-0.75, -0.9) to [out=90, in=225] (-0.6, -0.6) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.75) node [below right] {$U$};
+                                            \fill [blue, opacity=0.3] (-0.75,-1.5) to [out=90, in=270] (-0.75, -0.9) to [out=90, in=225] (-0.6, -0.6) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.5)--(0,1.5)--(0,-1.5);
+
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.5)--(-0.75,-1.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.25)--(-0.75,-1.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1)--(-0.75,-1);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.75)--(-0.7,-0.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.5,-0.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.25,-0.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.25,0.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.5,0.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.7,0.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1)--(0.75,1);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.75,1.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.5)--(0.75,1.5);
+                                        \end{tikzpicture}
+                                    </script>
+                                    <figcaption>
+                                        $d=0.05a$, $y=\pm2a$ で放射境界
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div style="width: 60%">
+                                <figure style="position: relative">
+                                    <img
+                                        class="focus-fig"
+                                        src="./fig/three.webp"
+                                        alt="ほぼ 3 層モデルの固有値問題"
+                                        style="margin-top: -5%"
+                                    />
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            left: -10%;
+                                            top: 28%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        位相速度
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 21%;
+                                            left: -5%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        成長率
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 2%;
+                                            right: 28%;
+                                        "
+                                    >
+                                        波数
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 8%;
+                                            left: 20%;
+                                        "
+                                    >
+                                        連続スペクトル
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 15%;
+                                            right: 10%;
+                                        "
+                                    >
+                                        中立波
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 42%;
+                                            right: 10%;
+                                        "
+                                    >
+                                        中立波
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 32%;
+                                            left: 16%;
+                                            color: red;
+                                        "
+                                    >
+                                        不安定・減衰<br />モード
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            bottom: 31%;
+                                            right: 8%;
+                                            color: blue;
+                                        "
+                                    >
+                                        青丸: $d\to0$ の解析解
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-state="part1-sub">
+                        <h2>[補足] ほぼ 3 層モデル</h2>
+                        <figure>
+                            <script type="text/tikz">
+                                \begin{tikzpicture}[scale=1.5, transform shape]
+                                    \fill [cyan, opacity=0.3] (-1.5,1.5)--(1.5,1.5)--(1.5,-1.5)--(-1.5,-1.5);
+
+                                    \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                    \draw [->, >=stealth, very thick] (0,-1.75)--(0,2) node [left] {$y$};
+
+                                    \draw (0,0.75) node [left] {$y=a$};
+                                    \draw (0,-0.75) node [right] {$y=-a$};
+                                    \draw [<->, >=stealth, thick] (1.35, 0.6)--(1.35,0.9);
+                                    \draw (1.35,0.75) node [right] {$2d$};
+
+                                    \draw [red, dotted, very thick] (0,-1.5)--(0,-0.9)--(-1.25,-0.9)--(-1.25,-0.6)--(0,-0.6)--(0,0.6) node [below right] {$\quad-U\prime\prime$} --(1.25,0.6)--(1.25,0.9)--(0,0.9)--(0,1.5);
+
+                                    \draw [blue, very thick] (-0.75,-1.75) to [out=90, in=270] (-0.75, -0.9) to [out=90, in=225] (-0.6, -0.6) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.75) node [below right] {$U$};
+                                    \fill [blue, opacity=0.3] (-0.75,-1.5) to [out=90, in=270] (-0.75, -0.9) to [out=90, in=225] (-0.6, -0.6) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.5)--(0,1.5)--(0,-1.5);
+
+                                    \draw [blue, ->, >=stealth, very thick] (0,-1.5)--(-0.75,-1.5);
+                                    \draw [blue, ->, >=stealth, very thick] (0,-1.25)--(-0.75,-1.25);
+                                    \draw [blue, ->, >=stealth, very thick] (0,-1)--(-0.75,-1);
+                                    \draw [blue, ->, >=stealth, very thick] (0,-0.75)--(-0.7,-0.75);
+                                    \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.5,-0.5);
+                                    \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.25,-0.25);
+                                    \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.25,0.25);
+                                    \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.5,0.5);
+                                    \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.7,0.75);
+                                    \draw [blue, ->, >=stealth, very thick] (0,1)--(0.75,1);
+                                    \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.75,1.25);
+                                    \draw [blue, ->, >=stealth, very thick] (0,1.5)--(0.75,1.5);
+                                \end{tikzpicture}
+                            </script>
+                        </figure>
+                        <div class="small">
+                            \[\frac{U(y)}{U_0}\,=\, \begin{cases} 1 &
+                            \phantom{-}a+d &lt; y\\[1pt]
+                            1-\dfrac{(a+d-y)^2}{4ad} & \phantom{-}a-d &lt; y
+                            \leq a+d \\[3pt] y/a & -a+d &lt; y \leq a-d\\[1pt]
+                            -1+\dfrac{(-a-d-y)^2}{4ad} & -a-d &lt; y \leq
+                            -a+d\\[3pt] -1 & \phantom{-a-d\leq\,} y \leq -a-d
+                            \end{cases}\]
+                        </div>
+                    </section>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">ほぼ 3 層モデルの場合の固有関数</h2>
+                    <ul>
+                        <li>
+                            $d=0.2a$, $y=\pm2a$ で放射境界
+                            <div>
+                                <div class="flex-box">
+                                    <div style="width: 33%">
+                                        <figure>
+                                            <figcaption>
+                                                <b>不安定モード</b><br />
+                                                ($ka=0.5$)
+                                            </figcaption>
+                                            <img
+                                                src="./fig/unstable.webp"
+                                                alt="不安定モードの固有関数"
+                                            />
+                                        </figure>
+                                    </div>
+                                    <div style="width: 33%">
+                                        <figure style="position: relative">
+                                            <figcaption>
+                                                <b>$x&gt;0$ に伝播する中立波</b
+                                                ><br />
+                                                ($ka=0.75$)
+                                            </figcaption>
+                                            <img
+                                                src="./fig/edge_upper.webp"
+                                                alt="x正に伝播する中立波の固有関数"
+                                            />
+                                        </figure>
+                                    </div>
+                                    <div style="width: 33%">
+                                        <figure>
+                                            <figcaption>
+                                                <b>$x&lt;0$ に伝播する中立波</b
+                                                ><br />
+                                                ($ka=0.75$)
+                                            </figcaption>
+                                            <img
+                                                src="./fig/edge_lower.webp"
+                                                alt="x負に伝播する中立波の固有関数"
+                                            />
+                                        </figure>
+                                    </div>
+                                </div>
+                                <figcaption class="white">
+                                    <b>[各図の左]</b>
+                                    <span style="color: blue">青線</span> $U$,
+                                    <span style="border: 1px dotted black"
+                                        >点線</span
+                                    >
+                                    背景渦度勾配 $-(\upd^2 U/\upd y^2)$<br />
+                                    <b>[各図の右]</b>
+                                    流線関数摂動 $\psi$ (<span
+                                        style="color: red"
+                                        >赤</span
+                                    >
+                                    $\leq 0\leq$
+                                    <span style="color: blue">青</span>),
+                                    渦度摂動 $\zeta$ (<span
+                                        style="border: 1px dashed black"
+                                        >破線</span
+                                    >
+                                    $\leq 0\leq$
+                                    <span style="border: 1px solid black"
+                                        >実線</span
+                                    >)
+                                </figcaption>
+                            </div>
+                        </li>
+                        <li>
+                            <strong class="important"
+                                >シアー不安定は 2 つの中立波の共鳴</strong
+                            >
+                            <ul>
+                                <li>
+                                    分散曲線: 中立波の 2 つの曲線が重なって,
+                                    不安定モードの曲線へ繋がる
+                                </li>
+                                <li>
+                                    固有関数: 2
+                                    つの中立波が互いに強め合う配置で不安定
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <div class="flex-box">
+                        <div style="width: 40%">
+                            <h2 class="r-fit-text">ほぼ 3 層モデル　</h2>
+                            <p>
+                                繋ぎ目<br />
+                                ($\pm a-d&lt;y\leq\pm a+d$)<br />
+                                を太らせた場合
+                            </p>
+                            <figure>
+                                <script type="text/tikz">
+                                    \begin{tikzpicture}[scale=1.5, transform shape]
+                                        \fill [cyan, opacity=0.3] (-1.5,1.5)--(1.5,1.5)--(1.5,-1.5)--(-1.5,-1.5);
+
+                                        \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                        \draw [->, >=stealth, very thick] (0,-1.75)--(0,2) node [left] {$y$};
+
+                                        \draw (0,0.75) node [left] {$y=a$};
+                                        \draw (0,-0.75) node [right] {$y=-a$};
+                                        \draw [<->, >=stealth, thick] (1.35, 0.6)--(1.35,0.9);
+                                        \draw (1.35,0.75) node [right] {$2d$};
+
+                                        \draw [red, dotted, very thick] (0,-1.5)--(0,-0.9)--(-1.25,-0.9)--(-1.25,-0.6)--(0,-0.6)--(0,0.6) node [below right] {$\quad-U\prime\prime$} --(1.25,0.6)--(1.25,0.9)--(0,0.9)--(0,1.5);
+
+                                        \draw [blue, very thick] (-0.75,-1.75) to [out=90, in=270] (-0.75, -0.9) to [out=90, in=225] (-0.6, -0.6) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.75) node [below right] {$U$};
+                                        \fill [blue, opacity=0.3] (-0.75,-1.5) to [out=90, in=270] (-0.75, -0.9) to [out=90, in=225] (-0.6, -0.6) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.5)--(0,1.5)--(0,-1.5);
+
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1.5)--(-0.75,-1.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1.25)--(-0.75,-1.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1)--(-0.75,-1);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.75)--(-0.7,-0.75);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.5,-0.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.25,-0.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.25,0.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.5,0.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.7,0.75);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1)--(0.75,1);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.75,1.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1.5)--(0.75,1.5);
+                                    \end{tikzpicture}
+                                </script>
+                                <figcaption>
+                                    <strong class="alert">$d=0.6a$</strong>,
+                                    $y=\pm2a$ で放射境界
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div style="width: 60%">
+                            <figure style="position: relative">
+                                <img
+                                    class="focus-fig"
+                                    src="./fig/thick.webp"
+                                    alt="ほぼ 3 層モデルの固有値問題"
+                                    style="margin-top: -5%"
+                                />
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        left: -10%;
+                                        top: 28%;
+                                        transform: rotate(-90deg);
+                                    "
+                                >
+                                    位相速度
+                                </figcaption>
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        bottom: 21%;
+                                        left: -5%;
+                                        transform: rotate(-90deg);
+                                    "
+                                >
+                                    成長率
+                                </figcaption>
+                                <figcaption
+                                    class="black"
+                                    style="
+                                        position: absolute;
+                                        bottom: 2%;
+                                        right: 28%;
+                                    "
+                                >
+                                    波数
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        top: 8%;
+                                        left: 20%;
+                                    "
+                                >
+                                    連続スペクトル
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        top: 22%;
+                                        right: 22%;
+                                    "
+                                >
+                                    中立波
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        top: 36%;
+                                        right: 22%;
+                                    "
+                                >
+                                    中立波
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        top: 32%;
+                                        left: 16%;
+                                        color: red;
+                                    "
+                                >
+                                    不安定・減衰<br />モード
+                                </figcaption>
+                                <figcaption
+                                    style="
+                                        position: absolute;
+                                        bottom: 31%;
+                                        right: 8%;
+                                        color: blue;
+                                    "
+                                >
+                                    青丸: $d\to0$ の解析解
+                                </figcaption>
+                                <figcaption
+                                    class="small"
+                                    style="
+                                        position: absolute;
+                                        bottom: 45%;
+                                        right: 10%;
+                                        color: cyan;
+                                    "
+                                >
+                                    水色範囲: $(\upd^2 U/\upd
+                                    y^2)|_{c=U\text{となる}y}\neq0$
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <section data-state="part1">
+                        <div class="flex-box">
+                            <div style="width: 40%">
+                                <h2 class="r-fit-text">ほぼ 3 層モデル　</h2>
+                                <p>
+                                    繋ぎ目を<br />
+                                    目いっぱい太らせた場合
+                                </p>
+                                <figure>
+                                    <script type="text/tikz">
+                                        \begin{tikzpicture}[scale=1.5, transform shape]
+                                            \fill [cyan, opacity=0.3] (-1.5,1.5)--(1.5,1.5)--(1.5,-1.5)--(-1.5,-1.5);
+
+                                            \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                            \draw [->, >=stealth, very thick] (0,-1.75)--(0,2) node [left] {$y$};
+
+                                            \draw (0,0.75) node [left] {$y=a$};
+                                            \draw (0,-0.75) node [right] {$y=-a$};
+                                            \draw [<->, >=stealth, thick] (1.35, 0.6)--(1.35,0.9);
+                                            \draw (1.35,0.75) node [right] {$2d$};
+
+                                            \draw [red, dotted, very thick] (0,-1.5)--(0,-0.9)--(-1.25,-0.9)--(-1.25,-0.6)--(0,-0.6)--(0,0.6) node [below right] {$\quad-U\prime\prime$} --(1.25,0.6)--(1.25,0.9)--(0,0.9)--(0,1.5);
+
+                                            \draw [blue, very thick] (-0.75,-1.75) to [out=90, in=270] (-0.75, -0.9) to [out=90, in=225] (-0.6, -0.6) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.75) node [below right] {$U$};
+                                            \fill [blue, opacity=0.3] (-0.75,-1.5) to [out=90, in=270] (-0.75, -0.9) to [out=90, in=225] (-0.6, -0.6) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.5)--(0,1.5)--(0,-1.5);
+
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.5)--(-0.75,-1.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.25)--(-0.75,-1.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1)--(-0.75,-1);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.75)--(-0.7,-0.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.5,-0.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.25,-0.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.25,0.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.5,0.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.7,0.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1)--(0.75,1);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.75,1.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.5)--(0.75,1.5);
+                                        \end{tikzpicture}
+                                    </script>
+                                    <figcaption>
+                                        <strong class="alert">$d=a$</strong>,
+                                        $y=\pm3a$ で放射境界
+                                    </figcaption>
+                                </figure>
+                                <p>
+                                    <strong class="important"
+                                        >中立波の分散曲線なし</strong
+                                    >
+                                </p>
+                            </div>
+                            <div style="width: 60%">
+                                <figure style="position: relative">
+                                    <img
+                                        class="focus-fig"
+                                        src="./fig/very-thick.webp"
+                                        alt="ほぼ 3 層モデルの固有値問題"
+                                        style="margin-top: -5%"
+                                    />
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            left: -10%;
+                                            top: 28%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        位相速度
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 21%;
+                                            left: -5%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        成長率
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 2%;
+                                            right: 28%;
+                                        "
+                                    >
+                                        波数
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 8%;
+                                            left: 20%;
+                                        "
+                                    >
+                                        連続スペクトル
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 32%;
+                                            left: 16%;
+                                            color: red;
+                                        "
+                                    >
+                                        不安定・減衰<br />モード
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            bottom: 31%;
+                                            right: 8%;
+                                            color: blue;
+                                        "
+                                    >
+                                        青丸: $d\to0$ の解析解
+                                    </figcaption>
+                                    <figcaption
+                                        class="small"
+                                        style="
+                                            position: absolute;
+                                            bottom: 45%;
+                                            right: 10%;
+                                            color: cyan;
+                                        "
+                                    >
+                                        水色範囲: $(\upd^2 U/\upd
+                                        y^2)|_{c=U\text{となる}y}\neq0$
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-state="part1-sub">
+                        <h2 class="r-fit-text">
+                            [補足] ほぼ 3 層モデルの場合の固有関数
+                        </h2>
+                        <p style="margin-top: -2%">繋ぎ目を太らせた場合</p>
+                        <div>
+                            <div class="flex-box">
+                                <div style="width: 50%">
+                                    <figure style="position: relative">
+                                        <figcaption>
+                                            <b>不安定モード</b> ($ka=0.5$)
+                                        </figcaption>
+                                        <figcaption>
+                                            $d=0.6a$, $y=\pm2a$ で放射境界
+                                        </figcaption>
+                                        <img
+                                            src="./fig/thick_unstable.webp"
+                                            alt="不安定モードの固有関数"
+                                        />
+                                    </figure>
+                                </div>
+                                <div style="width: 50%">
+                                    <figure>
+                                        <figcaption>
+                                            <b>不安定モード</b> ($ka=0.5$)
+                                        </figcaption>
+                                        <figcaption>
+                                            $d=a$, $y=\pm3a$ で放射境界
+                                        </figcaption>
+                                        <img
+                                            src="./fig/very-thick_unstable.webp"
+                                            alt="不安定モードの固有関数"
+                                        />
+                                    </figure>
+                                </div>
+                            </div>
+                            <figcaption class="white">
+                                <b>[各図の左]</b>
+                                <span style="color: blue">青線</span> $U$,
+                                <span style="border: 1px dotted black"
+                                    >点線</span
+                                >
+                                背景渦度勾配 $-(\upd^2 U/\upd y^2)$<br />
+                                <b>[各図の右]</b>
+                                流線関数摂動 $\psi$ (<span style="color: red"
+                                    >赤</span
+                                >
+                                $\leq 0\leq$
+                                <span style="color: blue">青</span>), 渦度摂動
+                                $\zeta$ (<span style="border: 1px dashed black"
+                                    >破線</span
+                                >
+                                $\leq 0\leq$
+                                <span style="border: 1px solid black"
+                                    >実線</span
+                                >)
+                            </figcaption>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-state="part1">
+                        <div class="flex-box">
+                            <div style="width: 40%">
+                                <h2 class="r-fit-text">ほぼ 5 層モデル　</h2>
+
+                                <figure>
+                                    <script type="text/tikz">
+                                        \begin{tikzpicture}[scale=1.5, transform shape]
+                                            \fill [cyan, opacity=0.3] (-1.5,2)--(1.5,2)--(1.5,-2)--(-1.5,-2);
+
+                                            \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                            \draw [->, >=stealth, very thick] (0,-2.25)--(0,2.5) node [left] {$y$};
+
+                                            \draw (0,1.35) node [left] {$y=a$};
+                                            \draw (0,0.45) node [left] {$y=b$};
+                                            \draw (0,-0.45) node [right] {$y=-b$};
+                                            \draw (0,-1.35) node [right] {$y=-a$};
+
+                                            \draw [<->, >=stealth, thick] (1.35, 0.3)--(1.35,0.6);
+                                            \draw (1.35,0.45) node [right] {$2d$};
+                                            \draw [<->, >=stealth, thick] (1.35, 1.2)--(1.35,1.5);
+                                            \draw (1.35,1.35) node [right] {$2d$};
+
+                                            \draw [blue] (1,2.25) node [above] {$U_0$};
+                                            \draw [blue, dashed, thick] (0.5,0.45)--(0.5,2.25) node [above] {$U_1$};
+
+                                            \draw [red, dotted, very thick] (0,-2)--(0,-1.5)--(-1.25,-1.5)--(-1.25,-1.2)--(0,-1.2)--(0,-0.6)--(-1.25,-0.6)--(-1.25,-0.3)--(0,-0.3)--(0,0.3) node [below right] {$\quad-U\prime\prime$} --(1.25,0.3)--(1.25,0.6)--(0,0.6)--(0,1.2)--(1.25,1.2)--(1.25,1.5)--(0,1.5)--(0,2);
+
+                                            \draw [blue, very thick] (-1,-2.25) to [out=90, in=270] (-1, -1.5) to [out=90, in=245] (-0.925,-1.2) to [out=65,in=245] (-0.6, -0.55) to [out=65, in=215] (-0.4, -0.3) to [out=35, in=215] (0.4,0.3) to [out=35,in=245] (0.6,0.55) to [out=65, in=245] (0.925,1.2) to [out=65,in=90] (1,1.5) node [above right] {$U$} to [out=90, in=270] (1,2.25);
+                                            \fill [blue, opacity=0.3] (-1,-2) to [out=90, in=270] (-1, -1.5) to [out=90, in=245] (-0.925,-1.2) to [out=65,in=245] (-0.6, -0.55) to [out=65, in=215] (-0.4, -0.3) to [out=35, in=215] (0.4,0.3) to [out=35,in=245] (0.6,0.55) to [out=65, in=245] (0.925,1.2) to [out=65,in=90] (1,1.5) to [out=90, in=270] (1,2)--(0,2)--(0,-2);
+
+                                            \draw [blue, ->, >=stealth, very thick] (0,-2)--(-1,-2);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.75)--(-1,-1.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.5)--(-1,-1.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.25)--(-0.95,-1.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1)--(-0.825,-1);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.75)--(-0.7,-0.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.575,-0.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.3,-0.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.3,0.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.575,0.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.7,0.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1)--(0.825,1);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.95,1.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.5)--(1,1.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.75)--(1,1.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,2)--(1,2);
+                                        \end{tikzpicture}
+                                    </script>
+                                    <figcaption>
+                                        $d=0.2a$, $b=a/3$, $U_1=U_0/2$<br />
+                                        $y=\pm2a$ で放射境界
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div style="width: 60%">
+                                <figure style="position: relative">
+                                    <img
+                                        class="focus-fig"
+                                        src="./fig/five.webp"
+                                        alt="ほぼ 5 層モデルの固有値問題"
+                                        style="margin-top: -5%"
+                                    />
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            left: -10%;
+                                            top: 28%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        位相速度
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 21%;
+                                            left: -5%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        成長率
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 2%;
+                                            right: 28%;
+                                        "
+                                    >
+                                        波数
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 8%;
+                                            left: 20%;
+                                        "
+                                    >
+                                        連続スペクトル
+                                    </figcaption>
+                                    <span
+                                        class="small"
+                                        style="
+                                            position: absolute;
+                                            top: 13%;
+                                            right: 15%;
+                                        "
+                                        >中立波</span
+                                    >
+                                    <span
+                                        class="small"
+                                        style="
+                                            position: absolute;
+                                            top: 22%;
+                                            right: 15%;
+                                        "
+                                        >中立波</span
+                                    >
+                                    <span
+                                        class="small"
+                                        style="
+                                            position: absolute;
+                                            top: 36%;
+                                            right: 15%;
+                                        "
+                                        >中立波</span
+                                    >
+                                    <span
+                                        class="small"
+                                        style="
+                                            position: absolute;
+                                            top: 45%;
+                                            right: 15%;
+                                        "
+                                        >中立波</span
+                                    >
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 32%;
+                                            left: 20%;
+                                            color: red;
+                                        "
+                                    >
+                                        不安定・減衰<br />モード
+                                    </figcaption>
+
+                                    <figcaption
+                                        class="small"
+                                        style="
+                                            position: absolute;
+                                            bottom: 45%;
+                                            right: 16%;
+                                            color: cyan;
+                                        "
+                                    >
+                                        水色範囲: $(\upd^2 U/\upd
+                                        y^2)|_{c=U\text{となる}y}\neq0$
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-state="part1-sub">
+                        <h2>　　　[補足] ほぼ 5 層モデル</h2>
+                        <div style="position: relative">
+                            <div style="margin-left: 10%; font-size: 50%">
+                                \[\frac{U(y)}{U_0}\,=\, \begin{cases} 1 &
+                                \phantom{-}a+d &lt; y \\[1pt]
+                                1-\dfrac{[1-(U_1/U_0)](a+d-y)^2}{4(a-b)d} &
+                                \phantom{-}a-d &lt; y \leq a+d \\[3pt]
+                                \dfrac{1-(U_1/U_0)}{a-b}(y-a)+1 &
+                                \phantom{-}b+d &lt; y \leq a-d \\[3pt]
+                                \dfrac{[1-(U_1/U_0)](b-d-y)^2}{4(a-b)d}-\dfrac{(U_1/U_0)(b+d-y)^2}{4bd}+(U_1/U_0)
+                                & \phantom{-}b-d &lt; y \leq b+d \\[3pt]
+                                \dfrac{(U_1/U_0)}{b}y & -b+d &lt; y \leq
+                                b-d\\[3pt]
+                                \dfrac{(U_1/U_0)(-b-d-y)^2}{4bd}-\dfrac{[1-(U_1/U_0)](-b+d-y)^2}{4(a-b)d}-(U_1/U_0)
+                                & -b-d &lt; y \leq -b+d \\[3pt]
+                                \dfrac{1-(U_1/U_0)}{a-b}(y+a)-1 & -a+d &lt; y
+                                \leq -b-d \\[3pt]
+                                -1+\dfrac{[1-(U_1/U_0)](-a-d-y)^2}{4(a-b)d} &
+                                -a-d &lt; y \leq -a+d \\[1pt] -1 &
+                                \phantom{-a-y_1\leq} y \leq -a-d \end{cases}\]
+                            </div>
+                            <figure
+                                style="
+                                    position: absolute;
+                                    top: -40%;
+                                    left: -2%;
+                                "
+                            >
+                                <script type="text/tikz">
+                                    \begin{tikzpicture}[scale=1.5, transform shape]
+                                        \fill [cyan, opacity=0.3] (-1.5,2)--(1.5,2)--(1.5,-2)--(-1.5,-2);
+
+                                        \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                        \draw [->, >=stealth, very thick] (0,-2.25)--(0,2.5) node [left] {$y$};
+
+                                        \draw (0,1.35) node [left] {$y=a$};
+                                        \draw (0,0.45) node [left] {$y=b$};
+                                        \draw (0,-0.45) node [right] {$y=-b$};
+                                        \draw (0,-1.35) node [right] {$y=-a$};
+
+                                        \draw [<->, >=stealth, thick] (1.35, 0.3)--(1.35,0.6);
+                                        \draw (1.35,0.45) node [right] {$2d$};
+                                        \draw [<->, >=stealth, thick] (1.35, 1.2)--(1.35,1.5);
+                                        \draw (1.35,1.35) node [right] {$2d$};
+
+                                        \draw [blue] (1,2.25) node [above] {$U_0$};
+                                        \draw [blue, dashed, thick] (0.5,0.45)--(0.5,2.25) node [above] {$U_1$};
+
+                                        \draw [red, dotted, very thick] (0,-2)--(0,-1.5)--(-1.25,-1.5)--(-1.25,-1.2)--(0,-1.2)--(0,-0.6)--(-1.25,-0.6)--(-1.25,-0.3)--(0,-0.3)--(0,0.3) node [below right] {$\quad-U\prime\prime$} --(1.25,0.3)--(1.25,0.6)--(0,0.6)--(0,1.2)--(1.25,1.2)--(1.25,1.5)--(0,1.5)--(0,2);
+
+                                        \draw [blue, very thick] (-1,-2.25) to [out=90, in=270] (-1, -1.5) to [out=90, in=245] (-0.925,-1.2) to [out=65,in=245] (-0.6, -0.55) to [out=65, in=215] (-0.4, -0.3) to [out=35, in=215] (0.4,0.3) to [out=35,in=245] (0.6,0.55) to [out=65, in=245] (0.925,1.2) to [out=65,in=90] (1,1.5) node [above right] {$U$} to [out=90, in=270] (1,2.25);
+                                        \fill [blue, opacity=0.3] (-1,-2) to [out=90, in=270] (-1, -1.5) to [out=90, in=245] (-0.925,-1.2) to [out=65,in=245] (-0.6, -0.55) to [out=65, in=215] (-0.4, -0.3) to [out=35, in=215] (0.4,0.3) to [out=35,in=245] (0.6,0.55) to [out=65, in=245] (0.925,1.2) to [out=65,in=90] (1,1.5) to [out=90, in=270] (1,2)--(0,2)--(0,-2);
+
+                                        \draw [blue, ->, >=stealth, very thick] (0,-2)--(-1,-2);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1.75)--(-1,-1.75);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1.5)--(-1,-1.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1.25)--(-0.95,-1.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1)--(-0.825,-1);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.75)--(-0.7,-0.75);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.575,-0.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.3,-0.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.3,0.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.575,0.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.7,0.75);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1)--(0.825,1);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.95,1.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1.5)--(1,1.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1.75)--(1,1.75);
+                                        \draw [blue, ->, >=stealth, very thick] (0,2)--(1,2);
+                                    \end{tikzpicture}
+                                </script>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <section data-state="part1-sub">
+                        <h2 class="r-fit-text">
+                            [補足] ほぼ 5 層モデルの場合の固有関数
+                        </h2>
+                        <ul>
+                            <li>
+                                $d=0.2a$, $b=a/3$, $U_1=U_0/2$, $y=\pm2a$
+                                で放射境界
+                                <div>
+                                    <div class="flex-box">
+                                        <div style="width: 33%">
+                                            <figure style="position: relative">
+                                                <figcaption>
+                                                    <b>不安定モード</b><br />
+                                                    ($ka=1.25$)
+                                                </figcaption>
+                                                <img
+                                                    src="./fig/five1.webp"
+                                                    alt="不安定モードの固有関数"
+                                                />
+                                            </figure>
+                                        </div>
+                                        <div style="width: 33%">
+                                            <figure style="position: relative">
+                                                <figcaption>
+                                                    <b
+                                                        >$x&gt;0$
+                                                        に伝播する中立波</b
+                                                    ><br />
+                                                    ($ka=1.5$)
+                                                </figcaption>
+                                                <img
+                                                    src="./fig/five2.webp"
+                                                    alt="不安定モードの固有関数"
+                                                />
+                                            </figure>
+                                        </div>
+                                        <div style="width: 33%">
+                                            <figure>
+                                                <figcaption>
+                                                    <b
+                                                        >$x&gt;0$
+                                                        に伝播する中立波</b
+                                                    ><br />
+                                                    ($ka=1.5$)
+                                                </figcaption>
+                                                <img
+                                                    src="./fig/five3.webp"
+                                                    alt="不安定モードの固有関数"
+                                                />
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <figcaption class="white">
+                                        <b>[各図の左]</b>
+                                        <span style="color: blue">青線</span>
+                                        $U$,
+                                        <span style="border: 1px dotted black"
+                                            >点線</span
+                                        >
+                                        背景渦度勾配 $-(\upd^2 U/\upd y^2)$<br />
+                                        <b>[各図の右]</b>
+                                        流線関数摂動 $\psi$ (<span
+                                            style="color: red"
+                                            >赤</span
+                                        >
+                                        $\leq 0\leq$
+                                        <span style="color: blue">青</span>),
+                                        渦度摂動 $\zeta$ (<span
+                                            style="border: 1px dashed black"
+                                            >破線</span
+                                        >
+                                        $\leq 0\leq$
+                                        <span style="border: 1px solid black"
+                                            >実線</span
+                                        >)
+                                    </figcaption>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-state="part1">
+                        <div class="flex-box">
+                            <div style="width: 40%">
+                                <h2>$\tanh$ 型</h2>
+
+                                <figure>
+                                    <script type="text/tikz">
+                                        \begin{tikzpicture}[scale=1.5, transform shape]
+                                            \fill [cyan, opacity=0.3] (-1.5,1.5)--(1.5,1.5)--(1.5,-1.5)--(-1.5,-1.5);
+
+                                            \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                            \draw [->, >=stealth, very thick] (0,-1.75)--(0,2) node [left] {$y$};
+
+                                            \draw [red, dotted, very thick] (-0.3,-1.75) to [out=100,in=270] (-0.6,-0.6) to [out=90,in=270] (0.6,0.6) node [below right] {$-U\prime\prime$} to [out=90, in=280] (0.3,1.75);
+
+                                            \draw [blue, very thick] (-0.75,-1.75) to [out=90, in=270] (0.75,1.75) node [below right] {$U$};
+                                            \fill [blue, opacity=0.3] (-0.75,-1.5) to [out=80, in=260] (0.75,1.5)--(0,1.5)--(0,-1.5);
+
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.5)--(-0.75,-1.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1.25)--(-0.7,-1.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-1)--(-0.6,-1);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.75)--(-0.5,-0.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.35,-0.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.18,-0.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.18,0.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.35,0.5);
+                                            \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.5,0.75);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1)--(0.6,1);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.7,1.25);
+                                            \draw [blue, ->, >=stealth, very thick] (0,1.5)--(0.75,1.5);
+                                        \end{tikzpicture}
+                                    </script>
+                                    <figcaption>
+                                        $y=\pm5a$ で放射境界
+                                    </figcaption>
+                                    <div class="small">
+                                        \[\frac{U(y)}{U_0}\,=\,\tanh
+                                        \left(\frac{y}{a}\right)\]
+                                    </div>
+                                </figure>
+
+                                <p>
+                                    <strong class="important"
+                                        >中立波の分散曲線なし</strong
+                                    >
+                                </p>
+                            </div>
+                            <div style="width: 60%">
+                                <figure style="position: relative">
+                                    <img
+                                        class="focus-fig"
+                                        src="./fig/tanh.webp"
+                                        alt="tanh 型の固有値問題"
+                                        style="margin-top: -5%"
+                                    />
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            left: -10%;
+                                            top: 28%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        位相速度
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 21%;
+                                            left: -5%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        成長率
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 2%;
+                                            right: 28%;
+                                        "
+                                    >
+                                        波数
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 8%;
+                                            left: 20%;
+                                        "
+                                    >
+                                        連続スペクトル
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 32%;
+                                            left: 20%;
+                                            color: red;
+                                        "
+                                    >
+                                        不安定・減衰<br />モード
+                                    </figcaption>
+                                    <figcaption
+                                        class="small"
+                                        style="
+                                            position: absolute;
+                                            bottom: 45%;
+                                            right: 10%;
+                                            color: cyan;
+                                        "
+                                    >
+                                        水色範囲: $(\upd^2 U/\upd
+                                        y^2)|_{c=U\text{となる}y}\neq0$
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-state="part1-sub">
+                        <h2>[補足] $\tanh$ 型</h2>
+                        <figure style="width: 60%; margin: 0 auto">
+                            <figcaption>
+                                <b>不安定モード</b> ($ka=0.5$)<br />
+                                $y=\pm5a$ で放射境界
+                            </figcaption>
+                            <img
+                                src="./fig/unstable_tanh.webp"
+                                alt="不安定モードの固有関数"
+                            />
+                            <figcaption class="white">
+                                <b>[左]</b>
+                                <span style="color: blue">青線</span>
+                                $U$,
+                                <span style="border: 1px dotted black"
+                                    >点線</span
+                                >
+                                背景渦度勾配 $-(\upd^2 U/\upd y^2)$<br />
+                                <b>[右]</b>
+                                流線関数摂動 $\psi$ (<span style="color: red"
+                                    >赤</span
+                                >
+                                $\leq 0\leq$
+                                <span style="color: blue">青</span>),<br />
+                                渦度摂動 $\zeta$ (<span
+                                    style="border: 1px dashed black"
+                                    >破線</span
+                                >
+                                $\leq 0\leq$
+                                <span style="border: 1px solid black"
+                                    >実線</span
+                                >)
+                            </figcaption>
+                        </figure>
+                    </section>
+                </section>
+
+                <section data-state="part1" data-background-color="black">
+                    <h2>明らかにしたい問い</h2>
+                    <ul>
+                        <li>
+                            シアー不安定は 2
+                            つの中立波の共鳴で起こると説明されるが<br />
+                            中立波の分散曲線が行方不明になり,
+                            上手く説明できない例<br />
+                            (e.g. ほぼ 3 層モデル
+                            [繋ぎ目を目いっぱい太らせた場合], $\tanh$ 型)
+                            がある
+                        </li>
+                        <li class="question" style="margin-top: 1%">
+                            そのような場合,
+                            <strong class="important"
+                                >quasi-mode が共鳴を起こす中立波の<br />代わり</strong
+                            >になっているのではないか ?
+                        </li>
+                    </ul>
+                    <dl style="margin-top: 2%" class="white">
+                        <dt>
+                            <u>Point</u> <i class="fa-solid fa-lightbulb"></i>
+                        </dt>
+                        <dd>
+                            これまで示した分散関係で<br />
+                            $(\upd^2U/\upd y^2)|_{c=U\text{となる}y}\neq0$
+                            を満たす $c$ (グラフの<span
+                                style="color: deepskyblue"
+                                >水色範囲</span
+                            >) は<br />
+                            中立波の禁止帯になっている
+                        </dd>
+                    </dl>
+                </section>
+
+                <section data-state="part2">
+                    <h2>固有関数の対数特異性</h2>
+
+                    <ul style="position: relative">
+                        <li>
+                            $c=U(y)$ となる $y$ を $y_\mathrm{c}$ とする<br />
+                            (Rayleigh 方程式の確定特異点; $c\in\mathbb{C}$ より
+                            $y_\mathrm{c}\in\mathbb{C}$)
+                        </li>
+                        <li>
+                            $y=y_\mathrm{c}$ まわりの Frobenius 級数解<br />
+                            <div class="math-box" style="width: 85%">
+                                \[\begin{align*}
+                                \tilde{\psi}_\mathrm{I}\,&=\,(y-y_\mathrm{c})+\mathrm{O}\left[(y-y_\mathrm{c})^2\right]\\
+                                \tilde{\psi}_\mathrm{II}\,&=\,\frac{\textcolor{blue}{(\upd^2
+                                U/\upd y^2)|_{y=y_\mathrm{c}}}}{(\upd U/\upd
+                                y)|_{y=y_\mathrm{c}}}\tilde{\psi}_\mathrm{I}\textcolor{red}{\ln(y-y_\mathrm{c})}+\mathrm{O}(1)
+                                \end{align*}\]
+                            </div>
+                        </li>
+                        <li>
+                            $\textcolor{blue}{(\upd^2U/\upd
+                            y^2)|_{y=y_\mathrm{c}}}\neq0$ のとき<br />
+                            <span style="color: red">複素対数関数</span
+                            >の性質により<br />
+                            ($y$ の実軸上の) 固有関数 $\tilde{\psi}$ は<br />
+                            $\mathrm{Im}(y_\mathrm{c})$ の符号で不連続に変化
+                        </li>
+                        <figcaption
+                            style="
+                                position: absolute;
+                                bottom: 33%;
+                                right: 4%;
+                                z-index: 10;
+                            "
+                        >
+                            色: $\arg[\ln(y-y_\mathrm{c})]$
+                        </figcaption>
+                        <figure
+                            style="
+                                width: 40%;
+                                position: absolute;
+                                bottom: -22%;
+                                right: -5%;
+                            "
+                        >
+                            <img src="./fig/log.webp" alt="複素対数関数" />
+                        </figure>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">
+                        分散関係の多価性 &rarr; quasi-mode
+                    </h2>
+                    <div class="flex-box">
+                        <div style="width: 75%; margin-left: -3%">
+                            <ul>
+                                <li>
+                                    $\tilde{\psi}(y; k, c)$
+                                    を知っているていで<br />
+                                    $\tilde{\psi}$
+                                    を用いて表した不安定モードの分散関係を<br />
+                                    $\mathcal{D}=0$ と書く (e.g. ロンスキアン)
+                                </li>
+                                <li>
+                                    不安定モードの分散曲線に沿って $k$
+                                    を動かし<br />
+                                    曲線を見失った先を追跡することを考える
+                                </li>
+                                <li>
+                                    もし仮に $y_\mathrm{c}$ が $y$
+                                    の実軸を横切るならば<br />
+                                    そのとき $\tilde{\psi}$ は 不連続に変化:
+                                    $\tilde{\psi}\,\to\,\tilde{\psi}+\mathrm{i}\hat{\psi}$
+                                </li>
+                                <li>
+                                    それに伴い, 分散関係も不連続に変化
+                                    $\mathcal{D}=0\,\to\,\mathcal{D}+\mathrm{i}\hat{\mathcal{D}}=0$
+                                </li>
+                                <li>
+                                    この「分散関係」を満たす解がもしあれば<br />
+                                    それを
+                                    <strong class="alert"
+                                        >quasi-mode (Landau 極)</strong
+                                    >
+                                    と呼び<br />
+                                    普通の固有モード ($\mathcal{D}=0$)
+                                    と区別する
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 25%; position: relative">
+                            <script type="text/tikz">
+                                \begin{tikzpicture}[scale=1.5, transform shape]
+
+                                    \draw [->, >=stealth, thick] (-2,0)--(2,0) node [right] {$\mathrm{Re}(c)$};
+                                    \draw [->, >=stealth, thick] (0,-2)--(0,2) node [left] {$\mathrm{Im}(c)$};
+
+                                    \draw (-2,2) node[right] {$c$};
+                                    \draw [thick] (-2, 1.8)--(-1.6,1.8)--(-1.6,2.2);
+
+                                    \draw [line width=4] (-1.5,0) node [below] {$U(y_1)$} --(1.5,0) node [below] {$U(y_2)$};
+
+                                    \draw [cyan, line width=5] (-1.5,0)--(1.5,0);
+
+                                    \draw [red, ->, >=stealth, ultra thick] (0,1.25) -- (0,0);
+                                    \draw [red, dashed, ->, >=stealth, ultra thick] (0,0)--(0,-0.75) node [right] {?};
+                                \end{tikzpicture}
+                            </script>
+                            <span
+                                class="small"
+                                style="
+                                    color: blue;
+                                    position: absolute;
+                                    left: 8%;
+                                    top: 19%;
+                                "
+                                >禁止帯</span
+                            >
+                            <span
+                                class="small"
+                                style="
+                                    color: red;
+                                    position: absolute;
+                                    right: -2%;
+                                    top: 3%;
+                                "
+                                >$k$ を動か<br />したときの<br />
+                                $c$ の軌跡</span
+                            >
+                            <script type="text/tikz">
+                                \begin{tikzpicture}[scale=1.5, transform shape]
+
+                                    \draw [->, >=stealth, thick] (-2,0)--(2,0) node [right] {$\mathrm{Re}(y)$};
+                                    \draw [->, >=stealth, thick] (0,-2)--(0,2) node [left] {$\mathrm{Im}(y)$};
+
+                                    \draw (-2,2) node[right] {$y$};
+                                    \draw [thick] (-2, 1.8)--(-1.6,1.8)--(-1.6,2.2);
+
+                                    \draw [line width=4] (-1.5,0) node [below] {$y_1$} --(1.5,0) node [below] {$y_2$};
+
+                                    \draw [red, ->, >=stealth, ultra thick] (0,1.25) -- (0,0);
+                                    \draw [red, dashed, ->, >=stealth, ultra thick] (0,0)--(0,-0.75) node [right] {?};
+                                \end{tikzpicture}
+                            </script>
+                            <span
+                                class="small"
+                                style="
+                                    color: red;
+                                    position: absolute;
+                                    right: -2%;
+                                    bottom: 30%;
+                                "
+                                >$k$ を動か<br />したときの<br />
+                                $y_\mathrm{c}$ の軌跡</span
+                            >
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">
+                        非物理的な解というわけでもないらしい
+                    </h2>
+                    <dl>
+                        <dt>
+                            <a
+                                href="http://homepage.physics.uiowa.edu/~ghowes/teach/phys225/readings/Landau46.pdf"
+                                title="On the vibrations of the electronic plasma"
+                                target="_blank"
+                                >Landau (1946)</a
+                            >
+                        </dt>
+                        <dd>
+                            無衝突プラズマの式から Landau 減衰を導出.<br />
+                            非散逸なのに指数関数的に減衰するプラズマ振動.<br />
+                            波と粒子の相互作用に由来.
+                        </dd>
+                        <dt>
+                            <a
+                                href="https://doi.org/10.1063/1.1692936"
+                                title="Role of Landau Damping in Crossed‐Field Electron Beams and Inviscid Shear Flow"
+                                target="_blank"
+                                >Briggs+ (1970)</a
+                            >
+                        </dt>
+                        <dd>
+                            Landau 減衰を非粘性流体の問題に応用.<br />
+                            quasi-mode
+                            は連続スペクトルの一部分の別表現だと指摘.<br />
+                            波と流れの相互作用に由来.
+                        </dd>
+                        <dt>
+                            <a
+                                href="https://doi.org/10.1063/1.1289505"
+                                title="Inviscid damping of asymmetries on a two-dimensional vortex"
+                                target="_blank"
+                                >Schecter+ (2000)</a
+                            >
+                        </dt>
+                        <dd>
+                            実験と数値実験で quasi-mode の指数的減衰を観測.<br />
+                            代数的減衰 (e.g.
+                            <a
+                                href="https://doi.org/10.1063/1.1706010"
+                                title="Stability of Inviscid Plane Couette Flow"
+                                target="_blank"
+                                >Case, 1960</a
+                            >) が卓越する前に観察される.
+                        </dd>
+                        <dt>
+                            <a
+                                href="https://doi.org/10.1017/jfm.2011.156"
+                                title="Stability of a vortex in radial density stratification: role of wave interactions"
+                                target="_blank"
+                                >Dixit & Govindarajan (2011)</a
+                            >
+                        </dt>
+                        <dd>
+                            quasi-mode と中立波 (外部重力波)
+                            の相互作用により<br />不安定モードが生じることを示した.
+                        </dd>
+                    </dl>
+                </section>
+
+                <section data-state="part2">
+                    <h2>方法</h2>
+                    <div class="flex-box">
+                        <div style="width: 80%">
+                            <ul>
+                                <li>
+                                    スペクトル変形法
+                                    <span class="small"
+                                        >[e.g.
+                                        <a
+                                            href="https://doi.org/10.1063/1.872497"
+                                            title="Damped diocotron quasi-modes of non-neutral plasmas and inviscid fluids"
+                                            target="_blank"
+                                            >Spencer & Rasband (1997)</a
+                                        >]</span
+                                    >
+                                </li>
+                                <li>
+                                    <strong class="important"
+                                        >スペクトル変形あり</strong
+                                    >の Chebyshev 選点法
+                                    <ul>
+                                        <li>
+                                            座標変換
+                                            $y(s)=y_1+(y_2-y_1)g(s)\textcolor{red}{+\upi
+                                            f(s)}$
+                                            <div class="small">
+                                                \[\begin{align*}
+                                                f(s)\,&=\,f_0(s+1)(s-1)\\
+                                                g(s)\,&=\,\begin{cases}
+                                                [\sin^{-1}(0.999s)&\!\!\!\!\!/\sin^{-1}(0.999)+1]/2
+                                                \\ & (\text{for
+                                                $\tanh$-shaped}) \\ (s+1)/2 &
+                                                (\text{otherwise})\end{cases}\\
+                                                \end{align*}\]
+                                            </div>
+                                        </li>
+                                        <li class="small">
+                                            放射境界条件
+                                            $(\upd\tilde{\psi}/\upd y)\pm
+                                            k\tilde{\psi}=0$ @$y=y_1$, $y_2$
+                                        </li>
+                                        <li class="small">
+                                            Chebyshev 多項式展開
+                                            $\tilde{\psi}(s)=\sum_{n=0}^{N_\mathrm{t}}\tilde{\psi}_n\mathrm{T}_n(s)$
+                                        </li>
+                                        <li class="small">
+                                            Gauss-Lobatto 選点<br />
+                                            $s_m\equiv\cos(m\pi/N_\mathrm{t})$
+                                            ($m=1,2,\ldots,N_\mathrm{t}-1$)
+                                        </li>
+                                        <li class="small">
+                                            分点上で Rayleigh 方程式を満たす
+                                            $N_\mathrm{t}-1$ 本の式に<br />
+                                            境界条件 $2$
+                                            本を加えた一般化固有値問題
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <u><b>Caution</b></u>
+                                    <i class="fa-solid fa-crow"></i>
+                                    <br />
+                                    この方法は $U(y)$ が正則でなければ使えない
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 20%">
+                            <figure style="position: relative">
+                                <script type="text/tikz">
+                                    \begin{tikzpicture}[scale=1.5, transform shape]
+                                        \draw [->, >=stealth, very thick] (-1.5,0)--(1.75,0) node [right] {$\mathrm{Re}(y)$};
+                                        \draw [->, >=stealth, very thick] (0,-1.5)--(0,1.5) node [left] {$\mathrm{Im}(y)$};
+
+                                        \draw [very thick] (-1.2,-0.1) node [below] {$y_1$} --(-1.2,0.1);
+                                        \draw [very thick] (1.2,-0.1) node [below] {$y_2$} --(1.2,0.1);
+
+                                        \draw [magenta, ->, >=stealth, very thick] (-1.35,0.15) to [out=315,in=315] (-1.2,0) to [out=315, in=225] (1.2,0) to [out=225, in=225] (1.5,0.3) node [above] {$s$};
+                                        \draw [magenta] (-1.2,0.1) node [above] {$-1$};
+                                        \draw [magenta] (1.2,0.1) node [above] {$1$};
+
+                                        \draw [red, ultra thick] (0,1) -- (0,0);
+                                        \draw [red, dashed, ->, >=stealth, ultra thick] (0,0)--(0,-0.4);
+                                    \end{tikzpicture}
+                                </script>
+                                <span
+                                    class="small"
+                                    style="
+                                        color: red;
+                                        position: absolute;
+                                        right: -13%;
+                                        top: -20%;
+                                    "
+                                    >$k$ を動か<br />したときの<br />
+                                    $y_\mathrm{c}$ の軌跡</span
+                                >
+                            </figure>
+
+                            <p
+                                class="small black"
+                                style="margin: 5% -25% auto -15%"
+                            >
+                                quasi-mode に<br />対応する $y_\mathrm{c}$ が
+                                $s$ 軸を<br />横切っていなければ,<br />普通の固有モード<br />
+                                ($\mathcal{D}=0$) と同じように<br />quasi-mode
+                                が<br />求められる
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <section data-state="part3">
+                        <h2>結果</h2>
+                        <ul style="position: relative">
+                            <li>
+                                $\tanh$ 型 ($y=\pm5a$ で放射境界)
+                                <div class="flex-box">
+                                    <div style="width: 50%">
+                                        <figure style="position: relative">
+                                            <figcaption>
+                                                <b style="color: gray"
+                                                    >w/o スペクトル変形</b
+                                                >
+                                            </figcaption>
+                                            <img
+                                                src="./fig/tanh_3d.webp"
+                                                alt="tanh 型の固有値問題"
+                                            />
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    left: 11%;
+                                                    bottom: 2%;
+                                                    transform: rotate(20deg);
+                                                "
+                                            >
+                                                位相速度
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 47%;
+                                                    left: -15%;
+                                                    transform: rotate(-90deg);
+                                                "
+                                            >
+                                                成長率
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 2%;
+                                                    right: 14%;
+                                                "
+                                            >
+                                                波数
+                                            </figcaption>
+                                            <figcaption
+                                                style="
+                                                    position: absolute;
+                                                    top: 18%;
+                                                    left: 20%;
+                                                    z-index: 10;
+                                                "
+                                            >
+                                                色: $|c|$
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div style="width: 50%">
+                                        <figure style="position: relative">
+                                            <figcaption>
+                                                <u><b>w/ スペクトル変形</b></u>
+                                                <img
+                                                    src="./fig/tanh_sd_3d.webp"
+                                                    alt="tanh 型の固有値問題 (スペクトル変形あり)"
+                                                />
+                                            </figcaption>
+                                            <figcaption
+                                                class="small black"
+                                                style="
+                                                    position: absolute;
+                                                    top: 32%;
+                                                    right: -2%;
+                                                    color: yellow;
+                                                "
+                                            >
+                                                quasi-mode
+                                            </figcaption>
+                                            <figcaption
+                                                class="small white"
+                                                style="
+                                                    position: absolute;
+                                                    top: -21%;
+                                                    right: -13%;
+                                                "
+                                            >
+                                                $U(y(s))=c$ より<br />連続スペクトルは変形
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    left: 12%;
+                                                    bottom: 2%;
+                                                    transform: rotate(20deg);
+                                                "
+                                            >
+                                                位相速度
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 47%;
+                                                    left: -13%;
+                                                    transform: rotate(-90deg);
+                                                "
+                                            >
+                                                成長率
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 2%;
+                                                    right: 12%;
+                                                "
+                                            >
+                                                波数
+                                            </figcaption>
+                                            <figcaption
+                                                style="
+                                                    position: absolute;
+                                                    top: 18%;
+                                                    left: 20%;
+                                                    z-index: 10;
+                                                "
+                                            >
+                                                色: $|c|$
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                得られた quasi-mode は 1 つだけで,
+                                位相速度は<strong class="alert">純虚数</strong>
+                                <ul>
+                                    <li>
+                                        <strong class="important"
+                                            >共鳴を起こす中立波の代わりとは言い難い</strong
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                            <figure
+                                style="
+                                    position: absolute;
+                                    top: -29%;
+                                    right: 21%;
+                                "
+                            >
+                                <script type="text/tikz">
+                                    \begin{tikzpicture}[scale=1.2, transform shape]
+                                        \fill [cyan, opacity=0.3] (-1.5,1.5)--(1.5,1.5)--(1.5,-1.5)--(-1.5,-1.5);
+
+                                        \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                        \draw [->, >=stealth, very thick] (0,-1.75)--(0,2) node [left] {$y$};
+
+                                        \draw [red, dotted, very thick] (-0.3,-1.75) to [out=100,in=270] (-0.6,-0.6) to [out=90,in=270] (0.6,0.6) node [below right] {$-U\prime\prime$} to [out=90, in=280] (0.3,1.75);
+
+                                        \draw [blue, very thick] (-0.75,-1.75) to [out=90, in=270] (0.75,1.75) node [below right] {$U$};
+                                        \fill [blue, opacity=0.3] (-0.75,-1.5) to [out=80, in=260] (0.75,1.5)--(0,1.5)--(0,-1.5);
+
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1.5)--(-0.75,-1.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1.25)--(-0.7,-1.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-1)--(-0.6,-1);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.75)--(-0.5,-0.75);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.35,-0.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.18,-0.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.18,0.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.35,0.5);
+                                        \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.5,0.75);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1)--(0.6,1);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.7,1.25);
+                                        \draw [blue, ->, >=stealth, very thick] (0,1.5)--(0.75,1.5);
+                                    \end{tikzpicture}
+                                </script>
+                            </figure>
+                        </ul>
+                    </section>
+
+                    <section data-state="part3-sub">
+                        <h2>[補足] $f_0$ を変化させた場合</h2>
+                        <div class="flex-box">
+                            <div style="width: 33%">
+                                <figure>
+                                    <figcaption>
+                                        色: $\arg[\tanh(z)]$
+                                    </figcaption>
+                                    <img
+                                        src="./fig/tanh_complex.webp"
+                                        alt="複素双曲線関数"
+                                    />
+                                </figure>
+                            </div>
+                            <div style="width: 33%">
+                                <img
+                                    src="./fig/tanh_1.webp"
+                                    alt="tanh 型の固有値問題 (スペクトル変形あり)"
+                                />
+                            </div>
+                            <div style="width: 33%">
+                                <img
+                                    src="./fig/tanh_2.webp"
+                                    alt="tanh 型の固有値問題 (スペクトル変形あり)"
+                                />
+                            </div>
+                        </div>
+                        <p>
+                            $f_0$ を大きくしていき,<br />
+                            $s$ 軸が $U(y)$
+                            の特異点の向こう側をまわるようになると,<br />
+                            $f_0&lt;0$ の場合のようなスペクトル変形になる
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-state="part3">
+                        <h2>結果 (部分系)</h2>
+                        <ul>
+                            <li>
+                                quasi-mode
+                                は連続スペクトルの一部分だとすると<br />
+                                <strong class="alert">部分系</strong> (e.g.
+                                $0&lt;y&lt;y_2$) の quasi-mode はどうなるか ?
+                            </li>
+                            <li>
+                                ほぼ 3 層モデル
+                                (繋ぎ目を目いっぱい太らせた場合)
+                                <div class="flex-box">
+                                    <div style="width: 40%">
+                                        <figure style="position: relative">
+                                            <figcaption>
+                                                <b style="color: gray"
+                                                    >全体系 w/o
+                                                    スペクトル変形</b
+                                                >
+                                            </figcaption>
+                                            <img
+                                                src="./fig/very-thick_3d.webp"
+                                                alt="ほぼ 3 層モデルの固有値問題"
+                                            />
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    left: 8%;
+                                                    bottom: 1%;
+                                                    transform: rotate(20deg);
+                                                "
+                                            >
+                                                位相速度
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 45%;
+                                                    left: -18%;
+                                                    transform: rotate(-90deg);
+                                                "
+                                            >
+                                                成長率
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 2%;
+                                                    right: 12%;
+                                                "
+                                            >
+                                                波数
+                                            </figcaption>
+                                            <figcaption
+                                                style="
+                                                    position: absolute;
+                                                    top: 18%;
+                                                    left: 5%;
+                                                    z-index: 10;
+                                                "
+                                            >
+                                                色: $|c|$, $y=\pm3a$ で放射境界
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div style="width: 40%">
+                                        <figure>
+                                            <figcaption>
+                                                <u
+                                                    ><b
+                                                        >部分系 w/
+                                                        スペクトル変形</b
+                                                    ></u
+                                                >
+                                            </figcaption>
+                                            <img
+                                                src="./fig/parabola_sd_3d.webp"
+                                                alt="ほぼ 3 層モデルの固有値問題 (部分系, スペクトル変形あり)"
+                                            />
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    left: 8%;
+                                                    bottom: 1%;
+                                                    transform: rotate(20deg);
+                                                "
+                                            >
+                                                位相速度
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 45%;
+                                                    left: -18%;
+                                                    transform: rotate(-90deg);
+                                                "
+                                            >
+                                                成長率
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 2%;
+                                                    right: 12%;
+                                                "
+                                            >
+                                                波数
+                                            </figcaption>
+                                            <figcaption
+                                                style="
+                                                    position: absolute;
+                                                    top: 18%;
+                                                    left: 13%;
+                                                    z-index: 10;
+                                                "
+                                            >
+                                                色: $|c-0.5|$
+                                            </figcaption>
+                                            <figcaption
+                                                class="small black"
+                                                style="
+                                                    position: absolute;
+                                                    top: 23%;
+                                                    right: 0;
+                                                    color: yellow;
+                                                "
+                                            >
+                                                quasi-mode
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div style="width: 20%">
+                                        <script type="text/tikz">
+                                            \begin{tikzpicture}[scale=1.1, transform shape]
+                                                \fill [cyan, opacity=0.3] (-1.5,1.5)--(1.5,1.5)--(1.5,-0.5)--(-1.5,-0.5);
+
+                                                \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                                \draw [->, >=stealth, very thick] (0,-0.75)--(0,2) node [left] {$y$};
+
+                                                \draw (0,0.75) node [left] {$y=a$};
+                                                \draw [<->, >=stealth, thick] (1.35, 0.6)--(1.35,0.9);
+                                                \draw (1.35,0.75) node [right] {$2d$};
+
+                                                \draw [red, dotted, very thick] (0,-0.5)--(0,0.6) node [below right] {$\quad-U\prime\prime$} --(1.25,0.6)--(1.25,0.9)--(0,0.9)--(0,1.5);
+
+                                                \draw [blue, very thick] (-0.75, -0.75) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.75) node [below right] {$U$};
+                                                \fill [blue, opacity=0.3] (-0.5, -0.5) to [out=45, in=225] (0.6,0.6) to [out=45, in=270] (0.75,0.9) to [out=90, in=270] (0.75,1.5)--(0,1.5)--(0,-0.5);
+
+                                                \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.5,-0.5);
+                                                \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.25,-0.25);
+                                                \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.25,0.25);
+                                                \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.5,0.5);
+                                                \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.7,0.75);
+                                                \draw [blue, ->, >=stealth, very thick] (0,1)--(0.75,1);
+                                                \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.75,1.25);
+                                                \draw [blue, ->, >=stealth, very thick] (0,1.5)--(0.75,1.5);
+                                            \end{tikzpicture}
+                                        </script>
+                                        <figcaption>
+                                            $d=a$, $y=0,2a$ で放射境界
+                                        </figcaption>
+                                    </div>
+                                </div>
+                            </li>
+                            <li style="margin-top: 1%">
+                                $0.75&lt;\mathrm{Re}(c)&lt;1$,
+                                $\mathrm{Im}(c)&lt;0$ に quasi-mode
+                                が見つかった
+                                <ul>
+                                    <li>
+                                        部分系 $y_1&lt;y&lt;0$ と部分系
+                                        $0&lt;y&lt;y_2$ の<br />
+                                        <strong class="important"
+                                            >quasi-mode
+                                            の共鳴として説明できるかもしれない</strong
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section data-state="part3-sub">
+                        <h2 class="r-fit-text">
+                            [補足] ほぼ 3 層モデルの部分系
+                        </h2>
+                        <div class="flex-box">
+                            <div style="width: 50%">
+                                <figure style="position: relative">
+                                    <figcaption>
+                                        <b>部分系 w/o スペクトル変形</b><br />
+                                        $d=a$, $y=0, 2a$ で放射境界
+                                    </figcaption>
+                                    <img
+                                        src="./fig/parabola_3d.webp"
+                                        alt="ほぼ 3 層モデルの固有値問題 (部分系)"
+                                    />
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            left: 13%;
+                                            bottom: 3%;
+                                            transform: rotate(20deg);
+                                        "
+                                    >
+                                        位相速度
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 44%;
+                                            left: -12%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        成長率
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 3%;
+                                            right: 12%;
+                                        "
+                                    >
+                                        波数
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 23%;
+                                            left: 19%;
+                                            z-index: 10;
+                                        "
+                                    >
+                                        色: $|c-0.5|$
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div style="width: 50%">
+                                <figure>
+                                    <figcaption>
+                                        <b>$x&lt;0$ に伝播する中立波</b>
+                                        ($ka=0.5$)<br />
+                                        $d=a$, $y=-a, 3a$ で放射境界
+                                    </figcaption>
+                                    <img
+                                        src="./fig/parabola1.webp"
+                                        alt="ほぼ 3 層モデルの固有関数 (部分系)"
+                                    />
+                                    <figcaption class="white">
+                                        <b>[左]</b>
+                                        <span style="color: blue">青線</span>
+                                        $U$,<br />
+                                        <span style="border: 1px dotted black"
+                                            >点線</span
+                                        >
+                                        背景渦度勾配 $-(\upd^2 U/\upd y^2)$<br />
+                                        <b>[右]</b>
+                                        流線関数摂動 $\psi$ (<span
+                                            style="color: red"
+                                            >赤</span
+                                        >
+                                        $\leq 0\leq$
+                                        <span style="color: blue">青</span
+                                        >),<br />
+                                        渦度摂動 $\zeta$ (<span
+                                            style="border: 1px dashed black"
+                                            >破線</span
+                                        >
+                                        $\leq 0\leq$
+                                        <span style="border: 1px solid black"
+                                            >実線</span
+                                        >)
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-state="part3">
+                        <h2>結果 (部分系)</h2>
+                        <ul>
+                            <li>
+                                $\tanh$
+                                型　　　　　　　　　　　　　　　　　　　　　　　
+                                <div class="flex-box">
+                                    <div style="width: 40%">
+                                        <figure style="position: relative">
+                                            <figcaption>
+                                                <b style="color: gray"
+                                                    >全体系 w/
+                                                    スペクトル変形</b
+                                                >
+                                            </figcaption>
+                                            <img
+                                                src="./fig/tanh_sd_3d_nm.webp"
+                                                alt="ほぼ 3 層モデルの固有値問題"
+                                            />
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    left: 8%;
+                                                    bottom: 1%;
+                                                    transform: rotate(20deg);
+                                                "
+                                            >
+                                                位相速度
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 45%;
+                                                    left: -18%;
+                                                    transform: rotate(-90deg);
+                                                "
+                                            >
+                                                成長率
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 2%;
+                                                    right: 12%;
+                                                "
+                                            >
+                                                波数
+                                            </figcaption>
+                                            <figcaption
+                                                style="
+                                                    position: absolute;
+                                                    top: 18%;
+                                                    left: 5%;
+                                                    z-index: 10;
+                                                "
+                                            >
+                                                色: $|c|$, $y=\pm5a$ で放射境界
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div style="width: 40%">
+                                        <figure>
+                                            <figcaption>
+                                                <u
+                                                    ><b
+                                                        >部分系 w/
+                                                        スペクトル変形</b
+                                                    ></u
+                                                >
+                                            </figcaption>
+                                            <img
+                                                src="./fig/tanh_half_sd.webp"
+                                                alt="tanh 型の固有値問題 (部分系, スペクトル変形あり)"
+                                            />
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    left: 8%;
+                                                    bottom: 1%;
+                                                    transform: rotate(20deg);
+                                                "
+                                            >
+                                                位相速度
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 45%;
+                                                    left: -18%;
+                                                    transform: rotate(-90deg);
+                                                "
+                                            >
+                                                成長率
+                                            </figcaption>
+                                            <figcaption
+                                                class="black"
+                                                style="
+                                                    position: absolute;
+                                                    bottom: 2%;
+                                                    right: 12%;
+                                                "
+                                            >
+                                                波数
+                                            </figcaption>
+                                            <figcaption
+                                                style="
+                                                    position: absolute;
+                                                    top: 18%;
+                                                    left: 13%;
+                                                    z-index: 10;
+                                                "
+                                            >
+                                                色: $|c-0.5|$
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div style="width: 20%">
+                                        <script type="text/tikz">
+                                            \begin{tikzpicture}[scale=1.1, transform shape]
+                                                \fill [cyan, opacity=0.3] (-1.5,1.5)--(1.5,1.5)--(1.5,-0.5)--(-1.5,-0.5);
+
+                                                \draw [->, >=stealth, very thick] (-1.75,0)--(2,0) node [right] {$x$};
+                                                \draw [->, >=stealth, very thick] (0,-0.75)--(0,2) node [left] {$y$};
+
+                                                \draw [red, dotted, very thick] (0,-0.5)--(0,0) to [out=15,in=270] (0.6,0.6) node [below right] {$-U\prime\prime$} to [out=90, in=280] (0.3,1.75);
+
+                                                \draw [blue, very thick] (-0.575,-0.75) to [out=55, in=235] (0,0) to [out=55, in=270] (0.75,1.75) node [below right] {$U$};
+                                                \fill [blue, opacity=0.3] (-0.375,-0.5) to [out=55, in=235] (0,0) to [out=55, in=260] (0.75,1.5)--(0,1.5)--(0,-0.5);
+
+                                                \draw [blue, ->, >=stealth, very thick] (0,-0.5)--(-0.35,-0.5);
+                                                \draw [blue, ->, >=stealth, very thick] (0,-0.25)--(-0.18,-0.25);
+                                                \draw [blue, ->, >=stealth, very thick] (0,0.25)--(0.18,0.25);
+                                                \draw [blue, ->, >=stealth, very thick] (0,0.5)--(0.35,0.5);
+                                                \draw [blue, ->, >=stealth, very thick] (0,0.75)--(0.5,0.75);
+                                                \draw [blue, ->, >=stealth, very thick] (0,1)--(0.6,1);
+                                                \draw [blue, ->, >=stealth, very thick] (0,1.25)--(0.7,1.25);
+                                                \draw [blue, ->, >=stealth, very thick] (0,1.5)--(0.75,1.5);
+                                            \end{tikzpicture}
+                                        </script>
+                                        <figcaption>
+                                            $y=0, 5a$で<br />放射境界
+                                        </figcaption>
+                                    </div>
+                                </div>
+                            </li>
+                            <li style="margin-top: 1%">
+                                全体系では quasi-mode があるのに対し<br />
+                                <strong class="important"
+                                    >部分系では quasi-mode
+                                    は見つからなかった</strong
+                                >
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section data-state="part3-sub">
+                        <h2>[補足] $\tanh$ 型の部分系</h2>
+                        <div class="flex-box">
+                            <div style="width: 50%">
+                                <figure style="position: relative">
+                                    <figcaption>
+                                        <b>部分系 w/o スペクトル変形</b><br />
+                                        $y=0, 5a$ で放射境界
+                                    </figcaption>
+                                    <img
+                                        src="./fig/tanh_half.webp"
+                                        alt="tanh 型の固有値問題 (部分系)"
+                                    />
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            left: 13%;
+                                            bottom: 3%;
+                                            transform: rotate(20deg);
+                                        "
+                                    >
+                                        位相速度
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 44%;
+                                            left: -12%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        成長率
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 3%;
+                                            right: 12%;
+                                        "
+                                    >
+                                        波数
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 23%;
+                                            left: 19%;
+                                            z-index: 10;
+                                        "
+                                    >
+                                        色: $|c-0.5|$
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div style="width: 50%">
+                                <figure>
+                                    <figcaption>
+                                        <b>$x&lt;0$ に伝播する中立波</b>
+                                        ($ka=0.5$)<br />
+                                        $y=0, 5a$ で放射境界
+                                    </figcaption>
+                                    <img
+                                        src="./fig/tanh_half1.webp"
+                                        alt="tanh 型の固有関数 (部分系)"
+                                    />
+                                    <figcaption class="white">
+                                        <b>[左]</b>
+                                        <span style="color: blue">青線</span>
+                                        $U$,<br />
+                                        <span style="border: 1px dotted black"
+                                            >点線</span
+                                        >
+                                        背景渦度勾配 $-(\upd^2 U/\upd y^2)$<br />
+                                        <b>[右]</b>
+                                        流線関数摂動 $\psi$ (<span
+                                            style="color: red"
+                                            >赤</span
+                                        >
+                                        $\leq 0\leq$
+                                        <span style="color: blue">青</span
+                                        >),<br />
+                                        渦度摂動 $\zeta$ (<span
+                                            style="border: 1px dashed black"
+                                            >破線</span
+                                        >
+                                        $\leq 0\leq$
+                                        <span style="border: 1px solid black"
+                                            >実線</span
+                                        >)
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section data-state="part4" data-background-color="black">
+                    <h2>結論</h2>
+                    <ul style="margin: auto -5%">
+                        <li>
+                            シアー不安定を説明する,
+                            共鳴する中立波のペアがない場合<br />
+                            quasi-mode がその代わりをしているのではないか ?<br />
+                            という仮説の検証を行うため本研究を行った.
+                        </li>
+                        <li>
+                            スペクトル変形法を用いて quasi-mode
+                            の「分散曲線」を求めた.
+                            <ul>
+                                <li>
+                                    $\tanh$ 型: 純虚数の位相速度をもつ
+                                    quasi-mode あり
+                                </li>
+                                <li>
+                                    ほぼ 3 層モデルの部分系: quasi-mode あり
+                                </li>
+                                <li>$\tanh$ 型の部分系: quasi-mode なし</li>
+                            </ul>
+                        </li>
+                        <li>
+                            quasi-mode
+                            が見つかる場合と見つからない場合があり,<br />
+                            まだ十分な理解が得られていないので,<br />
+                            仮説の正誤を結論づけることはできない
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part4" data-background-color="black">
+                    <h2>今後の課題</h2>
+                    <ul>
+                        <li>
+                            地球外核内部の磁気流体波動に関する研究 (e.g.
+                            <a
+                                href="
+                            https://doi.org/10.48550/arXiv.2310.01341"
+                                >Nakashima & Yoshida, arXiv</a
+                            >) で, 本研究と類似の問題が生じるため<br />
+                            本発表の手法が有効なのかどうかを吟味する
+                        </li>
+                        <li>
+                            quasi-mode の「固有関数」
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://confit.atlas.jp/guide/event/jpgu2023/subject/MIS12-P03/mysessions"
+                                        target="_blank"
+                                        >中島 (JpGU 2023)</a
+                                    >
+                                    の方法はあんまりうまくいっていない
+                                    <ul>
+                                        <li>
+                                            スペクトル変形法では複素 $y(s)$
+                                            上の固有関数しか<br />求まらない
+                                            (実空間でない)
+                                        </li>
+                                        <li>
+                                            Chebyshev 多項式を
+                                            $y_1\leq\mathrm{Re}(y)\leq y_2$
+                                            かつ $\mathrm{Im}(y)=0$ となる複素
+                                            $s$ 座標へ解析接続する
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>小さな粘性散逸を考慮する場合との関係性</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="../reveal.js-master/dist/reveal.js"></script>
+        <!-- <script src="../reveal.js-master/plugin/zoom/zoom.js"></script> -->
+        <script>
+            Reveal.initialize({
+                controlsLayout: "edges",
+                hash: true,
+                scrollActivationWidth: null,
+                margin: 0.18,
+
+                slideNumber: (slide) => {
+                    return [
+                        Reveal.getIndices(slide).h,
+                        "/",
+                        Reveal.getHorizontalSlides(slide).length - 1,
+                    ];
+                },
+
+                // plugins: [RevealZoom],
+            });
+        </script>
+        <script src="./main.js"></script>
+    </body>
+</html>
