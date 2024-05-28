@@ -180,95 +180,314 @@
             </footer>
 
             <div class="slides">
-                <section data-state="top-slide" data-background-color="azure">
-                    <p class="small">[MIS21-P06]</p>
-                    <h2 class="r-fit-text">非粘性平行シアー流の quasi-mode</h2>
+                <section>
+                    <section
+                        data-state="top-slide"
+                        data-background-color="azure"
+                    >
+                        <p class="small">[MIS21-P06]</p>
+                        <h2 class="r-fit-text">
+                            非粘性平行シアー流の quasi-mode
+                        </h2>
 
-                    <dl class="black">
-                        要旨
-                        <dd>
-                            <i class="fa-solid fa-check"></i>
-                            シアー不安定は中立波の共鳴で起こると説明される
-                        </dd>
-                        <dd>
-                            <i class="fa-solid fa-check"></i>
-                            共鳴を起こす中立波が見つからない例がある
-                        </dd>
-                        <dd>
-                            <i class="fa-solid fa-check"></i>
-                            quasi-mode は共鳴する中立波の代わりになるか検証
-                        </dd>
-                    </dl>
+                        <dl class="black">
+                            要旨
+                            <dd>
+                                <i class="fa-solid fa-check"></i>
+                                シアー不安定は中立波の共鳴で起こると説明される
+                            </dd>
+                            <dd>
+                                <i class="fa-solid fa-check"></i>
+                                共鳴を起こす中立波が見つからない例がある
+                            </dd>
+                            <dd>
+                                <i class="fa-solid fa-check"></i>
+                                quasi-mode は共鳴する中立波の代わりになるか検証
+                            </dd>
+                        </dl>
 
-                    <p>
-                        <b
-                            ><i class="fas fa-microphone"></i> 中島 涼輔
-                            (九州大学 大学院理学研究院)</b
-                        >
-                    </p>
+                        <p>
+                            <b
+                                ><i class="fas fa-microphone"></i> 中島 涼輔
+                                (九州大学 大学院理学研究院)</b
+                            >
+                        </p>
 
-                    <p class="small">
-                        本研究は JSPS 科研費 (<a
-                            href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K07177/"
-                            target="_blank"
-                            title="地球外核最上部のダイナミクス：波動による地球内部東西磁場強度推定の試み"
-                            >JP24K07177</a
-                        >,
-                        <a
-                            href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K00694/"
-                            target="_blank"
-                            title="惑星内部ダイナモから表層大気雲対流までを包括した木星変動現象の解明"
-                            >JP24K00694</a
-                        >) と<br />
-                        核融合科学研究所 一般共同研究 (NIFS24KIIC001)<br />
-                        の助成を受けたものです。
-                    </p>
+                        <p class="small">
+                            本研究は JSPS 科研費 (<a
+                                href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K07177/"
+                                target="_blank"
+                                title="地球外核最上部のダイナミクス：波動による地球内部東西磁場強度推定の試み"
+                                >JP24K07177</a
+                            >,
+                            <a
+                                href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K00694/"
+                                target="_blank"
+                                title="惑星内部ダイナモから表層大気雲対流までを包括した木星変動現象の解明"
+                                >JP24K00694</a
+                            >) と<br />
+                            核融合科学研究所 一般共同研究 (NIFS24KIIC001)<br />
+                            の助成を受けたものです。
+                        </p>
 
-                    <div class="small note">
-                        <i class="fa-solid fa-gear fa-pulse"></i>
-                        [O] Overview / [G+number] Jump to slide
-                        <!-- / [hover
-                        <span class="detail"
-                            >] Show details
-                            <div class="detail-box top">
-                                <p>このように</p>
+                        <div class="small note">
+                            <i class="fa-solid fa-gear fa-pulse"></i>
+                            [O] Overview / [G+number] Jump to slide
+                            <!-- / [hover
+                            <span class="detail"
+                                >] Show details
+                                <div class="detail-box top">
+                                    <p>このように</p>
+                                </div>
+                            </span> -->
+                            <!-- 引用文献へのリンクは Confit
+                            の発表者追加情報を参照ください -->
+                        </div>
+
+                        <img
+                            src="./fig/layer.svg"
+                            alt="外核最上部安定成層"
+                            style="
+                                position: absolute;
+                                left: -4%;
+                                bottom: 6%;
+                                width: 20%;
+                            "
+                        />
+                        <img
+                            src="./fig/SSymbolLogo-tenchi_E_jpg.webp"
+                            alt="九州大学ロゴ"
+                            style="
+                                border: solid black 1px;
+                                position: absolute;
+                                right: 0%;
+                                bottom: 6%;
+                                width: 13%;
+                            "
+                        />
+                        <img
+                            src="./fig/KAKENHIlogo_S.webp"
+                            alt="科研費ロゴ"
+                            style="
+                                position: absolute;
+                                left: 64%;
+                                bottom: 7%;
+                                width: 8%;
+                            "
+                        />
+                    </section>
+
+                    <section
+                        data-state="top-slide"
+                        data-background-color="azure"
+                    >
+                        <p class="small">[MIS21-P06 フラッシュトーク]</p>
+                        <h2 class="r-fit-text" style="margin-top: -5%">
+                            非粘性平行シアー流の quasi-mode
+                        </h2>
+
+                        <div class="flex-box">
+                            <div style="width: 33%">
+                                <figure style="position: relative">
+                                    <img
+                                        src="./fig/three.webp"
+                                        alt="ほぼ 3 層モデルの固有値問題"
+                                        style="margin-top: -5%"
+                                    />
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            left: -15%;
+                                            top: 25%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        位相速度
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 19%;
+                                            left: -8%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        成長率
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: -3%;
+                                            right: 36%;
+                                        "
+                                    >
+                                        波数
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 17%;
+                                            right: 10%;
+                                        "
+                                    >
+                                        中立波
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 37%;
+                                            right: 10%;
+                                        "
+                                    >
+                                        中立波
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 32%;
+                                            left: 16%;
+                                            color: red;
+                                        "
+                                    >
+                                        不安定・減衰<br />モード
+                                    </figcaption>
+                                </figure>
                             </div>
-                        </span> -->
-                        <!-- 引用文献へのリンクは Confit
-                        の発表者追加情報を参照ください -->
-                    </div>
+                            <div style="width: 33%">
+                                <figure style="position: relative">
+                                    <img
+                                        src="./fig/tanh.webp"
+                                        alt="tanh 型の固有値問題"
+                                        style="margin-top: -5%"
+                                    />
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            left: -15%;
+                                            top: 25%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        位相速度
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: 19%;
+                                            left: -8%;
+                                            transform: rotate(-90deg);
+                                        "
+                                    >
+                                        成長率
+                                    </figcaption>
+                                    <figcaption
+                                        class="black"
+                                        style="
+                                            position: absolute;
+                                            bottom: -3%;
+                                            right: 36%;
+                                        "
+                                    >
+                                        波数
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 15%;
+                                            right: 10%;
+                                        "
+                                    >
+                                        中立波ない ?
+                                    </figcaption>
+                                    <figcaption
+                                        style="
+                                            position: absolute;
+                                            top: 32%;
+                                            left: 20%;
+                                            color: red;
+                                        "
+                                    >
+                                        不安定・減衰<br />モード
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div style="width: 33%">
+                                <ul class="small" style="margin-right: -10%">
+                                    <li>
+                                        シアー不安定<br />
+                                        $=$ 中立波の共鳴
+                                    </li>
+                                    <li>中立波が見つからない例がある</li>
+                                    <li>
+                                        <a
+                                            href="https://doi.org/10.1017/jfm.2012.529"
+                                            title="Shear instability as a resonance between neutral waves hidden in a shear flow"
+                                            target="_blank"
+                                            >Iga (2013)</a
+                                        >
+                                        は<br />見失った中立波を<br />
+                                        見つける方法を提案
+                                    </li>
+                                    <li>
+                                        もっと<strong class="important"
+                                            >素直な説明</strong
+                                        >は<br />ないか ?
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-                    <img
-                        src="./fig/layer.svg"
-                        alt="外核最上部安定成層"
-                        style="
-                            position: absolute;
-                            left: -4%;
-                            bottom: 6%;
-                            width: 20%;
-                        "
-                    />
-                    <img
-                        src="./fig/SSymbolLogo-tenchi_E_jpg.webp"
-                        alt="九州大学ロゴ"
-                        style="
-                            border: solid black 1px;
-                            position: absolute;
-                            right: 0%;
-                            bottom: 6%;
-                            width: 13%;
-                        "
-                    />
-                    <img
-                        src="./fig/KAKENHIlogo_S.webp"
-                        alt="科研費ロゴ"
-                        style="
-                            position: absolute;
-                            left: 64%;
-                            bottom: 7%;
-                            width: 8%;
-                        "
-                    />
+                        <p class="small">
+                            <b
+                                ><i class="fas fa-microphone"></i> 中島 涼輔
+                                (九州大学 大学院理学研究院)</b
+                            >
+                        </p>
+
+                        <p class="small">
+                            本研究は JSPS 科研費 (<a
+                                href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K07177/"
+                                target="_blank"
+                                title="地球外核最上部のダイナミクス：波動による地球内部東西磁場強度推定の試み"
+                                >JP24K07177</a
+                            >,
+                            <a
+                                href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K00694/"
+                                target="_blank"
+                                title="惑星内部ダイナモから表層大気雲対流までを包括した木星変動現象の解明"
+                                >JP24K00694</a
+                            >) と<br />
+                            核融合科学研究所 一般共同研究 (NIFS24KIIC001)
+                            の助成を受けたものです。
+                        </p>
+
+                        <img
+                            src="./fig/SSymbolLogo-tenchi_E_jpg.webp"
+                            alt="九州大学ロゴ"
+                            style="
+                                border: solid black 1px;
+                                position: absolute;
+                                right: -8%;
+                                bottom: 0%;
+                                width: 10%;
+                            "
+                        />
+                        <img
+                            src="./fig/KAKENHIlogo_S.webp"
+                            alt="科研費ロゴ"
+                            style="
+                                position: absolute;
+                                right: 7%;
+                                bottom: 7%;
+                                width: 8%;
+                            "
+                        />
+                    </section>
                 </section>
 
                 <section data-state="part1">
