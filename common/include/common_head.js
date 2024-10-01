@@ -24,7 +24,7 @@ document.write(`
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/29824876ec.js" crossorigin="anonymous"></script>
