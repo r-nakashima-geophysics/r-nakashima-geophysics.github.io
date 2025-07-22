@@ -1,4 +1,4 @@
-url = location.href;
+const url = location.href;
 
 // let fragment = new DocumentFragment();
 
