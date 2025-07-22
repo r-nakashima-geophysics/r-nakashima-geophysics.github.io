@@ -46,6 +46,7 @@
         "https://kit.fontawesome.com/29824876ec.js"
     );
     elementScriptFontAwesome.setAttribute("crossorigin", "anonymous");
+    elementScriptMathJaxDelivery.setAttribute("defer", "defer");
     elementFragment.appendChild(elementScriptFontAwesome);
 
     // Academicons //
