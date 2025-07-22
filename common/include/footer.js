@@ -1,16 +1,13 @@
-const url = location.href;
+{
+    const elementFragment = new DocumentFragment();
 
-// let fragment = new DocumentFragment();
+    const elementParagraph = document.createElement("p");
+    elementFragment.appendChild(elementParagraph);
 
-if (!url.includes("hitasura_linear_analysis")) {
-    document.write(`
+    const elementSmall = document.createElement("small");
+    elementSmall.innerHTML = `&copy; <time datetime="2020">2020</time>-<time datetime="2025">2025</time>`;
+    elementParagraph.appendChild(elementSmall);
 
-        <footer>
-
-            <p><small>&copy; <time datetime="2020">2020</time>-<time datetime="2025">2025</time></small></p>
-
-        </footer>
-
-    `);
-} else {
+    const elementFooter = document.querySelectorAll("footer");
+    elementFooter[0].appendChild(elementFragment);
 }
