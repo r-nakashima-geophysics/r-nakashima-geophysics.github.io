@@ -1,20 +1,18 @@
-url = location.href;
+{
+    const url = location.href;
+    const arrayNav = ["research", "publication", "presentation", "private"];
 
-nav_list = ["research", "publication", "presentation", "private"];
-
-window.onload = () => {
-    for (const nav_name of nav_list) {
+    for (const nav of arrayNav) {
         if (
-            url.match(/r-nakashima-geophysics(.github.io|)(\/$|\/index.html)/)
+            url.match(
+                /r-nakashima-geophysics(\.github\.io|)(\/$|\/index\.html)/
+            )
         ) {
             const elementNav = document.getElementById("nav_home");
             elementNav.classList.add("nav_here");
-        } else if (url.includes("hitasura_linear_analysis/index.html")) {
-            const elementNav = document.getElementById("nav_top");
-            elementNav.classList.add("nav_here");
-        } else if (url.includes(`/${nav_name}.html`)) {
-            const elementNav = document.getElementById(`nav_${nav_name}`);
+        } else if (url.includes(`/${nav}.html`)) {
+            const elementNav = document.getElementById(`nav_${nav}`);
             elementNav.classList.add("nav_here");
         }
     }
-};
+}
