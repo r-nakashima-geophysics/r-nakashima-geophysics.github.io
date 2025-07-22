@@ -59,10 +59,7 @@
     elementFragment.appendChild(elementLinkAcademicons);
 
     // CSS //
-    const pathStyleSheets = [
-        "./common/styles/normalize.css",
-        "./common/styles/main.css",
-    ];
+    const pathStyleSheets = ["./styles/normalize.css", "./styles/main.css"];
     for (const path of pathStyleSheets) {
         const elementLinkStyleSheet = document.createElement("link");
         elementLinkStyleSheet.setAttribute("type", "text/css");
@@ -85,7 +82,7 @@
     const elementScriptMathJaxConfig = document.createElement("script");
     elementScriptMathJaxConfig.setAttribute(
         "src",
-        "./common/mathjax/mathjax_config.js"
+        "./mathjax/mathjax_config.js"
     );
     elementScriptMathJaxConfig.setAttribute("defer", "defer");
     elementFragment.appendChild(elementScriptMathJaxConfig);
@@ -117,23 +114,4 @@
     for (const elementScript of elementScriptGoogleAnalytics) {
         elementFragment.appendChild(elementScript);
     }
-
-    // 共通 header の読み込み //
-    const elementScriptHeader = document.createElement("script");
-    elementScriptHeader.setAttribute("src", "./common/include/header.js");
-    elementScriptHeader.setAttribute("defer", "defer");
-    elementFragment.appendChild(elementScriptHeader);
-
-    // 共通 footer の読み込み //
-    const elementScriptFooter = document.createElement("script");
-    elementScriptFooter.setAttribute("src", "./common/include/footer.js");
-    elementScriptFooter.setAttribute("defer", "defer");
-    elementFragment.appendChild(elementScriptFooter);
-
-    // nav の現在のページだけリンク解除 //
-    const elementScriptNavHere = document.createElement("script");
-    elementScriptNavHere.setAttribute("src", "./common/scripts/nav_here.js");
-    elementFragment.appendChild(elementScriptNavHere);
-
-    document.head.appendChild(elementFragment);
 }
