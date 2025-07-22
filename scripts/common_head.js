@@ -82,7 +82,7 @@
     const elementScriptMathJaxConfig = document.createElement("script");
     elementScriptMathJaxConfig.setAttribute(
         "src",
-        "./mathjax/mathjax_config.js"
+        "./min/mathjax_config.min.js"
     );
     elementScriptMathJaxConfig.setAttribute("defer", "defer");
     elementFragment.appendChild(elementScriptMathJaxConfig);
