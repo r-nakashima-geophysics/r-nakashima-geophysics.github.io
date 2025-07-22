@@ -1,26 +1,24 @@
 window.MathJax = {
     loader: {
-        load: ['[tex]/upgreek']
+        load: ["[tex]/upgreek"],
     },
 
     tex: {
         packages: {
-            '[+]': ['upgreek']
+            "[+]": ["upgreek"],
         },
 
         // インライン数式 //
         inlineMath: [
-            ['$', '$'],
-            ['\\(', '\\)']
+            ["$", "$"],
+            ["\\(", "\\)"],
         ],
 
         // ディスプレイ数式 //
-        displayMath: [
-            ['\\[', '\\]']
-        ],
+        displayMath: [["\\[", "\\]"]],
 
         // 自動ナンバリング //
-        tags: 'ams',
+        tags: "ams",
 
         macros: {
             bm: ["{\\boldsymbol{#1}}", 1],
@@ -35,12 +33,11 @@ window.MathJax = {
             upe: "{\\mathrm{e}}",
             upi: "{\\mathrm{i}}",
             upl: "{\\ell}",
-            uppartial: "{\\partial}"
-        }
-
+            uppartial: "{\\partial}",
+        },
     },
 
     svg: {
-        fontCache: 'global'
-    }
-}
+        fontCache: "global",
+    },
+};
