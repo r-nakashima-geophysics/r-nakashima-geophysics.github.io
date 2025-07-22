@@ -59,10 +59,7 @@
     elementFragment.appendChild(elementLinkAcademicons);
 
     // CSS //
-    const pathStyleSheets = [
-        "./styles/normalize.min.css",
-        "./styles/main.min.css",
-    ];
+    const pathStyleSheets = ["./min/normalize.min.css", "./min/main.min.css"];
     for (const path of pathStyleSheets) {
         const elementLinkStyleSheet = document.createElement("link");
         elementLinkStyleSheet.setAttribute("type", "text/css");
