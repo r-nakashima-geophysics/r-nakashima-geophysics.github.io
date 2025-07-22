@@ -4,4 +4,4 @@ Disallow: /slides/
 
 Allow:
 
-Sitemap:
+Sitemap: https://r-nakashima-geophysics.github.io/sitemap.xml
