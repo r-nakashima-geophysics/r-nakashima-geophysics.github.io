@@ -1,4 +1,7 @@
 {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "es6-css-minify.cssMinPath": "min",
+    "es6-css-minify.jsMinPath": "min",
+    "es6-css-minify.minifyOnSave": "exists"
 }
