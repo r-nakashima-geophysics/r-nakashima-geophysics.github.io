@@ -114,4 +114,6 @@
     for (const elementScript of elementScriptGoogleAnalytics) {
         elementFragment.appendChild(elementScript);
     }
+
+    document.head.appendChild(elementFragment);
 }

@@ -1,4 +1,6 @@
 {
+    const elementFragment = new DocumentFragment();
+
     // 共通 header の読み込み //
     const elementScriptHeader = document.createElement("script");
     elementScriptHeader.setAttribute("src", "./scripts/header.js");
