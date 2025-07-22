@@ -109,11 +109,11 @@
         "https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
     );
     elementScriptGoogleAnalytics[1].textContent = `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    gtag('config', 'G-E28G7ESK53');`;
+        gtag('config', 'G-E28G7ESK53');`;
     for (const elementScript of elementScriptGoogleAnalytics) {
         elementFragment.appendChild(elementScript);
     }

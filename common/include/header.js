@@ -56,6 +56,17 @@
     }
     elementNav.appendChild(elementParagraph);
 
+    const elementSpan = document.createElement("span");
+    elementSpan.textContent = " ";
+    elementParagraph.firstChild.after(elementSpan);
+
+    const elementAnchor = document.createElement("a");
+    elementAnchor.setAttribute("id", "nav_private");
+    elementAnchor.setAttribute("href", "./private.html");
+    elementAnchor.textContent = ".";
+    elementAnchor.className = "hidden-link";
+    elementSpan.after(elementAnchor);
+
     const elementHeader = document.querySelectorAll("header");
     elementHeader[0].appendChild(elementFragment);
 }
