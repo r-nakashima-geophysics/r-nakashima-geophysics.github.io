@@ -103,4 +103,6 @@ window.addEventListener("DOMContentLoaded", () => {
         "https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
     );
     elementFragment.appendChild(elementLinkAcademicons);
+
+    document.head.appendChild(elementFragment);
 });
