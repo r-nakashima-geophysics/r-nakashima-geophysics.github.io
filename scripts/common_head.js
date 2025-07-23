@@ -1,10 +1,56 @@
-{
+// 共通 head (即時実行) //
+(() => {
     const elementFragment = new DocumentFragment();
 
     // 文字エンコーディング //
     const elementMetaCharset = document.createElement("meta");
     elementMetaCharset.setAttribute("charset", "UTF-8");
     elementFragment.appendChild(elementMetaCharset);
+
+    // CSS //
+    const pathStyleSheets = ["./min/normalize.min.css", "./min/main.min.css"];
+    for (const path of pathStyleSheets) {
+        const elementLinkStyleSheet = document.createElement("link");
+        elementLinkStyleSheet.setAttribute("type", "text/css");
+        elementLinkStyleSheet.setAttribute("rel", "stylesheet");
+        elementLinkStyleSheet.setAttribute("href", path);
+        elementFragment.appendChild(elementLinkStyleSheet);
+    }
+
+    // レスポンシブ用の viewport 設定 //
+    const elementMetaViewport = document.createElement("meta");
+    elementMetaViewport.setAttribute("name", "viewport");
+    elementMetaViewport.setAttribute(
+        "content",
+        "width=device-width, initial-scale=1"
+    );
+    elementFragment.appendChild(elementMetaViewport);
+
+    // Google tag (gtag.js) //
+    const elementScriptGoogleAnalytics = new Array(2).fill(
+        document.createElement("script")
+    );
+    elementScriptGoogleAnalytics[0].setAttribute("async", "async");
+    elementScriptGoogleAnalytics[0].setAttribute(
+        "src",
+        "https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+    );
+    elementScriptGoogleAnalytics[1].textContent = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-E28G7ESK53');`;
+    for (const elementScript of elementScriptGoogleAnalytics) {
+        elementFragment.appendChild(elementScript);
+    }
+
+    document.head.appendChild(elementFragment);
+})();
+
+// 共通 head (遅延処理) //
+window.addEventListener("DOMContentLoaded", () => {
+    const elementFragment = new DocumentFragment();
 
     // 検索結果下の説明書き //
     const elementMetaContent = document.createElement("meta");
@@ -57,44 +103,4 @@
         "https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
     );
     elementFragment.appendChild(elementLinkAcademicons);
-
-    // CSS //
-    const pathStyleSheets = ["./min/normalize.min.css", "./min/main.min.css"];
-    for (const path of pathStyleSheets) {
-        const elementLinkStyleSheet = document.createElement("link");
-        elementLinkStyleSheet.setAttribute("type", "text/css");
-        elementLinkStyleSheet.setAttribute("rel", "stylesheet");
-        elementLinkStyleSheet.setAttribute("href", path);
-        elementFragment.appendChild(elementLinkStyleSheet);
-    }
-
-    // レスポンシブ用の viewport 設定 //
-    const elementMetaViewport = document.createElement("meta");
-    elementMetaViewport.setAttribute("name", "viewport");
-    elementMetaViewport.setAttribute(
-        "content",
-        "width=device-width, initial-scale=1"
-    );
-    elementFragment.appendChild(elementMetaViewport);
-
-    // Google tag (gtag.js) //
-    const elementScriptGoogleAnalytics = new Array(2).fill(
-        document.createElement("script")
-    );
-    elementScriptGoogleAnalytics[0].setAttribute("async", "async");
-    elementScriptGoogleAnalytics[0].setAttribute(
-        "src",
-        "https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
-    );
-    elementScriptGoogleAnalytics[1].textContent = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-E28G7ESK53');`;
-    for (const elementScript of elementScriptGoogleAnalytics) {
-        elementFragment.appendChild(elementScript);
-    }
-
-    document.head.appendChild(elementFragment);
-}
+});
