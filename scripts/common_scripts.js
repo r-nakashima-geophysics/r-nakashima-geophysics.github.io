@@ -57,16 +57,15 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     elementNav.appendChild(elementParagraph);
 
-    const elementSpan = document.createElement("span");
-    elementSpan.textContent = " ";
-    elementParagraph.firstChild.after(elementSpan);
+    const elementText = document.createTextNode(" ");
+    elementParagraph.firstChild.after(elementText);
 
     const elementAnchor = document.createElement("a");
     elementAnchor.setAttribute("id", "nav_private");
     elementAnchor.setAttribute("href", "./private.html");
     elementAnchor.textContent = ".";
     elementAnchor.className = "hidden-link";
-    elementSpan.after(elementAnchor);
+    elementText.after(elementAnchor);
 
     const elementHeader = document.querySelectorAll("header");
     elementHeader[0].appendChild(elementFragment);
@@ -80,8 +79,20 @@ window.addEventListener("DOMContentLoaded", () => {
     elementFragment.appendChild(elementParagraph);
 
     const elementSmall = document.createElement("small");
-    elementSmall.innerHTML = `&copy; <time datetime="2020">2020</time>-<time datetime="2025">2025</time>`;
     elementParagraph.appendChild(elementSmall);
+
+    const elementIcon = document.createElement("i");
+    elementIcon.className = "fa-solid fa-copyright";
+
+    const elementTimeStart = document.createElement("time");
+    elementTimeStart.setAttribute("datetime", "2020");
+    elementTimeStart.textContent = "2020";
+    elementSmall.appendChild(elementTimeStart);
+    elementSmall.appendChild(document.createTextNode("-"));
+    const elementTimeEnd = document.createElement("time");
+    elementTimeEnd.setAttribute("datetime", "2025");
+    elementTimeEnd.textContent = "2025";
+    elementSmall.appendChild(elementTimeEnd);
 
     const elementFooter = document.querySelectorAll("footer");
     elementFooter[0].appendChild(elementFragment);
