@@ -57,7 +57,9 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     elementNav.appendChild(elementParagraph);
 
-    elementParagraph.firstChild.after(document.createTextNode(" "));
+    const elementText = document.createTextNode(" ");
+    elementParagraph.firstChild.after(elementText);
+
     const elementAnchor = document.createElement("a");
     elementAnchor.setAttribute("id", "nav_private");
     elementAnchor.setAttribute("href", "./private.html");
