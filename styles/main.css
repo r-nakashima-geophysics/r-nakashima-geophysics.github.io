@@ -10,7 +10,7 @@ html.show_html {
 
 body {
     background-color: gainsboro;
-    font-family: "Verdana", "Roboto", "YuGothic", "Yu Gothic", sans-serif;
+    font-family: "Yu Gothic", Verdana, -apple-system, "Roboto", sans-serif;
     font-weight: 400;
     line-height: 1.4rem;
     margin: 0 auto;
