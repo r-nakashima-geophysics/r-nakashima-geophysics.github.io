@@ -77,25 +77,6 @@
     );
     elementFragment.appendChild(elementMetaViewport);
 
-    // MathJax version 3 //
-    // config ファイル読み込み //
-    const elementScriptMathJaxConfig = document.createElement("script");
-    elementScriptMathJaxConfig.setAttribute(
-        "src",
-        "./min/mathjax_config.min.js"
-    );
-    elementScriptMathJaxConfig.setAttribute("defer", "defer");
-    elementFragment.appendChild(elementScriptMathJaxConfig);
-    // CDN (jsdelivr) //
-    const elementScriptMathJaxDelivery = document.createElement("script");
-    elementScriptMathJaxDelivery.setAttribute("id", "MathJax-script");
-    elementScriptMathJaxDelivery.setAttribute("defer", "defer");
-    elementScriptMathJaxDelivery.setAttribute(
-        "src",
-        "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    );
-    elementFragment.appendChild(elementScriptMathJaxDelivery);
-
     // Google tag (gtag.js) //
     const elementScriptGoogleAnalytics = new Array(2).fill(
         document.createElement("script")
