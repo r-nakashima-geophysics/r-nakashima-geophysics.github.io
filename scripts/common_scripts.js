@@ -57,9 +57,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     elementNav.appendChild(elementParagraph);
 
-    const elementText = document.createTextNode(" ");
-    elementParagraph.firstChild.after(elementText);
-
+    elementParagraph.firstChild.after(document.createTextNode(" "));
     const elementAnchor = document.createElement("a");
     elementAnchor.setAttribute("id", "nav_private");
     elementAnchor.setAttribute("href", "./private.html");
@@ -85,6 +83,7 @@ window.addEventListener("DOMContentLoaded", () => {
     elementIcon.className = "fa-solid fa-copyright";
     elementSmall.appendChild(elementIcon);
 
+    elementSmall.appendChild(document.createTextNode(" "));
     const elementTimeStart = document.createElement("time");
     elementTimeStart.setAttribute("datetime", "2020");
     elementTimeStart.textContent = "2020";
