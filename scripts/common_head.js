@@ -24,7 +24,7 @@
     elementLinkGoogleFonts[1].setAttribute("crossorigin", "true");
     elementLinkGoogleFonts[2].setAttribute(
         "href",
-        "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&display=swap"
+        "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"
     );
     elementLinkGoogleFonts[2].setAttribute("rel", "stylesheet");
     for (const element of elementLinkGoogleFonts) {
