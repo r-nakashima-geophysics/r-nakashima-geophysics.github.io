@@ -83,6 +83,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const elementIcon = document.createElement("i");
     elementIcon.className = "fa-solid fa-copyright";
+    elementSmall.appendChild(elementIcon);
 
     const elementTimeStart = document.createElement("time");
     elementTimeStart.setAttribute("datetime", "2020");
