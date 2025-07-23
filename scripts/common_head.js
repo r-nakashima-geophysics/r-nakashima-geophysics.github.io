@@ -7,6 +7,30 @@
     elementMetaCharset.setAttribute("charset", "UTF-8");
     elementFragment.appendChild(elementMetaCharset);
 
+    // Google Fonts //
+    const elementLinkGoogleFonts = new Array(3).fill(
+        document.createElement("link")
+    );
+    elementLinkGoogleFonts[0].setAttribute("rel", "preconnect");
+    elementLinkGoogleFonts[0].setAttribute(
+        "href",
+        "https://fonts.googleapis.com"
+    );
+    elementLinkGoogleFonts[1].setAttribute("rel", "preconnect");
+    elementLinkGoogleFonts[1].setAttribute(
+        "href",
+        "https://fonts.gstatic.com"
+    );
+    elementLinkGoogleFonts[1].setAttribute("crossorigin", "true");
+    elementLinkGoogleFonts[2].setAttribute(
+        "href",
+        "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&display=swap"
+    );
+    elementLinkGoogleFonts[2].setAttribute("rel", "stylesheet");
+    for (const element of elementLinkGoogleFonts) {
+        elementFragment.appendChild(element);
+    }
+
     // CSS //
     const pathStyleSheets = ["./min/normalize.min.css", "./min/main.min.css"];
     for (const path of pathStyleSheets) {
@@ -60,30 +84,6 @@ window.addEventListener("DOMContentLoaded", () => {
         "Ryosuke Nakashima (中島 涼輔)'s Home Page"
     );
     elementFragment.appendChild(elementMetaContent);
-
-    // Google Fonts //
-    const elementLinkGoogleFonts = new Array(3).fill(
-        document.createElement("link")
-    );
-    elementLinkGoogleFonts[0].setAttribute("rel", "preconnect");
-    elementLinkGoogleFonts[0].setAttribute(
-        "href",
-        "https://fonts.googleapis.com"
-    );
-    elementLinkGoogleFonts[1].setAttribute("rel", "preconnect");
-    elementLinkGoogleFonts[1].setAttribute(
-        "href",
-        "https://fonts.gstatic.com"
-    );
-    elementLinkGoogleFonts[1].setAttribute("crossorigin", "true");
-    elementLinkGoogleFonts[2].setAttribute(
-        "href",
-        "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&display=swap"
-    );
-    elementLinkGoogleFonts[2].setAttribute("rel", "stylesheet");
-    for (const element of elementLinkGoogleFonts) {
-        elementFragment.appendChild(element);
-    }
 
     // Font Awesome Kit //
     const elementScriptFontAwesome = document.createElement("script");

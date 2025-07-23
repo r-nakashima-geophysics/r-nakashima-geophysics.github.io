@@ -1,5 +1,5 @@
 // 共通 header //
-(() => {
+window.addEventListener("DOMContentLoaded", () => {
     const elementFragment = new DocumentFragment();
 
     let elementH1 = document.createElement("h1");
@@ -70,10 +70,10 @@
 
     const elementHeader = document.querySelectorAll("header");
     elementHeader[0].appendChild(elementFragment);
-})();
+});
 
 // 共通 footer  //
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
     const elementFragment = new DocumentFragment();
 
     const elementParagraph = document.createElement("p");
@@ -88,7 +88,7 @@ window.addEventListener("load", () => {
 });
 
 // nav の現在のページだけリンク解除 //
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
     const url = location.href;
     const arrayNav = ["research", "publication", "presentation", "private"];
 
