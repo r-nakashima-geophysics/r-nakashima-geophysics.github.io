@@ -201,11 +201,11 @@ ul.books {
 }
 ul.books li.finish-reading::before {
     content: "\f02d";
-    font-family: "Font Awesome 6 Free";
+    font-family: "Font Awesome 7 Free";
 }
 ul.books li.now-reading::before {
     content: "\f5da";
-    font-family: "Font Awesome 6 Free";
+    font-family: "Font Awesome 7 Free";
 }
 
 .MathJax {
