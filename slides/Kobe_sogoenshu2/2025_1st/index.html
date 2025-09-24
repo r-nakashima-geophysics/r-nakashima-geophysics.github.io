@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reset.css" />
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/dist/theme/simple.css"
+        />
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="../fontawesome-free-7.0.0-web/css/all.min.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/29824876ec.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- MathJax version 3 -->
+        <script src="./mathjax_config.js" defer></script>
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- TikZJax -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://tikzjax.com/v1/fonts.css"
+        />
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+
+        <!-- Theme used for syntax highlighted code -->
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/plugin/highlight/monokai.css"
+        />
+        <script src="../../reveal.js-master/plugin/highlight/highlight.js"></script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>総合演習2 (2025年度)</h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        <time datetime="2025-10-01">2025-10-01</time>
+                    </p>
+                    <!-- <p>
+                        地球流体セミナー 分科会 @支笏湖 [<time
+                            datetime="2025-03-16"
+                            >2025-03-16</time
+                        >]
+                    </p> -->
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">1. はじめに</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2.
+                            課題について</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (神戸大・シス情) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;panda.kobe-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by&nbsp;
+                        <a href="https://revealjs.com" target="_blank"
+                            ><img
+                                src="https://static.slid.es/reveal/logo-v1/reveal-white-text.svg"
+                                alt="Powered by reveal.js"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -7px 0;
+                                    padding: 0;
+                                "
+                                class="demo-logo"
+                        /></a>
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -10px 0;
+                                    padding: 0;
+                                "
+                        /></a>
+                        <!-- /
+                        <a href="https://tikzjax.com" target="_blank"
+                            >TikZJax</a
+                        > -->
+                        /
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                        <!-- /
+                        <a href="https://www.chartjs.org"
+                            >Chart.js
+                            <img
+                                src="https://www.chartjs.org/img/chartjs-logo.svg"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -5px 0;
+                                    padding: 0;
+                                "
+                        /></a> -->
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide">
+                    <p>2025年度</p>
+                    <h2 class="r-fit-text">
+                        総合演習2<br />
+                        マクロ系シミュレーション<br />
+                        (第0回)
+                    </h2>
+                    <p>
+                        <i class="fas fa-microphone"></i> 中島 涼輔
+                        (システム情報)<br />
+                        @ NSSOL Lab.<br />
+                        2025/10/01
+                    </p>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">マクロ系シミュレーションの対象</h2>
+                    <ul>
+                        <li>マクロ (巨視的) &gt; メソ &gt; ミクロ (微視的)</li>
+                        <li class="fragment">
+                            製品・機械などの性能評価, 自然災害の予測 etc.
+                            <ul>
+                                <li>
+                                    実験するのにはコストがかかる or
+                                    そもそも実験できない &rarr;
+                                    <strong class="important"
+                                        >計算機シミュレーション</strong
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            原子・分子の挙動をすべてシミュレーションすれば可能？
+                            <ul>
+                                <li>
+                                    $10^{23}$ 個オーダー以上の計算が必要 (無理)
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            物質を構成する粒をすべて追跡することはあきらめて<br />
+                            その統計量だけで現象を理解: マクロ系の物理学
+                            <ul>
+                                <li>
+                                    <strong class="alert">熱力学</strong>:
+                                    温度, 圧力, 濃度 etc.
+                                </li>
+                                <li>
+                                    <strong class="alert">連続体力学</strong>
+                                    (<strong class="alert">流体力学</strong>,
+                                    <strong class="alert">固体力学</strong>):
+                                    流れ, 変形, 音 etc.
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            時刻 $t$ における, 位置 $\bm{x}$ らへんの物理量
+                            ($t$ と $\bm{x}$ の関数; 場)
+                            <ul>
+                                <li>
+                                    <strong class="important"
+                                        >偏微分方程式</strong
+                                    >
+                                    (分布定数モデル) で記述
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li>
+                                    <strong class="alert">電磁気学</strong
+                                    >も場を扱うので,
+                                    似た方法でシミュレーション可
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>偏微分方程式の復習</h2>
+                    <ul style="margin: auto -2%">
+                        <li>
+                            偏微分方程式:
+                            複数個の独立変数に依存する未知関数の偏微分を含む方程式
+                            &harr; 常微分方程式
+                        </li>
+                        <li class="fragment">
+                            特に, 2階の線形偏微分方程式は応用例が多く,
+                            基本的かつ重要
+                        </li>
+                        <li class="fragment">
+                            2階の線形偏微分方程式の分類 ($\phi$
+                            を未知関数とする)
+                            <ul>
+                                <li>
+                                    <strong class="alert">楕円型</strong>
+                                    <span class="small" style="color: gray"
+                                        >(cf. 楕円の式:
+                                        $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$)</span
+                                    ><br />
+                                    例) Poisson 方程式 (Laplace 方程式)
+                                    <span class="small"
+                                        >$\dfrac{\uppartial^2
+                                        \phi(x,y)}{\uppartial
+                                        x^2}+\dfrac{\uppartial^2
+                                        \phi(x,y)}{\uppartial y^2}=f$</span
+                                    >
+                                </li>
+                                <li>
+                                    <strong class="alert">放物型</strong>
+                                    <span class="small" style="color: gray"
+                                        >(cf. 放物線の式: $y=ax^2$)</span
+                                    ><br />
+                                    例) 拡散方程式
+                                    <span class="small"
+                                        >$\dfrac{\uppartial
+                                        \phi(x,t)}{\uppartial
+                                        t}=D\dfrac{\uppartial^2
+                                        \phi(x,t)}{\uppartial x^2}$</span
+                                    >
+                                </li>
+                                <li>
+                                    <strong class="alert">双曲型</strong>
+                                    <span class="small" style="color: gray"
+                                        >(cf. 双曲線の式:
+                                        $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$)</span
+                                    ><br />
+                                    例) 波動方程式
+                                    <span class="small"
+                                        >$\dfrac{\uppartial^2
+                                        \phi(x,t)}{\uppartial
+                                        t^2}=c^2\dfrac{\uppartial^2
+                                        \phi(x,t)}{\uppartial x^2}$</span
+                                    >, 移流方程式
+                                    <span class="small"
+                                        >$\dfrac{\uppartial
+                                        \phi(x,t)}{\uppartial
+                                        t}=u\dfrac{\uppartial
+                                        \phi(x,t)}{\uppartial x}$</span
+                                    >
+                                </li>
+                                <li class="small note">
+                                    詳細は偏微分方程式の教科書を参照
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            方程式の種類によって,
+                            <strong class="important"
+                                >シミュレーションの方法や注意点が異なる</strong
+                            >
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">マクロ系シミュレーションの予定</h2>
+                    <ul>
+                        <li>
+                            <strong class="alert">第0回 (2025/10/01)</strong>
+                            <ul>
+                                <li><strong class="alert">概要</strong></li>
+                            </ul>
+                        </li>
+                        <li>
+                            第1回 (2025/10/08)
+                            <ul>
+                                <li>偏微分方程式の数値解法</li>
+                                <li>
+                                    楕円型方程式 (定常拡散方程式)
+                                    のシミュレーション
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            第2回 (2025/10/22)
+                            <ul>
+                                <li>
+                                    放物型方程式 (非定常拡散方程式)
+                                    のシミュレーション
+                                </li>
+                                <li>
+                                    双曲型方程式 (移流方程式)
+                                    のシミュレーション
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            第3回 (2025/10/29)
+                            <ul>
+                                <li>
+                                    ソレノイダル場 (非圧縮流体)
+                                    のシミュレーション
+                                </li>
+                                <li>逆問題, データ同化</li>
+                            </ul>
+                        </li>
+                        <li>
+                            第4回 (2025/11/05)
+                            <ul>
+                                <li>質問・課題</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>とりあえず触ってみる</h2>
+                    <p style="margin-top: 0">
+                        - (2次元非圧縮) キャビティ流れ -
+                    </p>
+                    <div class="flex-box">
+                        <div style="width: 42%">
+                            <figure>
+                                <img src="./fig/cavity.svg" alt="" />
+                            </figure>
+                        </div>
+                        <div style="width: 58%">
+                            <ul>
+                                <li>
+                                    水で満たされた空間の底に,
+                                    断面が正方形の無限に長い溝があるとする.
+                                    その上部を一様な<span style="color: blue"
+                                        >水の流れ</span
+                                    >が直角に横切る状況を考える
+                                </li>
+                                <li class="question fragment">
+                                    溝の中の流れの様子は？
+                                </li>
+                                <li class="question fragment">
+                                    上部の流れが速くなると,
+                                    溝の中の流れはどう変化するのか？
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="fragment">
+                        <li>
+                            これを記述する方程式: (非圧縮) Navier-Stokes 方程式
+                            <div class="math-box">
+                                \[ \frac{\uppartial\bm{v}}{\uppartial
+                                t}+(\bm{v}\ip\bm{\nabla})\bm{v}=-\frac{1}{\rho}\bm{\nabla}p+\nu\bm{\nabla}^2\bm{v}\,,\quad\div\bm{v}=0
+                                \]
+                            </div>
+                            $\bm{v}$ は流速, $p$ は圧力, $\rho$ は密度 (定数),
+                            $\nu$ は動粘性係数 (定数)
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">シミュレーション作成のコツ</h2>
+                    <ul>
+                        <li>
+                            まず, シミュレーションしたい対象の本質を見極め,
+                            何をどこまで計算する必要があるのかを考える
+                        </li>
+                    </ul>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <div class="r-stack">
+                                <figure>
+                                    <img
+                                        src="./fig/cavity.svg"
+                                        style="width: 100%"
+                                        alt=""
+                                    />
+                                </figure>
+                                <figure
+                                    class="fragment"
+                                    data-fragment-index="3"
+                                >
+                                    <img
+                                        src="./fig/cavity_2.svg"
+                                        style="width: 100%"
+                                        alt=""
+                                    />
+                                </figure>
+                            </div>
+                            <div
+                                class="math-box fragment"
+                                style="font-size: 50%; margin-left: -5%"
+                                data-fragment-index="2"
+                            >
+                                \[ \begin{equation} \begin{aligned}
+                                \frac{\uppartial v_x}{\uppartial
+                                t}+\left(v_x\frac{\uppartial}{\uppartial
+                                x}+v_y\frac{\uppartial}{\uppartial
+                                y}\right)v_x&=-\frac{1}{\rho}\frac{\uppartial
+                                p}{\uppartial
+                                x}+\nu\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial^2}{\uppartial
+                                y^2}\right)v_x\\ \frac{\uppartial
+                                v_y}{\uppartial
+                                t}+\left(v_x\frac{\uppartial}{\uppartial
+                                x}+v_y\frac{\uppartial}{\uppartial
+                                y}\right)v_y&=-\frac{1}{\rho}\frac{\uppartial
+                                p}{\uppartial
+                                y}+\nu\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial^2 }{\uppartial
+                                y^2}\right)v_y\\ \frac{\uppartial
+                                v_x}{\uppartial x}+\frac{\uppartial
+                                v_y}{\uppartial y}&=0 \end{aligned}
+                                \end{equation} \]
+                            </div>
+                        </div>
+                        <div style="width: 50%">
+                            <ul>
+                                <li class="fragment" data-fragment-index="2">
+                                    溝は無限に長く, 上部の流れは一様なので,
+                                    溝に平行な方向の変化は無視: $\bm{v}=(v_x,
+                                    v_y, 0)$
+                                    <ul>
+                                        <li>
+                                            3次元 &rarr; 2次元で計算コスト削減
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    溝の中の様子にだけ興味あり
+                                    <ul>
+                                        <li>溝の中だけを計算領域とする</li>
+                                        <li>
+                                            溝の上部を横切る流れは上端の<strong
+                                                class="important"
+                                                >境界条件</strong
+                                            >として与える \[ v_x=U,\,
+                                            v_y=0\quad (y=\text{溝の上端}) \]
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part1">
+                    <h2>プログラムコードの配布</h2>
+                    <ul>
+                        <li>
+                            <a
+                                href="https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git"
+                                target="_blank"
+                                >https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</a
+                            >
+                            で配布します
+                            <ul>
+                                <li>
+                                    macro_0th_cavity.ipynb
+                                    をダウンロードしてください
+                                    <figure>
+                                        <img src="./fig/github.webp" alt="" />
+                                    </figure>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Git が使える人は git clone でも可
+                            <pre><code class="language-sh">git clone https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</code></pre>
+                        </li>
+                        <li class="fragment">
+                            全4.5回の授業で,
+                            このプログラムコードを読める/書けるようになることを目指します
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">配布したプログラムコードの実行</h2>
+                    <ul>
+                        <li>
+                            ダウンロードした .ipynb ファイルを Google Colab.
+                            にアップロードして実行してください
+                            <div class="flex-box">
+                                <div style="width: 55%">
+                                    <figure>
+                                        <img src="./fig/colab_1.webp" alt="" />
+                                    </figure>
+                                </div>
+                                <div style="width: 45%">
+                                    <figure>
+                                        <img src="./fig/colab_2.webp" alt="" />
+                                    </figure>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            自前で Python の仮想環境を構築して実行してもOK
+                            <ul>
+                                <li>
+                                    GitHub にアップロードしている
+                                    requirements.txt を利用してください
+                                </li>
+                                <li>Python 3.13.7 で動作確認済み</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>実行に成功した場合</h2>
+                    <ul>
+                        <li>
+                            うまくいけばアニメーションが表示される
+                            <div class="r-stack">
+                                <figure>
+                                    <img src="./fig/cavity.webp" alt="" />
+                                </figure>
+                                <figure
+                                    class="fragment"
+                                    data-fragment-index="1"
+                                >
+                                    <img src="./fig/cavity_3.webp" alt="" />
+                                </figure>
+                            </div>
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            左の図は, 実線に沿って反時計回り,
+                            破線に沿って時計回りの流れがあることを表す
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">配布したプログラムコードの注意</h2>
+                    <ul>
+                        <li>
+                            配布したプログラムコードには,
+                            可読性のためになるべく docstring と型ヒント
+                            (型アノテーション) をつけている
+                        </li>
+                        <li class="fragment">
+                            <strong class="alert">docstring</strong>
+                            <ul>
+                                <li>
+                                    関数やクラスの説明を記述できる複数行のコメント
+                                    <pre><code class="language-python" data-line-numbers>def func():
+    """関数 func の説明
+    
+    Parameters: 仮引数の説明
+    Returns: 戻り値の説明
+    """</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            <strong class="alert">型ヒント</strong>
+                            (<strong class="alert">型アノテーション</strong>)
+                            <ul>
+                                <li>
+                                    Python は動的型付け言語だが,
+                                    作成者が想定している変数の型を明示できる
+                                    <pre><code class="language-python" data-line-numbers>from typing import Final
+
+a: int = 1   # 変数 a には整数型のリテラルだけを代入することを想定
+b: Final[float] = 0.1   # 変数 b は浮動小数点型の定数</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>演習</h2>
+                    <ul>
+                        <li>
+                            配布したプログラムコードのパラメータをいろいろ変更して実行してみてください
+                            <pre><code class="language-python" data-line-numbers="1-2,4-6,8,10-11"># ========== パラメータ ==========
+LX: Final[float] = 1                # 溝のx方向の長さ(m)
+LY: Final[float] = LX               # 溝のy方向の長さ(m)
+RHO: Final[float] = 1               # 密度(kg/m^3)
+NU: Final[float] = 0.01             # 動粘性係数(m^2/s)
+U_TOP: Final[float] = 1             # 溝の上端の流速(m/s)</code></pre>
+                            <ul>
+                                <li>
+                                    物理的イメージに基づいて,
+                                    どのように結果が変わるのか予想してみましょう
+                                    (対照実験を意識すること)
+                                </li>
+                                <li>
+                                    シミュレーションは便利ですが,
+                                    万能ではありません. 後日勉強するように,
+                                    いくつかの制約があります.
+                                    以下のようなエラーが出た場合は,
+                                    パラメータの変更を控えめにしてみてください
+                                    <pre><code class="language-python">U_TOP: Final[float] = 10            # 溝の上端の流速(m/s)
+
+[ERROR] 数値的安定性の条件(DT &lt; 0.003333333333333333)を満たしていません</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">配布したプログラムコードの注意</h2>
+                    <ul>
+                        <li>
+                            スライドp.6の (1) 式を式変形すると,
+                            以下のようになる
+                            <div
+                                class="math-box"
+                                style="font-size: 55%; width: 80%"
+                            >
+                                \[\begin{equation} \begin{aligned}
+                                \frac{\uppartial\omega}{\uppartial
+                                t}+\left(v_x\frac{\uppartial}{\uppartial
+                                x}+v_y\frac{\uppartial}{\uppartial
+                                y}\right)\omega&=\nu\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial}{\uppartial
+                                y^2}\right)\omega\,,\quad
+                                v_x=\frac{\uppartial\psi}{\uppartial y},\quad
+                                v_y=-\frac{\uppartial\psi}{\uppartial x}\\
+                                \left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial}{\uppartial
+                                y^2}\right)\psi&=-\omega\\
+                                \left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial}{\uppartial
+                                y^2}\right)p&=2\rho\left[\frac{\uppartial^2\psi}{\uppartial
+                                x^2}\frac{\uppartial^2\psi}{\uppartial
+                                y^2}-\left(\frac{\uppartial^2\psi}{\uppartial
+                                x\uppartial y}\right)^2\right] \end{aligned}
+                                \end{equation}\]
+                            </div>
+                            <ul>
+                                <li>
+                                    配布したプログラムコードでは, Navier-Stokes
+                                    方程式そのままではなく,
+                                    この方程式系を解いている
+                                </li>
+                                <li>
+                                    この場合, 圧力 $p$
+                                    は受け身的な物理量になるので,
+                                    配布したプログラムコードでは圧力の計算を省略している
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            このようにして解く方法を渦度-流線関数法と呼ぶ
+                            (第3回で説明)
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>今後の流れ</h2>
+                    <ul>
+                        <li>
+                            この方程式系は,
+                            <span style="color: magenta">楕円型</span>
+                            (第1回で説明)・<span style="color: blue"
+                                >放物型</span
+                            >
+                            (第2回で説明)・<span style="color: red"
+                                >双曲型</span
+                            >
+                            (第2回で説明)
+                            の偏微分方程式の組み合わせでできている
+                            <div
+                                class="math-box"
+                                style="font-size: 55%; width: 70%"
+                            >
+                                \[\begin{equation*} \begin{aligned}
+                                \frac{\uppartial\omega}{\uppartial
+                                t}+\textcolor{red}{\left(v_x\frac{\uppartial}{\uppartial
+                                x}+v_y\frac{\uppartial}{\uppartial
+                                y}\right)\omega}&=\textcolor{blue}{\nu\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial}{\uppartial
+                                y^2}\right)\omega}\,,\quad
+                                v_x=\frac{\uppartial\psi}{\uppartial y},\quad
+                                v_y=-\frac{\uppartial\psi}{\uppartial x}\\
+                                \textcolor{magenta}{\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial}{\uppartial
+                                y^2}\right)\psi}\,\,&\textcolor{magenta}{=-\omega}\end{aligned}
+                                \end{equation*}\]
+                            </div>
+                            <ul>
+                                <li>
+                                    来週以降の授業で個々の偏微分方程式のシミュレーションについて学び,
+                                    今回配布したプログラムコードを読める/書けるようになることを目指します
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>課題について</h2>
+                    <ul>
+                        <li>
+                            マクロ系シミュレーション (総合演習2の33/100点)
+                            の課題は<strong class="important">加点方式</strong
+                            >で採点します (上限33点)
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの各回ごとに<strong
+                                class="alert"
+                                >小課題</strong
+                            >
+                            (1問あたり配点5-10点前後)
+                            とマクロ系シミュレーションの最終回に<strong
+                                class="alert"
+                                >最終課題</strong
+                            >
+                            (1問あたり配点5-30点前後) を出します
+                            <ul>
+                                <li>
+                                    自分ができそうな課題を選択し,
+                                    他の授業の忙しさを考慮して戦略的に提出してもらって構いません
+                                </li>
+                                <li>
+                                    小課題を提出しておくと,
+                                    最終課題の提出が楽になります
+                                </li>
+                                <li>
+                                    小課題を提出せずに,
+                                    最終課題だけ提出するのもアリです
+                                </li>
+                                <li>
+                                    好成績を狙っている人はたくさん課題を出してもらっても構いません
+                                    (ただし33点が上限)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの課題提出に,
+                            生成AIを活用しても構いませんが,
+                            内容を吟味してから提出してください
+                            <ul>
+                                <li>
+                                    どの生成AIモデルをどのように使ったか明記すること
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>第0回小課題</h2>
+                    <ul>
+                        <li>
+                            <b>[問0-1]</b>
+                            今回配布したプログラムコードを使用して,
+                            3パターン以上のパラメータ (LX, RHO, NU, U_TOPなど)
+                            の組み合わせで計算を行った結果を整理し,
+                            その結果<strong class="alert">だけ</strong
+                            >から分かることを論じた短めのレポートを作成してください
+                            (配点5点)
+                            <ul>
+                                <li>
+                                    議論できそうな内容のヒント
+                                    <ul>
+                                        <li>
+                                            パラメータを変えたときの溝の中の流れの変化
+                                        </li>
+                                        <li>
+                                            数値的安定性の条件に関するエラーが発生する条件
+                                        </li>
+                                        <li>無次元数 (特に Reynolds 数)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>[問0-2]</b> スライドp.6の(1)式を式変形すると,
+                            スライド p.12の(2)式になることを示してください
+                            (配点5点)
+                        </li>
+                        <li>
+                            $\LaTeX$ や Microsoft Word などで作成し, pdf
+                            形式でBEEF+から提出すること
+                            <ul>
+                                <li>
+                                    どの課題か分かるように問題番号をつけてください
+                                </li>
+                            </ul>
+                        </li>
+                        <li>第0回小課題の提出〆切: 2025/10/14 23:59</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="../../reveal.js-master/dist/reveal.js"></script>
+        <!-- <script src="../../reveal.js-master/plugin/zoom/zoom.js"></script> -->
+        <script>
+            Reveal.initialize({
+                controlsLayout: "edges",
+                hash: true,
+                scrollActivationWidth: null,
+                width: 960,
+                height: 700,
+                margin: 0.2,
+
+                slideNumber: (slide) => {
+                    return [
+                        // Reveal.getIndices(slide).h,
+                        // "/",
+                        // Reveal.getHorizontalSlides(slide).length - 1,
+
+                        Reveal.getIndices(slide).h + 1,
+                        "/",
+                        Reveal.getHorizontalSlides(slide).length,
+                    ];
+                },
+
+                plugins: [
+                    RevealHighlight,
+                    // Reveal.Zoom,
+                ],
+            });
+        </script>
+        <script src="./main.js"></script>
+    </body>
+</html>
