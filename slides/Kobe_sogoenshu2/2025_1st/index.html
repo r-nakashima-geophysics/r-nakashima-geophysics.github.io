@@ -686,7 +686,7 @@ U_TOP: Final[float] = 1             # 溝の上端の流速(m/s)</code></pre>
                     <h2 class="r-fit-text">配布したプログラムコードの注意</h2>
                     <ul>
                         <li>
-                            スライドp.6の (1) 式を式変形すると,
+                            スライドp.5の (1) 式を式変形すると,
                             以下のようになる
                             <div
                                 class="math-box"
@@ -852,8 +852,8 @@ U_TOP: Final[float] = 1             # 溝の上端の流速(m/s)</code></pre>
                             </ul>
                         </li>
                         <li>
-                            <b>[問0-2]</b> スライドp.6の(1)式を式変形すると,
-                            スライドp.12の(2)式になることを示してください
+                            <b>[問0-2]</b> スライドp.5の(1)式を式変形すると,
+                            スライドp.11の(2)式になることを示してください
                             (配点5点)
                         </li>
                         <li>
@@ -884,13 +884,13 @@ U_TOP: Final[float] = 1             # 溝の上端の流速(m/s)</code></pre>
 
                 slideNumber: (slide) => {
                     return [
-                        // Reveal.getIndices(slide).h,
-                        // "/",
-                        // Reveal.getHorizontalSlides(slide).length - 1,
-
-                        Reveal.getIndices(slide).h + 1,
+                        Reveal.getIndices(slide).h,
                         "/",
-                        Reveal.getHorizontalSlides(slide).length,
+                        Reveal.getHorizontalSlides(slide).length - 1,
+
+                        // Reveal.getIndices(slide).h + 1,
+                        // "/",
+                        // Reveal.getHorizontalSlides(slide).length,
                     ];
                 },
 
