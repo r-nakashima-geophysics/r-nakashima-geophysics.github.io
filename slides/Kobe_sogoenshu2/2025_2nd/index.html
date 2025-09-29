@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reset.css" />
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/dist/theme/simple.css"
+        />
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="../fontawesome-free-7.0.0-web/css/all.min.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/29824876ec.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- MathJax version 3 -->
+        <script src="./mathjax_config.js" defer></script>
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- TikZJax -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://tikzjax.com/v1/fonts.css"
+        />
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+
+        <!-- Theme used for syntax highlighted code -->
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/plugin/highlight/monokai.css"
+        />
+        <script src="../../reveal.js-master/plugin/highlight/highlight.js"></script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>総合演習2 (2025年度)</h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        <time datetime="2025-10-08">2025-10-08</time>
+                    </p>
+                    <!-- <p>
+                        地球流体セミナー 分科会 @支笏湖 [<time
+                            datetime="2025-03-16"
+                            >2025-03-16</time
+                        >]
+                    </p> -->
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">1. はじめに</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2.
+                            偏微分方程式の数値解法</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part3" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 3.
+                            楕円型のシミュレーション</span
+                        ><span id="nav_part3-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part4" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 4.
+                            課題について</span
+                        ><span id="nav_part4-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part5" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 5. 補足</span
+                        ><span id="nav_part5-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (神戸大・シス情) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;panda.kobe-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by&nbsp;
+                        <a href="https://revealjs.com" target="_blank"
+                            ><img
+                                src="https://static.slid.es/reveal/logo-v1/reveal-white-text.svg"
+                                alt="Powered by reveal.js"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -7px 0;
+                                    padding: 0;
+                                "
+                                class="demo-logo"
+                        /></a>
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -10px 0;
+                                    padding: 0;
+                                "
+                        /></a>
+                        <!-- /
+                        <a href="https://tikzjax.com" target="_blank"
+                            >TikZJax</a
+                        > -->
+                        /
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                        <!-- /
+                        <a href="https://www.chartjs.org"
+                            >Chart.js
+                            <img
+                                src="https://www.chartjs.org/img/chartjs-logo.svg"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -5px 0;
+                                    padding: 0;
+                                "
+                        /></a> -->
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide">
+                    <p>2025年度</p>
+                    <h2 class="r-fit-text">
+                        総合演習2<br />
+                        マクロ系シミュレーション<br />
+                        (第1回)
+                    </h2>
+                    <p>
+                        <i class="fas fa-microphone"></i> 中島 涼輔
+                        (システム情報)<br />
+                        @ NSSOL Lab.<br />
+                        2025/10/08
+                    </p>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">マクロ系シミュレーションの予定</h2>
+                    <ul>
+                        <li class="small" style="color: gray">
+                            第0回 (2025/10/01)
+                            <ul>
+                                <li>概要</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong class="alert">第1回 (2025/10/08)</strong>
+                            <ul>
+                                <li>
+                                    <strong class="alert"
+                                        >偏微分方程式の数値解法</strong
+                                    >
+                                </li>
+                                <li>
+                                    <strong class="alert"
+                                        >楕円型方程式 (定常拡散方程式)
+                                        のシミュレーション</strong
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong class="important"
+                                >来週 (10/15) は月曜授業のため,
+                                総合演習2は実施しない</strong
+                            >
+                        </li>
+                        <li>
+                            第2回 (2025/10/22)
+                            <ul>
+                                <li>
+                                    放物型方程式 (非定常拡散方程式)
+                                    のシミュレーション
+                                </li>
+                                <li>
+                                    双曲型方程式 (移流方程式)
+                                    のシミュレーション
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            第3回 (2025/10/29)
+                            <ul>
+                                <li>
+                                    ソレノイダル場 (非圧縮流体)
+                                    のシミュレーション
+                                </li>
+                                <li>逆問題, データ同化</li>
+                            </ul>
+                        </li>
+                        <li>
+                            第4回 (2025/11/05)
+                            <ul>
+                                <li>質問・課題</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>偏微分方程式の数値解法</h2>
+                    <ul style="margin: auto -1%">
+                        <li>
+                            まず、時間微分と空間微分で取り扱いが異なる
+                            <ul>
+                                <li>
+                                    時間方向:
+                                    <strong class="alert">初期条件</strong
+                                    >からある時刻まで時間発展させる
+                                </li>
+                                <li>
+                                    空間方向: 領域の端に課されている<strong
+                                        class="alert"
+                                        >境界条件</strong
+                                    >に合う解を探す
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            時間微分を含まない偏微分方程式の場合
+                            <span class="note">(本日勉強します)</span>
+                            <ul>
+                                <li>
+                                    空間微分をなんらかの方法で近似し,
+                                    偏微分方程式を連立方程式
+                                    $\bm{f}(\bm{\mathrm{x}})=\bm{0}$ に変換する
+                                </li>
+                                <li>
+                                    特に, 線形の場合は<strong class="important"
+                                        >連立一次方程式
+                                        $\mathsf{A}\bm{\mathrm{x}}=\bm{b}$
+                                        に変換</strong
+                                    >できる
+                                </li>
+                                <li>
+                                    あとは Newton
+                                    法や線形代数の数値計算法を使うだけ
+                                </li>
+                                <li>
+                                    未知ベクトル $\bm{\mathrm{x}}$
+                                    から偏微分方程式の近似解を構成する
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            時間微分を含む偏微分方程式の場合
+                            <span class="note">(次回勉強します)</span>
+                            <ul>
+                                <li>
+                                    空間微分をなんらかの方法で近似し,
+                                    偏微分方程式を<strong class="important"
+                                        >連立常微分方程式
+                                        $\frac{\upd\bm{\mathrm{x}}}{\upd
+                                        t}=\bm{f}(\bm{\mathrm{x}},t)$
+                                        に変換</strong
+                                    >する
+                                </li>
+                                <li>あとは常微分方程式の数値解法を使うだけ</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>空間微分の近似法</h2>
+                    <ul>
+                        <li>差分を用いる方法と積分を用いる方法に大別される</li>
+                        <li class="fragment">
+                            差分を用いる方法
+                            \[\left.\frac{\uppartial\phi(x,t)}{\uppartial
+                            x}\right|_{x=x_0,\,
+                            t=t_0}\approx\frac{\phi(x_0+\Updelta x,
+                            t_0)-\phi(x_0, t_0)}{\Updelta x}\]
+                            <ul>
+                                <li>
+                                    <strong class="alert">有限差分法</strong>
+                                    (Finite Difference Method; FDM)
+                                    <ul>
+                                        <li class="note">
+                                            総合演習2では, この方法を扱います
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            積分を用いて, 未知関数の微分をなんとかする方法
+                            \[\frac{\uppartial\phi(x,t)}{\uppartial
+                            x}=0\quad\rightarrow\quad\int_{\mathcal{D}}\frac{\uppartial\phi(x,t)}{\uppartial
+                            x}w(x)\upd x=0\]
+                            <ul>
+                                <li>
+                                    <strong class="alert">有限体積法</strong>
+                                    (Finite Volume Method; FVM)
+                                </li>
+                                <li>
+                                    <strong class="alert">有限要素法</strong>
+                                    (Finite Element Method; FEM)
+                                </li>
+                                <li>
+                                    <strong class="alert">スペクトル法</strong>
+                                </li>
+                                <li>
+                                    <strong class="alert">境界要素法</strong>
+                                    (Boundary Element Method; BEM)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>有限差分法 (FDM)</h2>
+                    <ul>
+                        <li>
+                            まず, 計算領域を<strong class="alert"
+                                >格子点</strong
+                            >
+                            ($x=x_0, x_1, \ldots, x_{N-1}$) に分割し,
+                            格子点上の物理量の値 ($\phi_0, \phi_1, \ldots,
+                            \phi_{N-1}$) だけに注目する
+                        </li>
+                    </ul>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <figure style="width: 120%; margin: auto -10%">
+                                <img src="./fig/grid.svg" alt="" />
+                            </figure>
+                        </div>
+                        <p>&rarr;</p>
+                        <div style="width: 50%">
+                            <figure style="width: 120%; margin: auto -10%">
+                                <img src="./fig/grid_2.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul class="fragment">
+                        <li>
+                            すべての格子点上で,
+                            解きたい偏微分方程式の空間微分を差分に置き換えた式をつくる
+                            (式が$N$ 本できる)
+                            \[\left.\frac{\uppartial\phi(x,t)}{\uppartial
+                            x}\right|_{x=x_i}\approx\frac{\phi_{i+1}-\phi_i}{x_{i+1}-x_i}\qquad
+                            (i=0,1,2,\ldots,N-1)\]
+                            <ul>
+                                <li>
+                                    $N$ 次元の未知ベクトル:
+                                    $\bm{\mathrm{x}}={}^t(\phi_0,
+                                    \phi_1,\phi_2,\ldots,\phi_{N-1})$
+                                </li>
+                                <li>
+                                    計算領域をはみ出した点の値 ($\phi_{-1}$ や
+                                    $\phi_N$ など) が必要になったら,
+                                    境界条件を使って対処する
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">
+                        いろいろな差分のとり方が考えられる
+                    </h2>
+                    <ul>
+                        <li>
+                            今後は, 等間隔の格子のみを考える ($x_i = x_0 +
+                            i\Delta x$)
+                            <figure>
+                                <img src="./fig/grid_3.svg" alt="" />
+                            </figure>
+                        </li>
+                        <li class="fragment" style="margin-top: -2%">
+                            1階微分の場合
+                            <ul>
+                                <li>
+                                    <strong class="alert">前進差分</strong>:
+                                    $\left.\dfrac{\uppartial \phi}{\uppartial
+                                    x}\right|_{x=x_i}\approx\dfrac{\phi(x_i+\Updelta
+                                    x)-\phi(x_i)}{\Updelta x}$
+                                </li>
+                                <li>
+                                    <strong class="alert">後退差分</strong>:
+                                    $\left.\dfrac{\uppartial \phi}{\uppartial
+                                    x}\right|_{x=x_i}\approx\dfrac{\phi(x_i)-\phi(x_i-\Updelta
+                                    x)}{\Updelta x}$
+                                </li>
+                                <li>
+                                    <strong class="alert">中心差分</strong>:
+                                    $\left.\dfrac{\uppartial \phi}{\uppartial
+                                    x}\right|_{x=x_i}\approx\dfrac{\phi(x_i+\Updelta
+                                    x)-\phi(x_i-\Updelta x)}{2\Updelta x}$
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">どれを使うのが良い？</li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>差分の精度</h2>
+                    <ul>
+                        <li>
+                            $x=x_i$ まわりの Taylor 展開を考えてみる
+                            <span style="font-size: 70%">
+                                \[\begin{align*} \phi(x_i+\Updelta
+                                x)&=\phi(x_i)+\Updelta
+                                x\left.\frac{\uppartial\phi}{\uppartial
+                                x}\right|_{x=x_i}+\frac{(\Updelta
+                                x)^2}{2}\left.\frac{\uppartial^2\phi}{\uppartial
+                                x^2}\right|_{x=x_i}+\frac{(\Updelta
+                                x)^3}{6}\left.\frac{\uppartial^3\phi}{\uppartial
+                                x^3}\right|_{x=x_i}+\mathrm{O}\left((\Updelta
+                                x)^4\right)\\ \phi(x_i-\Updelta
+                                x)&=\phi(x_i)-\Updelta
+                                x\left.\frac{\uppartial\phi}{\uppartial
+                                x}\right|_{x=x_i}+\frac{(\Updelta
+                                x)^2}{2}\left.\frac{\uppartial^2\phi}{\uppartial
+                                x^2}\right|_{x=x_i}-\frac{(\Updelta
+                                x)^3}{6}\left.\frac{\uppartial^3\phi}{\uppartial
+                                x^3}\right|_{x=x_i}+\mathrm{O}\left((\Updelta
+                                x)^4\right) \end{align*}\]
+                            </span>
+                        </li>
+                        <li class="fragment">
+                            これらをうまく使うと
+                            <ul style="font-size: 90%">
+                                <li>
+                                    $\left.\dfrac{\uppartial \phi}{\uppartial
+                                    x}\right|_{x=x_i}=\dfrac{\phi(x_i+\Updelta
+                                    x)-\phi(x_i)}{\Updelta
+                                    x}+\mathrm{O}\left(\Updelta
+                                    x\right)$&emsp;(前進差分)
+                                </li>
+                                <li>
+                                    $\left.\dfrac{\uppartial \phi}{\uppartial
+                                    x}\right|_{x=x_i}=\dfrac{\phi(x_i)-\phi(x_i-\Updelta
+                                    x)}{\Updelta x}+\mathrm{O}\left(\Updelta
+                                    x\right)$&emsp;(後退差分)
+                                </li>
+                                <li>
+                                    $\left.\dfrac{\uppartial \phi}{\uppartial
+                                    x}\right|_{x=x_i}=\dfrac{\phi(x_i+\Updelta
+                                    x)-\phi(x_i-\Updelta x)}{2\Updelta
+                                    x}+\mathrm{O}\left((\Updelta
+                                    x)^2\right)$&emsp;(中心差分)
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            つまり, 格子間隔 $\Updelta x$
+                            の大きさを半分にすると,
+                            前進差分と後退差分では誤差が $1/2$ になり (<strong
+                                class="alert"
+                                >1次精度</strong
+                            >という), 中心差分では誤差が $1/4$ になる (<strong
+                                class="alert"
+                                >2次精度</strong
+                            >という) &rarr;
+                            <strong class="important">中心差分が良さげ</strong>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">
+                        精度のよい2階微分の差分公式をつくる
+                    </h2>
+                    <ul>
+                        <li>
+                            もう一度 Taylor 展開
+                            <span style="font-size: 70%">
+                                \[\begin{align*} \phi(x_i+\Updelta
+                                x)&=\phi(x_i)+\Updelta
+                                x\left.\frac{\uppartial\phi}{\uppartial
+                                x}\right|_{x=x_i}+\frac{(\Updelta
+                                x)^2}{2}\left.\frac{\uppartial^2\phi}{\uppartial
+                                x^2}\right|_{x=x_i}+\frac{(\Updelta
+                                x)^3}{6}\left.\frac{\uppartial^3\phi}{\uppartial
+                                x^3}\right|_{x=x_i}+\mathrm{O}\left((\Updelta
+                                x)^4\right)\\ \phi(x_i-\Updelta
+                                x)&=\phi(x_i)-\Updelta
+                                x\left.\frac{\uppartial\phi}{\uppartial
+                                x}\right|_{x=x_i}+\frac{(\Updelta
+                                x)^2}{2}\left.\frac{\uppartial^2\phi}{\uppartial
+                                x^2}\right|_{x=x_i}-\frac{(\Updelta
+                                x)^3}{6}\left.\frac{\uppartial^3\phi}{\uppartial
+                                x^3}\right|_{x=x_i}+\mathrm{O}\left((\Updelta
+                                x)^4\right) \end{align*}\]
+                            </span>
+                        </li>
+                        <li
+                            class="fragment"
+                            style="margin-right: -1%"
+                            data-fragment-index="1"
+                        >
+                            $\phi$ の3階微分を含む項がうまく消えるように,
+                            2つの式を足すと
+                            \[\left.\frac{\uppartial^2\phi}{\uppartial
+                            x^2}\right|_{x=x_i}=\frac{\phi(x_i+\Updelta
+                            x)-2\phi(x_i)+\phi(x_i-\Updelta x)}{(\Updelta
+                            x)^2}+\mathrm{O}\left((\Updelta x)^2\right)\]
+                            <ul>
+                                <li>
+                                    2次精度の2階微分の差分公式 (<strong
+                                        class="alert"
+                                        >2階中心差分</strong
+                                    >)
+                                </li>
+                                <li>
+                                    この考え方を応用すると,
+                                    もっと精度の良い差分公式をつくることも可能
+                                </li>
+                            </ul>
+                        </li>
+                        <li
+                            class="fragment small note"
+                            data-fragment-index="1"
+                        >
+                            [別解]
+                            <div style="margin-top: -2%">
+                                \[\left.\frac{\uppartial^2\phi}{\uppartial
+                                x^2}\right|_{x=x_i}\approx\frac{\left.\frac{\uppartial\phi}{\uppartial
+                                x}\right|_{x=x_i+\frac{1}{2}\Updelta
+                                x}-\left.\frac{\uppartial\phi}{\uppartial
+                                x}\right|_{x=x_i-\frac{1}{2}\Updelta
+                                x}}{\Updelta
+                                x}\approx\frac{\frac{\phi(x_i+\Updelta
+                                x)-\phi(x_i)}{\Updelta x}-\frac{\phi(x_i
+                                )-\phi(x_i-\Updelta x)}{\Updelta x}}{\Updelta
+                                x}\]
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>プログラムコードの配布</h2>
+                    <ul>
+                        <li>
+                            <a
+                                href="https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git"
+                                target="_blank"
+                                >https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</a
+                            >
+                            で配布します
+                            <ul>
+                                <li>
+                                    macro_1st_diffusion1d.ipynb と
+                                    macro_1st_diffusion2d.ipynb
+                                    をダウンロードしてください
+                                </li>
+                            </ul>
+                            <figure
+                                style="width: 75%; margin: -3% auto auto auto"
+                            >
+                                <img src="./fig/github.webp" alt="" />
+                            </figure>
+                        </li>
+
+                        <li>
+                            前回 git clone した人は git pull でも可
+                            <pre><code class="language-sh">git remote -v   # リモートリポジトリ (origin) を確認
+git pull origin main</code></pre>
+                        </li>
+                        <li>本日の演習と第1回小課題で使います</li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>拡散方程式の復習</h2>
+                    <ul style="margin-left: -2%">
+                        <li>
+                            ある物質の濃度を $c(x,y,z,t)$, その物質の流れを
+                            $\bm{q}_c(x,y,z,t)$ とする.
+                            物質は濃度が高いところから低いところへ流れる
+                            \[\bm{q}_c=-D\grad c\qquad\mathrm{(Fick の法則
+                            \,(等方的))}\]
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            物質の流れが集まっている ($\div\bm{q}_c&lt;0$)
+                            ところでは, 時間とともに濃度が高くなる
+                            \[\frac{\uppartial c}{\uppartial
+                            t}=-\div\bm{q}_c+S_c=\div(D\grad c)+S_c\] $S_c$:
+                            化学反応などで物質が生成 (消滅) する効果
+                        </li>
+                        <li class="fragment">
+                            温度 $T(x,y,z,t)$ についても同様の式が成り立つ
+                            \[\begin{align*} \bm{q}_T&=-k\grad
+                            T\qquad\mathrm{(Fourier の法則\,(等方的))}\\
+                            C\frac{\uppartial T}{\uppartial
+                            t}&=-\div\bm{q}_T+S_T=\div(k\grad T)+S_T
+                            \end{align*} \] $\bm{q}_T$ :熱の流れ, $C$:
+                            単位体積あたりの熱容量, $S_T$: 内部発熱
+                        </li>
+                    </ul>
+                    <figure
+                        class="fragment"
+                        data-fragment-index="1"
+                        style="
+                            position: absolute;
+                            right: -10%;
+                            bottom: 24%;
+                            width: 30%;
+                        "
+                    >
+                        <img src="./fig/diffusion.webp" alt="" />
+                    </figure>
+                </section>
+
+                <section data-state="part3">
+                    <h2>定常な場合の拡散方程式</h2>
+                    <ul>
+                        <li>
+                            初期状態から十分長い時間が経って,
+                            時間変化が起こらなくなったときのことを考える
+                            <ul>
+                                <li>
+                                    $\dfrac{\uppartial c}{\uppartial t}=0$ より
+                                    $0=\div(D\grad c)+S_c$ となる
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            さらに, 拡散係数 $D$ が空間的に一様な場合は
+                            $\nabla^2c=-\dfrac{S_c}{D}$
+                            <ul>
+                                <li>
+                                    生成項 $S_c$ が $c$ の関数ではない場合,
+                                    この偏微分方程式は Poisson 方程式 (楕円型)
+                                    になる
+                                </li>
+                                <li class="note">
+                                    今日は、この問題のシミュレーションを勉強します
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment" style="margin-right: -1%">
+                            同様の偏微分方程式が現れる他の現象の例
+                            <ul>
+                                <li>定常熱伝導: $\nabla^2T=-S_T/k$</li>
+                                <li>
+                                    電荷密度 $\rho_e$ がつくる静電ポテンシャル:
+                                    $\nabla^2\phi_e=-\rho_e/\varepsilon_0$
+                                </li>
+                                <li>
+                                    質量密度 $\rho$ がつくる重力ポテンシャル:
+                                    $\nabla^2\phi_g=4\pi G\rho$
+                                </li>
+                                <li>
+                                    非圧縮・渦なし流れの速度ポテンシャル:
+                                    $\nabla^2\phi_v=0$
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>演習問題</h2>
+                    <ul>
+                        <li>
+                            屋内の高い $\ce{CO2}$ 濃度は,
+                            眠気を誘発することが<br />指摘されている
+                            <span style="font-size: 53%"
+                                >(東北大学プレスリリース:
+                                <a
+                                    href="https://www.tohoku.ac.jp/japanese/newimg/pressimg/tohokuuniv-press20240903_01web_sleep.pdf"
+                                    >https://www.tohoku.ac.jp/japanese/newimg/pressimg/tohokuuniv-press20240903_01web_sleep.pdf</a
+                                >
+                                )</span
+                            >
+                        </li>
+                        <li class="fragment">
+                            換気の重要性を調べるために, 屋内の $\ce{CO2}$
+                            濃度を定常拡散方程式でモデル化してみましょう
+                            <ul>
+                                <li>
+                                    屋内にいる人は, 単位時間あたり一定量の
+                                    $\ce{CO2}$ を排出し続けると仮定する
+                                </li>
+                                <li>
+                                    人は動き回らないと仮定する. また,
+                                    簡単のため, 人の分布を連続関数で近似する:
+                                    $S_c=S_0(x,y)$
+                                </li>
+
+                                <li>
+                                    十分長い時間が経過し,
+                                    定常状態に達した状況を考える
+                                </li>
+                                <li>簡単のため, 空気の流れの影響は無視する</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            よって, 解くべき式は
+                            <strong class="alert"
+                                >$\dfrac{\uppartial^2 c(x,y)}{\uppartial
+                                x^2}+\dfrac{\uppartial^2 c(x,y)}{\uppartial
+                                y^2}=-\dfrac{S_0(x,y)}{D}$</strong
+                            >
+                        </li>
+                    </ul>
+                    <figure
+                        style="
+                            position: absolute;
+                            top: 0;
+                            right: 0%;
+                            width: 20%;
+                        "
+                    >
+                        <img
+                            src="./fig/kaisya_shigoto_nemui_man.webp"
+                            alt=""
+                        />
+                    </figure>
+                </section>
+
+                <section data-state="part3">
+                    <h2>[例題1] まずは簡単な場合</h2>
+                    <figure style="margin: -2% auto">
+                        <img
+                            src="./fig/enshu_1d.svg"
+                            style="width: 80%"
+                            alt=""
+                        />
+                    </figure>
+                    <ul>
+                        <li>
+                            部屋を1次元で近似し,
+                            人は部屋の中に均一に分布しているとする
+                            ($S_0=\mathrm{定数}$) &ensp;&rarr;&ensp;
+                            <strong class="alert"
+                                >$\dfrac{\upd^2 c(x)}{\upd
+                                x^2}=-\dfrac{S_0}{D}$</strong
+                            >
+                        </li>
+                        <li class="fragment">
+                            部屋の一方は窓が開いており, 外気の $\ce{CO2}$
+                            濃度と等しい
+                            <ul>
+                                <li>境界条件: $c=c_\text{out}$ ($x=0$)</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            部屋のもう一方には壁があり, $\ce{CO2}$ の流れはない
+                            <ul>
+                                <li>
+                                    境界条件: $-D\dfrac{\upd c}{\upd x}=0$
+                                    ($x=L$)
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            この場合の解析解は
+                            $c(x)=c_\text{out}+\dfrac{S_0}{2D}x(2L-x)$
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>[例題1] 有限差分法を適用</h2>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/enshu_1d_grid.svg" alt="" />
+                            </figure>
+                        </div>
+                        <div style="width: 50%">
+                            <p class="small">
+                                格子点: $x_0, x_1, \ldots, x_{N-1}$ ($x_0=0$,
+                                $x_{N-1}=L$)<br />
+                                格子点上の $\ce{CO2}$ 濃度: $c_0, c_1, \ldots,
+                                c_{N-1}$<br />
+                                $N$ 次元未知ベクトル:
+                                $\bm{\mathrm{x}}={}^t(c_0, c_1, \ldots,
+                                c_{N-1})$
+                            </p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="fragment">
+                            各格子点上で,
+                            解きたい微分方程式に対し2階中心差分を適用
+                            <div class="flex-box">
+                                <div style="width: 35%">
+                                    \[\dfrac{\upd^2 c(x)}{\upd
+                                    x^2}=-\dfrac{S_0}{D}\]
+                                </div>
+                                <p>&rarr;</p>
+                                <div style="width: 65%; font-size: 80%">
+                                    \[\begin{align*}
+                                    \frac{c_1-2c_0+c_{-1}}{\Updelta
+                                    x^2}&=-\frac{S_0}{D}\qquad (x=x_0)\\
+                                    \frac{c_2-2c_1+c_{0}}{\Updelta
+                                    x^2}&=-\frac{S_0}{D}\qquad (x=x_1)\\
+                                    &\,\,\,\vdots\\
+                                    \frac{c_{i+1}-2c_i+c_{i-1}}{\Updelta
+                                    x^2}&=-\frac{S_0}{D}\qquad (x=x_i)\\
+                                    &\,\,\,\vdots\\
+                                    \frac{c_{N}-2c_{N-1}+c_{N-2}}{\Updelta
+                                    x^2}&=-\frac{S_0}{D}\qquad
+                                    (x=x_{N-1})\end{align*}\]
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fragment">
+                            計算領域をはみ出した点の値 ($c_{-1}$, $c_{N}$)
+                            の対処が必要
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        [例題1] 窓がある位置での境界条件
+                    </h2>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/enshu_1d.svg" ¥ alt="" />
+                            </figure>
+                        </div>
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/enshu_1d_grid.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>
+                            $x=x_0=0$ では, 外気の $\ce{CO2}$ 濃度と等しく
+                            $c(x_0)=c_0=c_\text{out}$
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            境界上で未知関数の値が与えられている境界条件を
+                            <strong class="alert">Dirichlet 境界条件</strong>
+                            (第1種境界条件, 固定境界条件) という
+                        </li>
+                    </ul>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <ul>
+                                <li class="fragment" data-fragment-index="2">
+                                    このとき, 実は $x=x_0$
+                                    での差分式を使う必要はない<br />
+                                    ($c_{-1}$ の対処は不要)
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    $x=x_1$ での差分式で $c_0=c_\text{out}$
+                                    を使用
+                                </li>
+                                <li class="fragment" data-fragment-index="4">
+                                    未知ベクトルの次元が1つ小さくなって,
+                                    $(N-1)$ 次元に $\bm{\mathrm{x}}={}^t(c_1,
+                                    \ldots, c_{N-1})$
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            style="width: 50%; font-size: 75%"
+                            class="fragment"
+                            data-fragment-index="3"
+                        >
+                            \[\begin{align*}
+                            \cancel{\frac{c_1-2c_0+c_{-1}}{\Updelta
+                            x^2}}&=\cancel{-\frac{S_0}{D}}\qquad (x=x_0)\\
+                            \frac{c_2-2c_1+\textcolor{red}{c_\text{out}}}{\Updelta
+                            x^2}&=-\frac{S_0}{D}\qquad (x=x_1)\\
+                            &\,\,\,\vdots\\
+                            \frac{c_{i+1}-2c_i+c_{i-1}}{\Updelta
+                            x^2}&=-\frac{S_0}{D}\qquad (x=x_i)\\
+                            &\,\,\,\vdots\\
+                            \frac{c_{N}-2c_{N-1}+c_{N-2}}{\Updelta
+                            x^2}&=-\frac{S_0}{D}\qquad
+                            (x=x_{N-1})\end{align*}\]
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        [例題1] 壁がある位置での境界条件
+                    </h2>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/enshu_1d.svg" ¥ alt="" />
+                            </figure>
+                        </div>
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/enshu_1d_grid.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>
+                            $x=x_{N-1}=L$ では $\ce{CO2}$ の流れがなく,
+                            $\left.\dfrac{\upd c}{\upd x}\right|_{x=x_{N-1}}=0$
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            境界上で未知関数の微分値が与えられている境界条件を
+                            <strong class="alert">Neumann 境界条件</strong>
+                            (第2種境界条件) という
+                        </li>
+                    </ul>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <ul>
+                                <li class="fragment" data-fragment-index="2">
+                                    境界条件を2階中心差分と同じ精度の1階中心差分で近似
+                                    \[0=\left.\frac{\upd c}{\upd
+                                    x}\right|_{x=x_{N-1}}\approx\frac{c_{N}-c_{N-2}}{2\Updelta
+                                    x}\]
+                                </li>
+                                <li class="fragment" data-fragment-index="3">
+                                    よって, $x=x_{N-1}$ での差分式で,
+                                    $c_{N}=c_{N-2}$ とすれば良い ($c_N$
+                                    の対処が解決)
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            style="width: 50%; font-size: 75%"
+                            class="fragment"
+                            data-fragment-index="3"
+                        >
+                            \[\begin{align*}
+                            \frac{c_2-2c_1+c_\text{out}}{\Updelta
+                            x^2}&=-\frac{S_0}{D}\qquad (x=x_1)\\
+                            &\,\,\,\vdots\\
+                            \frac{c_{i+1}-2c_i+c_{i-1}}{\Updelta
+                            x^2}&=-\frac{S_0}{D}\qquad (x=x_i)\\
+                            &\,\,\,\vdots\\
+                            \frac{\textcolor{red}{c_{N-2}}-2c_{N-1}+c_{N-2}}{\Updelta
+                            x^2}&=-\frac{S_0}{D}\qquad
+                            (x=x_{N-1})\end{align*}\]
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2>[例題1] 行列の形に整理</h2>
+                    <ul>
+                        <li>ここまでで得られた式を整理すると</li>
+                    </ul>
+                    <div class="flex-box" style="font-size: 65%">
+                        <div style="width: 30%">
+                            \[\begin{align*}
+                            c_2-2c_1+c_\text{out}&=-\frac{S_0}{D}\Updelta
+                            x^2\qquad \\ &\,\,\,\vdots\\
+                            c_{i+1}-2c_i+c_{i-1}&=-\frac{S_0}{D}\Updelta
+                            x^2\qquad\\ &\,\,\,\vdots\\
+                            -2c_{N-1}+2c_{N-2}&=-\frac{S_0}{D}\Updelta
+                            x^2\qquad\end{align*}\]
+                        </div>
+                        <p>&emsp;&rarr;&emsp;</p>
+                        <div style="width: 75%">
+                            \[\begin{pmatrix}-2 & 1 & 0 & 0 & 0 & \cdots\\ 1 &
+                            -2 & 1 & 0 & 0 & \cdots\\ 0 & 1 & -2 & 1 &
+                            0&\cdots\\ & & & \ddots\\ & \cdots & 0 & 1 & -2 & 1
+                            & 0 \\ & \cdots & 0 & 0 & 1 & -2 & 1 \\ & \cdots &
+                            0 & 0 & 0 & 2 & -2 \end{pmatrix}\begin{pmatrix}c_1
+                            \\ c_2 \\ c_3 \\ \vdots \\ c_{N-3} \\ c_{N-2} \\
+                            c_{N-1}\end{pmatrix}=\begin{pmatrix}-(S_0/D)\Updelta
+                            x^2-c_\text{out} \\ -(S_0/D)\Updelta x^2 \\
+                            -(S_0/D)\Updelta x^2 \\ \vdots \\ -(S_0/D)\Updelta
+                            x^2 \\ -(S_0/D)\Updelta x^2 \\ -(S_0/D)\Updelta
+                            x^2\end{pmatrix}\]
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="fragment">
+                            あとは $\mathsf{A}\bm{\mathrm{x}}=\bm{b}$ の
+                            $(N-1)\times(N-1)$ 行列 $\mathsf{A}$ と $(N-1)$
+                            次元ベクトル $\bm{b}$ をプログラムで作成し,
+                            数値計算法で解くだけ
+                            <ul>
+                                <li>
+                                    この行列 $\mathsf{A}$ のように,
+                                    対角成分とその隣の成分にだけ非ゼロの値がある行列を<strong
+                                        class="alert"
+                                        >三重対角行列</strong
+                                    >
+                                    (<strong class="alert">帯行列</strong>)
+                                    という
+                                </li>
+                                <li>
+                                    帯行列の非ゼロの成分のみを取り出し,
+                                    計算コストを削減できる方法がある (Thomas
+                                    アルゴリズム).
+                                    <span class="note">今回は省略</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="note fragment">
+                            それでは, macro_1st_diffusion1d.ipynb
+                            を開いてください
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <div class="flex-box">
+                        <div style="width: 60%">
+                            <h2>演習</h2>
+                            <ul>
+                                <li>
+                                    <b>[例題1]</b> 配布プログラムコード
+                                    macro_1st_diffusion1d.ipynb の中の係数行列
+                                    $\mathsf{A}$ を作成する関数 create_a
+                                    を完成させてください
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure>
+                                <img
+                                    src="./fig/enshu_1d_ans.webp"
+                                    alt=""
+                                    style="width: 70%"
+                                />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            <b>[例題2]</b>
+                            <strong class="alert"
+                                >例題1で作成したプログラムコードを別の「セル」にコピーした後</strong
+                            >, $x=0$, $L$
+                            の両方に窓があった場合のシミュレーションへと書き換えてみてください
+                            <ul>
+                                <li>
+                                    Dirichlet 境界条件にすると,
+                                    未知ベクトルの次元が1つ小さくなることに注意
+                                </li>
+                                <li>
+                                    解析解を与える関数 analytical_solution
+                                    なども要変更
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <figure style="margin-top: -1%">
+                        <img
+                            src="./fig/enshu_1d_2.svg"
+                            alt=""
+                            style="width: 63%"
+                        />
+                    </figure>
+                </section>
+
+                <section data-state="part3">
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <h2 class="r-fit-text">[例題3] 2次元の場合</h2>
+                            <ul>
+                                <li>
+                                    1辺の長さ $L$ の正方形の部屋を考える
+                                    <ul>
+                                        <li>$y=L$ に窓, 他は壁</li>
+                                    </ul>
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    人は均一に分布 ($S_0=\text{定数}$)
+                                    \[\dfrac{\uppartial^2 c(x,y)}{\uppartial
+                                    x^2}+\dfrac{\uppartial^2 c(x,y)}{\uppartial
+                                    y^2}=-\dfrac{S_0}{D}\]
+                                </li>
+                                <li class="fragment" data-fragment-index="2">
+                                    $x$ 方向の格子点を $x_0, x_1, \ldots,
+                                    x_{N-1}$ (格子間隔 $\Updelta x$), $y$
+                                    方向の格子点を $y_0, y_1, \ldots, y_{N-1}$
+                                    (格子間隔 $\Updelta y$) とする
+                                    <ul>
+                                        <li>
+                                            格子点 $(x_i, y_j)$ 上の $\ce{CO2}$
+                                            濃度を $c_{i,j}$ とする
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/enshu_2d.svg" alt="" />
+                            </figure>
+                            <figure class="fragment" data-fragment-index="2">
+                                <img src="./fig/enshu_2d_grid.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2>[例題3] 有限差分法を適用</h2>
+                    <ul>
+                        <li>
+                            格子点 $(x_i, y_j)$ 上で, 解きたい偏微分方程式<br />に対し2階中心差分を適用すると
+                            \[\begin{align*} &\dfrac{\uppartial^2
+                            c(x,y)}{\uppartial x^2}+\dfrac{\uppartial^2
+                            c(x,y)}{\uppartial y^2}=-\dfrac{S_0}{D}\\
+                            &\quad\rightarrow\quad\frac{c_{i+1,j}-2c_{i,j}+c_{i-1,j}}{\Updelta
+                            x^2}+\frac{c_{i,j+1}-2c_{i,j}+c_{i,j-1}}{\Updelta
+                            y^2}=-\frac{S_0}{D}\end{align*}\]
+                        </li>
+                        <li class="fragment">
+                            $N^2$ 次元の未知ベクトル
+                            $\bm{\mathrm{x}}={}^t(c_{0,0},c_{1,0},\ldots,c_{N-1,0},c_{0,1},\ldots,c_{N-1,N-1})$
+                            <ul>
+                                <li>
+                                    $c_{i+1,j}$ と $c_{i,j}$ は隣だが,
+                                    $c_{i,j+1}$ と $c_{i,j}$ は $N$
+                                    個離れている
+                                </li>
+                                <li>
+                                    $\mathsf{A}\bm{\mathrm{x}}=\bm{b}$
+                                    の形を頑張ればつくれるが大変
+                                    <span class="small">(やりたくない)</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            そこで,
+                            <strong class="alert">Gauss-Seidel 法</strong>
+                            ($\mathsf{A}\bm{\mathrm{x}}=\bm{b}$ の $k$ 行目
+                            ($k=1,2,\ldots$) の式を, $x_k$
+                            を求める式として利用し, $x_1$ から順に値を更新.
+                            解が収束するまでこれを反復する方法) を利用する
+                        </li>
+                    </ul>
+                    <figure style="position: absolute; right: -6%; top: 14%">
+                        <img
+                            src="./fig/stencil.svg"
+                            alt=""
+                            style="width: 90%"
+                        />
+                    </figure>
+                </section>
+
+                <section data-state="part3">
+                    <h2>[例題3] SOR 法を使う</h2>
+                    <ul>
+                        <li>
+                            解くべき $\mathsf{A}\bm{\mathrm{x}}=\bm{b}$ の
+                            $(i+jN+1)$ 行目は, 格子点 $(x_i, y_j)$
+                            での差分式なので, $c_{i,j}$
+                            を求める式へと変形すると
+                            \[c_{i,j}=\frac{\dfrac{c_{i+1,j}+c_{i-1,j}}{\Updelta
+                            x^2}+\dfrac{c_{i,j+1}+c_{i,j-1}}{\Updelta
+                            y^2}+\dfrac{S_0}{D}}{\frac{2}{\Updelta
+                            x^2}+\frac{2}{\Updelta y^2}}\]
+                            <ul>
+                                <li>
+                                    $\bm{\mathrm{x}}$ の適当な初期値から始めて,
+                                    格子点 $(x_0, y_0)$
+                                    から順に値を更新していけば良い
+                                    <ul>
+                                        <li class="note small">
+                                            ただし, 配布プログラムコードでは,
+                                            最初に内部の格子点 ($1$ から $N-2$
+                                            まで) を更新した後, Neumann
+                                            境界条件を用いて境界上の格子点の値を更新している
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    さらに, 解への収束を速めるために SOR 法
+                                    (逐次加速緩和法) を利用できる
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="note">
+                            それでは, macro_1st_diffusion2d.ipynb
+                            を実行してみてください
+                            (いろいろ変更してみてください)
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part4">
+                    <h2>課題について</h2>
+                    <ul>
+                        <li>
+                            マクロ系シミュレーション (総合演習2の33/100点)
+                            の課題は<strong class="important">加点方式</strong
+                            >で採点します (上限33点)
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの各回ごとに<strong
+                                class="alert"
+                                >小課題</strong
+                            >
+                            (1問あたり配点5-10点前後)
+                            とマクロ系シミュレーションの最終回に<strong
+                                class="alert"
+                                >最終課題</strong
+                            >
+                            (1問あたり配点5-30点前後) を出します
+                            <ul>
+                                <li>
+                                    自分ができそうな課題を選択し,
+                                    他の授業の忙しさを考慮して戦略的に提出してもらって構いません
+                                </li>
+                                <li>
+                                    小課題を提出しておくと,
+                                    最終課題の提出が楽になります
+                                </li>
+                                <li>
+                                    小課題を提出せずに,
+                                    最終課題だけ提出するのもアリです
+                                </li>
+                                <li>
+                                    好成績を狙っている人はたくさん課題を出してもらっても構いません
+                                    (ただし33点が上限)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの課題提出に,
+                            生成AIを活用しても構いませんが,
+                            内容を吟味してから提出してください
+                            <ul>
+                                <li>
+                                    どの生成AIモデルをどのように使ったか明記すること
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>第1回小課題</h2>
+                    <ul>
+                        <li>
+                            <b>[問1-1]</b>
+                            例題1と例題2のプログラムコードを完成させ,
+                            境界条件の違いによる結果の違いを比較した短めのレポートを作成してください.
+                            作成したプログラムコード全体を提出する必要はありませんが,
+                            一部を抜粋してレポートに載せても構いません
+                            (配点7点)
+                        </li>
+                        <li>
+                            <b>[問1-2]</b> 例題1(または例題2) と例題3の $S_0$
+                            が一定ではなく,
+                            空間依存性をもつ場合の結果をまとめた短めのレポートを作成してください.
+                            ただし, 例題1(または例題2)に関しては
+                            $S_0(x)=\sin(\pi x/L)$ など, 解析解が存在する
+                            $S_0(x)$ を選び, 数値解と解析解を比較すること
+                            (配点5点)
+                        </li>
+                        <li>
+                            $\LaTeX$ や Microsoft Word などで作成し, pdf
+                            形式でBEEF+から提出すること
+                            <ul>
+                                <li>
+                                    どの課題か分かるように問題番号をつけてください
+                                </li>
+                            </ul>
+                        </li>
+                        <li>第1回小課題の提出〆切: 2025/10/21 23:59</li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 90%">
+                    <h2>有限体積法 (FVM)</h2>
+                    <ul>
+                        <li>
+                            計算領域 $\mathcal{D}$ を小さな検査体積
+                            (コントロールボリューム) $\mathcal{D}_1,
+                            \mathcal{D}_2,\ldots$ に分割し,
+                            その中での物理量の値 ($\phi_1, \phi_2, \ldots$)
+                            を一定とみなす
+                        </li>
+                    </ul>
+                    <div class="flex-box" style="margin: 1% auto -2% auto">
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/fvm.svg" alt="" />
+                            </figure>
+                        </div>
+                        <div style="width: 50%">
+                            <div
+                                class="memo"
+                                style="
+                                    width: 105%;
+                                    padding: 1px;
+                                    border: solid black 1px;
+                                "
+                            >
+                                <p style="margin: 0">
+                                    例として考える偏微分方程式
+                                </p>
+                                \[ \frac{\uppartial\phi(x,y,t)}{\uppartial
+                                t}=-\div\bm{F}(\phi(x,y,t),x,y,t)\]
+                            </div>
+
+                            <p style="margin-top: 3%">
+                                $w_i(x,y)=\begin{cases}1 &
+                                ((x,y)\in\mathcal{D}_i) \\ 0 &
+                                ((x,y)\notin\mathcal{D}_i) \end{cases}$ を<br />
+                                かけて $\mathcal{D}$ で積分し,<br />
+                                Gauss の発散定理を用いると
+                                $\dfrac{\upd\phi_1}{\upd
+                                t}V_{\mathcal{D}_1}=-F_{1,2}S_{1,2}-F_{1,3}S_{1,3}-F_{1,4}S_{1,4}$
+                                などを得る ($V_*$ は体積, $S_{*,*}$ は面積)
+                            </p>
+                        </div>
+                    </div>
+                    <ul style="margin-right: -5%">
+                        <li>
+                            $\mathcal{D}_1$ 表面における $\bm{F}$
+                            の外向き法線成分 ($F_{1,2}, F_{1,3}, F_{1,4}$)
+                            は線形補間や差分法で $\phi_1, \phi_2,\ldots$
+                            から計算する
+                        </li>
+                        <li>計算領域が複雑な形状の場合でも扱いやすい</li>
+                        <li>
+                            検査体積間の $\bm{F}$ の出入りを考えるので,
+                            物理量の保存性が満たされる
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 90%">
+                    <h2>有限要素法 (FEM)</h2>
+                    <ul>
+                        <li>
+                            計算領域 $a\leq x\leq b$ に節点 ($x=x_1, x_2,
+                            \ldots$) を配置し,
+                            節点に挟まれた小さな要素に分割する
+                            (計算領域が2次元以上の場合は,
+                            近くの節点を結んで三角形や四面体などの要素に分割)
+                        </li>
+                        <li>
+                            節点 $x=x_i$ で値が $1$ になり,
+                            その節点に隣接する要素内で $x$ の 1 次式,
+                            それ以外では $0$ となる形状関数 $w_i(x)$ を考える
+                        </li>
+                    </ul>
+                    <div class="flex-box" style="margin: -3% auto -1% auto">
+                        <div style="width: 40%">
+                            <figure>
+                                <img src="./fig/fem.svg" alt="" />
+                            </figure>
+                        </div>
+                        <div style="width: 60%">
+                            <ul></ul>
+                            <div
+                                class="memo"
+                                style="
+                                    width: 80%;
+                                    padding: 1px;
+                                    border: solid black 1px;
+                                "
+                            >
+                                <p style="margin: 0">
+                                    例として考える偏微分方程式
+                                </p>
+                                \[ \frac{\uppartial\phi(x,t)}{\uppartial
+                                t}=\frac{\uppartial^2\phi(x,t)}{\uppartial
+                                x^2}\]
+                            </div>
+                            <p>
+                                節点上の物理量の値を $\phi_1(t),
+                                \phi_2(t),\ldots$ とすると
+                                $\phi(x,t)=\sum_{j}\phi_j(t)w_j(x)$
+                                と近似できる. 式に $w_i(x)$ をかけて $a\leq
+                                x\leq b$ で積分すると
+                                <span style="font-size: 90%"
+                                    >$\sum_j\dfrac{\upd\phi_j}{\upd
+                                    t}{\displaystyle\int_a^b}w_iw_j\upd
+                                    x=\left[w_i\dfrac{\uppartial
+                                    \phi}{\uppartial
+                                    x}\right]_a^b-\sum_j\phi_j{\displaystyle\int_a^b}\dfrac{\upd
+                                    w_i}{\upd x}\dfrac{\upd w_j}{\upd x}\upd
+                                    x$</span
+                                >
+                                となる. $\int_a^bw_iw_j\upd x$
+                                などはあらかじめ計算可
+                            </p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>計算領域が複雑な形状の場合でも扱いやすい</li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 90%">
+                    <h2>スペクトル法</h2>
+                    <div
+                        class="memo"
+                        style="
+                            width: 90%;
+                            padding: 1px;
+                            border: solid black 1px;
+                        "
+                    >
+                        <p style="margin: 0">例として考える偏微分方程式</p>
+                        \[ \frac{\uppartial\phi(x,t)}{\uppartial
+                        t}=\mathcal{L}[\phi(x,t)]\,,\quad
+                        \mathcal{L}=a_0(x)+a_1(x)\frac{\uppartial}{\uppartial
+                        x}+a_2(x)\frac{\uppartial^2}{\uppartial x^2}+\cdots\]
+                    </div>
+                    <ul style="margin-top: 2%">
+                        <li>
+                            便利な性質をもった特殊関数 $T_k(x)$
+                            ($k=1,2,\ldots$) を $k=N$ まで用いて,
+                            $\phi(x,t)=\sum_{k=1}^{N}c_k(t)T_k(x)$ と近似する
+                        </li>
+                        <li>
+                            偏微分方程式に $w_l(x)$ をかけて, 計算領域 $a\leq
+                            x\leq b$ で積分すると
+                            $\displaystyle\sum_{k=1}^N\dfrac{\upd c_k}{\upd
+                            t}{\displaystyle\int_a^b}w_lT_k\upd
+                            x=\sum_{k=1}^Nc_k{\displaystyle\int_a^b}w_l\mathcal{L}[T_k]\upd
+                            x$ となる
+                            <ul>
+                                <li>
+                                    $w_l$ には $T_l(x)$ や $\delta(x-x_l)$
+                                    を用いる ($T_k$ が直交多項式の場合は,
+                                    $w_l=T_l$ とすると式が簡単になる)
+                                </li>
+                                <li>
+                                    特殊関数の性質を使って $\mathcal{L}[T_k]$
+                                    を計算
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            この場合, 未知ベクトルは $\bm{\mathrm{x}}={}^t(c_1,
+                            c_2, \ldots, c_N)$ となるので,
+                            解の空間分布を得るために総和を計算するコストがかかる
+                        </li>
+                        <li>
+                            計算領域が単純な形状の場合にしか使えないが,
+                            他手法に比べ高精度
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 90%">
+                    <h2>境界要素法 (BEM)</h2>
+                    <div
+                        class="memo"
+                        style="
+                            width: 40%;
+                            padding: 1px;
+                            border: solid black 1px;
+                        "
+                    >
+                        <p style="margin: 0">例として考える微分方程式</p>
+                        \[\frac{\upd^2\phi(x)}{\upd x^2}=0\]
+                    </div>
+                    <ul style="margin-top: 2%">
+                        <li>
+                            まず, $\dfrac{\upd^2 g}{\upd x^2}=-\delta(x-\xi)$
+                            を満たす Green 関数 $g(x; \xi)$ を求めておく
+                        </li>
+                        <li>
+                            解きたい微分方程式に $g(x; \xi)$ をかけて, 計算領域
+                            $a\leq x\leq b$ で積分すると
+                            $\phi(\xi)=\left[g\dfrac{\upd\phi}{\upd
+                            x}-\dfrac{\upd g}{\upd x}\phi\right]_a^b$ ($a\leq
+                            \xi\leq b$) となる
+                            <ul>
+                                <li>
+                                    境界 ($x=a,b$) での値を計算すれば,
+                                    計算領域すべての点での未知関数 $\phi(x)$
+                                    の値が得られる (問題の次元が1つ下がる)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Green 関数 $g$ を求める必要があるので,
+                            適用できる問題は限られる
+                        </li>
+                        <li>
+                            波の散乱問題など, 無限遠を扱う必要がある場合に有効
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="../../reveal.js-master/dist/reveal.js"></script>
+        <!-- <script src="../../reveal.js-master/plugin/zoom/zoom.js"></script> -->
+        <script>
+            Reveal.initialize({
+                controlsLayout: "edges",
+                hash: true,
+                scrollActivationWidth: null,
+                width: 960,
+                height: 700,
+                margin: 0.2,
+
+                slideNumber: (slide) => {
+                    return [
+                        // Reveal.getIndices(slide).h,
+                        // "/",
+                        // Reveal.getHorizontalSlides(slide).length - 1,
+
+                        Reveal.getIndices(slide).h + 1,
+                        "/",
+                        Reveal.getHorizontalSlides(slide).length,
+                    ];
+                },
+
+                plugins: [
+                    RevealHighlight,
+                    // Reveal.Zoom,
+                ],
+            });
+        </script>
+        <script src="./main.js"></script>
+    </body>
+</html>
