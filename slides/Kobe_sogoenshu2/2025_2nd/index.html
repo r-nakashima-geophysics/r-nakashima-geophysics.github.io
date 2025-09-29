@@ -1577,13 +1577,13 @@ git pull origin main</code></pre>
 
                 slideNumber: (slide) => {
                     return [
-                        // Reveal.getIndices(slide).h,
-                        // "/",
-                        // Reveal.getHorizontalSlides(slide).length - 1,
-
-                        Reveal.getIndices(slide).h + 1,
+                        Reveal.getIndices(slide).h,
                         "/",
-                        Reveal.getHorizontalSlides(slide).length,
+                        Reveal.getHorizontalSlides(slide).length - 1,
+
+                        // Reveal.getIndices(slide).h + 1,
+                        // "/",
+                        // Reveal.getHorizontalSlides(slide).length,
                     ];
                 },
 
