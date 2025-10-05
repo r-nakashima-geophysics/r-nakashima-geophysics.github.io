@@ -387,7 +387,7 @@
                             まず, 計算領域を<strong class="alert"
                                 >格子点</strong
                             >
-                            ($x=x_0, x_1, \ldots, x_{N-1}$) に分割し,
+                            ($x=x_0, x_1, \ldots, x_{N-1}$) で分割し,
                             格子点上の物理量の値 ($\phi_0, \phi_1, \ldots,
                             \phi_{N-1}$) だけに注目する
                         </li>
@@ -1430,7 +1430,7 @@ git pull origin main</code></pre>
                         <li>計算領域が複雑な形状の場合でも扱いやすい</li>
                         <li>
                             検査体積間の $\bm{F}$ の出入りを考えるので,
-                            物理量の保存性が満たされる
+                            物理量の保存性が保たれる
                         </li>
                     </ul>
                 </section>
@@ -1474,23 +1474,22 @@ git pull origin main</code></pre>
                                 t}=\frac{\uppartial^2\phi(x,t)}{\uppartial
                                 x^2}\]
                             </div>
-                            <p>
+                            <p style="margin-right: -2%">
                                 節点上の物理量の値を $\phi_1(t),
                                 \phi_2(t),\ldots$ とすると
-                                $\phi(x,t)=\sum_{j}\phi_j(t)w_j(x)$
-                                と近似できる. 式に $w_i(x)$ をかけて $a\leq
+                                $\phi(x,t)=\sum_{i}\phi_i(t)w_i(x)$
+                                と近似できる. 式に $w_j(x)$ をかけて $a\leq
                                 x\leq b$ で積分すると
                                 <span style="font-size: 90%"
-                                    >$\sum_j\dfrac{\upd\phi_j}{\upd
+                                    >$\sum_i\dfrac{\upd\phi_i}{\upd
                                     t}{\displaystyle\int_a^b}w_iw_j\upd
-                                    x=\left[w_i\dfrac{\uppartial
-                                    \phi}{\uppartial
-                                    x}\right]_a^b-\sum_j\phi_j{\displaystyle\int_a^b}\dfrac{\upd
+                                    x=\left[\dfrac{\uppartial \phi}{\uppartial
+                                    x}w_j\right]_a^b-\sum_i\phi_i{\displaystyle\int_a^b}\dfrac{\upd
                                     w_i}{\upd x}\dfrac{\upd w_j}{\upd x}\upd
                                     x$</span
                                 >
-                                となる. $\int_a^bw_iw_j\upd x$
-                                などはあらかじめ計算可
+                                となる. $\int_a^bw_iw_j\upd x$ などは,
+                                あらかじめ計算可
                             </p>
                         </div>
                     </div>
@@ -1517,16 +1516,16 @@ git pull origin main</code></pre>
                     </div>
                     <ul style="margin-top: 2%">
                         <li>
-                            便利な性質をもった特殊関数 $T_k(x)$
-                            ($k=1,2,\ldots$) を $k=N$ まで用いて,
-                            $\phi(x,t)=\sum_{k=1}^{N}c_k(t)T_k(x)$ と近似する
+                            (境界条件を満たすなど) 便利な性質をもった特殊関数
+                            $T_k(x)$ ($k=1,2,\ldots$) を $k=N$ まで用いて,
+                            $\phi(x,t)=\sum_{k=1}^{N}c_k(t)T_k(x)$ と近似
                         </li>
                         <li>
                             偏微分方程式に $w_l(x)$ をかけて, 計算領域 $a\leq
                             x\leq b$ で積分すると
                             $\displaystyle\sum_{k=1}^N\dfrac{\upd c_k}{\upd
-                            t}{\displaystyle\int_a^b}w_lT_k\upd
-                            x=\sum_{k=1}^Nc_k{\displaystyle\int_a^b}w_l\mathcal{L}[T_k]\upd
+                            t}{\displaystyle\int_a^b}T_kw_l\upd
+                            x=\sum_{k=1}^Nc_k{\displaystyle\int_a^b}\mathcal{L}[T_k]w_l\upd
                             x$ となる
                             <ul>
                                 <li>
@@ -1543,7 +1542,8 @@ git pull origin main</code></pre>
                         <li>
                             この場合, 未知ベクトルは $\bm{\mathrm{x}}={}^t(c_1,
                             c_2, \ldots, c_N)$ となるので,
-                            解の空間分布を得るために総和を計算するコストがかかる
+                            解の空間分布を得るために総和 $\sum_{k=1}^Nc_kT_k$
+                            を計算するコストがかかる
                         </li>
                         <li>
                             計算領域が単純な形状の場合にしか使えないが,
@@ -1563,12 +1563,13 @@ git pull origin main</code></pre>
                         "
                     >
                         <p style="margin: 0">例として考える微分方程式</p>
-                        \[\frac{\upd^2\phi(x)}{\upd x^2}=0\]
+                        \[\left(\frac{\upd^2}{\upd x^2}+k^2\right)\phi(x)=0\]
                     </div>
                     <ul style="margin-top: 2%">
                         <li>
-                            まず, $\dfrac{\upd^2 g}{\upd x^2}=-\delta(x-\xi)$
-                            を満たす Green 関数 $g(x; \xi)$ を求めておく
+                            まず, $\left(\dfrac{\upd^2}{\upd
+                            x^2}+k^2\right)g=-\delta(x-\xi)$ と境界条件を満たす
+                            Green 関数 $g(x; \xi)$ を求めておく
                         </li>
                         <li>
                             解きたい微分方程式に $g(x; \xi)$ をかけて, 計算領域
