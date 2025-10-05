@@ -1214,6 +1214,44 @@ git pull origin main</code></pre>
                 </section>
 
                 <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        線形方程式系の数値解法 (反復法) の復習
+                    </h2>
+                    <ul style="margin: -1% auto">
+                        <li>
+                            $N$ 次正方行列 $\mathsf{A}$ と $N$ 次元ベクトル
+                            $\bm{b}$ で表される線形方程式系
+                            \[\bm{b}=\mathsf{A}\bm{\mathrm{x}}=(\mathsf{L}+\mathsf{D}+\mathsf{U})\bm{\mathrm{x}}\]
+                            ここで, $\mathsf{L}$ は下三角行列, $\mathsf{D}$
+                            は対角行列, $\mathsf{U}$ は上三角行列
+                        </li>
+                        <li>
+                            この線形方程式系を
+                            $\bm{\mathrm{x}}^{(k)}\to\bm{\mathrm{x}}^{(k+1)}$
+                            というように反復して解を求めることを考える
+                            <ul>
+                                <li>
+                                    Jacobi 法 ($\bm{\mathrm{x}}$
+                                    の成分を全て同時に更新)
+                                    \[\bm{\mathrm{x}}^{(k+1)}=\mathsf{D}^{-1}\left[\bm{b}-(\mathsf{L}+\mathsf{U})\bm{\mathrm{x}}^{(k)}\right]\]
+                                </li>
+                                <li>
+                                    Gauss-Seidel 法 ($\bm{\mathrm{x}}$
+                                    の成分を1つずつ更新)
+                                    \[\bm{\mathrm{x}}^{(k+1)}=\mathsf{D}^{-1}\left[\bm{b}-\mathsf{L}\bm{\mathrm{x}}^{(k+1)}-\mathsf{U}\bm{\mathrm{x}}^{(k)}\right]\]
+                                </li>
+                                <li>
+                                    SOR 法 (Gauss-Seidel
+                                    法における値の更新を過剰に行う)
+                                    \[(1-\omega_\text{SOR})\bm{\mathrm{x}}^{(k)}+\omega_\text{SOR}\bm{\mathrm{x}}^{(k+1)}\quad\to\quad\bm{\mathrm{x}}^{(k+1)}\qquad(0\lt\omega_\text{SOR}<2)
+                                    \]
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
                     <h2>[例題3] SOR 法を使う</h2>
                     <ul>
                         <li>
