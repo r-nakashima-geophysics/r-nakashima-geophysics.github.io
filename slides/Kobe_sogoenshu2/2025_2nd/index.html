@@ -1181,8 +1181,9 @@ git pull origin main</code></pre>
                         </li>
                         <li class="fragment">
                             すべての格子点での差分式 ($N^2$ 本) に対し, $N^2$
-                            次元の未知ベクトル
+                            次元の未知ベクトルは
                             $\bm{\mathrm{x}}={}^t(c_{0,0},c_{1,0},\ldots,c_{N-1,0},c_{0,1},\ldots,c_{N-1,N-1})$
+                            となる
                             <ul>
                                 <li>
                                     $c_{i+1,j}$ と $c_{i,j}$ は隣だが,
@@ -1267,9 +1268,9 @@ git pull origin main</code></pre>
                             x^2}+\frac{2}{\Updelta y^2}}\]
                             <ul>
                                 <li class="fragment">
-                                    $\bm{\mathrm{x}}$ の適当な初期値から始めて,
-                                    格子点 $(x_0, y_0)$
-                                    から順に値を更新していけば良い
+                                    $\bm{\mathrm{x}}$
+                                    の適当な初期推定値から始めて, 格子点 $(x_0,
+                                    y_0)$ から順に値を更新していけば良い
                                     <ul>
                                         <li class="note small">
                                             ただし, 配布プログラムコードでは,
@@ -1305,7 +1306,8 @@ git pull origin main</code></pre>
                                 </li>
                             </ul>
                         </li>
-                        <pre><code class="language-python" data-line-numbers="1,7-8">def __set_initial_condition(self, x: float, y: float, lx: float, ly: float) -> float:
+                    </ul>
+                    <pre><code class="language-python" data-line-numbers="1,7-8">def __set_initial_condition(self, x: float, y: float, lx: float, ly: float) -> float:
 
         if self.__name == 'grid_x':
             return x
@@ -1315,7 +1317,6 @@ git pull origin main</code></pre>
             return 1   # SOR法の初期値
         elif self.__name == 'src':
             return func_src(x, y, lx, ly)</code></pre>
-                    </ul>
                 </section>
 
                 <section data-state="part4">
