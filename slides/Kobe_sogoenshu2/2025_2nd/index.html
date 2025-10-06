@@ -1180,7 +1180,8 @@ git pull origin main</code></pre>
                             y^2}=-\frac{S_0}{D}\end{align*}\]
                         </li>
                         <li class="fragment">
-                            $N^2$ 次元の未知ベクトル
+                            すべての格子点での差分式 ($N^2$ 本) に対し, $N^2$
+                            次元の未知ベクトル
                             $\bm{\mathrm{x}}={}^t(c_{0,0},c_{1,0},\ldots,c_{N-1,0},c_{0,1},\ldots,c_{N-1,N-1})$
                             <ul>
                                 <li>
@@ -1199,8 +1200,9 @@ git pull origin main</code></pre>
                             そこで,
                             <strong class="alert">Gauss-Seidel 法</strong>
                             ($\mathsf{A}\bm{\mathrm{x}}=\bm{b}$ の $k$ 行目
-                            ($k=1,2,\ldots$) の式を, $x_k$
-                            を求める式として利用し, $x_1$ から順に値を更新.
+                            ($k=1,2,\ldots$) の式を, $\mathrm{x}_k$
+                            を求める式として利用し, $\mathrm{x}_1$
+                            から順に値を更新.
                             解が収束するまでこれを反復する方法) を利用する
                         </li>
                     </ul>
@@ -1237,13 +1239,13 @@ git pull origin main</code></pre>
                                 </li>
                                 <li>
                                     Gauss-Seidel 法 ($\bm{\mathrm{x}}$
-                                    の成分を1つずつ更新)
+                                    の成分を1番目から順に1つずつ更新)
                                     \[\bm{\mathrm{x}}^{(k+1)}=\mathsf{D}^{-1}\left[\bm{b}-\mathsf{L}\bm{\mathrm{x}}^{(k+1)}-\mathsf{U}\bm{\mathrm{x}}^{(k)}\right]\]
                                 </li>
                                 <li>
                                     SOR 法 (Gauss-Seidel
                                     法における値の更新を過剰に行う)
-                                    \[(1-\omega_\text{SOR})\bm{\mathrm{x}}^{(k)}+\omega_\text{SOR}\bm{\mathrm{x}}^{(k+1)}\quad\to\quad\bm{\mathrm{x}}^{(k+1)}\qquad(0\lt\omega_\text{SOR}<2)
+                                    \[(1-\omega_\text{SOR})\bm{\mathrm{x}}^{(k)}+\omega_\text{SOR}\bm{\mathrm{x}}^{(k+1)}\quad\to\quad\bm{\mathrm{x}}^{(k+1)}\qquad(0\lt\omega_\text{SOR}\lt2)
                                     \]
                                 </li>
                             </ul>
@@ -1288,6 +1290,31 @@ git pull origin main</code></pre>
                             を実行してみてください
                             (いろいろ変更してみてください)
                         </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">配布したプログラムコードの注意</h2>
+                    <ul>
+                        <li>
+                            場合によっては, 解が正しく求まらないかもしれません
+                            <ul>
+                                <li>
+                                    その場合は $\bm{\mathrm{x}}$
+                                    の初期推定値を変更してみてください
+                                </li>
+                            </ul>
+                        </li>
+                        <pre><code class="language-python" data-line-numbers="1,7-8">def __set_initial_condition(self, x: float, y: float, lx: float, ly: float) -> float:
+
+        if self.__name == 'grid_x':
+            return x
+        elif self.__name == 'grid_y':
+            return y
+        elif self.__name == 'co2':
+            return 1   # SOR法の初期値
+        elif self.__name == 'src':
+            return func_src(x, y, lx, ly)</code></pre>
                     </ul>
                 </section>
 
