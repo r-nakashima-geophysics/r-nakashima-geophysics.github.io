@@ -1202,7 +1202,7 @@ git pull origin main</code></pre>
                                 k}{N-1}\right)-\frac{2v_y\Updelta t}{\Updelta
                                 y}\sin^2\left(\frac{\pi
                                 l}{N-1}\right)\right]^2\\
-                                &+\left[\frac{v_x\Updelta t}{\Updelta
+                                &\qquad+\left[\frac{v_x\Updelta t}{\Updelta
                                 x}\sin\left(\frac{2\pi
                                 k}{N-1}\right)+\frac{v_y\Updelta t}{\Updelta
                                 y}\sin\left(\frac{2\pi l}{N-1}\right)\right]^2
@@ -1275,6 +1275,44 @@ git pull origin main</code></pre>
                     >
                         <img src="./fig/enshu_advection_stable.webp" alt="" />
                     </figure>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">数値的安定性の条件に関する補足</h2>
+                    <ul>
+                        <li>
+                            例題2では, (生成項ありの)
+                            2次元移流拡散方程式を解いているので,
+                            まじめにやろうとすると2次元移流拡散方程式に対して
+                            von Neumann の安定性解析を行う必要がある
+                        </li>
+                        <li class="fragment">
+                            しかし, 解くべき偏微分方程式を少し変更したり,
+                            差分のとり方を変えるたびに, 毎回 von Neumann
+                            の安定性解析を行なって,
+                            時間刻み幅の条件を求めるのはあまり実用的ではない
+                        </li>
+                        <li class="fragment">
+                            実際には, 解く問題に含まれている現象を分解して,
+                            それぞれの現象に対する安定性の条件を全て満たすように時間刻み幅を設定することが多い
+                            <ul>
+                                <li>
+                                    今の場合,
+                                    <span style="font-size: 90%"
+                                        >\[\Updelta
+                                        t\leq\min\left(\dfrac{1}{2D\left(\frac{1}{\Updelta
+                                        x^2}+\frac{1}{\Updelta y^2}\right)},
+                                        \frac{1}{\frac{v_x}{\Updelta
+                                        x}+\frac{v_y}{\Updelta y}}\right)\]
+                                    </span>
+                                </li>
+                                <li>
+                                    さらに,
+                                    余裕をもたせて時間刻み幅を設定する場合も多い
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </section>
 
                 <section data-state="part4">
