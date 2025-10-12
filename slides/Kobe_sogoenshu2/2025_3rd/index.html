@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reset.css" />
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/dist/theme/simple.css"
+        />
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="../fontawesome-free-7.0.0-web/css/all.min.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/29824876ec.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- MathJax version 3 -->
+        <script src="./mathjax_config.js" defer></script>
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- TikZJax -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://tikzjax.com/v1/fonts.css"
+        />
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+
+        <!-- Theme used for syntax highlighted code -->
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/plugin/highlight/monokai.css"
+        />
+        <script src="../../reveal.js-master/plugin/highlight/highlight.js"></script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>総合演習2 (2025年度)</h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        <time datetime="2025-10-22">2025-10-22</time>
+                    </p>
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">1. はじめに</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2.
+                            放物型のシミュレーション</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part3" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 3.
+                            双曲型のシミュレーション</span
+                        ><span id="nav_part3-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part4" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 4.
+                            課題について</span
+                        ><span id="nav_part4-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part5" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 5. 補足</span
+                        ><span id="nav_part5-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (神戸大・シス情) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;panda.kobe-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by&nbsp;
+                        <a href="https://revealjs.com" target="_blank"
+                            ><img
+                                src="https://static.slid.es/reveal/logo-v1/reveal-white-text.svg"
+                                alt="Powered by reveal.js"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -7px 0;
+                                    padding: 0;
+                                "
+                                class="demo-logo"
+                        /></a>
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -10px 0;
+                                    padding: 0;
+                                "
+                        /></a>
+                        <!-- /
+                        <a href="https://tikzjax.com" target="_blank"
+                            >TikZJax</a
+                        > -->
+                        /
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                        <!-- /
+                        <a href="https://www.chartjs.org"
+                            >Chart.js
+                            <img
+                                src="https://www.chartjs.org/img/chartjs-logo.svg"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -5px 0;
+                                    padding: 0;
+                                "
+                        /></a> -->
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide">
+                    <p>2025年度</p>
+                    <h2 class="r-fit-text">
+                        総合演習2<br />
+                        マクロ系シミュレーション<br />
+                        (第2回)
+                    </h2>
+                    <p>
+                        <i class="fas fa-microphone"></i> 中島 涼輔
+                        (システム情報)<br />
+                        @ NSSOL Lab.<br />
+                        2025/10/22
+                    </p>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">マクロ系シミュレーションの予定</h2>
+                    <ul>
+                        <li class="small" style="color: gray">
+                            第0回 (2025/10/01)
+                            <ul>
+                                <li>概要</li>
+                            </ul>
+                        </li>
+                        <li class="small" style="color: gray">
+                            第1回 (2025/10/08)
+                            <ul>
+                                <li>偏微分方程式の数値解法</li>
+                                <li>
+                                    楕円型方程式 (定常拡散方程式)
+                                    のシミュレーション
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong class="alert">第2回 (2025/10/22)</strong>
+                            <ul>
+                                <li>
+                                    <strong class="alert"
+                                        >放物型方程式 (非定常拡散方程式)
+                                        のシミュレーション</strong
+                                    >
+                                </li>
+                                <li>
+                                    <strong class="alert"
+                                        >双曲型方程式 (移流方程式)
+                                        のシミュレーション</strong
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            第3回 (2025/10/29)
+                            <ul>
+                                <li>
+                                    ソレノイダル場 (非圧縮流体)
+                                    のシミュレーション
+                                </li>
+                                <li>逆問題, データ同化</li>
+                            </ul>
+                        </li>
+                        <li>
+                            第4回 (2025/11/05)
+                            <ul>
+                                <li>質問・課題</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>偏微分方程式の数値解法</h2>
+                    <ul style="margin: auto -1%">
+                        <li>
+                            まず、時間微分と空間微分で取り扱いが異なる
+                            <ul>
+                                <li>
+                                    時間方向:
+                                    <strong class="alert">初期条件</strong
+                                    >からある時刻まで時間発展させる
+                                </li>
+                                <li>
+                                    空間方向: 領域の端に課されている<strong
+                                        class="alert"
+                                        >境界条件</strong
+                                    >に合う解を探す
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            時間微分を含まない偏微分方程式の場合
+                            <span class="note">(前回勉強しました)</span>
+                            <ul>
+                                <li>
+                                    空間微分をなんらかの方法で近似し,
+                                    偏微分方程式を連立方程式
+                                    $\bm{f}(\bm{\mathrm{x}})=\bm{0}$ に変換する
+                                </li>
+                                <li>
+                                    特に, 線形の場合は<strong class="important"
+                                        >連立一次方程式
+                                        $\mathsf{A}\bm{\mathrm{x}}=\bm{b}$
+                                        に変換</strong
+                                    >できる
+                                </li>
+                                <li>
+                                    あとは Newton
+                                    法や線形代数の数値計算法を使うだけ
+                                </li>
+                                <li>
+                                    未知ベクトル $\bm{\mathrm{x}}$
+                                    から偏微分方程式の近似解を構成する
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            時間微分を含む偏微分方程式の場合
+                            <span class="note">(本日勉強します)</span>
+                            <ul>
+                                <li>
+                                    空間微分をなんらかの方法で近似し,
+                                    偏微分方程式を<strong class="important"
+                                        >連立常微分方程式
+                                        $\frac{\upd\bm{\mathrm{x}}}{\upd
+                                        t}=\bm{f}(\bm{\mathrm{x}},t)$
+                                        に変換</strong
+                                    >する
+                                </li>
+                                <li>あとは常微分方程式の数値解法を使うだけ</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>プログラムコードの配布</h2>
+                    <ul>
+                        <li>
+                            <a
+                                href="https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git"
+                                target="_blank"
+                                >https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</a
+                            >
+                            で配布します
+                            <ul>
+                                <li>
+                                    macro_2nd_diffusion.ipynb と
+                                    macro_2nd_advection.ipynb
+                                    をダウンロードしてください
+                                </li>
+                                <figure
+                                    style="
+                                        width: 70%;
+                                        margin: -3% auto auto auto;
+                                    "
+                                >
+                                    <img src="./fig/github.webp" alt="" />
+                                </figure>
+                            </ul>
+                        </li>
+
+                        <li>
+                            git pull でも可
+                            <pre><code class="language-sh">git remote -v   # リモートリポジトリ (origin) を確認
+git pull origin main</code></pre>
+                        </li>
+                        <li>本日の演習と第2回小課題で使います</li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>拡散方程式の復習</h2>
+                    <ul>
+                        <li>
+                            物質は濃度が高いところから低いところへ流れ,
+                            その流れが集まっているところでは,
+                            時間とともに濃度が高くなる \[\bm{q}_c=-D\grad
+                            c\,,\qquad\frac{\uppartial c}{\uppartial
+                            t}=-\div\bm{q}_c+S_c\]
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            拡散係数 $D$ が空間的に一様な場合,
+                            この偏微分方程式は放物型になる \[\frac{\uppartial
+                            c}{\uppartial t}=D\nabla^2c+S_c\]
+                            <ul>
+                                <li class="note">
+                                    本日の前半は、この問題のシミュレーションを勉強します
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="fragment" style="margin-right: -1%">
+                            同様の偏微分方程式が現れる他の現象の例
+                            <ul>
+                                <li>
+                                    熱伝導: $\dfrac{\uppartial T}{\uppartial
+                                    t}=\dfrac{k}{C}\nabla^2T+\dfrac{S_T}{C} $
+                                </li>
+                                <li>
+                                    良導体中の磁場: $\dfrac{\uppartial
+                                    \bm{B}}{\uppartial
+                                    t}=\dfrac{1}{\mu\sigma}\nabla^2\bm{B}$
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <figure
+                        style="
+                            position: absolute;
+                            right: -3%;
+                            bottom: -4%;
+                            width: 30%;
+                        "
+                    >
+                        <img src="./fig/diffusion.webp" alt="" />
+                    </figure>
+                </section>
+
+                <section data-state="part2">
+                    <h2>演習問題</h2>
+                    <ul style="margin-top: -1%">
+                        <li>
+                            屋内の高い $\ce{CO2}$ 濃度は,
+                            眠気を誘発することが<br />指摘されている
+                            <span style="font-size: 53%"
+                                >(東北大学プレスリリース:
+                                <a
+                                    href="https://www.tohoku.ac.jp/japanese/newimg/pressimg/tohokuuniv-press20240903_01web_sleep.pdf"
+                                    >https://www.tohoku.ac.jp/japanese/newimg/pressimg/tohokuuniv-press20240903_01web_sleep.pdf</a
+                                >
+                                )</span
+                            >
+                        </li>
+                        <li>
+                            換気の重要性を調べるために, 屋内の $\ce{CO2}$
+                            濃度を (非定常) 拡散方程式でモデル化してみましょう
+                            <ul>
+                                <li>
+                                    屋内にいる人は, 単位時間あたり一定量の
+                                    $\ce{CO2}$ を排出し続けると仮定する
+                                </li>
+                                <li>
+                                    人は動き回らないと仮定する. また,
+                                    簡単のため, 人の分布を連続関数で近似する:
+                                    $S_c=S_0(x,y)$
+                                </li>
+                                <li>簡単のため, 空気の流れの影響は無視する</li>
+                                <li class="fragment">
+                                    <strong class="alert"
+                                        >時刻 $t=0$ に換気を開始したとする:
+                                        $c(x,y,0)=c_0(x,y)$</strong
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            解くべき偏微分方程式は
+                            <strong class="alert"
+                                >$\dfrac{\uppartial c(x,y,t)}{\uppartial
+                                t}=D\left(\dfrac{\uppartial^2
+                                c(x,y,t)}{\uppartial x^2}+\dfrac{\uppartial^2
+                                c(x,y,t)}{\uppartial
+                                y^2}\right)+S_0(x,y)$</strong
+                            >
+                        </li>
+                    </ul>
+                    <figure
+                        style="
+                            position: absolute;
+                            top: 0;
+                            right: 0%;
+                            width: 20%;
+                        "
+                    >
+                        <img
+                            src="./fig/kaisya_shigoto_nemui_man.webp"
+                            alt=""
+                        />
+                    </figure>
+                </section>
+
+                <section data-state="part2">
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <h2 class="r-fit-text">[例題1] 窓を開ける</h2>
+                            <ul style="margin-right: -2%">
+                                <li>
+                                    1辺の長さ $L$ の正方形の部屋
+                                    <ul>
+                                        <li>$y=L$ に窓, 他は壁</li>
+                                        <li>
+                                            <strong class="alert"
+                                                >$t&lt;0$ では窓は閉まっていて,
+                                                $t=0$ で窓を開け,
+                                                換気を開始したとする</strong
+                                            >
+                                        </li>
+                                        <li>
+                                            <strong class="alert"
+                                                >初期 $\ce{CO2}$
+                                                濃度は空間的に一様とする:
+                                                $c(x,y,0)=c_0$</strong
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    人は均一に分布 ($S_0=\text{定数}$)
+                                    <span
+                                        >\[\dfrac{\uppartial c}{\uppartial
+                                        t}=D\left(\dfrac{\uppartial^2
+                                        c}{\uppartial x^2}+\dfrac{\uppartial^2
+                                        c}{\uppartial y^2}\right)+S_0\]</span
+                                    >
+                                </li>
+                                <li>
+                                    格子点 $(x_i, y_j)$ 上の $\ce{CO2}$ 濃度を
+                                    <strong class="alert">$c_{i,j}(t)$</strong>
+                                    とする
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/enshu_2d.svg" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="./fig/enshu_2d_grid.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>[例題1] 有限差分法を適用</h2>
+                    <ul>
+                        <li>
+                            格子点 $(x_i, y_j)$ 上で, 2階中心差分を適用すると
+                            <span style="font-size: 90%"
+                                >\[\begin{align*} &\dfrac{\uppartial
+                                c}{\uppartial t}=D\left(\dfrac{\uppartial^2
+                                c}{\uppartial x^2}+\dfrac{\uppartial^2
+                                c}{\uppartial y^2}\right)+S_0\\
+                                &\quad\rightarrow\quad\frac{\upd c_{i,j}}{\upd
+                                t}=D\left(\frac{c_{i+1,j}-2c_{i,j}+c_{i-1,j}}{\Updelta
+                                x^2}+\frac{c_{i,j+1}-2c_{i,j}+c_{i,j-1}}{\Updelta
+                                y^2}\right)+S_0\end{align*}\]</span
+                            >
+                        </li>
+                        <li class="fragment">
+                            すべての格子点で差分式をつくると, 式が $N^2$
+                            本できる. これらは $N^2$ 次元の未知ベクトル
+                            $\bm{\mathrm{x}}={}^t(c_{0,0},c_{1,0},\ldots,c_{N-1,0},c_{0,1},\ldots,c_{N-1,N-1})$
+                            を用いて $\dfrac{\upd\bm{\mathrm{x}}(t)}{\upd
+                            t}=\bm{f}(\bm{\mathrm{x}}(t))$ と表せる
+                            <ul>
+                                <li>
+                                    前回と同様, 計算領域をはみ出した格子点の値
+                                    ($c_{-1,0}$ など) が差分式に現れる場合は,
+                                    境界条件を用いて対処する
+                                </li>
+                                <li>
+                                    あとは, (連立)
+                                    常微分方程式の数値解法を使うだけ
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <figure style="position: absolute; right: -10%; top: 12%">
+                        <img
+                            src="./fig/stencil.svg"
+                            alt=""
+                            style="width: 90%"
+                        />
+                    </figure>
+                </section>
+
+                <section data-state="part2" style="font-size: 90%">
+                    <h2>常微分方程式の数値解法の復習</h2>
+                    <ul style="margin-top: -1%">
+                        <li>
+                            $\dfrac{\upd\bm{\mathrm{x}}(t)}{\upd
+                            t}=\bm{f}(\bm{\mathrm{x}}(t), t)$ を数値的に解く.
+                            時間ステップ $t_{m}=t_0+m\Updelta t$
+                            <ul>
+                                <li class="fragment">
+                                    $t=t_m$ で時間方向に前進差分 (<strong
+                                        class="alert"
+                                        >Euler 法</strong
+                                    >) [<strong class="alert">陽解法</strong>]
+                                    <span style="font-size: 85%"
+                                        >\[\dfrac{\bm{\mathrm{x}}(t_{m+1})-\bm{\mathrm{x}}(t_m)}{\Updelta
+                                        t}=\bm{f}(\bm{\mathrm{x}}(t_m),t_m)\quad\rightarrow\quad\bm{\mathrm{x}}(t_{m+1})=\bm{\mathrm{x}}(t_m)+\Updelta
+                                        t\bm{f}(\bm{\mathrm{x}}(t_m),t_m)\]</span
+                                    >
+                                    <ul>
+                                        <li class="note">
+                                            マクロ系シミュレーションでは,
+                                            この方法を扱います
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment">
+                                    $t=t_{m+1}$ で時間方向に後退差分 (<strong
+                                        class="alert"
+                                        >後退 Euler 法</strong
+                                    >) [<strong class="alert">陰解法</strong>]
+                                    <span style="font-size: 85%"
+                                        >\[\dfrac{\bm{\mathrm{x}}(t_{m+1})-\bm{\mathrm{x}}(t_m)}{\Updelta
+                                        t}=\bm{f}(\bm{\mathrm{x}}(t_{m+1}),t_{m+1})\quad\rightarrow\quad\bm{\mathrm{x}}(t_{m+1})-\Updelta
+                                        t\bm{f}(\bm{\mathrm{x}}(t_{m+1}),t_{m+1})=\bm{\mathrm{x}}(t_m)\]</span
+                                    >
+
+                                    <ul>
+                                        <li>
+                                            (空間方向の差分とは異なり)
+                                            <strong class="important">
+                                                $\bm{\mathrm{x}}(t_{m+1})$
+                                                は未知</strong
+                                            >
+                                            (未来の値) であることに注意.
+                                            そのため, 時間ステップを $\Updelta
+                                            t$ だけ進める度に (非)
+                                            線形方程式系を解く必要がある
+                                        </li>
+                                        <li>硬い微分方程式を解く場合に有効</li>
+                                    </ul>
+                                </li>
+                                <li class="fragment">
+                                    その他, Runge&ndash;Kutta 法, 多段階法
+                                    (Adams&ndash;Bashforth 法など),
+                                    予測子・修正子法,
+                                    シンプレクティック数値積分など
+                                    <ul>
+                                        <li class="fragment note">
+                                            社会系・ミクロ系シミュレーションで詳しく扱います
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>[例題1] 実行してみてください</h2>
+                    <ul>
+                        <li class="note">macro_2nd_diffusion.ipynb</li>
+                        <figure>
+                            <img
+                                src="./fig/enshu_diffusion_unstable.webp"
+                                alt=""
+                            />
+                        </figure>
+                        <li style="margin-top: -1%" class="fragment">
+                            シミュレーション結果がおかしなことになっているのを確認できると思います
+                            <ul>
+                                <li>
+                                    1格子点ごとに値が高くなったり低くなったりしている
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>何が起こっているか</h2>
+                    <ul>
+                        <li>
+                            以下, 見やすさのため $c_{i,j}^{(m)}\equiv
+                            c_{i,j}(t_m)=c(x_i,y_j,t_m)$
+                            と書いたり書かなかったりする
+                        </li>
+                        <li>
+                            2次元拡散方程式の $(x_i, y_j, t_m)$ での差分式
+                            (生成項は無視)
+                            <span style="font-size: 90%">
+                                \[\frac{c_{i,j}^{(m+1)}-c_{i,j}^{(m)}}{\Updelta
+                                t}=D\left(\frac{c_{i+1,j}^{(m)}-2c_{i,j}^{(m)}+c_{i-1,j}^{(m)}}{\Updelta
+                                x^2}+\frac{c_{i,j+1}^{(m)}-2c_{i,j}^{(m)}+c_{i,j-1}^{(m)}}{\Updelta
+                                y^2}\right)\]
+                            </span>
+                            <ul>
+                                <li style="margin-right: -5%">
+                                    時間方向は Euler 法,
+                                    空間方向は2階中心差分を用いた場合, FTCS
+                                    (forward time-centered space)
+                                    スキームと呼ぶ
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            FTCSスキームに対し,
+                            <strong class="alert"
+                                >von Neumann の安定性解析</strong
+                            >を行う
+                            <ul>
+                                <li>
+                                    ここでは境界の存在を忘れて
+                                    (周期境界条件だとみなして), $c_{i,j}^{(m)}$
+                                    を空間方向に (離散) Fourier 変換する
+                                    <span style="font-size: 90%">
+                                        \[c_{i,j}^{(m)}=\sum_{k=0}^{N-2}\sum_{l=0}^{N-2}\hat{c}_{k,l}^{(m)}\upe^{2\pi\sqrt{-1}\left(\frac{ik}{N-1}+\frac{jl}{N-1}\right)}=\sum_{k=0}^{N-2}\sum_{l=0}^{N-2}\hat{c}_{k,l}^{(m)}\upe^{\sqrt{-1}\left(\frac{2\pi
+                                        k}{L}i\Updelta x+\frac{2\pi
+                                        l}{L}j\Updelta y\right)}\]
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>von Neumann の安定性解析</h2>
+                    <ul style="margin-top: -1%">
+                        <li>
+                            2次元拡散方程式の差分式に代入. 線形の方程式なので,
+                            ある1つのモード $(k,l)$ に注目すると
+                            <span style="font-size: 75%">
+                                \[\frac{\hat{c}_{k,l}^{(m+1)}-\hat{c}_{k,l}^{(m)}}{\Updelta
+                                t}=D\hat{c}_{k,l}^{(m)}\left(\frac{\upe^{2\pi\sqrt{-1}\frac{k}{N-1}}-2+\upe^{-2\pi\sqrt{-1}\frac{k}{N-1}}}{\Updelta
+                                x^2}+\frac{\upe^{2\pi\sqrt{-1}\frac{l}{N-1}}-2+\upe^{-2\pi\sqrt{-1}\frac{l}{N-1}}}{\Updelta
+                                y^2}\right)\]
+                            </span>
+                        </li>
+                        <li class="fragment" style="margin-top: -1%">
+                            Euler の公式と半角の公式を使って整理すると
+                            <span style="font-size: 90%"
+                                >\[\frac{\hat{c}_{k,l}(t_{m+1})}{\hat{c}_{k,l}(t_{m})}=1-\frac{4D\Updelta
+                                t}{\Updelta x^2}\sin^2\left(\frac{\pi
+                                k}{N-1}\right)-\frac{4D\Updelta t}{\Updelta
+                                y^2}\sin^2\left(\frac{\pi
+                                l}{N-1}\right)\]</span
+                            >
+                            <ul>
+                                <li>
+                                    左辺は, 時間を $\Updelta t$
+                                    だけ進めると値がどれだけ変化するかの比を表している
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            ($N$ が奇数なら) この比がとりうる値の範囲は
+                            <span style="font-size: 90%"
+                                >\[1-4D\Updelta t\left(\frac{1}{\Updelta
+                                x^2}+\frac{1}{\Updelta
+                                y^2}\right)\leq\frac{\hat{c}_{k,l}(t_{m+1})}{\hat{c}_{k,l}(t_{m})}\leq1\]</span
+                            >
+                            <ul>
+                                <li>最小値をとるのは $k=l=(N-1)/2$ のとき</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>数値的安定性の条件</h2>
+                    <div class="flex-box" style="margin-top: -1%">
+                        <div style="width: 65%">
+                            <ul>
+                                <li>
+                                    もし, この最小値が $-1$ より小さければ,
+                                    常に
+                                    $\left|\dfrac{\hat{c}_{(N-1)/2,(N-1)/2}(t_{m+1})}{\hat{c}_{(N-1)/2,(N-1)/2}(t_{m})}\right|>1$
+                                    ということになり, 少なくとも<strong
+                                        class="alert"
+                                        >波長 $L/k=2\Updelta x$, $L/l=2\Updelta
+                                        y$ のモードの振幅は,
+                                        常に増幅し続けてしまう</strong
+                                    >
+                                    (チェッカーボード模様ができる)
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 35%">
+                            <figure>
+                                <img src="./fig/unstable.webp" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="fragment">
+                            このような増幅は, 現実世界の拡散現象では起こらない
+                            <ul>
+                                <li>
+                                    拡散方程式を差分で近似したときに生じてしまった非物理な偽の現象
+                                    (数値不安定)
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            <strong class="important"
+                                >数値不安定が起こらないようにパラメータの調節が必要</strong
+                            >
+                            <div class="math-box" style="width: 40%">
+                                \[\Updelta t &leq;
+                                \frac{1}{2D\left(\frac{1}{\Updelta
+                                x^2}+\frac{1}{\Updelta y^2}\right)}\]
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>演習</h2>
+                    <ul>
+                        <li>
+                            <b>[例題1-1]</b>
+                            条件 $\Updelta t &leq;
+                            \dfrac{1}{2D\left(\frac{1}{\Updelta
+                            x^2}+\frac{1}{\Updelta y^2}\right)}$
+                            を満たすように時間刻み幅 DT を変更して, 再度
+                            macro_2nd_diffusion.ipynb を実行してみてください
+                        </li>
+                        <figure>
+                            <img
+                                src="./fig/enshu_diffusion_stable.webp"
+                                alt=""
+                            />
+                        </figure>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>演習</h2>
+                    <ul>
+                        <li>
+                            <b>[例題1-2]</b> シミュレーション時間 T_END
+                            を十分な大きさにとると, 最終的に定常解に達し,
+                            前回授業の macro_1st_diffusion2d.ipynb
+                            でシミュレーションした結果と一致することを確認してください
+                            <div class="flex-box">
+                                <div style="width: 50%">
+                                    <figure>
+                                        <img
+                                            src="./fig/enshu_diffusion_unsteady.webp"
+                                            alt=""
+                                        />
+                                    </figure>
+                                </div>
+                                <div style="width: 50%">
+                                    <figure>
+                                        <img
+                                            src="./fig/enshu_diffusion_steady.webp"
+                                            alt=""
+                                        />
+                                    </figure>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <b>[例題1-3]</b> 拡散係数 D を大きく or
+                            小さくすると,
+                            定常解に達するのに必要な時間はどう変化しますか？その理由も考えてみてください
+                            <ul>
+                                <li class="note">
+                                    ヒント: 次元解析より $L^2/D$
+                                    は時間の次元になる
+                                </li>
+                            </ul>
+                        </li>
+                        <li>その他, いろいろ変更してみてください</li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>移流方程式</h2>
+                    <ul style="margin-top: -1%">
+                        <li>
+                            空気や水の流れにより, 物理量が流されることを<strong
+                                class="alert"
+                                >移流</strong
+                            >という
+                            <ul>
+                                <li>
+                                    例えば, ある空気の塊に注目し,
+                                    その中に含まれる $\ce{CO2}$ の濃度を考える.
+                                    $\ce{CO2}$ の拡散が無視でき,
+                                    さらにその空気の塊の体積が変わらなければ,
+                                    空気の塊が流される前と後で, それに含まれる
+                                    $\ce{CO2}$ の濃度は変化しない
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="flex-box fragment">
+                        <div style="width: 67%">
+                            <ul>
+                                <li>
+                                    これを数式で表すと
+                                    <span style="font-size: 80%"
+                                        >\[\lim_{\Updelta
+                                        t\to0}\frac{c(x+v_x\Updelta t,
+                                        y+v_y\Updelta t, t+\Updelta
+                                        t)-c(x,y,t)}{\Updelta t}=0\]</span
+                                    >
+                                </li>
+                                <li class="fragment">
+                                    多変数関数の Taylor 展開を用いると
+                                    \[\frac{\uppartial c}{\uppartial
+                                    t}+\left(v_x\frac{\uppartial}{\uppartial
+                                    x}+v_y\frac{\uppartial}{\uppartial
+                                    y}\right)c=0\] この式を<strong
+                                        class="alert"
+                                        >移流方程式</strong
+                                    >という
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 33%">
+                            <figure>
+                                <img src="./fig/advection.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="fragment">
+                            流体力学では, Lagrange 微分 (物質微分)
+                            $\dfrac{\mathrm{D}}{\mathrm{D}t}\equiv\dfrac{\uppartial
+                            }{\uppartial t}+(\bm{v}\cdot\bm{\nabla})$
+                            を導入して, 移流方程式を
+                            $\dfrac{\mathrm{D}c}{\mathrm{D}t}=0$ と書く
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>波動方程式と移流方程式の関係</h2>
+                    <ul>
+                        <li>
+                            1次元波動方程式 (波の速度: $V$);
+                            双曲型の偏微分方程式
+                            <span style="font-size: 85%">
+                                \[\frac{\uppartial^2\phi(x,t)}{\uppartial
+                                t^2}=V^2\frac{\uppartial^2\phi(x,t)}{\uppartial
+                                x^2}\]
+                            </span>
+                            <ul>
+                                <li>
+                                    この偏微分方程式の一般解 (d'Alembert の解)
+                                    <span style="font-size: 85%"
+                                        >\[\begin{align*}
+                                        &\left(\frac{\uppartial}{\uppartial
+                                        t}+V\frac{\uppartial}{\uppartial
+                                        x}\right)\left(\frac{\uppartial}{\uppartial
+                                        t}-V\frac{\uppartial}{\uppartial
+                                        x}\right)\phi(x,t)=0\\
+                                        &\qquad\rightarrow\quad
+                                        \phi(x,t)=f(x-Vt)+g(x+Vt)\end{align*}\]</span
+                                    >
+                                </li>
+                                <li>速度 $V$ と $-V$ で伝わる</li>
+                            </ul>
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            1次元移流方程式 (流れの速度: $v_x$)
+                            <span style="font-size: 85%">
+                                \[\begin{align*}&\left(\frac{\uppartial}{\uppartial
+                                t}+v_x\frac{\uppartial}{\uppartial
+                                x}\right)\phi(x,t)=0\qquad\qquad\qquad\qquad\qquad\\
+                                &\qquad\rightarrow\quad
+                                \phi(x,t)=f(x-v_xt)\end{align*}\]
+                            </span>
+                            <ul>
+                                <li>速度 $v_x$ で流される</li>
+                                <li>
+                                    解の性質が似ている.
+                                    双曲型に分類されることもある
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <figure
+                        style="
+                            position: absolute;
+                            right: -7%;
+                            bottom: 25%;
+                            width: 40%;
+                        "
+                    >
+                        <img src="./fig/wave1d.svg" alt="" />
+                    </figure>
+                    <figure
+                        class="fragment"
+                        data-fragment-index="1"
+                        style="
+                            position: absolute;
+                            right: -7%;
+                            bottom: 7%;
+                            width: 40%;
+                        "
+                    >
+                        <img src="./fig/advection1d.svg" alt="" />
+                    </figure>
+                </section>
+
+                <section data-state="part3">
+                    <h2>移流拡散方程式</h2>
+                    <ul>
+                        <li>
+                            (空気や水の体積が変わらないような状況で)
+                            移流と拡散の影響を両方考える場合は, 拡散方程式の
+                            $(\uppartial/\uppartial t)$ を Lagrange 微分
+                            $(\mathrm{D}/\mathrm{D} t)$ に置き換えればよい
+                            <div class="flex-box">
+                                <div style="width: 55%">
+                                    \[\begin{align*}&\frac{\uppartial
+                                    c}{\uppartial t}=D\nabla^2c+S_c\\
+                                    &\qquad\rightarrow\quad\frac{\mathrm{D}c}{\mathrm{D}t}=D\nabla^2c+S_c\end{align*}\]
+                                    <p>
+                                        この式を<strong class="alert"
+                                            >移流拡散方程式</strong
+                                        >という
+                                    </p>
+                                </div>
+                                <div style="width: 45%">
+                                    <figure>
+                                        <img
+                                            src="./fig/advection_diffusion.svg"
+                                            alt=""
+                                        />
+                                    </figure>
+                                </div>
+                            </div>
+
+                            <ul>
+                                <li class="note fragment">
+                                    本日の後半は、この問題のシミュレーションを勉強します
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>[例題2] サーキュレーター</h2>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <ul style="margin-right: -2%">
+                                <li>
+                                    例題1の問題設定に加え,
+                                    部屋にサーキュレーターが設置されており,
+                                    空気の流れ
+                                    <span style="font-size: 90%">
+                                        \[\begin{align*}
+                                        v_x&=-V_0\sin^2\left(\frac{\pi
+                                        x}{L}\right)\sin\left(\frac{2\pi
+                                        y}{L}\right)\\
+                                        v_y&=V_0\sin\left(\frac{2\pi
+                                        x}{L}\right)\sin^2\left(\frac{\pi
+                                        y}{L}\right) \end{align*}\]
+                                    </span>
+                                    ができているとする ($V_0=\text{定数}$).
+                                    この状態で $t=0$ に窓を開け, 換気を開始する
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 50%">
+                            <figure>
+                                <img
+                                    src="./fig/enshu_2d_advection.svg"
+                                    alt=""
+                                />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="fragment">
+                            解くべき偏微分方程式は \[\frac{\uppartial
+                            c}{\uppartial
+                            t}+\left(v_x\frac{\uppartial}{\uppartial
+                            x}+v_y\frac{\uppartial}{\uppartial
+                            y}\right)c=D\left(\dfrac{\uppartial^2 c}{\uppartial
+                            x^2}+\dfrac{\uppartial^2 c}{\uppartial
+                            y^2}\right)+S_0\]
+                        </li>
+                        <li class="note fragment">
+                            macro_2nd_advection.ipynb を実行してみてください
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>[例題2] 再び数値不安定</h2>
+                    <ul>
+                        <li>
+                            条件 $\Updelta t &leq;
+                            \dfrac{1}{2D\left(\frac{1}{\Updelta
+                            x^2}+\frac{1}{\Updelta y^2}\right)}$
+                            を満たしているのに...
+                            <figure>
+                                <img
+                                    src="./fig/enshu_advection_unstable.webp"
+                                    alt=""
+                                />
+                            </figure>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        移流方程式 (中心差分) の数値的安定性
+                    </h2>
+                    <ul>
+                        <li>
+                            2次元移流方程式の $(x_i, y_j, t_m)$ での差分式
+                            (FTCSスキーム)
+                            <span style="font-size: 90%">
+                                \[\frac{c_{i,j}^{(m+1)}-c_{i,j}^{(m)}}{\Updelta
+                                t}+v_x\frac{c_{i+1,j}^{(m)}-c_{i-1,j}^{(m)}}{2\Updelta
+                                x}+v_y\frac{c_{i,j+1}^{(m)}-c_{i,j-1}^{(m)}}{2\Updelta
+                                y}=0\tag{1}\]
+                            </span>
+                        </li>
+                        <li class="fragment">
+                            von Neumann の安定性解析を行うと
+                            <span style="font-size: 90%"
+                                >\[\frac{\hat{c}_{k,l}(t_{m+1})}{\hat{c}_{k,l}(t_{m})}=1-\sqrt{-1}\frac{v_x\Updelta
+                                t}{\Updelta x}\sin\left(\frac{2\pi
+                                k}{N-1}\right)-\sqrt{-1}\frac{v_y\Updelta
+                                t}{\Updelta y}\sin\left(\frac{2\pi
+                                l}{N-1}\right)\]</span
+                            >
+                            <ul>
+                                <li>
+                                    絶対値をとるときは,
+                                    複素共役をかけることに注意して
+                                    <span style="font-size: 80%"
+                                        >\[\left|\frac{\hat{c}_{k,l}(t_{m+1})}{\hat{c}_{k,l}(t_{m})}\right|^2=1+\left[\frac{v_x\Updelta
+                                        t}{\Updelta x}\sin\left(\frac{2\pi
+                                        k}{N-1}\right)+\frac{v_y\Updelta
+                                        t}{\Updelta y}\sin\left(\frac{2\pi
+                                        l}{N-1}\right)\right]^2 \tag{2}\]</span
+                                    >
+                                </li>
+                                <li class="fragment">
+                                    この値は ($k=l=0, (N-1)/2$ を除いて) 常に
+                                    $1$ より大きいので,
+                                    <strong class="important"
+                                        >必ず数値不安定</strong
+                                    >になる
+                                    <ul>
+                                        <li class="small note">
+                                            例題2では,
+                                            2次元移流<u>拡散</u>方程式を解いているので,
+                                            厳密にはこの状況とは少し異なるが,
+                                            それでも数値安定性の条件は厳しいものになっている
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>風上差分</h2>
+                    <ul>
+                        <li>
+                            移流方程式では, 空気や水の流れの上流 (風上)
+                            側から物理量が流されてくるので,
+                            上流側の格子点の値を使って差分をとってみる (<strong
+                                class="alert"
+                                >風上差分</strong
+                            >という) \[\left.v_x\frac{\uppartial c}{\uppartial
+                            x}\right|_{x=x_i,\,
+                            y=y_j}\approx\begin{cases}v_x(x_i,y_j)\dfrac{c_{i,j}-c_{i-1,j}}{\Updelta
+                            x} & (v_x(x_i,y_j)&gt;0) \\[5pt]
+                            v_x(x_i,y_j)\dfrac{c_{i+1,j}-c_{i,j}}{\Updelta x} &
+                            (v_x(x_i,y_j)&lt;0)\end{cases}\]
+                        </li>
+                        <li class="fragment">
+                            風上差分は, $v_x$
+                            の符号によって前進差分と後退差分を使い分けているようなものなので,
+                            中心差分よりも精度が悪い
+                            <ul>
+                                <li>
+                                    しかし,
+                                    この1次精度の誤差が拡散のようなはたらきをしてくれて,
+                                    <strong class="important"
+                                        >計算を安定化させる</strong
+                                    >効果がある (数値粘性という)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        移流方程式 (風上差分) の数値的安定性
+                    </h2>
+                    <ul>
+                        <li>
+                            2次元移流方程式の差分式 (風上差分, $v_x, v_y>0$
+                            の場合)
+                            <span style="font-size: 80%">
+                                \[\frac{c_{i,j}^{(m+1)}-c_{i,j}^{(m)}}{\Updelta
+                                t}+v_x\frac{c_{i,j}^{(m)}-c_{i-1,j}^{(m)}}{\Updelta
+                                x}+v_y\frac{c_{i,j}^{(m)}-c_{i,j-1}^{(m)}}{\Updelta
+                                y}=0\tag{3}\]
+                            </span>
+                        </li>
+                        <li class="fragment">
+                            von Neumann の安定性解析を行うと
+                            <span style="font-size: 80%"
+                                >\[\begin{align*}\left|\frac{\hat{c}_{k,l}(t_{m+1})}{\hat{c}_{k,l}(t_{m})}\right|^2&=\left[1-\frac{2v_x\Updelta
+                                t}{\Updelta x}\sin^2\left(\frac{\pi
+                                k}{N-1}\right)-\frac{2v_y\Updelta t}{\Updelta
+                                y}\sin^2\left(\frac{\pi
+                                l}{N-1}\right)\right]^2\\
+                                &+\left[\frac{v_x\Updelta t}{\Updelta
+                                x}\sin\left(\frac{2\pi
+                                k}{N-1}\right)+\frac{v_y\Updelta t}{\Updelta
+                                y}\sin\left(\frac{2\pi l}{N-1}\right)\right]^2
+                                \tag{4}\end{align*}\]</span
+                            >
+                            <ul>
+                                <li>
+                                    この値は ($N$ が奇数なら) $k=l=(N-1)/2$
+                                    で最大
+                                </li>
+                                <li>
+                                    最大値が $1$ 以下になる条件 (<strong
+                                        class="alert"
+                                        >CFL条件</strong
+                                    >
+                                    という) は
+                                    <div class="math-box" style="width: 40%">
+                                        \[\Updelta t &leq;
+                                        \frac{1}{\frac{v_x}{\Updelta
+                                        x}+\frac{v_y}{\Updelta y}}\]
+                                    </div>
+                                </li>
+                                <li class="note small" style="margin-top: -1%">
+                                    CFL = Courant&ndash;Friedrichs&ndash;Lewy
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>演習</h2>
+                    <ul style="margin-top: -1%">
+                        <li>
+                            <b>[例題2]</b>
+                            配布プログラムコード macro_2nd_advection.ipynb
+                            のパラメータの初期設定はCFL条件を満たしているので,
+                            移流項の計算を中心差分から風上差分に変更してください
+                            <pre
+                                style="margin: 1% auto"
+                            ><code class="language-python" data-line-numbers="1,3,11-16">def advection(self, v0: float) -> FloatArray:
+
+        ### (中略) ###
+
+        x: float
+        y: float
+        for ix in range(1, nx-1):
+            x = dx * ix
+            for iy in range(1, ny-1):
+                y = dy * iy
+                vx = func_vx(x, y, lx, ly, v0)
+                vy = func_vy(x, y, lx, ly, v0)
+                advection[ix, iy] = (
+                    vx * (self.value[ix+1, iy] - self.value[ix-1, iy]) / dx
+                    + vy * (self.value[ix, iy+1] - self.value[ix, iy-1]) / dy
+                )
+        return advection
+                            </code></pre>
+                        </li>
+                        <li>うまく動いたら, いろいろ変更してみてください</li>
+                    </ul>
+                    <figure
+                        class="fragment"
+                        style="
+                            position: absolute;
+                            right: -7%;
+                            top: 43%;
+                            width: 50%;
+                        "
+                    >
+                        <img src="./fig/enshu_advection_stable.webp" alt="" />
+                    </figure>
+                </section>
+
+                <section data-state="part4">
+                    <h2>課題について</h2>
+                    <ul>
+                        <li>
+                            マクロ系シミュレーション (総合演習2の33/100点)
+                            の課題は<strong class="important">加点方式</strong
+                            >で採点します (上限33点)
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの各回ごとに<strong
+                                class="alert"
+                                >小課題</strong
+                            >
+                            (1問あたり配点5-10点前後)
+                            とマクロ系シミュレーションの最終回に<strong
+                                class="alert"
+                                >最終課題</strong
+                            >
+                            (1問あたり配点5-30点前後) を出します
+                            <ul>
+                                <li>
+                                    自分ができそうな課題を選択し,
+                                    他の授業の忙しさを考慮して戦略的に提出してもらって構いません
+                                </li>
+                                <li>
+                                    小課題を提出しておくと,
+                                    最終課題の提出が楽になります
+                                </li>
+                                <li>
+                                    小課題を提出せずに,
+                                    最終課題だけ提出するのもアリです
+                                </li>
+                                <li>
+                                    好成績を狙っている人はたくさん課題を出してもらっても構いません
+                                    (ただし33点が上限)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの課題提出に,
+                            生成AIを活用しても構いませんが,
+                            内容を吟味してから提出してください
+                            <ul>
+                                <li>
+                                    どの生成AIモデルをどのように使ったか明記すること
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part4">
+                    <h2>第2回小課題</h2>
+                    <ul>
+                        <li>
+                            <b>[問2-1]</b>
+                            例題2の風上差分を完成させてください. また,
+                            例題1と例題2に対して, 生成項分布 $S_0(x,y)$
+                            や初期濃度分布 $c_0(x,y)$ などを変更した上で,
+                            空気の流れの有無による結果の違いを比較した短めのレポートを作成してください.
+                            作成したプログラムコード全体を提出する必要はありませんが,
+                            一部を抜粋してレポートに載せても構いません
+                            (配点5点)
+                        </li>
+                        <li>
+                            <b>[問2-2]</b>
+                            スライドp.20の(1)式から(2)式が得られ,
+                            スライドp.22の(3)式からは(4)式が得られることを示してください
+                            (配点5点)
+                        </li>
+                        <li>
+                            $\LaTeX$ や Microsoft Word などで作成し, pdf
+                            形式でBEEF+から提出すること
+                            <ul>
+                                <li>
+                                    どの課題か分かるように問題番号をつけてください
+                                </li>
+                            </ul>
+                        </li>
+                        <li>第2回小課題の提出〆切: 2025/11/04 23:59</li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 90%">
+                    <h2>波動方程式の数値的安定性</h2>
+                    <ul>
+                        <li>
+                            2次元波動方程式の差分式
+                            (時間と空間のどちらも2階中心差分)
+                            <span style="font-size: 90%">
+                                \[\frac{c_{i,j}^{(m+1)}-2c_{i,j}^{(m)}+c_{i,j}^{(m-1)}}{\Updelta
+                                t^2}=V_x^2\frac{c_{i+1,j}^{(m)}-2c_{i,j}^{(m)}+c_{i-1,j}^{(m)}}{\Updelta
+                                x^2}+V_y^2\frac{c_{i,j+1}^{(m)}-2c_{i,j}^{(m)}+c_{i,j-1}^{(m)}}{\Updelta
+                                y^2}\]
+                            </span>
+                        </li>
+                        <li>
+                            von Neumann の安定性解析を行い,
+                            $\hat{c}_{k,l}^{(m+1)}=\xi_{k,l}\hat{c}_{k,l}^{(m)}$
+                            とおくと
+                            <span style="font-size: 90%"
+                                >\[\xi_{k,l}+\frac{1}{\xi_{k,l}}=2-\frac{4V_x^2\Updelta
+                                t^2}{\Updelta x^2}\sin^2\left(\frac{\pi
+                                k}{N-1}\right)-\frac{4V_y^2\Updelta
+                                t^2}{\Updelta y^2}\sin^2\left(\frac{\pi
+                                l}{N-1}\right)\]</span
+                            >
+                            <ul>
+                                <li>
+                                    この式は $\xi_{k,l}$ の2次方程式.
+                                    解と係数の関係より, $\xi_{k,l}$
+                                    が実数解をもたないとき, または重解のときは
+                                    $|\xi_{k,l}|=1$. $\xi_{k,l}$
+                                    が相異なる2つの実数解をもつとき, 一方の解は
+                                    $|\xi_{k,l}|&gt;1$ となる. よって,
+                                    数値不安定が起こらない条件は,
+                                    $\text{(判別式)}\leq0$ である: $\Updelta t
+                                    &leq; \frac{1}{\sqrt{\frac{V_x^2}{\Updelta
+                                    x^2}+\frac{V_y^2}{\Updelta y^2}}}$
+                                </li>
+                                <li>
+                                    この条件もCFL条件の一種 (1次元の場合は,
+                                    波動方程式と移流方程式のCFL条件は一致する).
+                                    ただし, 移流方程式とは異なり,
+                                    CFL条件を満たしておけば,
+                                    中心差分でも数値不安定は起こらない
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="../../reveal.js-master/dist/reveal.js"></script>
+        <!-- <script src="../../reveal.js-master/plugin/zoom/zoom.js"></script> -->
+        <script>
+            Reveal.initialize({
+                controlsLayout: "edges",
+                hash: true,
+                scrollActivationWidth: null,
+                width: 960,
+                height: 700,
+                margin: 0.2,
+
+                slideNumber: (slide) => {
+                    return [
+                        Reveal.getIndices(slide).h,
+                        "/",
+                        Reveal.getHorizontalSlides(slide).length - 1,
+
+                        // Reveal.getIndices(slide).h + 1,
+                        // "/",
+                        // Reveal.getHorizontalSlides(slide).length,
+                    ];
+                },
+
+                plugins: [
+                    RevealHighlight,
+                    // Reveal.Zoom,
+                ],
+            });
+        </script>
+        <script src="./main.js"></script>
+    </body>
+</html>
