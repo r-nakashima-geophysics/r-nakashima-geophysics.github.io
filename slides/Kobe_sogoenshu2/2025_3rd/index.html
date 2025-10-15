@@ -1257,8 +1257,8 @@ git pull origin main</code></pre>
                 vx = func_vx(x, y, lx, ly, v0)
                 vy = func_vy(x, y, lx, ly, v0)
                 advection[ix, iy] = (
-                    vx * (self.value[ix+1, iy] - self.value[ix-1, iy]) / dx
-                    + vy * (self.value[ix, iy+1] - self.value[ix, iy-1]) / dy
+                    vx * (self.value[ix+1, iy] - self.value[ix-1, iy]) / (2*dx)
+                    + vy * (self.value[ix, iy+1] - self.value[ix, iy-1]) / (2*dy)
                 )
         return advection
                             </code></pre>
