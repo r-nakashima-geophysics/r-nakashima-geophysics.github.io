@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../reveal.js-master/dist/reset.css" />
+        <link rel="stylesheet" href="../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../reveal.js-master/dist/theme/simple.css"
+        />
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="../fontawesome-free-7.0.0-web/css/all.min.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/29824876ec.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- MathJax version 3 -->
+        <script src="./mathjax_config.js" defer></script>
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- TikZJax -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://tikzjax.com/v1/fonts.css"
+        />
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+
+        <!-- Theme used for syntax highlighted code -->
+        <link
+            rel="stylesheet"
+            href="../reveal.js-master/plugin/highlight/monokai.css"
+        />
+        <script src="../reveal.js-master/plugin/highlight/highlight.js"></script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>総合演習2 (2025年度)</h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        <time datetime="2025-10-29">2025-10-29</time>
+                    </p>
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">1. はじめに</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2.
+                            ソレノイダル場のシミュレーション</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part3" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 3. 逆問題,
+                            データ同化</span
+                        ><span id="nav_part3-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part4" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 4.
+                            課題について</span
+                        ><span id="nav_part4-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part5" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 5. 補足</span
+                        ><span id="nav_part5-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (神戸大・シス情) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;panda.kobe-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by&nbsp;
+                        <a href="https://revealjs.com" target="_blank"
+                            ><img
+                                src="https://static.slid.es/reveal/logo-v1/reveal-white-text.svg"
+                                alt="Powered by reveal.js"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -7px 0;
+                                    padding: 0;
+                                "
+                                class="demo-logo"
+                        /></a>
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -10px 0;
+                                    padding: 0;
+                                "
+                        /></a>
+                        <!-- /
+                        <a href="https://tikzjax.com" target="_blank"
+                            >TikZJax</a
+                        > -->
+                        /
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                        <!-- /
+                        <a href="https://www.chartjs.org"
+                            >Chart.js
+                            <img
+                                src="https://www.chartjs.org/img/chartjs-logo.svg"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -5px 0;
+                                    padding: 0;
+                                "
+                        /></a> -->
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide">
+                    <p>2025年度</p>
+                    <h2 class="r-fit-text">
+                        総合演習2<br />
+                        マクロ系シミュレーション<br />
+                        (第3回)
+                    </h2>
+                    <p>
+                        <i class="fas fa-microphone"></i> 中島 涼輔
+                        (システム情報)<br />
+                        @ NSSOL Lab.<br />
+                        2025/10/29
+                    </p>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">マクロ系シミュレーションの予定</h2>
+                    <ul>
+                        <li class="small" style="color: gray">
+                            第0回 (2025/10/01)
+                            <ul>
+                                <li>概要</li>
+                            </ul>
+                        </li>
+                        <li class="small" style="color: gray">
+                            第1回 (2025/10/08)
+                            <ul>
+                                <li>偏微分方程式の数値解法</li>
+                                <li>
+                                    楕円型方程式 (定常拡散方程式)
+                                    のシミュレーション
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="small" style="color: gray">
+                            第2回 (2025/10/22)
+                            <ul>
+                                <li>
+                                    放物型方程式 (非定常拡散方程式)
+                                    のシミュレーション
+                                </li>
+                                <li>
+                                    双曲型方程式 (移流方程式)
+                                    のシミュレーション
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong class="alert">第3回 (2025/10/29)</strong>
+                            <ul>
+                                <li>
+                                    <strong class="alert"
+                                        >ソレノイダル場 (非圧縮流体)
+                                        のシミュレーション</strong
+                                    >
+                                </li>
+                                <li>
+                                    <strong class="alert"
+                                        >逆問題, データ同化</strong
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            第4回 (2025/11/05)
+                            <ul>
+                                <li>質問・課題</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>プログラムコードの配布</h2>
+                    <ul>
+                        <li>
+                            <a
+                                href="https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git"
+                                target="_blank"
+                                >https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</a
+                            >
+                            で配布します
+                            <ul>
+                                <li>
+                                    macro_3rd_decay.ipynb と
+                                    macro_3rd_adjoint.ipynb
+                                    をダウンロードしてください
+                                </li>
+                            </ul>
+                            <figure style="width: 60%; margin: auto auto">
+                                <img src="./fig/github.webp" alt="" />
+                            </figure>
+                        </li>
+
+                        <li>
+                            git pull でも可
+                            <pre><code class="language-sh">git remote -v   # リモートリポジトリ (origin) を確認
+git pull origin main</code></pre>
+                        </li>
+                        <li>本日の演習と第3回小課題で使います</li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>流体力学の基礎方程式</h2>
+                    <ul>
+                        <li>
+                            質量保存則: $\dfrac{\uppartial \rho}{\uppartial
+                            t}+\div(\rho\bm{v})=0$
+                        </li>
+                        <li>
+                            運動方程式 (運動量保存則):
+                            $\rho\dfrac{\mathrm{D}\bm{v}}{\mathrm{D}t}=\div\underline{\underline{\bm{\sigma}}}+\rho\bm{F}$
+                        </li>
+                        <li class="fragment">
+                            これらの式に (1) Newton 流体, (2)
+                            <strong class="alert"
+                                >非圧縮 (空気や水の体積が変わらず,
+                                密度一定)</strong
+                            >, (3) 空間的に一様な粘性率を仮定すると, (非圧縮)
+                            Navier-Stokes 方程式が得られる
+                            <div class="math-box" style="width: 70%">
+                                \[ \div\bm{v}=0\,,\quad \frac{\mathrm{D}
+                                \bm{v}}{\mathrm{D}t} =-\frac{1}{\rho}\grad
+                                p+\nu\nabla^2\bm{v}+\bm{F} \]
+                            </div>
+                            $\bm{v}$ は流速, $p$ は圧力, $\rho$ は密度 (定数),
+                            $\nu$ は動粘性係数 (定数), $\bm{F}$
+                            は単位質量あたりの外力,
+                            $(\mathrm{D}/\mathrm{D}t)\equiv(\uppartial/\uppartial
+                            t)+(\bm{v}\ip\grad)$ は Lagrange 微分
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>演習問題</h2>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <ul>
+                                <li>
+                                    前回登場したサーキュレーター付きの正方形の部屋を再度考える
+                                    <ul>
+                                        <li
+                                            class="fragment"
+                                            data-fragment-index="1"
+                                        >
+                                            人が全員退室したので, 窓を閉め,
+                                            サーキュレーターの電源を切った
+                                        </li>
+                                        <li
+                                            class="fragment"
+                                            data-fragment-index="1"
+                                        >
+                                            電源を切ったタイミングを $t=0$
+                                            とし,
+                                            それ以降の空気の流れの時間変化を調べる
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment">
+                                    このような流れでは,
+                                    空気の体積は大きく変わらないので,
+                                    <strong class="alert"
+                                        >非圧縮流体シミュレーション</strong
+                                    >が有効
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 50%">
+                            <figure>
+                                <img src="./fig/enshu_2d_decay.svg" alt="" />
+                            </figure>
+                            \[\begin{align*} v_x&=-v_0\sin^2\left(\frac{\pi
+                            x}{L}\right)\sin\left(\frac{2\pi y}{L}\right)\\
+                            v_y&=v_0\sin\left(\frac{2\pi
+                            x}{L}\right)\sin^2\left(\frac{\pi y}{L}\right)
+                            \end{align*}\]
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">
+                        非圧縮流体シミュレーションの難しさ
+                    </h2>
+                    <ul>
+                        <li>
+                            これまでのシミュレーションでは, 求めたい未知関数
+                            (例えば, $\ce{CO2}$ 濃度)
+                            に境界条件や初期条件<u>だけ</u>が課されていた
+                        </li>
+                        <li class="fragment">
+                            しかし, 非圧縮流体の方程式には
+                            <strong class="important"
+                                >$\div\bm{v}=0$ という追加の条件があり,
+                                これを満たしながら時間ステップを進める</strong
+                            >必要がある
+                            <div class="math-box" style="width: 70%">
+                                \[ \div\bm{v}=0\,,\quad \frac{\mathrm{D}
+                                \bm{v}}{\mathrm{D}t} =-\frac{1}{\rho}\grad
+                                p+\nu\nabla^2\bm{v}+\bm{F} \]
+                            </div>
+                        </li>
+                        <li class="fragment">
+                            $\div\bm{\mathrm{V}}=0$ を満たすベクトル場
+                            $\bm{\mathrm{V}}$ のことを<strong class="alert"
+                                >ソレノイダル場</strong
+                            >, 発散をとると $0$ になる条件のことを<strong
+                                class="alert"
+                                >ソレノイダル条件</strong
+                            >という
+                            <ul>
+                                <li>
+                                    ソレノイダル場の例: 非圧縮流体の速度場
+                                    $\bm{v}$, 磁場 $\bm{B}$
+                                </li>
+                                <li class="note">
+                                    本日の前半は,
+                                    ソレノイダル場をシミュレーションする方法を勉強します
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">
+                        ソレノイダル場のシミュレーション
+                    </h2>
+                    <ul>
+                        <li>様々な方法が提案されている</li>
+                        <li>
+                            ソレノイダル条件を自動的に満たす,
+                            新たな量を導入する方法
+                            <ul>
+                                <li>
+                                    <strong class="alert"
+                                        >渦度&ndash;流線関数法</strong
+                                    >, トロイダル&ndash;ポロイダル分解など
+                                    <ul>
+                                        <li class="note">
+                                            総合演習2では, この方法を扱います
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Poisson 方程式などを用いて, 発散を除去する方法
+                            <ul>
+                                <li>
+                                    <strong class="alert">MAC</strong>
+                                    (Marker and Cell)
+                                    <strong class="alert">法</strong>
+                                </li>
+                                <li>
+                                    <strong class="alert"
+                                        >フラクショナルステップ法</strong
+                                    >
+                                    (<strong class="alert">射影法</strong>)
+                                </li>
+                                <li>SMAC (Simplified MAC) 法</li>
+                                <li>
+                                    HSMAC (Highly Simplified MAC) 法 (SOLA 法)
+                                </li>
+                                <li>
+                                    SIMPLE (Semi-Implicit Method for Pressure
+                                    Linked Equations) 法など
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            方程式を人為的に変更して,
+                            発散を伝播・減衰させる方法
+                            <ul>
+                                <li>
+                                    擬似圧縮性 (音速抑制法), divergence
+                                    cleaning など
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <figure style="position: absolute; right: -3%; top: 34%">
+                        <img src="./fig/book.webp" alt="" />
+                    </figure>
+                </section>
+
+                <section data-state="part2">
+                    <h2>渦度&ndash;流線関数法</h2>
+                    <ul>
+                        <li>
+                            2次元の場合のソレノイダル条件 (デカルト座標)
+                            \[\div\bm{v}=\frac{\uppartial v_x}{\uppartial
+                            x}+\frac{\uppartial v_y}{\uppartial y}=0\]
+                        </li>
+                        <li class="fragment">
+                            以下のような<strong class="alert">流線関数</strong>
+                            (<strong class="alert">流れ関数</strong>) $\psi$
+                            を導入する \[v_x=\frac{\uppartial\psi}{\uppartial
+                            y},\quad v_y=-\frac{\uppartial\psi}{\uppartial x}\]
+                            <ul>
+                                <li>
+                                    ベクトルで書くと
+                                    $\bm{v}=\rot(\psi\hat{\bm{e}}_z)$
+                                </li>
+                                <li>
+                                    $\dfrac{\uppartial}{\uppartial
+                                    x}\left(\dfrac{\uppartial\psi}{\uppartial
+                                    y}\right)+\dfrac{\uppartial}{\uppartial
+                                    y}\left(-\dfrac{\uppartial\psi}{\uppartial
+                                    x}\right)=0$ (または, ベクトル解析の公式
+                                    $\div[\rot(\cdots)]=0$) より,
+                                    <strong class="alert"
+                                        >自動的にソレノイダル条件が満たされる</strong
+                                    >
+                                    &rarr; $\psi$
+                                    の式を使ってシミュレーションすればよい
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            デメリット:
+                            <strong class="important"
+                                >3次元の問題では使用不可</strong
+                            >
+                            <ul>
+                                <li
+                                    class="note small"
+                                    style="margin-right: -3%"
+                                >
+                                    しかし, 他の手法に比べるとシンプルなので,
+                                    この方法を扱います
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>流線関数の性質</h2>
+                    <p>
+                        \[v_x=\frac{\uppartial\psi}{\uppartial y},\quad
+                        v_y=-\frac{\uppartial\psi}{\uppartial x}\]
+                    </p>
+                    <div class="flex-box">
+                        <div style="width: 50%">
+                            <img src="./fig/streamfunction_p.svg" alt="" />
+                        </div>
+                        <div style="width: 50%">
+                            <img src="./fig/streamfunction_m.svg" alt="" />
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            $\psi$
+                            の極大値のまわりでは等値線に沿って反時計回りの流れ,
+                            極小値のまわりでは等値線に沿って時計回りの流れ
+                        </li>
+                        <li class="fragment">
+                            等値線の間隔が狭いほど, 流速が速い
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">流体シミュレーションの境界条件</h2>
+                    <ul style="margin-top: -1%">
+                        <li>
+                            <strong class="alert">すべりなし条件</strong>:
+                            固体の壁面では流速が $0$
+                            になっているだろうと考える境界条件 \[v_x=0,\quad
+                            v_y=0\quad (x,y=\text{壁がある位置})\]
+                        </li>
+                        <li class="fragment">
+                            渦度&ndash;流線関数法を使う場合は, $v_x$, $v_y$
+                            の代わりに流線関数 $\psi$ を使うので, 境界条件を
+                            $\psi$ バージョンに変換する必要がある
+                            <ul>
+                                <li>
+                                    例えば, $x=0$, $0\leq y\leq L$ にある壁では
+                                    \[v_x=\frac{\uppartial\psi}{\uppartial
+                                    y}=0\,,\quad
+                                    v_y=-\frac{\uppartial\psi}{\uppartial
+                                    x}=0\quad(x=0, 0\leq y\leq L)\]
+                                    $\therefore$ その壁上で $\psi=\text{定数}$,
+                                    $\dfrac{\uppartial\psi}{\uppartial x}=0$
+                                </li>
+                                <li class="fragment">
+                                    多くの場合, $\psi=\text{定数}$ は<br />
+                                    $\psi=0$ とすれば OK
+                                </li>
+                                <li class="fragment">
+                                    他の壁も同じように考えると<br />
+                                    同様の境界条件が得られる
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <figure
+                        style="
+                            position: absolute;
+                            bottom: 0%;
+                            right: -5%;
+                            width: 45%;
+                        "
+                    >
+                        <img src="./fig/cavity.webp" alt="" />
+                        <figcaption>
+                            2次元非圧縮キャビティ流れの場合
+                        </figcaption>
+                    </figure>
+                </section>
+
+                <section data-state="part2">
+                    <h2>渦度を導入する</h2>
+                    <ul>
+                        <li>
+                            速度場 $\bm{v}$ の回転を<strong class="alert"
+                                >渦度</strong
+                            >という: $\bm{\omega}\equiv\rot\bm{v}$
+                            <ul>
+                                <li>
+                                    今のような2次元の場合は,
+                                    $\bm{\omega}=(0,0,\omega)$
+                                    \[\omega=\frac{\uppartial v_y}{\uppartial
+                                    x}-\frac{\uppartial v_x}{\uppartial y}\]
+                                </li>
+                                <li class="note small" data-fragment-index="2">
+                                    ここで渦度をわざわざ導入した理由は,
+                                    Helmholtz 分解というものが関係しているが,
+                                    この授業では深入りしない
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    流線関数 $\psi$ を用いて渦度を表すと
+                                    \[\omega=\frac{\uppartial}{\uppartial
+                                    x}\left(-\dfrac{\uppartial\psi}{\uppartial
+                                    x}\right)-\frac{\uppartial}{\uppartial
+                                    y}\left(\dfrac{\uppartial\psi}{\uppartial
+                                    y}\right)=-\left(\frac{\uppartial^2}{\uppartial
+                                    x^2}+\frac{\uppartial^2}{\uppartial
+                                    y^2}\right)\psi\]
+                                    <ul>
+                                        <li>
+                                            この式は, 第1回で扱った<strong
+                                                class="important"
+                                                >定常拡散方程式</strong
+                                            >と同じ形
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    ベクトルで書くと
+                                    $\bm{\omega}=\rot[\rot(\psi\hat{\bm{e}}_z)]=\grad(\div(\psi\hat{\bm{e}}_z))-\nabla^2(\psi\hat{\bm{e}}_z)=(-\nabla^2\psi)\hat{\bm{e}}_z$
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>渦度の時間発展式</h2>
+                    <ul style="margin-top: -2%">
+                        <li>
+                            渦度 $\omega$ の時間発展式を求めるため, 運動方程式
+                            <div style="font-size: 60%">
+                                \[ \begin{align} \frac{\uppartial
+                                v_x}{\uppartial
+                                t}+\left(v_x\frac{\uppartial}{\uppartial
+                                x}+v_y\frac{\uppartial}{\uppartial
+                                y}\right)v_x&=-\frac{1}{\rho}\frac{\uppartial
+                                p}{\uppartial
+                                x}+\nu\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial^2}{\uppartial
+                                y^2}\right)v_x\\ \frac{\uppartial
+                                v_y}{\uppartial
+                                t}+\left(v_x\frac{\uppartial}{\uppartial
+                                x}+v_y\frac{\uppartial}{\uppartial
+                                y}\right)v_y&=-\frac{1}{\rho}\frac{\uppartial
+                                p}{\uppartial
+                                y}+\nu\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial^2 }{\uppartial
+                                y^2}\right)v_y\end{align}\]
+                            </div>
+                            に対し, $\frac{\uppartial \text{(2)}}{\uppartial
+                            x}-\frac{\uppartial \text{(1)}}{\uppartial y}$
+                            を計算する
+                            <ul>
+                                <li class="fragment" data-fragment-index="1">
+                                    積の微分に気をつけながら計算すると
+                                    <div style="font-size: 60%">
+                                        \[\frac{\uppartial\omega}{\uppartial
+                                        t}+\left(v_x\frac{\uppartial}{\uppartial
+                                        x}+v_y\frac{\uppartial}{\uppartial
+                                        y}\right)\omega+\left(\frac{\uppartial
+                                        v_x}{\uppartial
+                                        x}\frac{\uppartial}{\uppartial
+                                        x}+\frac{\uppartial v_y}{\uppartial
+                                        x}\frac{\uppartial}{\uppartial
+                                        y}\right)v_y-\left(\frac{\uppartial
+                                        v_x}{\uppartial
+                                        y}\frac{\uppartial}{\uppartial
+                                        x}+\frac{\uppartial v_y}{\uppartial
+                                        y}\frac{\uppartial}{\uppartial
+                                        y}\right)v_x=\nu\left(\frac{\uppartial^2}{\uppartial
+                                        x^2}+\frac{\uppartial^2 }{\uppartial
+                                        y^2}\right)\omega\]
+                                    </div>
+                                    となる (圧力の項は消える). さらに,
+                                    ソレノイダル条件より
+                                    <div style="font-size: 60%">
+                                        \[\frac{\uppartial\omega}{\uppartial
+                                        t}+\left(v_x\frac{\uppartial}{\uppartial
+                                        x}+v_y\frac{\uppartial}{\uppartial
+                                        y}\right)\omega=\nu\left(\frac{\uppartial^2}{\uppartial
+                                        x^2}+\frac{\uppartial^2 }{\uppartial
+                                        y^2}\right)\omega \]
+                                    </div>
+                                    この式は, 第2回で扱った<strong
+                                        class="important"
+                                        >移流拡散方程式</strong
+                                    >
+                                </li>
+                                <li
+                                    class="small fragment"
+                                    data-fragment-index="1"
+                                >
+                                    ベクトルで書くと, $\rot(-\grad p)=0$,
+                                    および
+                                    $\rot[(\bm{v}\ip\grad)\bm{v}]=\rot[\grad(\bm{u}^2/2)-\bm{v}\times\bm{\omega}]=-\rot[\bm{v}\times\bm{\omega}]=(\bm{v}\ip\grad)\bm{\omega}-(\bm{\omega}\ip\grad)\bm{v}=(\bm{v}\ip\grad)\bm{\omega}$
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2" style="font-size: 90%">
+                    <h2>渦度の境界条件</h2>
+                    <ul>
+                        <li>
+                            渦度 $\omega$ の境界条件は, 流線関数 $\psi$ に依存
+                        </li>
+                        <li class="fragment">
+                            例えば, 再度 $x=0$, $0\leq y\leq L$
+                            にある壁を考える
+                            <ul>
+                                <li>
+                                    $\psi$ の境界条件
+                                    \[\psi=\text{定数}\,(=0)\,,\quad
+                                    \frac{\uppartial\psi}{\uppartial
+                                    x}=0\quad(x=0, 0\leq y\leq L)\]
+                                </li>
+                                <li class="fragment">
+                                    Neumann 境界条件の方を, 格子点 $(x_0, y_j)$
+                                    ($j=0,1,\ldots N-1$) 上での差分式
+                                    (1階中心差分) で近似すると
+                                    \[\frac{\psi_{1,j}-\psi_{-1,j}}{2\Delta
+                                    x}=0\quad\rightarrow\quad\psi_{1,j}=\psi_{-1,j}\]
+                                </li>
+                                <li class="fragment">
+                                    この壁上では $\psi=\text{定数}$ より
+                                    $\frac{\uppartial^2\psi}{\uppartial y^2}=0$
+                                    である. $\omega$ と $\psi$ の関係式
+                                    $\omega=-\left(\frac{\uppartial^2}{\uppartial
+                                    x^2}+\frac{\uppartial^2}{\uppartial
+                                    y^2}\right)\psi$ より, 格子点 $(x_0, y_j)$
+                                    ($j=0,1,\ldots N-1$) 上での差分式
+                                    (2階中心差分) は
+                                    \[\omega_{0,j}=-\frac{\psi_{1,j}-2\psi_{0,j}+\psi_{-1,j}}{\Updelta
+                                    x^2}=-2\frac{\psi_{1,j}-\psi_{0,j}}{\Updelta
+                                    x^2}\]
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <figure
+                        style="
+                            position: absolute;
+                            top: 0;
+                            right: -5%;
+                            width: 30%;
+                        "
+                    >
+                        <img src="./fig/enshu_2d_decay.svg" alt="" />
+                    </figure>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">渦度&ndash;流線関数法の計算手順</h2>
+                    <div
+                        class="math-box"
+                        style="font-size: 60%; width: 70%; margin-top: -2%"
+                    >
+                        \[\begin{equation} \begin{aligned}
+                        \frac{\uppartial\omega}{\uppartial
+                        t}+\left(v_x\frac{\uppartial}{\uppartial
+                        x}+v_y\frac{\uppartial}{\uppartial
+                        y}\right)\omega&=\nu\left(\frac{\uppartial^2}{\uppartial
+                        x^2}+\frac{\uppartial^2}{\uppartial
+                        y^2}\right)\omega\,,\quad
+                        v_x=\frac{\uppartial\psi}{\uppartial y},\quad
+                        v_y=-\frac{\uppartial\psi}{\uppartial x}\\
+                        \left(\frac{\uppartial^2}{\uppartial
+                        x^2}+\frac{\uppartial^2}{\uppartial
+                        y^2}\right)\psi&=-\omega \end{aligned}\notag
+                        \end{equation}\]
+                    </div>
+                    <ul style="margin: -1% -1% auto -1%">
+                        <li>
+                            現状, $t=t_m$ での値 $\omega^{(m)}$, $\psi^{(m)}$,
+                            $v_x^{(m)}$, $v_y^{(m)}$ が求まっているとする
+                            <ol>
+                                <li class="fragment">
+                                    $\omega^{(m)}$, $v_x^{(m)}$, $v_y^{(m)}$
+                                    を使い, 渦度の移流拡散方程式から
+                                    (境界上の格子点以外の) $\omega^{(m+1)}$
+                                    を計算する
+                                    <pre><code class="language-python">omg.value += (-omg.advection(psi) + NU * omg.laplacian()) * DT</code></pre>
+                                </li>
+                                <li class="fragment">
+                                    $\omega^{(m+1)}$ と $\psi$ の Dirichlet
+                                    境界条件から, 流線関数の Poisson
+                                    方程式を使い, $\psi^{(m+1)}$ を計算する
+                                    <pre><code class="language-python" data-line-numbers>self.value[0, :] = 0    # 左端
+self.value[-1, :] = 0   # 右端
+self.value[:, 0] = 0    # 下端
+self.value[:, -1] = 0   # 上端</code></pre>
+                                    <pre
+                                        style="margin-top: -1%"
+                                    ><code class="language-python">psi.poisson_solver(-omg.value, OMEGA_SOR, TOL, MAX_ITER)</code></pre>
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2 class="r-fit-text">渦度&ndash;流線関数法の計算手順</h2>
+                    <div
+                        class="math-box"
+                        style="font-size: 60%; width: 70%; margin-top: -1%"
+                    >
+                        \[\begin{equation} \begin{aligned}
+                        \frac{\uppartial\omega}{\uppartial
+                        t}+\left(v_x\frac{\uppartial}{\uppartial
+                        x}+v_y\frac{\uppartial}{\uppartial
+                        y}\right)\omega&=\nu\left(\frac{\uppartial^2}{\uppartial
+                        x^2}+\frac{\uppartial^2}{\uppartial
+                        y^2}\right)\omega\,,\quad
+                        v_x=\frac{\uppartial\psi}{\uppartial y},\quad
+                        v_y=-\frac{\uppartial\psi}{\uppartial x}\\
+                        \left(\frac{\uppartial^2}{\uppartial
+                        x^2}+\frac{\uppartial^2}{\uppartial
+                        y^2}\right)\psi&=-\omega \end{aligned}\notag
+                        \end{equation}\]
+                    </div>
+                    <ol start="3">
+                        <li>
+                            $\psi^{(m+1)}$ と $\omega$ の境界条件から, 境界上の
+                            $\omega^{(m+1)}$ を計算する
+                            <pre><code class="language-python" data-line-numbers="">self.value[0, :] = -2 * (psi.value[1, :]-psi.value[0, :]) / (dx**2)      # 左端
+self.value[-1, :] = -2 * (psi.value[-2, :]-psi.value[-1, :]) / (dx**2)   # 右端
+self.value[:, 0] = -2 * (psi.value[:, 1]-psi.value[:, 0]) / (dy**2)      # 下端
+self.value[:, -1] = -2 * (psi.value[:, -2]-psi.value[:, -1]) / (dy**2)   # 上端</code></pre>
+                        </li>
+                        <li class="fragment">
+                            $\psi^{(m+1)}$ から $v_x^{(m)}$, $v_y^{(m)}$
+                            を計算する
+                            <pre><code class="language-python" data-line-numbers>vx = (psi.value[ix, iy+1] - psi.value[ix, iy-1]) / (2 * dy)
+vy = - (psi.value[ix+1, iy] - psi.value[ix-1, iy]) / (2 * dx)</code></pre>
+                        </li>
+                        <li class="small note fragment">
+                            必要があれば, スライドp.11の $\dfrac{\uppartial
+                            \text{(1)}}{\uppartial x}+\dfrac{\uppartial
+                            \text{(2)}}{\uppartial y}$ で得られる圧力の Poisson
+                            方程式を使って, $\psi^{(m+1)}$ から $p^{(m+1)}$
+                            を計算する
+                        </li>
+                    </ol>
+                </section>
+
+                <section data-state="part2">
+                    <div class="flex-box">
+                        <div style="width: 60%">
+                            <h2>[例題1] 渦の減衰</h2>
+                            <p>$t=0$ にサーキュレーターの電源オフ</p>
+                            <div style="font-size: 80%">
+                                \[\begin{align*}
+                                v_x&=\frac{\uppartial\psi}{\uppartial
+                                y}=-v_0\sin^2\left(\frac{\pi
+                                x}{L}\right)\sin\left(\frac{2\pi y}{L}\right)\\
+                                v_y&=-\frac{\uppartial\psi}{\uppartial
+                                x}=v_0\sin\left(\frac{2\pi
+                                x}{L}\right)\sin^2\left(\frac{\pi y}{L}\right)
+                                \end{align*}\]
+                            </div>
+                        </div>
+                        <div style="width: 40%">
+                            <figure>
+                                <img src="./fig/enshu_2d_decay.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="fragment">
+                            $t=0$ の流れ場 $(v_x, v_y)$ を流線関数 $\psi$
+                            と渦度 $\omega$ に変換すると
+                            <div style="font-size: 85%">
+                                \[\begin{align*}\psi&=-\frac{v_0L}{\pi}\sin^2\left(\frac{\pi
+                                x}{L}\right)\sin^2\left(\frac{\pi
+                                y}{L}\right)\\ \omega&=\frac{2\pi
+                                v_0}{L}\left[\cos\left(\frac{2\pi
+                                x}{L}\right)\sin^2\left(\frac{\pi
+                                y}{L}\right)+\sin^2\left(\frac{\pi
+                                x}{L}\right)\cos\left(\frac{2\pi
+                                y}{L}\right)\right]\end{align*}\]
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="flex-box" style="margin-top: -2%">
+                        <div style="width: 50%">
+                            <ul>
+                                <li class="note fragment">
+                                    macro_3rd_decay.ipynb では, $\psi$ と
+                                    $\omega$ の初期条件が上記に設定されています
+                                    <ul>
+                                        <li>実行してみてください</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 50%">
+                            <figure class="fragment">
+                                <img src="./fig/decay.webp" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>演習 [例題2] キャビティ流れ</h2>
+                    <ul>
+                        <li>
+                            実は, macro_3rd_decay.ipynb の $\omega$ の境界条件
+                            <pre><code class="language-python" data-line-numbers="">self.value[0, :] = -2 * (psi.value[1, :]-psi.value[0, :]) / (dx**2)      # 左端
+self.value[-1, :] = -2 * (psi.value[-2, :]-psi.value[-1, :]) / (dx**2)   # 右端
+self.value[:, 0] = -2 * (psi.value[:, 1]-psi.value[:, 0]) / (dy**2)      # 下端
+self.value[:, -1] = -2 * (psi.value[:, -2]-psi.value[:, -1]) / (dy**2)   # 上端</code></pre>
+                            をほんの少し変更すると,
+                            第0回で扱った2次元非圧縮キャビティ流れのプログラムコードへと書き換えることができます
+                        </li>
+                    </ul>
+                    <div class="flex-box">
+                        <div style="width: 60%">
+                            <ul>
+                                <li>
+                                    どのように変更すれば良いか考えて,
+                                    実装してみてください
+                                    <ul>
+                                        <li>
+                                            $0\leq x\leq L$, $y=L$ での
+                                            境界条件
+                                            \[v_x=\frac{\uppartial\psi}{\uppartial
+                                            y}=\textcolor{red}{U}\,,\quad
+                                            v_y=-\frac{\uppartial\psi}{\uppartial
+                                            x}=0\]
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure>
+                                <img src="./fig/enshu_2d_cavity.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>無次元化・無次元数</h2>
+                    <ul>
+                        <li>
+                            シミュレーションでは, よく<strong class="alert"
+                                >無次元化</strong
+                            >というものを行う
+                            <ul>
+                                <li>
+                                    $v_x$ は (もちろん) 速度の次元 $[LT^{-1}]$
+                                    をもつ (単位: $\mathrm{m/s})$
+                                </li>
+                                <li>
+                                    パラメータの中で速度の次元をもつもの
+                                    (キャビティ流れなら $U$) で $v_x$
+                                    を割ると無次元になる: $v_{x*}=v_x/U$
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            2次元非圧縮キャビティ流れの場合, Navier-Stokes
+                            方程式を無次元化すると
+                            \[\grad_*\ip\bm{v}_*=0\,,\quad \frac{\mathrm{D}
+                            \bm{v}_*}{\mathrm{D}t_*} =-\grad_*
+                            p_*+\frac{1}{Re}\nabla_*^2\bm{v}_*\] ここで,
+                            $\grad_*=L\grad$, $t_*=t/(L/U)$,
+                            $\bm{v}_*=\bm{v}/U$, $p_*=p/\rho U^2$
+                            <ul>
+                                <li style="margin-right: -2%">
+                                    <strong class="alert">Reynolds 数</strong>
+                                    $Re=UL/\nu$ が唯一のパラメータ (無次元数)
+                                </li>
+                                <li class="fragment">
+                                    $\nu$ が一定のとき,
+                                    <strong class="important"
+                                        >$U=1\,\mathrm{m/s}$, $L=1\,\mathrm{m}$
+                                        のシミュレーションや実験を行えば,
+                                        $U=0.1\,\mathrm{m/s}$,
+                                        $L=10\,\mathrm{m}$
+                                        の結果もわかる</strong
+                                    >
+                                    (相似則という)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2" style="font-size: 90%">
+                    <h2 class="r-fit-text">
+                        シミュレーションを高速化するために
+                    </h2>
+                    <ul>
+                        <li>
+                            問題によっては計算コストが大きくなって,
+                            シミュレーションの実行時間がかかりすぎることがある
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            <strong class="important"
+                                >ボトルネックを特定して,
+                                対処することが重要</strong
+                            >
+                            <ul>
+                                <li class="fragment">
+                                    計算手法, アルゴリズムの変更
+                                </li>
+                                <li class="fragment">
+                                    C などのコンパイラ言語に書き換える (または,
+                                    <a
+                                        href="https://cython.org"
+                                        target="_blank"
+                                        >Cython</a
+                                    >
+                                    の使用)
+                                    <figure
+                                        style="
+                                            position: absolute;
+                                            top: -17%;
+                                            right: 5%;
+                                            width: 20%;
+                                            z-index: -1;
+                                        "
+                                    >
+                                        <img
+                                            src="https://static.cdnlogo.com/logos/c/88/cython.svg"
+                                        />
+                                    </figure>
+                                </li>
+                                <li class="fragment">
+                                    シミュレーション結果の可視化部分を見直す
+                                    <ul>
+                                        <li class="note small">
+                                            実は配布したプログラムコードでは,
+                                            アニメーション生成に実行時間の大部分が費やされています
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment">
+                                    NumPy を使って for 文をベクトル化する
+                                    <ul>
+                                        <li class="small">
+                                            NumPy の内部は C で書かれている
+                                        </li>
+                                        <li class="small">
+                                            行列演算ライブラリで最適化されている
+                                            & 自動でスレッド並列
+                                        </li>
+                                    </ul>
+                                    <figure
+                                        style="
+                                            position: absolute;
+                                            top: 35%;
+                                            right: 5%;
+                                            width: 10%;
+                                        "
+                                    >
+                                        <img
+                                            src="https://static.cdnlogo.com/logos/n/81/numpy.svg"
+                                        />
+                                    </figure>
+                                </li>
+                                <li class="fragment">
+                                    プロセス並列 (<a
+                                        href="https://docs.python.org/ja/3.13/library/multiprocessing.html"
+                                        target="_blank"
+                                        >multiprocessing</a
+                                    >,
+                                    <a
+                                        href="https://mpi4py.readthedocs.io/en/stable/index.html#"
+                                        target="_blank"
+                                        >mpi4py</a
+                                    >
+                                    など)
+                                    <ul>
+                                        <li class="small">
+                                            (今のところ?) GIL (Global
+                                            Interpreter Lock) により Python
+                                            では OpenMP
+                                            のようなスレッド並列はできない.
+                                            並行処理
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment">
+                                    <a
+                                        href="https://numba.pydata.org"
+                                        target="_blank"
+                                        >Numba</a
+                                    >
+                                    の使用 (JIT (just-in-time) コンパイラ)
+                                </li>
+                                <li class="fragment">などなど</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>順問題と逆問題</h2>
+                    <ul>
+                        <li>
+                            これまでのシミュレーションでは,
+                            初期条件が与えられていて,
+                            そこからの時間発展をシミュレートしていた (<strong
+                                class="alert"
+                                >順問題</strong
+                            >という)
+                        </li>
+                        <li class="fragment" data-fragment-index="1">
+                            しかし, 実社会の問題では, 全ての位置での初期値
+                            (初期分布) がわかっていない場合も多い
+                            <ul>
+                                <li>
+                                    特に, 少数の測定 (観測) データから,
+                                    初期条件やパラメータなどを推定したいことがある
+                                    (<strong class="alert">逆問題</strong
+                                    >という)
+                                </li>
+                                <li>
+                                    測定にはノイズが含まれるので,
+                                    そのノイズの2乗ノルムが最小になるものを探す
+                                    (最小二乗法)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="flex-box fragment" data-fragment-index="1">
+                        <div style="width: 50%">
+                            <figure style="margin: auto -5% -5% -5%">
+                                <img src="./fig/forward.svg" alt="" />
+                            </figure>
+                            <figcaption>順問題</figcaption>
+                        </div>
+                        <div style="width: 50%">
+                            <figure style="margin: auto -5% -5% -5%">
+                                <img src="./fig/inverse.svg" alt="" />
+                            </figure>
+                            <figcaption>逆問題</figcaption>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2>データ同化</h2>
+                    <ul>
+                        <li>
+                            逆問題と同様の技術として,
+                            <strong class="alert">データ同化</strong>がある
+                        </li>
+                        <li class="fragment">
+                            天気予報のように, 物理法則をシミュレーションして,
+                            未来の状態を予測したいとする
+                            <ul>
+                                <li>
+                                    しかし, 全ての位置での初期値 (初期分布)
+                                    はわからない
+                                </li>
+                                <li class="fragment">
+                                    そこで,
+                                    <strong class="alert"
+                                        >測定 (観測)
+                                        データと現象を支配している物理法則を使って,
+                                        もっともらしい初期分布を推定</strong
+                                    >する
+                                    <ul>
+                                        <li>
+                                            例えば, アジョイント法の場合
+                                            \[J=\text{(測定によるノイズの二乗ノルム)}+\lambda(物理法則)\]
+                                            みたいな感じの目的関数を最小化する
+                                            ($\lambda$: Lagrange の未定乗数)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment">
+                                    <strong class="important"
+                                        >推定された初期分布を初期条件としてシミュレーションを実行し,
+                                        未来の状態を予測</strong
+                                    >する
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <figure
+                        style="
+                            position: absolute;
+                            right: 0%;
+                            top: -6%;
+                            width: 13%;
+                        "
+                    >
+                        <img src="./fig/book2.webp" alt="" />
+                    </figure>
+                </section>
+
+                <section data-state="part3">
+                    <h2>1次元非定常拡散方程式を例に</h2>
+                    <div class="flex-box" style="margin-top: -3%">
+                        <div style="width: 40%">
+                            <figcaption>
+                                $t=0$ に窓を開けたときの<br />
+                                $\ce{CO2}$ 濃度の時間変化を調べたいが<br />
+                                初期分布がわからない.<br />
+                                $t=0$ から $t_K$ まで測定を行い, $t>t_K$ の
+                                $\ce{CO2}$ 濃度を予測する
+                            </figcaption>
+                        </div>
+                        <div style="width: 60%">
+                            <figure>
+                                <img src="./fig/enshu_1d_adjoint.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul class="fragment">
+                        <li>
+                            $t=t_k$ での $N$ 次元未知ベクトル:
+                            $\bm{\mathrm{x}}^{(k)}={}^t(c_0^{(k)},
+                            c_1^{(k)},\ldots,c_{N-1}^{(k)})$
+                        </li>
+                        <li>
+                            $t=t_k$ での測定データを $\bm{d}^{(k)}$ とする
+                            ($k=0,1,\ldots, K$). $\bm{\mathrm{x}}^{(k)}$ から
+                            $\bm{d}^{(k)}$ に対応するものを選び出す行列を
+                            $\mathsf{H}$ と書くと
+                            \[\bm{d}^{(k)}=\mathsf{H}\bm{\mathrm{x}}^{(k)}+\bm{e}^{(k)}\]
+                            ここで, $\bm{e}^{(k)}$ は $t=t_k$ での測定ノイズ
+                            <ul>
+                                <li style="margin-right: -2%" class="fragment">
+                                    例えば, 格子点数 $N=5$ で, $\ce{CO2}$
+                                    測定器が $x=x_1,x_2,x_3$ にあるとすると
+                                    <div
+                                        style="font-size: 60%; margin-top: -6%"
+                                    >
+                                        \[\begin{pmatrix}d_1^{(k)} \\ d_2^{(k)}
+                                        \\
+                                        d_3^{(k)}\end{pmatrix}=\begin{pmatrix}
+                                        0 & 1 & 0 & 0 & 0\\ 0 & 0 & 1 & 0 & 0
+                                        \\ 0 & 0 & 0 & 1 &
+                                        0\end{pmatrix}\begin{pmatrix}c_0^{(k)}
+                                        \\ c_1^{(k)} \\ c_2^{(k)} \\ c_3^{(k)}
+                                        \\c_4^{(k)}\end{pmatrix}+\begin{pmatrix}e_1^{(k)}
+                                        \\ e_2^{(k)} \\
+                                        e_3^{(k)}\end{pmatrix}\]
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>1次元非定常拡散方程式を例に</h2>
+                    <div class="flex-box" style="margin-top: -2%">
+                        <div style="width: 40%">
+                            <figcaption>
+                                $t=0$ に窓を開けたときの<br />
+                                $\ce{CO2}$ 濃度の時間変化を調べたいが<br />
+                                初期分布がわからない.<br />
+                                $t=0$ から $t_K$ まで測定を行い, $t>t_K$ の
+                                $\ce{CO2}$ 濃度を予測する
+                            </figcaption>
+                        </div>
+                        <div style="width: 60%">
+                            <figure>
+                                <img src="./fig/enshu_1d_adjoint.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            よって, 目的関数は
+                            <div style="font-size: 80%">
+                                \[J(\bm{\mathrm{x}}^{(0)})=\frac{1}{2}\sum_{k=0}^{K}||\bm{d}^{(k)}-\mathsf{H}\bm{\mathrm{x}}^{(k)}||_2+\int_0^{t_K}\upd
+                                t\int_{0}^{L}\upd
+                                x\lambda(x,t)\left(\frac{\uppartial
+                                c}{\uppartial t}-D\frac{\uppartial^2
+                                c}{\uppartial x^2}-S_0\right)\]
+                            </div>
+                            <ul>
+                                <li class="note small">
+                                    実際に使われるアジョイント法では,
+                                    どの測定データを重視するかの重み
+                                    (分散共分散行列) を考慮するのに加え,
+                                    Tikhonov の正則化 (リッジ回帰)
+                                    に近い項を目的関数に足すことが多いが,
+                                    ここでは省略
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            この目的関数を最小化する $\bm{\mathrm{x}}^{(0)}$
+                            を求めれば,
+                            観測データをよく説明する初期分布が得られたことになる
+                            <ul>
+                                <li>
+                                    最小化する $\bm{\mathrm{x}}^{(0)}$
+                                    を求めるために最急降下法などを用いるとすると,
+                                    $\dfrac{\uppartial J}{\uppartial
+                                    \bm{\mathrm{x}}^{(0)}}$ の計算が必要
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3" style="font-size: 90%">
+                    <h2>1次元非定常拡散方程式を例に</h2>
+                    <ul style="margin-top: -1%">
+                        <li>
+                            アジョイント法では $\dfrac{\uppartial J}{\uppartial
+                            \bm{\mathrm{x}}^{(0)}}$ を求めるために,
+                            以下の手続きをする
+                            <ol>
+                                <li class="fragment">
+                                    $\bm{\mathrm{x}}^{(0)}$ の推定値を使って
+                                    $t=0$ から $t_K$ まで非定常拡散方程式
+                                    $\dfrac{\uppartial c}{\uppartial
+                                    t}=D\dfrac{\uppartial^2 c}{\uppartial
+                                    x^2}+S_0$ のシミュレーションを行い,
+                                    $\bm{\mathrm{x}}^{(k)}$ ($k=0,1,\ldots K$)
+                                    を求めておく
+                                </li>
+                                <li class="fragment">
+                                    $\lambda(x,t_K)=0$ を初期条件として $t=t_K$
+                                    から $0$ まで (時間を逆向きに)
+                                    非定常拡散方程式の随伴方程式
+                                    \[-\dfrac{\uppartial
+                                    \lambda(x_i,t)}{\uppartial
+                                    t}=D\left.\dfrac{\uppartial^2
+                                    \lambda}{\uppartial
+                                    x^2}\right|_{x=x_i,t}+\sum_{k=0}^K[{}^t\mathsf{H}(\bm{d}^{(k)}-\mathsf{H}\bm{\mathrm{x}}^{(k)})]_i\delta(t-t_k)\]
+                                    のシミュレーションを行う (<strong
+                                        class="alert"
+                                        >測定データとの差を生成項として, $t=0$
+                                        まで伝播させるイメージ</strong
+                                    >;
+                                    ニューラルネットワークの誤差逆伝播法と似ている)
+                                </li>
+                                <li class="fragment">
+                                    変分 $\delta
+                                    J=J(\bm{\mathrm{x}}+\delta\bm{\mathrm{x}})-J(\bm{\mathrm{x}})$
+                                    を計算すると確認できるが, 上記の操作により
+                                    $\left.\dfrac{\uppartial J}{\uppartial
+                                    c}\right|_{x=x_i,t=0}=-\lambda(x_i,0)$
+                                    となっている
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        [例題3] 1次元拡散方程式のデータ同化
+                    </h2>
+                    <div class="flex-box">
+                        <div style="width: 60%">
+                            <ul>
+                                <li>まず, データ同化の準備</li>
+                                <li>
+                                    macro_3rd_adjoint.ipynb
+                                    の最初の「セル」(Step 0) を実行してください
+                                    <ul
+                                        class="fragment"
+                                        data-fragment-index="1"
+                                    >
+                                        <li>
+                                            正しい初期 $\ce{CO2}$ 濃度分布:
+                                            \[c(x,0)=5000\sin(\pi x/L) + 400\]
+                                            (<strong class="alert"
+                                                >これをデータ同化で求めたい</strong
+                                            >)
+                                        </li>
+                                        <li>
+                                            正しい初期分布を初期条件として拡散方程式のシミュレーションを実行し,
+                                            測定ノイズの代わりに乱数を加えて,
+                                            <strong class="alert"
+                                                >擬似的に測定データ (青点)
+                                                を生成</strong
+                                            >しています
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <p>Step 0</p>
+                            <figure class="fragment" data-fragment-index="1">
+                                <img src="./fig/step0.webp" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="./fig/enshu_1d_adjoint.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        [例題3] 1次元拡散方程式のデータ同化
+                    </h2>
+                    <div class="flex-box">
+                        <div style="width: 60%">
+                            <ul>
+                                <li>
+                                    ここからがデータ同化
+                                    <ul>
+                                        <li>
+                                            いま手元にあるのは, Step
+                                            0で生成した測定データ (青点) だけ
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    Step 1 の「セル」を実行してください
+                                    <ul>
+                                        <li>
+                                            てきとうな初期分布 \[c(x,0)=4500\]
+                                            を仮定して,
+                                            拡散方程式のシミュレーションを実行しています
+                                        </li>
+
+                                        <li>
+                                            この段階で,
+                                            <strong class="alert"
+                                                >シミュレーション結果と測定データの差</strong
+                                            >を計算しておきます
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <p>Step 1</p>
+                            <figure class="fragment" data-fragment-index="1">
+                                <img src="./fig/step1.webp" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="./fig/enshu_1d_adjoint.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        [例題3] 1次元拡散方程式のデータ同化
+                    </h2>
+                    <div class="flex-box">
+                        <div style="width: 60%">
+                            <ul>
+                                <li>
+                                    Step 2 の「セル」を実行してください
+                                    <ul
+                                        class="fragment"
+                                        data-fragment-index="1"
+                                    >
+                                        <li>
+                                            初期条件を $\lambda(x,t_K)=0$,
+                                            境界条件を
+                                            $\lambda(0,t)=\left.\dfrac{\uppartial
+                                            \lambda}{\uppartial
+                                            x}\right|_{x=L,t}=0$ として,
+                                            時間を逆向きに拡散方程式の随伴方程式をシミュレーションしています
+                                        </li>
+                                        <li>
+                                            測定器のある位置と測定されたタイミングに,
+                                            Step 1 で計算された<strong
+                                                class="alert"
+                                                >測定データとの差が生成項として注入され,
+                                                それを周囲と過去に伝播</strong
+                                            >させます
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <p>Step 2</p>
+                            <figure class="fragment" data-fragment-index="1">
+                                <img src="./fig/step2.webp" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="./fig/enshu_1d_adjoint.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2 class="r-fit-text">
+                        [例題3] 1次元拡散方程式のデータ同化
+                    </h2>
+                    <div class="flex-box">
+                        <div style="width: 60%">
+                            <ul>
+                                <li>
+                                    Step 2 が完了すると $\dfrac{\uppartial
+                                    J}{\uppartial \bm{\mathrm{x}}^{(0)}}$
+                                    が計算できるので,
+                                    最急降下法でより良い初期分布の推定値を計算します
+                                </li>
+                                <li class="fragment" data-fragment-index="1">
+                                    最後の「セル」を実行してください
+                                    <ul>
+                                        <li>
+                                            Step 1 と 2 を何度も反復すると,
+                                            どんどん良い推定値に近づいていきます
+                                        </li>
+                                        <li>
+                                            測定器が設置されていない端の方を除いて,
+                                            おおむね正しい初期分布が推定できました
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="note fragment">
+                                    正しい初期濃度分布や測定点の位置,
+                                    ノイズの大きさなどを変えて,
+                                    いろいろ試してみてください
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure class="fragment" data-fragment-index="1">
+                                <img src="./fig/adjoint.webp" alt="" />
+                            </figure>
+                            <figure>
+                                <img src="./fig/enshu_1d_adjoint.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-state="part4">
+                    <h2>課題について</h2>
+                    <ul>
+                        <li>
+                            マクロ系シミュレーション (総合演習2の33/100点)
+                            の課題は<strong class="important">加点方式</strong
+                            >で採点します (上限33点)
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの各回ごとに<strong
+                                class="alert"
+                                >小課題</strong
+                            >
+                            (1問あたり配点5-10点前後)
+                            とマクロ系シミュレーションの最終回に<strong
+                                class="alert"
+                                >最終課題</strong
+                            >
+                            (1問あたり配点5-30点前後) を出します
+                            <ul>
+                                <li>
+                                    自分ができそうな課題を選択し,
+                                    他の授業の忙しさを考慮して戦略的に提出してもらって構いません
+                                </li>
+                                <li>
+                                    小課題を提出しておくと,
+                                    最終課題の提出が楽になります
+                                </li>
+                                <li>
+                                    小課題を提出せずに,
+                                    最終課題だけ提出するのもアリです
+                                </li>
+                                <li>
+                                    好成績を狙っている人はたくさん課題を出してもらっても構いません
+                                    (ただし33点が上限)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの課題提出に,
+                            生成AIを活用しても構いませんが,
+                            内容を吟味してから提出してください
+                            <ul>
+                                <li>
+                                    どの生成AIモデルをどのように使ったか明記すること
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part4">
+                    <h2>第3回小課題</h2>
+                    <ul>
+                        <li>
+                            <b>[問3-1]</b>
+                            例題2のキャビティ流れにおける $\omega$
+                            の境界条件を完成させ,
+                            そのような条件になる理由を説明してください. また,
+                            第0回小課題[問0-1]を未提出の人は,
+                            これまでの演習で学んだことを踏まえ,
+                            [問0-1]に取り組んでください.
+                            第0回小課題[問0-1]を提出済みの人は,
+                            これまでの演習で学んだことを踏まえ,
+                            以前提出したレポートでの議論に不十分・不適切だった点があれば,
+                            それについて述べた短めのレポートを作成してください
+                            (配点5点)
+                        </li>
+                        <li>
+                            <b>[問3-2]</b>
+                            例題3で正しい初期濃度分布や測定点の位置,
+                            ノイズの大きさなどを変更した結果を提出してください
+                            (配点3点)
+                        </li>
+                        <li>
+                            $\LaTeX$ や Microsoft Word などで作成し, pdf
+                            形式でBEEF+から提出すること
+                            <ul>
+                                <li>
+                                    どの課題か分かるように問題番号をつけてください
+                                </li>
+                            </ul>
+                        </li>
+                        <li>第3回小課題の提出〆切: 2025/11/11 23:59</li>
+                    </ul>
+                </section>
+
+                <section data-state="part4">
+                    <h2>連絡事項</h2>
+                    <ul>
+                        <li>
+                            工学部情報知能工学科進路ガイダンス
+                            <ul>
+                                <li>
+                                    11/21 (金)
+                                    <strong class="important">必ず出席</strong>
+                                </li>
+                                <li>
+                                    詳細は BEEF+ にアップロードしたお知らせ pdf
+                                    を参照してください
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong class="important"
+                                >来週 (11/5) の総合演習2は,
+                                主にマクロ系シミュレーションの最終課題を取り組む時間にあてます</strong
+                            >
+                            <ul>
+                                <li>
+                                    <strong class="alert"
+                                        >最終課題の内容は, 11/5 までに BEEF+
+                                        に「マクロ系シミュレーション第4回資料」としてアップロードします</strong
+                                    >
+                                </li>
+                                <li>
+                                    11/5
+                                    の授業開始直後に最終課題の説明を行います
+                                </li>
+                                <li>この日は出席をとりません</li>
+                                <li>
+                                    わからないところがあれば,
+                                    ぜひ質問してください
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            再来週 (11/12) からは社会系シミュレーション (担当:
+                            バレ先生) が始まります
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 90%">
+                    <h2>Helmholtz 分解</h2>
+                    <ul style="margin-top: -2%">
+                        <li>
+                            任意の3次元ベクトル場 $\bm{\mathrm{V}}$ は, 保存場
+                            $-\grad\phi$ とソレノイダル場 $\rot \bm{A}$
+                            に分解できる \[\bm{\mathrm{V}}=-\grad\phi+\rot
+                            \bm{A}\]
+                            <ul>
+                                <li>
+                                    非圧縮流体の速度場 $\bm{v}$ は,
+                                    保存場の成分が常に $\bm{0}$
+                                    になっているベクトル場
+                                </li>
+                                <li>
+                                    流れが2次元的なら,
+                                    $\bm{v}=(v_x,v_y,0)=\rot(\psi\hat{\bm{e}}_z)$
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            (非圧縮) Navier-Stokes
+                            方程式もベクトルの方程式なので, もちろん Helmholtz
+                            分解できる
+                            <div style="font-size: 70%">
+                                \[\begin{align*} \cancel{\left(\frac{\uppartial
+                                \bm{v}}{\uppartial
+                                t}\right)_{\text{保存場成分}}}+\left(\frac{\uppartial
+                                \bm{v}}{\uppartial
+                                t}\right)_{\text{ソレノイダル場成分}}
+                                &=\left(-(\bm{v}\ip\grad)\bm{v}-\frac{1}{\rho}\grad
+                                p+\nu\nabla^2\bm{v}+\bm{F}\right)_{\text{保存場成分}}\\
+                                &+\left(-(\bm{v}\ip\grad)\bm{v}-\frac{1}{\rho}\grad
+                                p+\nu\nabla^2\bm{v}+\bm{F}\right)_{\text{ソレノイダル場成分}}\end{align*}\]
+                            </div>
+                            <ul>
+                                <li>
+                                    両辺の発散をとると $\div[\rot(\cdots)]=0$
+                                    より, 保存場成分からの寄与だけが残る
+                                </li>
+                                <li>
+                                    両辺の回転をとると $\rot[\grad(\cdots)]=0$
+                                    より,
+                                    ソレノイダル場成分からの寄与だけが残る
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5">
+                    <h2>トロイダル&ndash;ポロイダル分解</h2>
+                    <ul>
+                        <li>
+                            任意のソレノイダル場 $\bm{v}$ は, トロイダル場
+                            $\bm{v}_T$ とポロイダル場 $\bm{v}_P$ に分解できる
+                            \[\bm{v}=\bm{v}_T+\bm{v}_P\] ここで,
+                            $\bm{v}_T=\rot(T\bm{r})$,
+                            $\bm{v}_P=\rot[\rot(P\bm{r})]$,
+                            $\bm{r}=(x,y,z)=r\hat{\bm{e}}_r$
+                            <ul>
+                                <li>
+                                    2次元の問題の場合, $\bm{v}$
+                                    のゼロでない2つの成分 $(v_x,v_y)$
+                                    が1つのスカラー場 $\psi$ (流線関数)
+                                    を用いて表せたのと同様に,
+                                    3次元の問題の場合は $(v_x, v_y, v_z)$ を2
+                                    つのスカラー場 $T$, $P$ を用いて表せる
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            計算領域が球形など単純な形状でなければ扱いづらい
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5">
+                    <h2>MAC 法</h2>
+                    <ul>
+                        <li>以下, $\bm{v}^{(m)}\equiv\bm{v}(x,y,t_m)$ など</li>
+                        <li>
+                            現状, $\bm{v}^{(m)}$ と $\bm{F}^{(m)}$
+                            が求まっているとする. Euler 法より
+                            \[\frac{\bm{v}^{(m+1)}-\bm{v}^{(m)}}{\Updelta
+                            t}+(\bm{v}^{(m)}\ip\grad)\bm{v}^{(m)}
+                            =-\frac{1}{\rho}\grad
+                            p^{(m)}+\nu\nabla^2\bm{v}^{(m)}+\bm{F}^{(m)}\]
+                        </li>
+                        <li>
+                            この式の発散をとって, $\div\bm{v}^{(m+1)}=0$ より
+                            \[\nabla^2p^{(m)}=\rho\div\left[\frac{\bm{v}^{(m)}}{\Updelta
+                            t}-(\bm{v}^{(m)}\ip\grad)\bm{v}^{(m)}+\nu\nabla^2\bm{v}^{(m)}+\bm{F}^{(m)}\right]\]
+                            <ul>
+                                <li>
+                                    まず, この Poisson 方程式を解いて,
+                                    $p^{(m)}$ を求める. その後, 元の式から
+                                    $\bm{v}^{(m+1)}$ を計算する
+                                </li>
+                                <li>
+                                    誤差が生じている可能性を考慮し,
+                                    $\div\bm{v}^{(m)}=0$
+                                    は仮定しないまま計算する
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            変数ごとに格子点の位置をずらすスタッガード格子がよく用いられる
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5">
+                    <h2 class="r-fit-text">
+                        フラクショナルステップ法 (射影法)
+                    </h2>
+                    <ul>
+                        <li>
+                            現状, $\bm{v}^{(m)}$ と $\bm{F}^{(m)}$
+                            が求まっているとする. Euler 法より
+                            \[\frac{\bm{v}^{(m+1)}-\bm{v}^{(m)}}{\Updelta
+                            t}+(\bm{v}^{(m)}\ip\grad)\bm{v}^{(m)}
+                            =-\frac{1}{\rho}\grad
+                            p^{(m)}+\nu\nabla^2\bm{v}^{(m)}+\bm{F}^{(m)}\]
+                        </li>
+                        <li>
+                            この式を2つに分ける ($\div\bm{v}^{(m+1)}=0$,
+                            $\div\bm{v}^{(*)}\neq0$) \[\begin{align*}
+                            \begin{cases}
+                            \dfrac{\bm{v}^{(*)}-\bm{v}^{(m)}}{\Updelta
+                            t}+(\bm{v}^{(m)}\ip\grad)\bm{v}^{(m)}
+                            =\nu\nabla^2\bm{v}^{(m)}+\bm{F}^{(m)}\\[3pt]
+                            \dfrac{\bm{v}^{(m+1)}-\bm{v}^{(*)}}{\Updelta t}
+                            =-\dfrac{1}{\rho}\grad
+                            p^{(m)}\quad\xrightarrow{\text{発散}\,\,}\quad\nabla^2p^{(m)}=\rho\div\left[\dfrac{\bm{v}^{(*)}}{\Updelta
+                            t}\right] \end{cases} \end{align*}\]
+                            <ul>
+                                <li>
+                                    まず, 上の式から予測子 $\bm{v}^{(*)}$
+                                    を求める. 次に, Poisson 方程式を解いて,
+                                    $p^{(m)}$ を求める. 最後に, 下の式から
+                                    $\bm{v}^{(m+1)}$ を計算する
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            $\bm{v}^{(*)}=\bm{v}^{(m+1)}+(\Updelta t/\rho)\grad
+                            p^{(m)}$ という関係式は, $\bm{v}^{(*)}$ の
+                            Helmholtz 分解に対応 (圧力の項で $\bm{v}^{(*)}$
+                            の発散を除去)
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5">
+                    <h2>SMAC 法</h2>
+                    <ul>
+                        <li>
+                            現状, $\bm{v}^{(m)}$ と $\bm{F}^{(m)}$
+                            が求まっているとする. Euler 法より
+                            \[\frac{\bm{v}^{(m+1)}-\bm{v}^{(m)}}{\Updelta
+                            t}+(\bm{v}^{(m)}\ip\grad)\bm{v}^{(m)}
+                            =-\frac{1}{\rho}\grad
+                            p^{(m)}+\nu\nabla^2\bm{v}^{(m)}+\bm{F}^{(m)}\]
+                        </li>
+                        <li>
+                            この式を2つに分ける ($\div\bm{v}^{(m+1)}=0$,
+                            $\div\bm{v}^{(*)}\neq0$) \[\begin{align*}
+                            \begin{cases}
+                            \dfrac{\bm{v}^{(*)}-\bm{v}^{(m)}}{\Updelta
+                            t}+(\bm{v}^{(m)}\ip\grad)\bm{v}^{(m)}
+                            =-\dfrac{1}{\rho}\grad
+                            p^{(m-1)}+\nu\nabla^2\bm{v}^{(m)}+\bm{F}^{(m)}\\[3pt]
+                            \dfrac{\bm{v}^{(m+1)}-\bm{v}^{(*)}}{\Updelta t}
+                            =-\dfrac{1}{\rho}\grad \delta
+                            p^{(m)}\quad\xrightarrow{\text{発散}\,\,}\quad\nabla^2\delta
+                            p^{(m)}=\rho\div\left[\dfrac{\bm{v}^{(*)}}{\Updelta
+                            t}\right] \end{cases} \end{align*}\] ここで,
+                            $\delta p^{(m)}\equiv p^{(m)}-p^{(m-1)}$
+                            <ul>
+                                <li>
+                                    まず, 上の式から予測子 $\bm{v}^{(*)}$
+                                    を求める. 次に, Poisson 方程式を解いて,
+                                    $\delta p^{(m)}$ を求める. 最後に,
+                                    下の式から $\bm{v}^{(m+1)}$ を計算する
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 75%">
+                    <h2>HSMAC 法 (SOLA 法)</h2>
+                    <ul style="margin: -1% -1% auto -1%">
+                        <li>
+                            現状, $\bm{v}^{(m)}$ と $\bm{F}^{(m)}$
+                            が求まっているとする. Euler 法より
+                            \[\frac{\bm{v}^{(m+1)}-\bm{v}^{(m)}}{\Updelta
+                            t}+(\bm{v}^{(m)}\ip\grad)\bm{v}^{(m)}
+                            =-\frac{1}{\rho}\grad
+                            p^{(m)}+\nu\nabla^2\bm{v}^{(m)}+\bm{F}^{(m)}\]
+                        </li>
+                        <li>
+                            この式を以下のように分割する
+                            ($p^{(m)[0]}=p^{(m-1)}$) \[\begin{align*}
+                            \begin{cases}
+                            \dfrac{\bm{v}^{(m+1)[0]}-\bm{v}^{(m)}}{\Updelta
+                            t}+(\bm{v}^{(m)}\ip\grad)\bm{v}^{(m)}
+                            =-\dfrac{1}{\rho}\grad
+                            p^{(m-1)}+\nu\nabla^2\bm{v}^{(m)}+\bm{F}^{(m)}\\[3pt]
+                            \dfrac{\bm{v}^{(m+1)[k+1]}-\bm{v}^{(m+1)[k]}}{\Updelta
+                            t} =-\dfrac{1}{\rho}\grad
+                            \left(p^{(m)[k+1]}-p^{(m)[k]}\right)\quad(k=0,1,2,\ldots)\end{cases}
+                            \end{align*}\]
+                            <ul>
+                                <li>
+                                    $k=0,1,2,\ldots$ に対し,
+                                    $\div\bm{v}^{(m+1)[k+1]}=0$ を満たすような
+                                    $p^{(m)[k+1]}$ を求める操作を反復する
+                                    (Newton 法)
+                                    \[0=\div\bm{v}^{(m+1)[k+1]}=\div\bm{v}^{(m+1)[k]}+\frac{\uppartial
+                                    \div\bm{v}^{(m+1)[k]}}{\uppartial
+                                    p^{(m)[k]}}\left(p^{(m)[k+1]}-p^{(m)[k]}\right)\]
+                                    $k\geq1$ の場合, 最右辺第1項の
+                                    $\div\bm{v}^{(m+1)[k]}$ の計算には, 以下の
+                                    Taylor 展開を用いる
+                                    \[\bm{v}^{(m+1)[k]}=\bm{v}^{(m+1)[k-1]}+\frac{\uppartial
+                                    \bm{v}^{(m+1)[k-1]}}{\uppartial
+                                    p^{(m)[k-1]}}\left(p^{(m)[k]}-p^{(m)[k-1]}\right)\]
+                                    $(\uppartial \div\bm{v}/\uppartial p)$ と
+                                    $(\uppartial \bm{v}/\uppartial p)$
+                                    は空間方向にも差分をとった式から求まる
+                                    (定数)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 85%">
+                    <h2 class="r-fit-text">擬似圧縮性, divergence cleaning</h2>
+                    <ul style="margin-top: -1%">
+                        <li>
+                            擬似圧縮性法 (音速抑制法): (非圧縮) Navier-Stokes
+                            方程式 \[ \div\bm{v}=0\,,\quad \frac{\mathrm{D}
+                            \bm{v}}{\mathrm{D}t} =-\frac{1}{\rho}\grad
+                            p+\nu\nabla^2\bm{v}+\bm{F} \] の代わりに,
+                            以下のような方程式を解く \[\frac{\uppartial
+                            \tilde{\rho}}{\uppartial
+                            t}+\rho\div\bm{v}=0\,,\quad \frac{\mathrm{D}
+                            \bm{v}}{\mathrm{D}t} =-\frac{1}{\rho}\grad
+                            p+\nu\nabla^2\bm{v}+\bm{F} \]
+                            <ul>
+                                <li>
+                                    第1式は質量保存則と似た式になっており,
+                                    $\tilde{\rho}\equiv
+                                    p/\tilde{c}_\mathrm{s}^2$ は密度もどき,
+                                    $\tilde{c}_\mathrm{s}$
+                                    は擬似的な音速である.
+                                    $\tilde{c}_\mathrm{s}$ の大きさは CFL
+                                    条件を考慮して設定する
+                                </li>
+                                <li>
+                                    定常状態に達すると,
+                                    元の方程式の解と一致する
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            divergence cleaning: 電磁気学や磁気流体力学において
+                            \[ \div\bm{B}=0\,,\quad \frac{\uppartial
+                            \bm{B}}{\uppartial t} =-\rot\bm{E} \] の代わりに,
+                            補助変数 $\psi_\text{div}$ を導入して,
+                            以下のような方程式を解く \[ \frac{\uppartial
+                            \psi_\text{div}}{\uppartial
+                            t}+c_h^2\div\bm{B}=-\frac{c_h^2}{c_p^2}\psi_\text{div}\,,\quad
+                            \frac{\uppartial \bm{B}}{\uppartial t}
+                            =-\rot\bm{E}-\grad\psi_\text{div} \]
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part5" style="font-size: 65%">
+                    <h2 class="r-fit-text">
+                        アジョイント法の目的関数の変分について
+                    </h2>
+                    <ul>
+                        <li>
+                            スライド p.22 の目的関数を少し書き換えると
+                            <div style="font-size: 90%">
+                                \[J(\bm{\mathrm{x}})=\int_0^{t_K}\frac{1}{2}\sum_{k=0}^{K}||\bm{d}-\mathsf{H}\bm{\mathrm{x}}||_2\delta(t-t_k)\upd
+                                t+\int_0^{t_K}\upd t\int_{0}^{L}\upd
+                                x\lambda(x,t)\left(\frac{\uppartial
+                                c}{\uppartial t}-D\frac{\uppartial^2
+                                c}{\uppartial x^2}-S_0\right)\]
+                            </div>
+                        </li>
+                        <li>
+                            G&acirc;teaux 微分
+                            $\lim_{\varepsilon\to0}\dfrac{J(\bm{\mathrm{x}}+\varepsilon\delta\bm{\mathrm{x}})-J(\bm{\mathrm{x}})}{\varepsilon}$
+                            により1次の変分を計算すると
+                            <div style="font-size: 90%">
+                                \[\delta
+                                J=\int_0^{t_K}\frac{1}{2}\sum_{k=0}^{K}{}^t\delta\bm{\mathrm{x}}\frac{\uppartial||\bm{d}-\mathsf{H}\bm{\mathrm{x}}||_2}{\uppartial\bm{\mathrm{x}}}\delta(t-t_k)\upd
+                                t+\int_0^{t_K}\upd t\int_{0}^{L}\upd
+                                x\lambda(x,t)\left(\frac{\uppartial \delta
+                                c}{\uppartial t}-D\frac{\uppartial^2 \delta
+                                c}{\uppartial x^2}\right)\]
+                            </div>
+                        </li>
+                        <li>
+                            $\dfrac{\uppartial||\bm{d}-\mathsf{H}\bm{\mathrm{x}}||_2}{\uppartial\bm{\mathrm{x}}}=-2{}^t\mathsf{H}(\bm{d}-\mathsf{H}\bm{\mathrm{x}})$
+                            と部分積分を用いると
+                            <div style="font-size: 90%">
+                                \[\begin{align*}\delta
+                                J&=-\int_0^{t_K}\sum_{k=0}^{K}{}^t\delta\bm{\mathrm{x}}{}^t\mathsf{H}(\bm{d}-\mathsf{H}\bm{\mathrm{x}})\delta(t-t_k)\upd
+                                t+\int_0^{t_K}\upd t\int_{0}^{L}\upd x\delta
+                                c\left(-\frac{\uppartial \lambda}{\uppartial
+                                t}-D\frac{\uppartial^2 \lambda}{\uppartial
+                                x^2}\right)\\ &\qquad+\left[\int_0^{L}\lambda
+                                \delta c\upd
+                                x\right]_0^{t_k}+\left[\int_0^{t_k}D\left(\frac{\uppartial\lambda}{\uppartial
+                                x}\delta c-\lambda\frac{\uppartial\delta
+                                c}{\uppartial x}\right)\upd
+                                t\right]_0^L\end{align*}\]
+                            </div>
+                        </li>
+                        <li>
+                            ここで, $\lambda(x,t_k)=0$, $\delta
+                            c(0,t)=\left.\dfrac{\uppartial c}{\uppartial
+                            x}\right|_{x=L,t}=0$,
+                            $\lambda(0,t)=\left.\dfrac{\uppartial
+                            \lambda}{\uppartial x}\right|_{x=L,t}=0$ とすると
+                            <div style="font-size: 90%">
+                                \[\delta
+                                J=-\int_0^{t_K}\sum_{k=0}^{K}{}^t\delta\bm{\mathrm{x}}{}^t\mathsf{H}(\bm{d}-\mathsf{H}\bm{\mathrm{x}})\delta(t-t_k)\upd
+                                t+\int_0^{t_K}\upd t\int_{0}^{L}\upd x\delta
+                                c\left(-\frac{\uppartial \lambda}{\uppartial
+                                t}-D\frac{\uppartial^2 \lambda}{\uppartial
+                                x^2}\right)-\int_0^{L}\lambda(x,0)\delta
+                                c(x,0)\upd x\]
+                            </div>
+                            <ul>
+                                <li>
+                                    空間積分を矩形公式で近似し,
+                                    随伴方程式が成り立つとすると,
+                                    $\left.\dfrac{\uppartial J}{\uppartial
+                                    c}\right|_{x=x_i,t=0}=-\lambda(x_i,0)$
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="../reveal.js-master/dist/reveal.js"></script>
+        <!-- <script src="../reveal.js-master/plugin/zoom/zoom.js"></script> -->
+        <script>
+            Reveal.initialize({
+                controlsLayout: "edges",
+                hash: true,
+                scrollActivationWidth: null,
+                width: 960,
+                height: 700,
+                margin: 0.2,
+
+                slideNumber: (slide) => {
+                    return [
+                        Reveal.getIndices(slide).h,
+                        "/",
+                        Reveal.getHorizontalSlides(slide).length - 1,
+
+                        // Reveal.getIndices(slide).h + 1,
+                        // "/",
+                        // Reveal.getHorizontalSlides(slide).length,
+                    ];
+                },
+
+                plugins: [
+                    RevealHighlight,
+                    // Reveal.Zoom,
+                ],
+            });
+        </script>
+        <script src="./main.js"></script>
+    </body>
+</html>
