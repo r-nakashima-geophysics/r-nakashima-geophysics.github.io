@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reset.css" />
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/dist/theme/simple.css"
+        />
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="../../fontawesome-free-7.0.0-web/css/all.min.css"
+        />
+        <script
+            src="https://kit.fontawesome.com/29824876ec.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- MathJax version 3 -->
+        <script src="./mathjax_config.js" defer></script>
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- TikZJax -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://tikzjax.com/v1/fonts.css"
+        />
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+
+        <!-- Theme used for syntax highlighted code -->
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/plugin/highlight/monokai.css"
+        />
+        <script src="../../reveal.js-master/plugin/highlight/highlight.js"></script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>総合演習2 (2025年度)</h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        <time datetime="2025-11-05">2025-11-05</time>
+                    </p>
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">1. はじめに</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2.
+                            最終課題について</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (神戸大・シス情) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;panda.kobe-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by&nbsp;
+                        <a href="https://revealjs.com" target="_blank"
+                            ><img
+                                src="https://static.slid.es/reveal/logo-v1/reveal-white-text.svg"
+                                alt="Powered by reveal.js"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -7px 0;
+                                    padding: 0;
+                                "
+                                class="demo-logo"
+                        /></a>
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -10px 0;
+                                    padding: 0;
+                                "
+                        /></a>
+                        <!-- /
+                        <a href="https://tikzjax.com" target="_blank"
+                            >TikZJax</a
+                        > -->
+                        /
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                        <!-- /
+                        <a href="https://www.chartjs.org"
+                            >Chart.js
+                            <img
+                                src="https://www.chartjs.org/img/chartjs-logo.svg"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -5px 0;
+                                    padding: 0;
+                                "
+                        /></a> -->
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide">
+                    <p>2025年度</p>
+                    <h2 class="r-fit-text">
+                        総合演習2<br />
+                        マクロ系シミュレーション<br />
+                        (第4回)
+                    </h2>
+                    <p>
+                        <i class="fas fa-microphone"></i> 中島 涼輔
+                        (システム情報)<br />
+                        @ NSSOL Lab.<br />
+                        2025/11/05
+                    </p>
+                </section>
+
+                <section data-state="part1">
+                    <h2 class="r-fit-text">マクロ系シミュレーションの予定</h2>
+                    <ul>
+                        <li class="small" style="color: gray">
+                            第0回 (2025/10/01)
+                            <ul>
+                                <li>概要</li>
+                            </ul>
+                        </li>
+                        <li class="small" style="color: gray">
+                            第1回 (2025/10/08)
+                            <ul>
+                                <li>偏微分方程式の数値解法</li>
+                                <li>
+                                    楕円型方程式 (定常拡散方程式)
+                                    のシミュレーション
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="small" style="color: gray">
+                            第2回 (2025/10/22)
+                            <ul>
+                                <li>
+                                    放物型方程式 (非定常拡散方程式)
+                                    のシミュレーション
+                                </li>
+                                <li>
+                                    双曲型方程式 (移流方程式)
+                                    のシミュレーション
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="small" style="color: gray">
+                            第3回 (2025/10/29)
+                            <ul>
+                                <li>
+                                    ソレノイダル場 (非圧縮流体)
+                                    のシミュレーション
+                                </li>
+                                <li>逆問題, データ同化</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong class="alert">第4回 (2025/11/05)</strong>
+                            <ul>
+                                <li>
+                                    <strong class="alert">質問・課題</strong>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>最終課題について</h2>
+                    <ul>
+                        <li>
+                            マクロ系シミュレーション (総合演習2の33/100点)
+                            の課題は<strong class="important">加点方式</strong
+                            >で採点します (<strong class="alert"
+                                >小課題の点数+最終課題の点数</strong
+                            >, 上限33点)
+                            <ul>
+                                <li>
+                                    好成績を狙っている人はたくさん課題を出してもらっても構いません
+                                    (ただし33点が上限)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            マクロ系シミュレーションの課題提出に,
+                            生成AIを活用しても構いませんが,
+                            <strong class="important"
+                                >内容を吟味してから</strong
+                            >提出してください
+                            <ul>
+                                <li>
+                                    どの生成AIモデルをどのように使ったか明記すること
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            $\LaTeX$ や Microsoft Word などで作成し, pdf
+                            形式でBEEF+から提出すること
+                            <ul>
+                                <li>
+                                    どの課題か分かるように問題番号をつけてください
+                                </li>
+                            </ul>
+                        </li>
+                        <li>最終課題の提出〆切: 2025/12/02 23:59</li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>最終課題1 (配点5+10点)</h2>
+                    <div class="flex-box">
+                        <div style="width: 60%">
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git"
+                                        target="_blank"
+                                        >https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</a
+                                    >
+                                    から macro_4th_cavity.ipynb
+                                    をダウンロードしてください
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure>
+                                <img src="./fig/cavity_2.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>このプログラムコードにはコメント文がありません</li>
+                        <li>
+                            変数や計算手法を説明するコメント文を対応する箇所に追記した
+                            .ipynb ファイルを提出してください (配点5点)
+                            <ul>
+                                <li>
+                                    アニメーション生成の部分のコメント文は不要です
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            ただし, コメント文 (または, docstring)
+                            に計算手法の詳細や特徴, 注意点,
+                            プログラムコードの使い方なども記載した場合は,
+                            内容の詳しさによって最大でプラス10点します
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2" style="font-size: 77%">
+                    <h2>最終課題2 (配点15+5点)</h2>
+                    <div class="flex-box" style="margin-top: -3%">
+                        <div style="width: 40%">
+                            <figure>
+                                <img src="./fig/reactor.svg" alt="" />
+                            </figure>
+                        </div>
+                        <div style="width: 60%">
+                            <p>1次元定常移流拡散方程式</p>
+                            \[U\frac{\upd c}{\upd x}=D\frac{\upd^2 c}{\upd
+                            x^2}+S_c\]
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>
+                            化学物質の製造で用いられる管型反応器を1次元定常移流拡散方程式でモデル化する
+                            <ul>
+                                <li>
+                                    原料の濃度を $c(x)$,
+                                    原料を反応器に流す速度を $U$ (定数),
+                                    拡散係数を $D$, 反応器の長さを $L$ とする.
+                                    ここで考える反応は1次反応だとすると,
+                                    反応速度定数 $k$ を用いて, 生成(消滅)項は
+                                    $S_c=-kc$ と表される
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            境界条件は, 以下の Danckwerts の境界条件が課される
+                            ($c_\text{in}$ は定数)
+                            \[Uc_\text{in}=Uc(x=0)-D\left.\frac{\upd c}{\upd
+                            x}\right|_{x=0}\,,\qquad\left.\frac{\upd c}{\upd
+                            x}\right|_{x=L}=0\]
+                        </li>
+                        <li>
+                            これらに対する差分式
+                            (中心差分でも風上差分でもどちらでも可) を求め,
+                            どのような連立方程式を解けば良いかを示したレポートを作成してください
+                            (配点7点)
+                        </li>
+                        <li>
+                            また,
+                            <a
+                                href="https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git"
+                                target="_blank"
+                                >https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</a
+                            >
+                            から未完成のプログラムコード
+                            macro_4th_reactor.ipynb をダウンロードし,
+                            完成させて提出してください (配点8点)
+                        </li>
+                        <li>
+                            さらに解析解を導出し,
+                            数値解と解析解が比較されていると, プラス5点します
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2" style="font-size: 75%">
+                    <h2>最終課題3 (配点15点)</h2>
+                    <div class="flex-box" style="margin-top: -2%">
+                        <div style="width: 60%">
+                            <ul>
+                                <li>
+                                    非定常シミュレーションにおいて,
+                                    数値的安定性の条件が厳しく,
+                                    陽解法でのシミュレーションが困難な場合は,
+                                    陰解法が有効である
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%">
+                            <figure>
+                                <img src="./fig/enshu_1d.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            特に, 拡散現象を伴うシミュレーションにおいては,
+                            <strong class="alert"
+                                >Crank&ndash;Nicolson 法</strong
+                            >がよく用いられる. 例えば, $x=0$ に窓, $x=L$
+                            に壁がある 1 次元で近似できる部屋を考え, そこでの
+                            $\ce{CO2}$ 濃度をシミュレートする場合, $(x_i, t_m)$
+                            における差分式は
+                            \[\frac{c_i^{(m+1)}-c_i^{(m)}}{\Delta
+                            t}=\frac{D}{2}\left(\frac{c_{i+1}^{(m)}-2c_i^{(m)}+c_{i-1}^{(m)}}{\Delta
+                            x^2}+\frac{c_{i+1}^{(m+1)}-2c_i^{(m+1)}+c_{i-1}^{(m+1)}}{\Delta
+                            x^2}\right)+S_0\] と表される. ここで, 生成項 $S_0$
+                            は定数だと仮定した. 左辺が $t=t_{m+1}$
+                            ($=t_m+\Delta t$) での値を含む項,
+                            右辺がそれ以外の項となるように整理すると,
+                            $\mathsf{A}\bm{\mathrm{x}}^{(m+1)}=\bm{b}(\bm{\mathrm{x}}^{(m)})$
+                            という連立方程式の形で表せ,
+                            これを解くことにより時刻を $\Delta t$
+                            だけ進めることができる
+                            <ul>
+                                <li>
+                                    この行列 $\bm{A}$ とベクトル $\bm{b}$ は,
+                                    どのようなものになるかを示したレポートを提出してください
+                                    (配点5点)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            また,
+                            <a
+                                href="https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git"
+                                target="_blank"
+                                >https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</a
+                            >
+                            から macro_4th_diffusion1d.ipynb をダウンロードし,
+                            時間発展の計算部分を Euler 法から
+                            Crank&ndash;Nicolson 法へと変更したプログラムコード
+                            (.ipynb ファイル) を提出してください (配点10点)
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2" style="font-size: 78%">
+                    <h2>最終課題4 (配点30点)</h2>
+                    <div class="flex-box">
+                        <div style="width: 70%">
+                            <ul>
+                                <li>
+                                    温められた水や空気は,
+                                    熱膨張により密度が小さくなり上昇する.
+                                    反対に, 冷やされた水や空気は下降する.
+                                    このような現象は熱対流と呼ばれる
+                                </li>
+                                <li>
+                                    $y$ 方向負の向きに重力がはたらくとして,
+                                    2次元 $(x,y)$
+                                    で近似できる容器内での熱対流をシミュレーションしたい.
+                                    水や空気の体積 (密度)
+                                    が大きく変化しないと近似できる場合,
+                                    熱対流を支配する方程式は渦度&ndash;流線関数法を用いて,
+                                    以下のように表される
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 30%">
+                            <figure>
+                                <img src="./fig/convection.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="flex-box" style="margin: auto -5%">
+                        <div style="width: 50%; font-size: 65%">
+                            \[ \begin{align*} \frac{\uppartial v_x}{\uppartial
+                            t}+\left(v_x\frac{\uppartial}{\uppartial
+                            x}+v_y\frac{\uppartial}{\uppartial
+                            y}\right)v_x&=-\frac{1}{\rho}\frac{\uppartial
+                            p}{\uppartial
+                            x}+\nu\left(\frac{\uppartial^2}{\uppartial
+                            x^2}+\frac{\uppartial^2}{\uppartial
+                            y^2}\right)v_x\\ \frac{\uppartial v_y}{\uppartial
+                            t}+\left(v_x\frac{\uppartial}{\uppartial
+                            x}+v_y\frac{\uppartial}{\uppartial
+                            y}\right)v_y&=-\frac{1}{\rho}\frac{\uppartial
+                            p}{\uppartial
+                            y}+\nu\left(\frac{\uppartial^2}{\uppartial
+                            x^2}+\frac{\uppartial^2 }{\uppartial
+                            y^2}\right)v_y+\alpha gT\\ \frac{\uppartial
+                            v_x}{\uppartial x}+\frac{\uppartial v_y}{\uppartial
+                            y}&=0\\ \frac{\uppartial T}{\uppartial
+                            t}+\left(v_x\frac{\uppartial}{\uppartial
+                            x}+v_y\frac{\uppartial}{\uppartial
+                            y}\right)T&=\kappa\left(\frac{\uppartial^2}{\uppartial
+                            x^2}+\frac{\uppartial^2 }{\uppartial y^2}\right)T
+                            \end{align*}\]
+                        </div>
+                        <p>&rarr;</p>
+                        <div style="width: 50%; font-size: 70%">
+                            \[\begin{align*} \frac{\uppartial\omega}{\uppartial
+                            t}+\left(v_x\frac{\uppartial}{\uppartial
+                            x}+v_y\frac{\uppartial}{\uppartial
+                            y}\right)\omega&=\nu\left(\frac{\uppartial^2}{\uppartial
+                            x^2}+\frac{\uppartial^2}{\uppartial
+                            y^2}\right)\omega+\alpha g\frac{\uppartial
+                            T}{\uppartial x}\\
+                            \left(\frac{\uppartial^2}{\uppartial
+                            x^2}+\frac{\uppartial^2}{\uppartial
+                            y^2}\right)\psi&=-\omega\,,\quad
+                            v_x=\frac{\uppartial\psi}{\uppartial y},\quad
+                            v_y=-\frac{\uppartial\psi}{\uppartial x}\\
+                            \frac{\uppartial T}{\uppartial
+                            t}+\left(v_x\frac{\uppartial}{\uppartial
+                            x}+v_y\frac{\uppartial}{\uppartial
+                            y}\right)T&=\kappa\left(\frac{\uppartial^2}{\uppartial
+                            x^2}+\frac{\uppartial^2 }{\uppartial y^2}\right)T
+                            \end{align*}\]
+                        </div>
+                    </div>
+                    <p class="small" style="margin: 1% auto">
+                        ここで, $(v_x,v_y)$ は流速, $\psi$ は流線関数, $\omega$
+                        は渦度, $T$ は温度, $p$ は圧力, $\rho$ は密度 (定数),
+                        $\nu$ は動粘性係数 (定数), $\alpha$ は熱膨張率 (定数),
+                        $g$ は重力加速度 (定数), $\kappa$ は熱拡散率 (定数)
+                        である
+                    </p>
+                    <p style="margin: -2% 0 auto 75%">[次ページに続く]</p>
+                </section>
+
+                <section data-state="part2" style="font-size: 75%">
+                    <h2>最終課題4 [つづき] (配点30点)</h2>
+                    <div class="flex-box">
+                        <div style="width: 70%">
+                            <ul>
+                                <li>
+                                    境界条件は以下とする ($T_\text{top}$ と
+                                    $T_\text{bottom}$ は定数,
+                                    $T_\text{top}&lt;T_\text{bottom}$)
+                                    \[\begin{align*} u_x&=u_y=0\,,\quad
+                                    T=T_\text{top} \qquad (\text{上端}; 0\leq
+                                    x\leq L,\,y=L)\\ u_x&=u_y=0\,,\quad
+                                    \frac{\uppartial T}{\uppartial x}=0 \qquad
+                                    (\text{左端}; x=0,\,0\leq y\leq L)\\
+                                    u_x&=u_y=0\,,\quad \frac{\uppartial
+                                    T}{\uppartial x}=0 \qquad (\text{右端};
+                                    x=L,\,0\leq y\leq L)\\ u_x&=u_y=0\,,\quad
+                                    T=T_\text{bottom} \qquad (\text{下端};
+                                    0\leq x\leq L,\,y=L) \end{align*}\]
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width: 30%">
+                            <figure>
+                                <img src="./fig/convection.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            マクロ系シミュレーション第3回資料 p.13&ndash;14
+                            を参考に,
+                            熱対流を支配する方程式の計算手順を説明してください
+                            (配点7点)
+                        </li>
+                        <li>
+                            また,
+                            <a
+                                href="https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git"
+                                target="_blank"
+                                >https://github.com/r-nakashima-geophysics/2025-sogoenshu2-macro.git</a
+                            >
+                            から未完成のプログラムコード
+                            macro_4th_convection.ipynb をダウンロードし,
+                            完成させて提出してください (配点16点)
+                        </li>
+                        <li>
+                            さらに,
+                            5パターン以上のパラメータの組み合わせで計算を行った結果を整理し,
+                            その結果だけからわかることを論じた短めのレポートを作成してください
+                            (配点7点)
+                            <ul>
+                                <li>
+                                    この問題を特徴づける無次元数は, Rayleigh 数
+                                    $Ra$ と Prandtl 数 $Pr$ \[Ra=\frac{\alpha
+                                    g(T_\text{bottom}-T_\text{top})L^3}{\nu
+                                    \kappa}\,,\quad Pr=\frac{\nu}{\kappa}\]
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2" style="font-size: 71%">
+                    <h2>最終課題5 (配点10点)</h2>
+                    <ul>
+                        <li>
+                            金属加工において, 液体金属を固化させる際に,
+                            成分が均一になるよう攪拌する必要がある. そこで,
+                            金属の電気伝導性を利用して, Lorentz
+                            力によってかき混ぜる方法がある (電磁攪拌という).
+                            このような場合,
+                            流体の方程式の他に電磁気学的な効果も考慮する必要がある
+                            (磁気流体力学という).
+                            同様に宇宙プラズマなどにおいても,
+                            電磁気学的な効果を含めた流体現象が研究されている
+                        </li>
+                        <li>
+                            現象が2次元的であり, さらに非圧縮
+                            (体積が大きく変化しない) が仮定できるとき,
+                            磁気流体力学の方程式は以下のようになる
+                            <div style="font-size: 60%">
+                                \[ \begin{align*} \frac{\uppartial
+                                v_x}{\uppartial
+                                t}+\left(v_x\frac{\uppartial}{\uppartial
+                                x}+v_y\frac{\uppartial}{\uppartial
+                                y}\right)v_x&=-\frac{1}{\rho}\frac{\uppartial
+                                p}{\uppartial
+                                x}+\nu\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial^2}{\uppartial
+                                y^2}\right)v_x-\frac{j B_y}{\rho}\,,\qquad j =
+                                \frac{1}{\mu} \left( \frac{\partial
+                                B_y}{\partial x} - \frac{\partial B_x}{\partial
+                                y} \right) \\ \frac{\uppartial v_y}{\uppartial
+                                t}+\left(v_x\frac{\uppartial}{\uppartial
+                                x}+v_y\frac{\uppartial}{\uppartial
+                                y}\right)v_y&=-\frac{1}{\rho}\frac{\uppartial
+                                p}{\uppartial
+                                y}+\nu\left(\frac{\uppartial^2}{\uppartial
+                                x^2}+\frac{\uppartial^2 }{\uppartial
+                                y^2}\right)v_y+\frac{j B_x}{\rho}\\
+                                \frac{\uppartial v_x}{\uppartial
+                                x}+\frac{\uppartial v_y}{\uppartial y}&=0\\
+                                \frac{\partial B_x}{\partial t} &=
+                                \frac{\partial}{\partial y} (v_xB_y-v_yB_x) +
+                                \frac{1}{\sigma \mu} \left(
+                                \frac{\partial^2}{\partial x^2} +
+                                \frac{\partial^2}{\partial y^2} \right)B_x, \\
+                                \frac{\partial B_y}{\partial t} &=-
+                                \frac{\partial}{\partial x} (v_xB_y-v_yB_x) +
+                                \frac{1}{\sigma \mu} \left(
+                                \frac{\partial^2}{\partial x^2} +
+                                \frac{\partial^2}{\partial y^2} \right)B_y\\
+                                \frac{\uppartial B_x}{\uppartial
+                                x}+\frac{\uppartial B_y}{\uppartial y}&=0
+                                \end{align*}\]
+                            </div>
+                        </li>
+                    </ul>
+                    <p class="small" style="margin: -1% auto 1% auto">
+                        ここで, $(v_x,v_y)$ は流速, $(B_x,B_y)$ は磁場, $p$
+                        は圧力, $j$ は電流密度, $\rho$ は密度 (定数), $\nu$
+                        は動粘性係数 (定数), $\mu$ は透磁率 (定数), $\sigma$
+                        は電気伝導度 (定数) である
+                    </p>
+                    <ul>
+                        <li>
+                            これらの方程式に対し,
+                            渦度&ndash;流線関数法を適用すると,
+                            どのような偏微分方程式になるか導出してください.
+                            ただし,
+                            磁場のソレノイダル条件を常に満たしながらシミュレーションが行える方程式系にすること.
+                            圧力のPoisson方程式の導出は不要です (配点10点)
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>最終課題6 (配点3点)</h2>
+                    <ul>
+                        <li>
+                            総合演習2のマクロ系シミュレーションの感想を提出してください
+                            (配点1点)
+                        </li>
+                        <li>
+                            <s>中島がクビにならなければ,</s>
+                            来年度も総合演習2のマクロ系シミュレーションを担当すると思います.
+                            改善点を提出してください (配点1点)
+                        </li>
+                        <li>
+                            その他,
+                            総合演習2のマクロ系シミュレーションに関して頑張ったことのアピールがあれば,
+                            その証拠 (手書きノートの写真やプログラムコードなど)
+                            とともに提出してください (配点1点)
+                        </li>
+                        <li>
+                            ただし,「特になし」など中身がないものは $0$
+                            点とします
+                        </li>
+                        <li>最終課題6に対しては, 生成AIの使用を禁止します</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="../../reveal.js-master/dist/reveal.js"></script>
+        <!-- <script src="../../reveal.js-master/plugin/zoom/zoom.js"></script> -->
+        <script>
+            Reveal.initialize({
+                controlsLayout: "edges",
+                hash: true,
+                scrollActivationWidth: null,
+                width: 960,
+                height: 700,
+                margin: 0.2,
+
+                slideNumber: (slide) => {
+                    return [
+                        Reveal.getIndices(slide).h,
+                        "/",
+                        Reveal.getHorizontalSlides(slide).length - 1,
+
+                        // Reveal.getIndices(slide).h + 1,
+                        // "/",
+                        // Reveal.getHorizontalSlides(slide).length,
+                    ];
+                },
+
+                plugins: [
+                    RevealHighlight,
+                    // Reveal.Zoom,
+                ],
+            });
+        </script>
+        <script src="./main.js"></script>
+    </body>
+</html>
