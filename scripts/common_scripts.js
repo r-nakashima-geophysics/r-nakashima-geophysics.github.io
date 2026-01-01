@@ -92,8 +92,8 @@ window.addEventListener("DOMContentLoaded", () => {
     elementSmall.appendChild(elementTimeStart);
     elementSmall.appendChild(document.createTextNode("-"));
     const elementTimeEnd = document.createElement("time");
-    elementTimeEnd.setAttribute("datetime", "2025");
-    elementTimeEnd.textContent = "2025";
+    elementTimeEnd.setAttribute("datetime", "2026");
+    elementTimeEnd.textContent = "2026";
     elementSmall.appendChild(elementTimeEnd);
 
     const elementFooter = document.querySelectorAll("footer");
