@@ -77,13 +77,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const elementFragment = new DocumentFragment();
 
     // 検索結果下の説明書き //
-    const elementMetaContent = document.createElement("meta");
-    elementMetaContent.setAttribute("name", "description");
-    elementMetaContent.setAttribute(
+    const elementMetaDescription = document.createElement("meta");
+    elementMetaDescription.setAttribute("name", "description");
+    elementMetaDescription.setAttribute(
         "content",
         "Ryosuke Nakashima (中島 涼輔)'s Home Page"
     );
-    elementFragment.appendChild(elementMetaContent);
+    elementFragment.appendChild(elementMetaDescription);
 
     // Font Awesome Kit //
     const elementScriptFontAwesome = document.createElement("script");
@@ -103,6 +103,12 @@ window.addEventListener("DOMContentLoaded", () => {
         "https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
     );
     elementFragment.appendChild(elementLinkAcademicons);
+
+    // 電話番号の自動リンク無効化 //
+    const elementMetaFormatDetection = document.createElement("meta");
+    elementMetaFormatDetection.setAttribute("name", "format-detection");
+    elementMetaFormatDetection.setAttribute("content", "telephone=no");
+    elementFragment.appendChild(elementMetaFormatDetection);
 
     document.head.appendChild(elementFragment);
 });
