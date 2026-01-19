@@ -9,22 +9,22 @@
 
     // Google Fonts //
     const elementLinkGoogleFonts = new Array(3).fill(
-        document.createElement("link")
+        document.createElement("link"),
     );
     elementLinkGoogleFonts[0].setAttribute("rel", "preconnect");
     elementLinkGoogleFonts[0].setAttribute(
         "href",
-        "https://fonts.googleapis.com"
+        "https://fonts.googleapis.com",
     );
     elementLinkGoogleFonts[1].setAttribute("rel", "preconnect");
     elementLinkGoogleFonts[1].setAttribute(
         "href",
-        "https://fonts.gstatic.com"
+        "https://fonts.gstatic.com",
     );
     elementLinkGoogleFonts[1].setAttribute("crossorigin", "true");
     elementLinkGoogleFonts[2].setAttribute(
         "href",
-        "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"
+        "https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap",
     );
     elementLinkGoogleFonts[2].setAttribute("rel", "stylesheet");
     for (const element of elementLinkGoogleFonts) {
@@ -46,18 +46,24 @@
     elementMetaViewport.setAttribute("name", "viewport");
     elementMetaViewport.setAttribute(
         "content",
-        "width=device-width, initial-scale=1"
+        "width=device-width, initial-scale=1",
     );
     elementFragment.appendChild(elementMetaViewport);
 
+    // 電話番号の自動リンク無効化 //
+    const elementMetaFormatDetection = document.createElement("meta");
+    elementMetaFormatDetection.setAttribute("name", "format-detection");
+    elementMetaFormatDetection.setAttribute("content", "telephone=no");
+    elementFragment.appendChild(elementMetaFormatDetection);
+
     // Google tag (gtag.js) //
     const elementScriptGoogleAnalytics = new Array(2).fill(
-        document.createElement("script")
+        document.createElement("script"),
     );
     elementScriptGoogleAnalytics[0].setAttribute("async", "async");
     elementScriptGoogleAnalytics[0].setAttribute(
         "src",
-        "https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        "https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53",
     );
     elementScriptGoogleAnalytics[1].textContent = `
         window.dataLayer = window.dataLayer || [];
@@ -81,7 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
     elementMetaDescription.setAttribute("name", "description");
     elementMetaDescription.setAttribute(
         "content",
-        "Ryosuke Nakashima (中島 涼輔)'s Home Page"
+        "Ryosuke Nakashima (中島 涼輔)'s Home Page",
     );
     elementFragment.appendChild(elementMetaDescription);
 
@@ -89,7 +95,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const elementScriptFontAwesome = document.createElement("script");
     elementScriptFontAwesome.setAttribute(
         "src",
-        "https://kit.fontawesome.com/29824876ec.js"
+        "https://kit.fontawesome.com/29824876ec.js",
     );
     elementScriptFontAwesome.setAttribute("crossorigin", "anonymous");
     elementFragment.appendChild(elementScriptFontAwesome);
@@ -100,15 +106,9 @@ window.addEventListener("DOMContentLoaded", () => {
     elementLinkAcademicons.setAttribute("rel", "stylesheet");
     elementLinkAcademicons.setAttribute(
         "href",
-        "https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+        "https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css",
     );
     elementFragment.appendChild(elementLinkAcademicons);
-
-    // 電話番号の自動リンク無効化 //
-    const elementMetaFormatDetection = document.createElement("meta");
-    elementMetaFormatDetection.setAttribute("name", "format-detection");
-    elementMetaFormatDetection.setAttribute("content", "telephone=no");
-    elementFragment.appendChild(elementMetaFormatDetection);
 
     document.head.appendChild(elementFragment);
 });
