@@ -108,7 +108,7 @@ window.addEventListener("DOMContentLoaded", () => {
     for (const nav of arrayNav) {
         if (
             url.match(
-                /r-nakashima-geophysics(\.github\.io|)(\/$|\/index\.html)/
+                /r-nakashima-geophysics(\.github\.io|)(\/$|\/index\.html)/,
             )
         ) {
             const elementNav = document.getElementById("nav_home");

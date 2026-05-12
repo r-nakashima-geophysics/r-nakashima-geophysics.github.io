@@ -17,10 +17,7 @@
         "https://fonts.googleapis.com",
     );
     elementLinkGoogleFonts[1].setAttribute("rel", "preconnect");
-    elementLinkGoogleFonts[1].setAttribute(
-        "href",
-        "https://fonts.gstatic.com",
-    );
+    elementLinkGoogleFonts[1].setAttribute("href", "https://fonts.gstatic.com");
     elementLinkGoogleFonts[1].setAttribute("crossorigin", "true");
     elementLinkGoogleFonts[2].setAttribute(
         "href",
