@@ -121,8 +121,10 @@ Reveal.on("pdf-ready", () => {
             "text-align: start; position: absolute; bottom: 0; zoom: 0.9;";
 
         let elementSection = elementPdfPage.querySelector("section");
-        elementSection.style.height = "100%";
-        elementSection.style.top = "100px";
+        const elementsContent = elementSection.children;
+        for (const element of elementsContent) {
+            element.style.zoom = "0.9";
+        }
 
         let elementNav = cloneElementHeader.querySelector("#nav_slide");
         if (elementSection.dataset.state === "top-slide") {
@@ -155,11 +157,6 @@ Reveal.on("pdf-ready", () => {
                 elementNavPartSub.style.display = "block";
                 elementNavPartSub.className = "present";
             }
-        }
-
-        const elementsContent = elementSection.children;
-        for (const element of elementsContent) {
-            element.style.zoom = "0.9";
         }
     }
 });
