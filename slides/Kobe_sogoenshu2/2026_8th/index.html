@@ -1,0 +1,741 @@
+<!doctype html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reset.css" />
+        <link rel="stylesheet" href="../../reveal.js-master/dist/reveal.css" />
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/dist/theme/simple.css"
+        />
+        <link rel="stylesheet" href="./main.css" />
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../fontawesome-free-web/css/all.min.css" />
+        <script
+            src="https://kit.fontawesome.com/29824876ec.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- MathJax version 3 -->
+        <script src="./mathjax_config.js" defer></script>
+        <script
+            id="MathJax-script"
+            defer
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- TikZJax -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://tikzjax.com/v1/fonts.css"
+        />
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-E28G7ESK53"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-E28G7ESK53");
+        </script>
+
+        <!-- Theme used for syntax highlighted code -->
+        <link
+            rel="stylesheet"
+            href="../../reveal.js-master/dist/plugin/highlight/monokai.css"
+        />
+        <script src="../../reveal.js-master/dist/plugin/highlight.js"></script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <header id="info_header">
+                <div id="presentation_title">
+                    <h1>3T338 総合演習2 (2026年度)</h1>
+                </div>
+                <div id="presentation_date">
+                    <p>
+                        社会系シミュレーション (第3回) [<time
+                            datetime="2026-11-25"
+                            >2026-11-25</time
+                        >]
+                    </p>
+                </div>
+                <nav id="nav_slide">
+                    <p>
+                        <span id="nav_part1" class="nav_part">
+                            1. 社会系シミュレーション (前半) の復習</span
+                        ><span id="nav_part1-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part2" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 2.
+                            可動エージェントシミュレーション</span
+                        ><span id="nav_part2-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                        <span id="nav_part3" class="nav_part"
+                            ><i class="fas fa-chevron-right"></i> 3.
+                            課題について</span
+                        ><span id="nav_part3-sub" class="sub-slide">
+                            (補足)</span
+                        >
+                    </p>
+                </nav>
+            </header>
+
+            <footer id="info_footer">
+                <div id="presentation_speaker">
+                    <address>
+                        <i class="fas fa-microphone"></i>
+                        <a
+                            href="https://r-nakashima-geophysics.github.io"
+                            target="_blank"
+                            >中島 涼輔</a
+                        >
+                        (神戸大・シス情) [
+                        <i class="far fa-envelope"></i>
+                        <span id="mail_address"
+                            >r.nakashima.a10&nbsp;<i class="fas fa-at"></i
+                            >&nbsp;panda.kobe-u.ac.jp</span
+                        >
+                        ]
+                    </address>
+                </div>
+                <div id="poweredby">
+                    <p>
+                        Powered by&nbsp;
+                        <a href="https://revealjs.com" target="_blank"
+                            ><img
+                                src="https://static.slid.es/reveal/logo-v1/reveal-white-text.svg"
+                                alt="Powered by reveal.js"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -7px 0;
+                                    padding: 0;
+                                "
+                                class="demo-logo"
+                        /></a>
+                        /
+                        <a href="https://www.mathjax.org" target="_blank"
+                            ><img
+                                title="Powered by MathJax"
+                                src="https://www.mathjax.org/badge/mj_logo.png"
+                                alt="Powered by MathJax"
+                                style="
+                                    height: 20px;
+                                    margin: 0 auto -10px 0;
+                                    padding: 0;
+                                "
+                        /></a>
+                        /
+                        <!-- <a href="https://tikzjax.com" target="_blank"
+                            >TikZJax</a
+                        >
+                        / -->
+                        <a href="https://fontawesome.com" target="_blank">
+                            Font Awesome
+                            <i class="fa-solid fa-font-awesome"></i>
+                        </a>
+                        <!-- /
+                        <a href="https://www.chartjs.org"
+                            >Chart.js
+                            <img
+                                src="https://www.chartjs.org/img/chartjs-logo.svg"
+                                style="
+                                    height: 25px;
+                                    margin: 0 auto -5px 0;
+                                    padding: 0;
+                                "
+                        /></a> -->
+                    </p>
+                </div>
+            </footer>
+
+            <div class="slides">
+                <section data-state="top-slide">
+                    <p>2026年度</p>
+                    <h2 class="r-fit-text">
+                        総合演習2<br />
+                        社会系シミュレーション<br />
+                        (第3回)
+                    </h2>
+                    <p>
+                        <i class="fas fa-microphone"></i> 中島 涼輔
+                        (システム情報)<br />
+                        <i class="fas fa-at"></i> NSSOL Lab.<br />
+                        2026/11/25
+                    </p>
+                </section>
+
+                <section data-state="part1">
+                    <h2>社会系シミュレーション (前半) の復習</h2>
+                    <ul>
+                        <li>
+                            (現実世界では実験が困難な)
+                            人間社会をコンピュータ上で再現することで,
+                            将来予測や政策決定に役立てる
+                            <ul>
+                                <li class="fragment">
+                                    社会システムには厳密な物理法則のようなものは存在しない
+                                </li>
+                                <li class="fragment">
+                                    観察や推測により,
+                                    個々のプロセスを数式で<u>模擬的に</u>表現
+                                    (感染者が多い場所ほど感染者が増えやすい
+                                    etc.) &equals; モデル化
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            <strong class="alert">システムダイナミクス</strong>
+                            <span class="small note"
+                                >(社会系シミュレーション 第1回)</span
+                            >
+                            <ul>
+                                <li class="fragment">
+                                    社会を構成する個人・組織ではなく,
+                                    それらを集めたグループに注目 (感染者の総数,
+                                    免疫保持者の総数 etc.) &equals;
+                                    集中定数モデル (ボックスモデル)
+                                </li>
+
+                                <li class="fragment">
+                                    方程式の非線形性を通じて複雑な挙動が現れる
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            <strong class="alert"
+                                >エージェントベースモデリング</strong
+                            >
+                            <span class="small note"
+                                >(社会系シミュレーション 第2〜4回)</span
+                            >
+                            <ul>
+                                <li class="fragment">
+                                    個人レベルの行動や意思決定を考慮し,
+                                    それらがシステム全体をどう形成しているかに注目
+                                </li>
+                                <li class="fragment">
+                                    個々の相互作用を通じて創発現象が現れる
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part1">
+                    <h2>エージェントベースモデリング</h2>
+                    <ul>
+                        <li>
+                            <strong class="alert">固定エージェント</strong
+                            >シミュレーション
+                            <span class="small note"
+                                >(社会系シミュレーション 第2回)</span
+                            >
+                            <ul>
+                                <li class="fragment">
+                                    移動しない個々の対象 (エージェント)
+                                    の位置関係や距離に応じて物事が進行 &#8786;
+                                    分布定数モデル
+                                </li>
+                                <li class="fragment">
+                                    代表例: セルオートマトン
+                                    <ul>
+                                        <li>
+                                            隣接するセルの状態に応じて,
+                                            自らの状態が変化
+                                            (隣に感染者がいれば感染 etc.)
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            <strong class="alert">可動エージェント</strong
+                            >シミュレーション
+                            <span class="small note"
+                                >(社会系シミュレーション 第3〜4回)</span
+                            >
+                            <ul>
+                                <li class="fragment">
+                                    各エージェントが自分の状態に応じて行動し,
+                                    他のエージェントと相互作用する
+                                    (近くに感染者がいれば感染,
+                                    自分が感染したら行動を控える etc.)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>準備</h2>
+                    <div class="flex-box">
+                        <ul style="width: 65%">
+                            <li>
+                                可動エージェントシミュレーションの出発点として,
+                                複数のボールが 2
+                                次元領域を等速直線運動するシミュレーションを考える
+                                <ul>
+                                    <li>ボール間の衝突は無視</li>
+                                    <li>初期位置と速度はランダムに設定</li>
+                                    <li>
+                                        壁がないのでボールは画面外に出ていく
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <figure style="width: 35%">
+                            <img
+                                src="./fig/social_3rd_ball2d.webp"
+                                alt="2次元領域を等速直線運動するボール (壁なし)"
+                                width="400"
+                                data-preview-image
+                            />
+                        </figure>
+                    </div>
+                    <div class="fragment">
+                        <ul>
+                            <li>
+                                授業で使用するプログラムコードは
+                                <a
+                                    href="https://github.com/r-nakashima-geophysics/2026-sogoenshu2"
+                                    target="_blank"
+                                    >https://github.com/r-nakashima-geophysics/2026-sogoenshu2</a
+                                >
+                                にて配布します
+                                <ul>
+                                    <li>
+                                        social_3rd_ball2d.ipynb
+                                        をダウンロードしてください
+                                    </li>
+                                    <li>
+                                        Git が使える人は git clone でも可
+                                        <pre><code class="language-sh">git clone https://github.com/r-nakashima-geophysics/2026-sogoenshu2.git</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>配布プログラムコードの実行</h2>
+                    <ul>
+                        <li>
+                            ダウンロードした .ipynb ファイルを Google Colab.
+                            にアップロードして実行してください
+                            <div class="flex-box">
+                                <div style="width: 55%">
+                                    <figure>
+                                        <img
+                                            src="./fig/colab_1.webp"
+                                            alt="Google Colab. にアップロード"
+                                            data-preview-image
+                                        />
+                                    </figure>
+                                </div>
+                                <div style="width: 45%">
+                                    <figure>
+                                        <img
+                                            src="./fig/colab_2.webp"
+                                            alt="Google Colab. にアップロード"
+                                            data-preview-image
+                                        />
+                                    </figure>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            自前で Python の仮想環境を構築して実行しても OK
+                            <ul>
+                                <li>
+                                    GitHub にアップロードしている pyproject.toml
+                                    を利用してください (<a
+                                        href="https://docs.astral.sh/uv/"
+                                        target="_blank"
+                                        >uv</a
+                                    >
+                                    または venv + pip を推奨)
+                                </li>
+                                <li>Python 3.12.14 で動作確認済み</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>実行できましたか ?</h2>
+                    <figure style="width: 40%; margin: 0 auto">
+                        <img
+                            src="./fig/social_3rd_ball2d.webp"
+                            alt="2次元領域を等速直線運動するボール (壁なし)"
+                            width="400"
+                            data-preview-image
+                        />
+                    </figure>
+                    <ul>
+                        <li>動画が再生できれば OK</li>
+                        <li>
+                            初期位置と速度はランダムなので,
+                            上の動画と全く同じにはなりません
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>配布プログラムコードの注意</h2>
+                    <ul>
+                        <li>
+                            配布したプログラムコードには, 可読性のためになるべく
+                            docstring と型ヒント (型アノテーション) をつけている
+                        </li>
+                        <li class="fragment">
+                            <strong class="alert">docstring</strong> :
+                            関数やクラス<sup class="note" style="font-size: 50%"
+                                >&ast;1</sup
+                            >
+                            の説明を記述できる複数行のコメント文のようなもの
+                            <pre><code class="language-python" data-line-numbers>def func():
+    """関数 func の説明
+    
+    Parameters: 仮引数の説明
+    Returns: 戻り値の説明
+    """</code></pre>
+                            <p class="note" style="font-size: 60%">
+                                (&ast;1) Python の関数やクラスに自信がない人は,
+                                システム情報学部1年生向け講義「演習1」の講義資料の一部を
+                                <a
+                                    href="https://r-nakashima-geophysics.github.io/lecture_note.html"
+                                    target="_blank"
+                                    >https://r-nakashima-geophysics.github.io/lecture_note.html</a
+                                >
+                                にアップロードしているので参考にしてください)
+                            </p>
+                        </li>
+                        <li class="fragment">
+                            <strong class="alert">型ヒント</strong>
+                            (<strong class="alert">型アノテーション</strong>) :
+                            Python は動的型付け言語だが,
+                            作成者が想定している変数の型を表記できる
+                            <pre><code class="language-python" data-line-numbers>from typing import Final
+
+a: int = 1   # 変数 a には整数型の値を代入することを想定
+b: Final[float] = 0.1   # 変数 b は浮動小数点型の定数</code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>演習</h2>
+                    <div class="flex-box">
+                        <ul style="width: 65%">
+                            <li>
+                                <b>[演習3-0]</b> social_3rd_ball2d.ipynb
+                                を変更して, ボールが画面外に出ていかないように,
+                                $0\leq x\leq 10$ の外に出たら $v_x$ が反転し,
+                                $0\leq y\leq 10$ の外に出たら $v_y$
+                                が反転するような処理を加えてください
+                                <ul>
+                                    <li>ボールの大きさは考慮しなくてよい</li>
+                                    <li>
+                                        壁の中にめり込んだ次のステップで速度が反転してれば
+                                        OK
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <figure style="width: 35%">
+                            <img
+                                src="./fig/social_3rd_ball2d_wall.webp"
+                                alt="2次元領域を等速直線運動するボール (壁あり)"
+                                data-preview-image
+                            />
+                        </figure>
+                    </div>
+                    <ul>
+                        <li class="fragment">
+                            ヒント: プログラムコード内の MovableAgent クラスは 1
+                            つの可動エージェント (ボール) を表すクラスで,
+                            MovableAgentSystem
+                            クラスは可動エージェント全体を表すクラスです
+                        </li>
+                        <li class="fragment">
+                            解答例は social_3rd_ball2d_wall.ipynb
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part2">
+                    <h2>SIR モデル + 可動エージェント</h2>
+                    <div class="flex-box">
+                        <ul style="width: 60%">
+                            <li>
+                                先ほどのボールの2次元運動のプログラムコードを元に
+                                SIR モデルを実装する
+                            </li>
+                            <li class="fragment">
+                                GitHub にアップロードしている
+                                social_3rd_sir.ipynb は, 以下の項目が実装済み
+                                <ul>
+                                    <li>
+                                        エージェントは感染状態
+                                        ($\textcolor{blue}{S},
+                                        \textcolor{red}{I},
+                                        \textcolor{green}{R}$) のいずれかをもつ
+                                    </li>
+                                    <li>
+                                        エージェントはランダムに移動し,
+                                        範囲外に出たら範囲内に戻す処理をする
+                                    </li>
+                                    <li>
+                                        一定の時間ステップが経過すると回復する
+                                        (<span style="color: red">感染者</span>
+                                        $\textcolor{red}{I} \to$
+                                        <span style="color: green">回復者</span>
+                                        $\textcolor{green}{R}$)
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="fragment">
+                                現状, エージェント間の相互作用 (感染状態の伝播,
+                                <span style="color: blue">感受性者</span>
+                                $\textcolor{blue}{S} \to$
+                                <span style="color: red">感染者</span>
+                                $\textcolor{red}{I}$) は実装されていない
+                            </li>
+                        </ul>
+                        <figure style="width: 40%">
+                            <img
+                                src="./fig/social_3rd_sir.webp"
+                                alt="SIR モデルの可動エージェントシミュレーション (未完成)"
+                                data-preview-image
+                            />
+                        </figure>
+                    </div>
+                </section>
+
+                <section data-state="part2">
+                    <h2>演習</h2>
+                    <div class="flex-box">
+                        <ul style="width: 60%">
+                            <li>
+                                <b>[演習3-1]</b> social_3rd_sir.ipynb
+                                を変更して, 感染状態の伝播 (<span
+                                    style="color: blue"
+                                    >感受性者</span
+                                >
+                                $\textcolor{blue}{S} \to$
+                                <span style="color: red">感染者</span>
+                                $\textcolor{red}{I}$) を実装してください
+                                <ul>
+                                    <li>
+                                        指定された距離内に感染者が<strong
+                                            class="alert"
+                                            >1人以上存在</strong
+                                        >すれば,
+                                        その人数に依らず一定確率で感染する
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="fragment">
+                                <b>[演習3-2]</b>
+                                指定された距離内に感染者が<strong class="alert"
+                                    >多く存在すればするほど,
+                                    より高い確率</strong
+                                >で感染するようにしてください
+                                <ul>
+                                    <li>
+                                        演習3-1と演習3-2でどのような結果の違いが生じるかを予想した上で,
+                                        実際にシミュレーションを行い,
+                                        結果を比較してみてください
+                                    </li>
+                                    <li>
+                                        パラメータの影響や試行ごとのばらつきについても考察してみてください
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <figure style="width: 40%">
+                            <img
+                                src="./fig/social_3rd_sir_answer1.webp"
+                                alt="SIR モデルの可動エージェントシミュレーション"
+                                data-preview-image
+                            />
+                        </figure>
+                    </div>
+                </section>
+
+                <section data-state="part3">
+                    <h2>課題について</h2>
+                    <ul>
+                        <li>
+                            中島担当分 (社会系シミュレーション後半(第3・4回) +
+                            マクロ系シミュレーション; 総合演習2の50/100点)
+                            の課題は<strong class="important">加点方式</strong
+                            >で採点します
+                            <ul>
+                                <li>
+                                    各回ごとに<strong class="alert"
+                                        >小課題</strong
+                                    >を, 社会系とマクロ系の第4回に<strong
+                                        class="alert"
+                                        >最終課題</strong
+                                    >を設定しますが,
+                                    全ての課題を提出する必要はありません
+                                </li>
+                                <li>
+                                    自分ができそうな課題を選択し,
+                                    他の授業の忙しさを加味して戦略的に提出して構いません
+                                </li>
+                                <li>
+                                    小課題を提出せずに最終課題のみ提出する,
+                                    またはその逆もアリです
+                                </li>
+                                <li>
+                                    課題を過剰に提出してもらっても構いませんが,
+                                    点数に上限があります (社会系後半: 17点,
+                                    マクロ系: 33点)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            レポートは $\LaTeX$ や Microsoft Word などで作成し,
+                            <strong class="important">PDF 形式</strong
+                            >に変換してから BEEF+ に提出してください
+                            <ul>
+                                <li>
+                                    どの課題かわかるように課題番号を明記してください
+                                </li>
+                                <li>
+                                    「短めのレポート」とは,
+                                    文章や数式・図表を合わせて 0.5〜3
+                                    ページくらいをイメージしています
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>生成AI使用ポリシー</h2>
+                    <ul>
+                        <li>
+                            学部低学年の授業では, (生成AIの力を借りずとも)
+                            理工系・情報系人材が身につけておくべき最低限の知識や能力を修得しました
+                        </li>
+                        <li>
+                            今後は, 生成AIを<strong class="alert"
+                                ><u>適切に</u>使いこなす</strong
+                            >能力も重要になります
+                        </li>
+                        <li>
+                            中島担当分の課題でも生成AIを活用することを<strong
+                                class="important"
+                                >強く推奨します</strong
+                            >
+                            <ul class="small">
+                                <li>
+                                    作成した文章の校正 /
+                                    箇条書きにしたものを文章にしてもらう
+                                </li>
+                                <li>
+                                    手書きの数式をスキャンして $\LaTeX$
+                                    形式に変換 / 式変形の検算
+                                </li>
+                                <li>
+                                    知らなかった・忘れてしまった知識を教えてもらう
+                                    / アイデア出し / 壁打ち
+                                </li>
+                                <li>
+                                    プログラムコードのデバッグやレビュー&emsp;&emsp;など
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            レポートには必ず, 使用した<strong class="alert"
+                                >生成AIモデル</strong
+                            >とその<strong class="alert">用途</strong
+                            >を明記してください (例: 文章校正のため Claude Haiku
+                            5.5 を使用)
+                            <ul>
+                                <li>
+                                    記載がなければ減点します.
+                                    生成AIを使う必要がなかった場合はそのことを明記してください
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            生成AIの出力内容は, 必ず<strong class="important"
+                                >確認・吟味</strong
+                            >してください
+                            <ul>
+                                <li>
+                                    ハルシネーションが含まれている /
+                                    抽象的で内容が薄い文章が続く /
+                                    数式や文が不自然に崩れている等の場合は減点の可能性あり
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section data-state="part3">
+                    <h2>社会系シミュレーション第3回小課題</h2>
+                    <ul>
+                        <li>
+                            <b>[課題3-1]</b>
+                            この講義資料内の演習3-1の実装を行うために必要な処理手順を説明した短めのレポートを作成してください.
+                            そのレポートには,
+                            配布プログラムコードのどこにどのような変更を加える必要があるかを示したコード断片
+                            (スクリーンショット可) を含めてください [3点]
+                        </li>
+                        <li>
+                            <b>[課題3-2]</b>
+                            この講義資料内の演習3-2の実装を行うために必要な処理手順を,
+                            演習3-1との違いも含めて説明した短めのレポートを作成してください.
+                            そのレポートには,
+                            配布プログラムコードのどこにどのような変更を加える必要があるかを示したコード断片
+                            (スクリーンショット可) を含めてください [3点]
+                        </li>
+                        <li>
+                            <b>[課題3-3]</b>
+                            演習3-1と演習3-2でどのような結果の違いが生じるかを予想した上で,
+                            実際にシミュレーションを行い,
+                            結果を比較してください.
+                            その比較に基づく考察を行った短めのレポートを作成してください.
+                            パラメータ依存性など複数の観点から考察を行なっている場合は高得点になります
+                            [7点]
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <script src="../../reveal.js-master/dist/reveal.js"></script>
+        <!-- <script src="../../reveal.js-master/dist/plugin/zoom.js"></script> -->
+        <script src="./main.js"></script>
+        <script src="./sub.js"></script>
+    </body>
+</html>
